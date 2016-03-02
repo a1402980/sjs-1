@@ -1,40 +1,41 @@
 package pizzicato.model;
 
-public class Tayte {
-	int tayte_id;
-	String t_nimi;
-	
+public class Tayte extends Pizza {
+	int tayteId;
+	String tNimi;
+
 	public Tayte() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Tayte(int tayte_id, String t_nimi) {
+	public Tayte(int tayteId, String tNimi) {
 		super();
-		this.tayte_id = tayte_id;
-		this.t_nimi = t_nimi;
+		this.tayteId = tayteId;
+		this.tNimi = tNimi;
 	}
 
-	public int getTayte_id() {
-		return tayte_id;
+	public int getTayteId() {
+		return tayteId;
 	}
 
-	public void setTayte_id(int tayte_id) {
-		this.tayte_id = tayte_id;
+	public void setTayteId(int tayteId) {
+		this.tayteId = tayteId;
 	}
 
-	public String getT_nimi() {
-		return t_nimi;
+	public String gettNimi() {
+		return tNimi;
 	}
 
-	public void setT_nimi(String t_nimi) {
-		this.t_nimi = t_nimi;
+	public void settNimi(String tNimi) {
+		this.tNimi = tNimi;
 	}
 
 	@Override
 	public String toString() {
-		return "Tayte [tayte_id=" + tayte_id + ", t_nimi=" + t_nimi + "]";
+		return "Tayte [tayteId=" + tayteId + ", tNimi=" + tNimi + "]";
 	}
 	
 	
+
 }
