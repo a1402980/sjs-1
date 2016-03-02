@@ -1,6 +1,6 @@
 package pizzicato.model;
 
-public class Tayte extends Pizza {
+public class Tayte {
 	int tayteId;
 	String tNimi;
 
