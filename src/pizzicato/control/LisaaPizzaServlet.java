@@ -8,16 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/listaaPizzat")
-public class listaaPizzat extends HttpServlet {
+@WebServlet("/LisaaPizzaServlet")
+public class LisaaPizzaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-    public listaaPizzat() {
-        super();
-        
-    }
-
-
+   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
