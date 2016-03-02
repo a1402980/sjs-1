@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
@@ -73,16 +73,16 @@
             <div class="row text-center">
                 <div class="col-md-8 col-md-offset-2">
                     <h1>Pizzalista</h1>
-					<h2>(Omistajan n‰kym‰)</h2>
+					<h2>(Omistajan n√§kym√§)</h2>
 					<div id="lisaapizzanappi">
-					<button type="button" class="btn btn-success btn-xl">Lis‰‰ Pizza</button>
+					<button type="button" class="btn btn-success btn-xl">Lis√§√§ Pizza</button>
 					</div>
 					<div class="CSSTableGenerator" >
                     <table width="336" border="1" align="center">
 		<tr>
 			<td>Id</td>
 				<td>Nimi</td>
-					<td>T‰ytteet</td>
+					<td>T√§ytteet</td>
 						<td>Hinta</td>
 							<td>Valikoimassa</td>
 								<td>Muokkaa</td>
@@ -97,7 +97,7 @@
 				<td>Margarita</td>
 				<td>Tomaattikastike,Salami,Paprika</td>
 				<td>8,50</td>
-				<td>Kyll‰</td>
+				<td>Kyll√§</td>
 				<td><span class="glyphicon glyphicon-edit"></span></td>
 				<td><span class="glyphicon glyphicon-trash"></span></td>
 				
@@ -123,7 +123,7 @@
                 <div class="col-md-5 contact-cls">
                     <h3>OUR LOCATION </h3>
                     <div>
-                        <span><i class="fa fa-home"></i>&nbsp; Address: New Your City</span>
+                        <span><i class="fa fa-home"></i>&nbsp;Address: New Your City</span>
                         <br />
                         <span><i class="fa fa-phone"></i>&nbsp;Phone: 82-230-567-899</span>
                         <br />

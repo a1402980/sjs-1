@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
@@ -72,17 +72,17 @@
         <div class="container">
             <div class="row text-center">
                 <div class="col-md-8 col-md-offset-2">
-				<H1>Lis‰‰ Pizza</H1>
+				<H1>Lis√§√§ Pizza</H1>
 				
 				<img src="noimage.png" alt="Ei kuvaa" style="width:35%;height:35%;">
 				 <form action="testi.asp">
 				 <input type="file" name="pic" accept="image/*"><br>
-				 <input type="submit"value="Lis‰‰ kuva"><br>
+				 <input type="submit"value="Lis√§√§ kuva"><br>
 				 Nimi:<input type="text" name="nimi" required><br><br>
-				 Hinta:<input type="decimal" name="hinta" pattern="[0-9,.]{4,5}" title="Lis‰‰ hinta muodolla x,xx tai x.xx" required><br><br>
-				 				 T‰ytteet: <br> 
+				 Hinta:<input type="decimal" name="hinta" pattern="[0-9,.]{4,5}" title="Lis√§√§ hinta muodolla x,xx tai x.xx" required><br><br>
+				 				 T√§ytteet: <br> 
 								 <select name="tayte1">
-							<option value="eitaytetta">T‰yte1</option>
+							<option value="eitaytetta">T√§yte1</option>
 							<option value="tomaattikastike">Tomaattikastike</option>
 							<option value="juusto">Juusto</option>
 							<option value="herkkusieni">Herkkusieni</option>
@@ -98,7 +98,7 @@
 							<option value="jalopeno">Jalopeno</option>
 							</select>
 							<select name="tayte2">
-							<option value="eitaytetta">T‰yte2</option>
+							<option value="eitaytetta">T√§yte2</option>
 							<option value="tomaattikastike">Tomaattikastike</option>
 							<option value="juusto">Juusto</option>
 							<option value="herkkusieni">Herkkusieni</option>
@@ -114,7 +114,7 @@
 							<option value="jalopeno">Jalopeno</option>
 							</select>
 							<select name="tayte3">
-							<option value="eitaytetta">T‰yte3</option>
+							<option value="eitaytetta">T√§yte3</option>
 							<option value="tomaattikastike">Tomaattikastike</option>
 							<option value="juusto">Juusto</option>
 							<option value="herkkusieni">Herkkusieni</option>
@@ -130,7 +130,7 @@
 							<option value="jalopeno">Jalopeno</option>
 							</select>
 							<select name="tayte4">
-							<option value="eitaytetta">T‰yte4</option>
+							<option value="eitaytetta">T√§yte4</option>
 							<option value="tomaattikastike">Tomaattikastike</option>
 							<option value="juusto">Juusto</option>
 							<option value="herkkusieni">Herkkusieni</option>
@@ -146,7 +146,7 @@
 							<option value="jalopeno">Jalopeno</option>
 							</select>
 							<select name="tayte5">
-							<option value="eitaytetta">T‰yte5</option>
+							<option value="eitaytetta">T√§yte5</option>
 							<option value="tomaattikastike">Tomaattikastike</option>
 							<option value="juusto">Juusto</option>
 							<option value="herkkusieni">Herkkusieni</option>
@@ -162,7 +162,7 @@
 							<option value="jalopeno">Jalopeno</option>
 							</select>
 							<select name="tayte6">
-							<option value="eitaytetta">T‰yte6</option>
+							<option value="eitaytetta">T√§yte6</option>
 							<option value="tomaattikastike">Tomaattikastike</option>
 							<option value="juusto">Juusto</option>
 							<option value="herkkusieni">Herkkusieni</option>
@@ -202,7 +202,7 @@
                 <div class="col-md-5 contact-cls">
                     <h3>OUR LOCATION </h3>
                     <div>
-                        <span><i class="fa fa-home"></i>&nbsp; Address: New Your City</span>
+                        <span><i class="fa fa-home"></i>&nbsp;Address: New Your City</span>
                         <br />
                         <span><i class="fa fa-phone"></i>&nbsp;Phone: 82-230-567-899</span>
                         <br />
