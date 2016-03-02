@@ -74,13 +74,14 @@
                 <div class="col-md-8 col-md-offset-2">
 				<H1>Lis‰‰ Pizza</H1>
 				
-				<img src="/assets/images/noimage.png" alt="Ei kuvaa" style="width:35%;height:35%;">
+				<img src="noimage.png" alt="Ei kuvaa" style="width:35%;height:35%;">
 				 <form action="testi.asp">
 				 <input type="file" name="pic" accept="image/*"><br>
 				 <input type="submit"value="Lis‰‰ kuva"><br>
-				 Nimi:<input type="text" name="nimi"><br><br>
-				 Hinta:<input type="decimal" name="hinta"><br><br>
-				 T‰ytteet:<br> <select name="tayte1">
+				 Nimi:<input type="text" name="nimi" required><br><br>
+				 Hinta:<input type="decimal" name="hinta" pattern="[0-9,.]{4,5}" title="Lis‰‰ hinta muodolla x,xx tai x.xx" required><br><br>
+				 				 T‰ytteet: <br> 
+								 <select name="tayte1">
 							<option value="eitaytetta">T‰yte1</option>
 							<option value="tomaattikastike">Tomaattikastike</option>
 							<option value="juusto">Juusto</option>

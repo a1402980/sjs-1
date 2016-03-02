@@ -144,7 +144,7 @@
         2016 | Silver Java Slayers
          
     </div>
-    <!--End footer Section -- mikko was here>
+    <!--End footer Section -->
     <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
     <!-- CORE JQUERY  -->
     <script src="assets/plugins/jquery-1.10.2.js"></script>

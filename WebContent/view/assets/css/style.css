@@ -1,4 +1,4 @@
-﻿/*=============================================================
+/*=============================================================
     Authour URI: www.binarytheme.com
     License: Commons Attribution 3.0
 
@@ -84,7 +84,26 @@ section {
 
 form {
 margin: 0 auto; 
-width:250px;
+width:70%;
+}
+input {
+    width: 60%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid grey;
+    border-radius: 4px;
+}
+input[type=file] {
+    margin: 0 auto;
+}
+select{
+    width: 60%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid grey;
+    border-radius: 4px;
 }
 
 /*=======================================
