@@ -14,7 +14,7 @@ public class listaaPizzat extends HttpServlet {
 
     public listaaPizzat() {
         super();
-        // TODO Auto-generated constructor stub
+        
     }
 
 
