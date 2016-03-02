@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import pizzicato.model.Pizza;
+import pizzicato.model.Tayte;
 import pizzicato.model.dao.DataAccessObject;
 
 public class PizzaDAO extends DataAccessObject {
@@ -19,12 +20,12 @@ public class PizzaDAO extends DataAccessObject {
 
 			try {
 				connection = getConnection();
-				String sqlInsert = "INSERT INTO pizza(pizza_id, p_nimi, p_hinta, p_saatavuus) VALUES (?, ?, ?, ?)";
+				String sqlInsert = "INSERT INTO pizza(pizzaId, pNimi, pHinta, pSaatavuus) VALUES (?, ?, ?, ?)";
 				stmtInsert = connection.prepareStatement(sqlInsert);
-				stmtInsert.setInt(1, pizza.getPizza_id());
-				stmtInsert.setString(2, pizza.getP_nimi());
-				stmtInsert.setDouble(3, pizza.getP_hinta());
-				stmtInsert.setBoolean(4, pizza.isP_saatavuus());
+				stmtInsert.setInt(1, pizza.getPizzaId());
+				stmtInsert.setString(2, pizza.getpNimi());
+				stmtInsert.setDouble(3, pizza.getpHinta());
+				stmtInsert.setBoolean(4, pizza.ispSaatavuus());
 				stmtInsert.executeUpdate();
 			}catch (SQLException e) {
 				throw new RuntimeException(e);
@@ -41,7 +42,7 @@ public class PizzaDAO extends DataAccessObject {
 			Pizza pizza=null;
 			try {
 				conn = getConnection();
-				String sqlSelect ="SELECT pizza_id, p_nimi, p_hinta, p_saatavuus FROM pizza;";
+				String sqlSelect ="SELECT pizzaId, pNimi, pHinta, pSaatavuus FROM pizza;";
 				stmt=conn.prepareStatement(sqlSelect);
 				rs=stmt.executeQuery(sqlSelect);
 				while(rs.next()) {
@@ -62,7 +63,8 @@ public class PizzaDAO extends DataAccessObject {
 				String nimi=rs.getString("p_nimi");
 				double hinta=rs.getDouble("p_hinta");
 				boolean saatavuus=rs.getBoolean("p_saatavuus");
-				return new Pizza(id, nimi, hinta, saatavuus);
+				ArrayList<Tayte> taytteet = new ArrayList<Tayte>();
+				return new Pizza(id, nimi, hinta, saatavuus, taytteet);
 			} catch (SQLException e) {
 				throw new RuntimeException(e);
 			}
