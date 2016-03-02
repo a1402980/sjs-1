@@ -1,63 +1,74 @@
 package pizzicato.model;
 
+import java.util.ArrayList;
+
 public class Pizza {
-	int pizza_id;
-	String p_nimi;
-	double p_hinta;
-	boolean p_saatavuus;
+	int pizzaId;
+	String pNimi;
+	double pHinta;
+	boolean pSaatavuus;
+	ArrayList<Tayte> taytteet = new ArrayList<Tayte>();
 	
 	public Pizza() {
 		super();
 	}
 
-	public Pizza(int pizza_id, String p_nimi, double p_hinta,
-			boolean p_saatavuus) {
+	public Pizza(int pizzaId, String pNimi, double pHinta, boolean pSaatavuus,
+			ArrayList<Tayte> taytteet) {
 		super();
-		this.pizza_id = pizza_id;
-		this.p_nimi = p_nimi;
-		this.p_hinta = p_hinta;
-		this.p_saatavuus = p_saatavuus;
+		this.pizzaId = pizzaId;
+		this.pNimi = pNimi;
+		this.pHinta = pHinta;
+		this.pSaatavuus = pSaatavuus;
+		this.taytteet = taytteet;
 	}
 
-	public int getPizza_id() {
-		return pizza_id;
+	public int getPizzaId() {
+		return pizzaId;
 	}
 
-	public void setPizza_id(int pizza_id) {
-		this.pizza_id = pizza_id;
+	public void setPizzaId(int pizzaId) {
+		this.pizzaId = pizzaId;
 	}
 
-	public String getP_nimi() {
-		return p_nimi;
+	public String getpNimi() {
+		return pNimi;
 	}
 
-	public void setP_nimi(String p_nimi) {
-		this.p_nimi = p_nimi;
+	public void setpNimi(String pNimi) {
+		this.pNimi = pNimi;
 	}
 
-	public double getP_hinta() {
-		return p_hinta;
+	public double getpHinta() {
+		return pHinta;
 	}
 
-	public void setP_hinta(double p_hinta) {
-		this.p_hinta = p_hinta;
+	public void setpHinta(double pHinta) {
+		this.pHinta = pHinta;
 	}
 
-	public boolean isP_saatavuus() {
-		return p_saatavuus;
+	public boolean ispSaatavuus() {
+		return pSaatavuus;
 	}
 
-	public void setP_saatavuus(boolean p_saatavuus) {
-		this.p_saatavuus = p_saatavuus;
+	public void setpSaatavuus(boolean pSaatavuus) {
+		this.pSaatavuus = pSaatavuus;
+	}
+
+	public ArrayList<Tayte> getTaytteet() {
+		return taytteet;
+	}
+
+	public void setTaytteet(ArrayList<Tayte> taytteet) {
+		this.taytteet = taytteet;
 	}
 
 	@Override
 	public String toString() {
-		return "Pizza [pizza_id=" + pizza_id + ", p_nimi=" + p_nimi
-				+ ", p_hinta=" + p_hinta + ", p_saatavuus=" + p_saatavuus + "]";
+		return "Pizza [pizzaId=" + pizzaId + ", pNimi=" + pNimi + ", pHinta="
+				+ pHinta + ", pSaatavuus=" + pSaatavuus + ", taytteet="
+				+ taytteet + "]";
 	}
 	
 	
-	
-
 }
