@@ -8,7 +8,6 @@ public class Pizza {
 	
 	public Pizza() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Pizza(int pizza_id, String p_nimi, double p_hinta,
