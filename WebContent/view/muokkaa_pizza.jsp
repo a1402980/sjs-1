@@ -53,9 +53,9 @@
                     </li>
                     <li><a href="#services">Tilaukset</a>
                     </li>
-                    <li><a href="#free-text">FREE TEXT</a>
+                    <li><a href="#free-text">Linkki</a>
                     </li>
-                     <li><a href="#contact">CONTACT</a>
+                     <li><a href="#contact">Linkki</a>
                     </li>
                 </ul>
             </div>
@@ -208,13 +208,13 @@
                 <div class="col-md-5 contact-cls">
                     <h3>OUR LOCATION </h3>
                     <div>
-                        <span><i class="fa fa-home"></i>&nbsp;Address: New Your City</span>
+                       <span><i class="fa fa-home"></i>&nbsp;Osoite</span>
                         <br />
-                        <span><i class="fa fa-phone"></i>&nbsp;Phone: 82-230-567-899</span>
+                        <span><i class="fa fa-phone"></i>&nbsp;Puhelin</span>
                         <br />
-                        <span><i class="fa fa-envelope-o"></i>&nbsp;E-Mail: indo@yourdomain.com</span>
+                        <span><i class="fa fa-envelope-o"></i>&nbsp;e-mail/span>
                         <br />
-                        <span><i class="fa fa-phone"></i>&nbsp;Call: +50-987-009-0</span>
+                        <span><i class="fa fa-phone"></i>&nbsp;Puhelin</span>
                         <br />
                     </div>
                   
