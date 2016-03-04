@@ -41,5 +41,5 @@ public class LisaaPizzaServlet extends HttpServlet {
 		}
 		response.sendRedirect("ListaaPizzat");
 	}
-
+//testi
 }
