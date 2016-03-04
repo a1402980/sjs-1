@@ -78,7 +78,7 @@
                     <h1>Pizzalista</h1>
 					<h2>(Omistajan näkymä)</h2>
 					<div id="lisaapizzanappi">
-					<button type="button" class="btn btn-success btn-xl">Lisää Pizza</button>
+					<button type="button" class="btn btn-success btn-xl" <a href="/pizzicato.control/LisaaPizzaServlet.java">Lisää Pizza</a></button>
 					</div>
 					<div class="CSSTableGenerator" >
                     <table width="336" border="1" align="center">
