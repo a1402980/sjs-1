@@ -1,6 +1,6 @@
 package pizzicato.control;
 
-import RequestDispatcher;
+import javax.servlet.RequestDispatcher;
 
 import java.io.IOException;
 import java.util.ArrayList;
