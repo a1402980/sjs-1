@@ -25,11 +25,13 @@ public class LisaaPizzaServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String pNimi = request.getParameter("p_nimi");
-		String strPHinta = request.getParameter("p_hinta");
+		String pNimi = request.getParameter("nimi");
+		String strPHinta = request.getParameter("hinta");
 		Double pHinta = new Double(strPHinta);
+		String strPSaatavuus = request.getParameter("saatavuus");
+		boolean pSaatavuus = Boolean.valueOf("strPSaatavuus");
 		
-		Pizza pizza = new Pizza();
+		Pizza pizza = new Pizza(pNimi, pHinta, pSaatavuus);
 		PizzaDAO pizzadao = new PizzaDAO();
 		try {
 			pizzadao.addPizza(pizza);
@@ -39,5 +41,5 @@ public class LisaaPizzaServlet extends HttpServlet {
 		}
 		response.sendRedirect("ListaaPizzat");
 	}
-
+//testi
 }

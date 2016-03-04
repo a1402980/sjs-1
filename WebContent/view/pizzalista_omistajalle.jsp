@@ -23,11 +23,11 @@
     <!-- BOOTSTRAP CORE STYLE CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONTAWESOME STYLE CSS -->
-    <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
+    <link type="text/css" href="assets/css/font-awesome.min.css" rel="stylesheet" />
     <!-- CUSTOM STYLE CSS -->
-    <link href="assets/css/style.css" rel="stylesheet" />
+    <link type="text/css" href="assets/css/style.css" rel="stylesheet" />
     <!-- GOOGLE FONT -->
-    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link type="text/css" href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -94,17 +94,18 @@
 						
 
 		</tr>
-			
+			<%for(int i = 0; i < pizzat.size(); i++) {%>
 			<tr>
 				<td>01</td>
-				<td>Margarita</td>
+				<td><%=pizzat.get(i).getpNimi()%></td>
 				<td>Tomaattikastike,Salami,Paprika</td>
-				<td>8,50</td>
-				<td>Kyllä</td>
+				<td><%=pizzat.get(i).getpHinta()%></td>
+				<td><%=pizzat.get(i).ispSaatavuus()%></td>
 				<td><span class="glyphicon glyphicon-edit"></span></td>
 				<td><span class="glyphicon glyphicon-trash"></span></td>
 				
 			</tr>
+			<% } %>
 		</table>
 				</div>
                 </div>
