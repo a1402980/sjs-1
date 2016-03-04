@@ -178,6 +178,12 @@
 							<option value="jalopeno">Jalopeno</option>
 							</select>
 							
+							<br>Valikoimassa<br>
+							<select name "valikoimassa">
+							<option value="true">Kyllä</option>
+							<option value="false">Ei</option>
+							</select>
+							
 				 </form> 
 				<div id="lisaapizzanapit">
 				 <button type="button" class="btn btn-success btn-lg">Tallenna</button>
