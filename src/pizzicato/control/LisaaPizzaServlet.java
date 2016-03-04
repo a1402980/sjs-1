@@ -38,7 +38,7 @@ public class LisaaPizzaServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		response.sendRedirect("ListaaPizzatServlet");
-		
+		//testi
 	}
 
 }
