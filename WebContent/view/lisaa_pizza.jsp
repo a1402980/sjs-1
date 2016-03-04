@@ -179,7 +179,7 @@
 							</select>
 							
 							<br>Valikoimassa<br>
-							<select name "valikoimassa">
+							<select name="valikoimassa">
 							<option value="true">Kyllä</option>
 							<option value="false">Ei</option>
 							</select>
