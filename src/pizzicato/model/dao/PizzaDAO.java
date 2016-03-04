@@ -33,6 +33,23 @@ public class PizzaDAO extends DataAccessObject {
 			}
 			}
 		
+		public void modifyPizza(Pizza pizza) throws SQLException {
+			Connection conn = null;
+			PreparedStatement stmt = null;
+			try {
+				conn = getConnection();
+				String sqlUpdate = "UPDATE pizza SET(p_nimi, p_hinta, p_saatavuus) VALUES (?, ?, ?)";
+				stmt = conn.prepareStatement(sqlUpdate);
+				stmt.setString(1, pizza.getpNimi());
+				stmt.setDouble(2, pizza.getpHinta());
+				stmt.setBoolean(3, pizza.ispSaatavuus());
+				stmt.executeUpdate();
+				
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			}
+		}
+		
 		public ArrayList<Pizza> findAll() {
 			Connection conn = null;
 			PreparedStatement stmt = null;
