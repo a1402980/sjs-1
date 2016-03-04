@@ -1,6 +1,6 @@
 package pizzicato.control;
 
-import RequestDispatcher;
+import javax.servlet.RequestDispatcher;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import pizzicato.model.Pizza;
 import pizzicato.model.dao.PizzaDAO;
 
 
-@WebServlet("/ListaaPizzatServlet")
+@WebServlet("/ListaaPizzat")
 public class ListaaPizzatServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
