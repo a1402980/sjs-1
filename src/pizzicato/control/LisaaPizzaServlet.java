@@ -14,12 +14,12 @@ import pizzicato.model.Pizza;
 import pizzicato.model.dao.PizzaDAO;
 
 
-@WebServlet("/LisaaPizzaServlet")
+@WebServlet("/LisaaPizza")
 public class LisaaPizzaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String jsp ="/view/Lisaa_tai_muokkaa_pizza.jsp";
+		String jsp ="/view/lisaa_pizza.jsp";
 		RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
 		dispather.forward(request, response);
 	}
