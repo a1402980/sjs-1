@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import pizzicato.model.Pizza;
+import pizzicato.model.dao.PizzaDAO;
 
 @WebServlet("/MuokkaaPizzaServlet")
 public class MuokkaaPizzaServlet extends HttpServlet {
@@ -26,6 +28,9 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		/*Pizza pizza = new Pizza(pNimi, pHinta, pSaatavuus);
+		PizzaDAO pizzadao = new PizzaDAO();
+		pizzadao.modifyPizza(pizza);*/
 	}
 
 }
