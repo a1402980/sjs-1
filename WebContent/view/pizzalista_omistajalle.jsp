@@ -131,7 +131,7 @@
                         <br />
                         <span><i class="fa fa-phone"></i>&nbsp;Puhelin</span>
                         <br />
-                        <span><i class="fa fa-envelope-o"></i>&nbsp;e-mail/span>
+                        <span><i class="fa fa-envelope-o"></i>&nbsp;e-mail</span>
                         <br />
                         <span><i class="fa fa-phone"></i>&nbsp;Puhelin</span>
                         <br />
