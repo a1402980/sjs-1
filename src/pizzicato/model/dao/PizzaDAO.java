@@ -20,12 +20,14 @@ public class PizzaDAO extends DataAccessObject {
 
 			try {
 				connection = getConnection();
-				String sqlInsert = "INSERT INTO pizza(pizza_id, p_nimi, p_hinta, p_saatavuus) VALUES (?, ?, ?, ?)";
+				String sqlInsert = "INSERT INTO pizza(pizzaId, pNimi, pHinta, pSaatavuus, taytteet) VALUES (?, ?, ?, ?, ?)";
 				stmtInsert = connection.prepareStatement(sqlInsert);
 				stmtInsert.setInt(1, pizza.getPizzaId());
 				stmtInsert.setString(2, pizza.getpNimi());
 				stmtInsert.setDouble(3, pizza.getpHinta());
 				stmtInsert.setBoolean(4, pizza.ispSaatavuus());
+				//Miten ArrayList v‰litet‰‰n?? 
+				stmtInsert.setArray(5, pizza.getTaytteet());
 				stmtInsert.executeUpdate();
 			}catch (SQLException e) {
 				throw new RuntimeException(e);
