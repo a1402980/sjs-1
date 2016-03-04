@@ -1,5 +1,5 @@
 package pizzicato.model;
-
+//tama on testi voinko pushata
 public class Tayte {
 	int tayteId;
 	String tNimi;
