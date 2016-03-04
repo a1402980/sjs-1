@@ -1,9 +1,9 @@
 package pizzicato.model;
-//tama on testi voinko pushata
+
 public class Tayte {
 	int tayteId;
 	String tNimi;
-
+	//tama on testi voinko pushata
 	public Tayte() {
 		super();
 		// TODO Auto-generated constructor stub
