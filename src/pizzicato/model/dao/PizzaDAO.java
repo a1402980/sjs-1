@@ -42,7 +42,7 @@ public class PizzaDAO extends DataAccessObject {
 			Pizza pizza=null;
 			try {
 				conn = getConnection();
-				String sqlSelect ="SELECT pizzaId, pNimi, pHinta, pSaatavuus FROM pizza;";
+				String sqlSelect ="SELECT pizza_id, p_nimi, p_hinta, p_saatavuus FROM pizza;";
 				stmt=conn.prepareStatement(sqlSelect);
 				rs=stmt.executeQuery(sqlSelect);
 				while(rs.next()) {
