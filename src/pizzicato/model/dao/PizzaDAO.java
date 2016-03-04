@@ -20,7 +20,7 @@ public class PizzaDAO extends DataAccessObject {
 
 			try {
 				connection = getConnection();
-				String sqlInsert = "INSERT INTO pizza(pizzaId, pNimi, pHinta, pSaatavuus) VALUES (?, ?, ?, ?)";
+				String sqlInsert = "INSERT INTO pizza(pizza_id, p_nimi, p_hinta, p_saatavuus) VALUES (?, ?, ?, ?)";
 				stmtInsert = connection.prepareStatement(sqlInsert);
 				stmtInsert.setInt(1, pizza.getPizzaId());
 				stmtInsert.setString(2, pizza.getpNimi());
@@ -42,7 +42,7 @@ public class PizzaDAO extends DataAccessObject {
 			Pizza pizza=null;
 			try {
 				conn = getConnection();
-				String sqlSelect ="SELECT pizzaId, pNimi, pHinta, pSaatavuus FROM pizza;";
+				String sqlSelect ="SELECT pizza_id, p_nimi, p_hinta, p_saatavuus FROM pizza;";
 				stmt=conn.prepareStatement(sqlSelect);
 				rs=stmt.executeQuery(sqlSelect);
 				while(rs.next()) {

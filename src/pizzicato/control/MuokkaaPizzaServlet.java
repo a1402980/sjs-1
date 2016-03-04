@@ -17,7 +17,7 @@ public class MuokkaaPizzaServlet extends HttpServlet {
    
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String jsp = "view/muokkaa_pizza.jsp";
+		String jsp = "/view/muokkaa_pizza.jsp";
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
 		dispatcher.forward(request, response);
 		
