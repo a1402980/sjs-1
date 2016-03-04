@@ -72,14 +72,14 @@
         <div class="container">
             <div class="row text-center">
                 <div class="col-md-8 col-md-offset-2">
-				<H1>Muokkaa Pizza</H1>
+				<H1>Lisää Pizza</H1>
 				
 				<img src="noimage.png" alt="Ei kuvaa" style="width:35%;height:35%;">
 				 <form action="testi.asp">
 				 <input type="file" name="pic" accept="image/*"><br>
 				 <input type="submit"value="Lisää kuva"><br>
-				 Nimi:<input type="text" name="nimi" required><br><br>
-				 Hinta:<input type="decimal" name="hinta" pattern="[0-9,.]{4,5}" title="Lisää hinta muodolla x,xx tai x.xx" required><br><br>
+				  Nimi:<input type="text" name="nimi" placeholder="Testipizza" required><br><br>
+				 Hinta:<input type="decimal" name="hinta" placeholder="8,95" pattern="[0-9,.]{4,5}" title="Lisää hinta muodolla x,xx tai x.xx" required><br><br>
 				 				 Täytteet: <br> 
 								 <select name="tayte1">
 							<option value="eitaytetta">Täyte1</option>
@@ -178,9 +178,15 @@
 							<option value="jalopeno">Jalopeno</option>
 							</select>
 							
+							<br>Valikoimassa<br>
+							<select name "valikoimassa">
+							<option value="true">Kyllä</option>
+							<option value="false">Ei</option>
+							</select>
+							
 				 </form> 
 				<div id="lisaapizzanapit">
-				 <button type="button" class="btn btn-success btn-lg">Muokkaa</button>
+				 <button type="button" class="btn btn-success btn-lg">Tallenna</button>
 				 <button type="button" class="btn btn-default btn-lg">Peruuta</button>
 				</div>
                 </div>

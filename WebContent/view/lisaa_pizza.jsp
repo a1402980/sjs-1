@@ -78,8 +78,8 @@
 				 <form action="testi.asp">
 				 <input type="file" name="pic" accept="image/*"><br>
 				 <input type="submit"value="Lisää kuva"><br>
-				 Nimi:<input type="text" name="nimi" required><br><br>
-				 Hinta:<input type="decimal" name="hinta" pattern="[0-9,.]{4,5}" title="Lisää hinta muodolla x,xx tai x.xx" required><br><br>
+				  Nimi:<input type="text" name="nimi" placeholder="Testipizza" required><br><br>
+				 Hinta:<input type="decimal" name="hinta" placeholder="8,95" pattern="[0-9,.]{4,5}" title="Lisää hinta muodolla x,xx tai x.xx" required><br><br>
 				 				 Täytteet: <br> 
 								 <select name="tayte1">
 							<option value="eitaytetta">Täyte1</option>
@@ -176,6 +176,12 @@
 							<option value="salami">Salami</option>
 							<option value="pepperoni">Pepperoni</option>
 							<option value="jalopeno">Jalopeno</option>
+							</select>
+							
+							<br>Valikoimassa<br>
+							<select name "valikoimassa">
+							<option value="true">Kyllä</option>
+							<option value="false">Ei</option>
 							</select>
 							
 				 </form> 
