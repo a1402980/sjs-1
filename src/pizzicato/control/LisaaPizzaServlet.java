@@ -29,7 +29,12 @@ public class LisaaPizzaServlet extends HttpServlet {
 		String strPHinta = request.getParameter("hinta");
 		Double pHinta = new Double(strPHinta);
 		String strPSaatavuus = request.getParameter("saatavuus");
-		boolean pSaatavuus = Boolean.valueOf("strPSaatavuus");
+		boolean pSaatavuus;
+		if(strPSaatavuus.equalsIgnoreCase("kyllä")){
+			pSaatavuus = true;
+		}else{
+			pSaatavuus = false;
+		}
 		
 		Pizza pizza = new Pizza(pNimi, pHinta, pSaatavuus);
 		PizzaDAO pizzadao = new PizzaDAO();
@@ -41,5 +46,5 @@ public class LisaaPizzaServlet extends HttpServlet {
 		}
 		response.sendRedirect("ListaaPizzat");
 	}
-//testi
+
 }
