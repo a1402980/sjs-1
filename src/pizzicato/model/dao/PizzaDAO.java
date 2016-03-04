@@ -20,12 +20,11 @@ public class PizzaDAO extends DataAccessObject {
 
 			try {
 				connection = getConnection();
-				String sqlInsert = "INSERT INTO pizza(pizza_id, p_nimi, p_hinta, p_saatavuus) VALUES (?, ?, ?, ?)";
+				String sqlInsert = "INSERT INTO pizza(p_nimi, p_hinta, p_saatavuus) VALUES (?, ?, ?)";
 				stmtInsert = connection.prepareStatement(sqlInsert);
-				stmtInsert.setInt(1, pizza.getPizzaId());
-				stmtInsert.setString(2, pizza.getpNimi());
-				stmtInsert.setDouble(3, pizza.getpHinta());
-				stmtInsert.setBoolean(4, pizza.ispSaatavuus());
+				stmtInsert.setString(1, pizza.getpNimi());
+				stmtInsert.setDouble(2, pizza.getpHinta());
+				stmtInsert.setBoolean(3, pizza.ispSaatavuus());
 				stmtInsert.executeUpdate();
 			}catch (SQLException e) {
 				throw new RuntimeException(e);
@@ -64,7 +63,7 @@ public class PizzaDAO extends DataAccessObject {
 				double hinta=rs.getDouble("p_hinta");
 				boolean saatavuus=rs.getBoolean("p_saatavuus");
 				ArrayList<Tayte> taytteet = new ArrayList<Tayte>();
-				return new Pizza(id, nimi, hinta, saatavuus, taytteet);
+				return new Pizza(nimi, hinta, saatavuus);
 			} catch (SQLException e) {
 				throw new RuntimeException(e);
 			}

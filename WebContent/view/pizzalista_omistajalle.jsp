@@ -94,17 +94,18 @@
 						
 
 		</tr>
-			
+			<%for(int i = 0; i < pizzat.size(); i++) {%>
 			<tr>
 				<td>01</td>
-				<td>Margarita</td>
+				<td><%=pizzat.get(i).getpNimi()%></td>
 				<td>Tomaattikastike,Salami,Paprika</td>
-				<td>8,50</td>
-				<td>Kyllä</td>
+				<td><%=pizzat.get(i).getpHinta()%></td>
+				<td><%=pizzat.get(i).ispSaatavuus()%></td>
 				<td><span class="glyphicon glyphicon-edit"></span></td>
 				<td><span class="glyphicon glyphicon-trash"></span></td>
 				
 			</tr>
+			<% } %>
 		</table>
 				</div>
                 </div>
