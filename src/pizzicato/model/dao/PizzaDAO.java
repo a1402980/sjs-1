@@ -17,7 +17,6 @@ public class PizzaDAO extends DataAccessObject {
 			Connection connection = null;
 			PreparedStatement stmtInsert = null;
 		
-
 			try {
 				connection = getConnection();
 				String sqlInsert = "INSERT INTO pizza(p_nimi, p_hinta, p_saatavuus) VALUES (?, ?, ?)";
@@ -105,7 +104,7 @@ public class PizzaDAO extends DataAccessObject {
 				double hinta=rs.getDouble("p_hinta");
 				boolean saatavuus=rs.getBoolean("p_saatavuus");
 				ArrayList<Tayte> taytteet = new ArrayList<Tayte>();
-				return new Pizza(nimi, hinta, saatavuus);
+				return new Pizza(id, nimi, hinta, saatavuus);
 			} catch (SQLException e) {
 				throw new RuntimeException(e);
 			}
