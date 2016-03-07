@@ -96,13 +96,13 @@
 		</tr>
 			<%for(int i = 0; i < pizzat.size(); i++) {%>
 			<tr>
-				<td>01</td>
+				<td><%=pizzat.get(i).getPizzaId()%></td>
 				<td><%=pizzat.get(i).getpNimi()%></td>
 				<td>Tomaattikastike,Salami,Paprika</td>
 				<td><%=pizzat.get(i).getpHinta()%></td>
-				<td><%=pizzat.get(i).ispSaatavuus()%></td>
-				<td><span class="glyphicon glyphicon-edit"></span></td>
-				<td><span class="glyphicon glyphicon-trash"></span></td>
+				<td><%=pizzat.get(i).getpSaatavuus()%></td>
+				<td><a href="MuokkaaPizzaServlet?pizza_id=<%=pizzat.get(i).getPizzaId()%>" role="button"><span class="glyphicon glyphicon-edit"></span></a></td>
+				<td><a href="PoistaPizza?pizza_id=<%=pizzat.get(i).getPizzaId()%>" role="button"><span class="glyphicon glyphicon-trash"></span></a></td>
 				
 			</tr>
 			<% } %>
