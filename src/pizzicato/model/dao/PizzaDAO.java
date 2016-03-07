@@ -23,7 +23,7 @@ public class PizzaDAO extends DataAccessObject {
 				stmtInsert = connection.prepareStatement(sqlInsert);
 				stmtInsert.setString(1, pizza.getpNimi());
 				stmtInsert.setDouble(2, pizza.getpHinta());
-				stmtInsert.setBoolean(3, pizza.ispSaatavuus());
+				stmtInsert.setString(3, pizza.getpSaatavuus());
 				//lisää täyte ArrayList myöhemmin
 
 				stmtInsert.executeUpdate();
@@ -44,7 +44,7 @@ public class PizzaDAO extends DataAccessObject {
 				stmt.setInt(1, pizza.getPizzaId());
 				stmt.setString(2, pizza.getpNimi());
 				stmt.setDouble(3, pizza.getpHinta());
-				stmt.setBoolean(4, pizza.ispSaatavuus());
+				stmt.setString(4, pizza.getpSaatavuus());
 				//lisää täyte ArrayList myöhemmin
 				stmt.executeUpdate();
 				

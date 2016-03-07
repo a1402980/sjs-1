@@ -6,40 +6,34 @@ public class Pizza {
 	int pizzaId;
 	String pNimi;
 	double pHinta;
-	boolean pSaatavuus;
+	String pSaatavuus;
 	ArrayList<Tayte> taytteet = new ArrayList<Tayte>();
-	String strSaatavuus;
+	
 	
 	public Pizza() {
 		super();
 	}
 
-	public Pizza(String pNimi, double pHinta, boolean pSaatavuus) {
+	public Pizza(String pNimi, double pHinta, String pSaatavuus) {
 		this.pNimi = pNimi;
 		this.pHinta = pHinta;
 		this.pSaatavuus = pSaatavuus;
 	}
 	
-	public Pizza(int pizzaId, String pNimi, double pHinta, boolean pSaatavuus) {
+	public Pizza(int pizzaId, String pNimi, double pHinta, String pSaatavuus) {
 		this.pizzaId = pizzaId;
 		this.pNimi = pNimi;
 		this.pHinta = pHinta;
 		this.pSaatavuus = pSaatavuus;		
 	}
 	
-	public Pizza(int pizzaId, String pNimi, double pHinta, String strSaatavuus) {
-		this.pizzaId = pizzaId;
-		this.pNimi = pNimi;
-		this.pHinta = pHinta;
-		this.strSaatavuus = strSaatavuus;		
+	
+	public String getpSaatavuus() {
+		return pSaatavuus;
 	}
 
-	public String getStrSaatavuus() {
-		return strSaatavuus;
-	}
-
-	public void setStrSaatavuus(String strSaatavuus) {
-		this.strSaatavuus = strSaatavuus;
+	public void setStrSaatavuus(String pSaatavuus) {
+		this.pSaatavuus = pSaatavuus;
 	}
 
 	public int getPizzaId() {
@@ -64,14 +58,6 @@ public class Pizza {
 
 	public void setpHinta(double pHinta) {
 		this.pHinta = pHinta;
-	}
-
-	public boolean ispSaatavuus() {
-		return pSaatavuus;
-	}
-
-	public void setpSaatavuus(boolean pSaatavuus) {
-		this.pSaatavuus = pSaatavuus;
 	}
 
 	public ArrayList<Tayte> getTaytteet() {
