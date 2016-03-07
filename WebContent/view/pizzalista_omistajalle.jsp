@@ -56,9 +56,9 @@
                     </li>
                     <li><a href="#services">Tilaukset</a>
                     </li>
-                    <li><a href="#free-text">FREE TEXT</a>
+                    <li><a href="#free-text">Linkki</a>
                     </li>
-                     <li><a href="#contact">CONTACT</a>
+                     <li><a href="#contact">Linkki</a>
                     </li>
                 </ul>
             </div>
@@ -78,7 +78,7 @@
                     <h1>Pizzalista</h1>
 					<h2>(Omistajan näkymä)</h2>
 					<div id="lisaapizzanappi">
-					<button type="button" class="btn btn-success btn-xl"><a href="/pizzicato.control/LisaaPizzaServlet.java">Lisää Pizza</a></button>
+					<a href="LisaaPizza" class="btn btn-success btn-xl" role="button">Lisää Pizza</a>
 					</div>
 					<div class="CSSTableGenerator" >
                     <table width="336" border="1" align="center">
@@ -96,7 +96,7 @@
 		</tr>
 			<%for(int i = 0; i < pizzat.size(); i++) {%>
 			<tr>
-				<td>01</td>
+				<td><%=pizzat.get(i).getPizzaId()%></td>
 				<td><%=pizzat.get(i).getpNimi()%></td>
 				<td>Tomaattikastike,Salami,Paprika</td>
 				<td><%=pizzat.get(i).getpHinta()%></td>
@@ -125,15 +125,15 @@
 
             <div class="row">
                 <div class="col-md-5 contact-cls">
-                    <h3>OUR LOCATION </h3>
+                    <h3>Sijaintimme</h3>
                     <div>
-                        <span><i class="fa fa-home"></i>&nbsp;Address: New Your City</span>
+                        <span><i class="fa fa-home"></i>&nbsp;Osoite</span>
                         <br />
-                        <span><i class="fa fa-phone"></i>&nbsp;Phone: 82-230-567-899</span>
+                        <span><i class="fa fa-phone"></i>&nbsp;Puhelin</span>
                         <br />
-                        <span><i class="fa fa-envelope-o"></i>&nbsp;E-Mail: indo@yourdomain.com</span>
+                        <span><i class="fa fa-envelope-o"></i>&nbsp;e-mail</span>
                         <br />
-                        <span><i class="fa fa-phone"></i>&nbsp;Call: +50-987-009-0</span>
+                        <span><i class="fa fa-phone"></i>&nbsp;Puhelin</span>
                         <br />
                     </div>
                   

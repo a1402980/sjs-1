@@ -18,6 +18,13 @@ public class Pizza {
 		this.pHinta = pHinta;
 		this.pSaatavuus = pSaatavuus;
 	}
+	
+	public Pizza(int pizzaId, String pNimi, double pHinta, boolean pSaatavuus) {
+		this.pizzaId = pizzaId;
+		this.pNimi = pNimi;
+		this.pHinta = pHinta;
+		this.pSaatavuus = pSaatavuus;		
+	}
 
 	public int getPizzaId() {
 		return pizzaId;
