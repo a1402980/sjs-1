@@ -28,7 +28,7 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String strId = request.getParameter("pizza_id");
+		String strId = request.getParameter("pizzaId");
 		int pizzaId = new Integer(strId);
 		PizzaDAO pizzadao = new PizzaDAO();
 		Pizza pizza = pizzadao.findCertainPizza(pizzaId);
