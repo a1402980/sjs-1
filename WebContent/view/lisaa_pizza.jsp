@@ -78,7 +78,7 @@
 				<img src="noimage.png" alt="Ei kuvaa" style="width:35%;height:35%;">
 				 <form method="post">
 				 <input type="file" name="pic" accept="image/*"><br>
-				 <input type="submit"value="Lisää kuva"><br>
+				 <input type="submit" value="Lisää kuva"><br>
 				  Nimi:<input type="text" name="nimi" placeholder="Testipizza" required><br><br>
 				 Hinta:<input type="decimal" name="hinta" placeholder="8,95" pattern="[0-9,.]{4,5}" title="Lisää hinta muodolla x,xx tai x.xx" required><br><br>
 				 				 Täytteet: <br> 
@@ -185,11 +185,11 @@
 							<option value="false">Ei</option>
 							</select>
 							
-				 </form> 
 				<div id="lisaapizzanapit">
 				 <button input type="submit" class="btn btn-success btn-lg">Tallenna</button>
 				 <button type="button" class="btn btn-default btn-lg">Peruuta</button>
 				</div>
+				 </form> 
                 </div>
 
             </div>
