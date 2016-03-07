@@ -83,7 +83,7 @@ public class PizzaDAO extends DataAccessObject {
 				double hinta=rs.getDouble("p_hinta");
 				boolean saatavuus=rs.getBoolean("p_saatavuus");
 				ArrayList<Tayte> taytteet = new ArrayList<Tayte>();
-				return new Pizza(nimi, hinta, saatavuus);
+				return new Pizza(id, nimi, hinta, saatavuus);
 			} catch (SQLException e) {
 				throw new RuntimeException(e);
 			}
