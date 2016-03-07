@@ -31,12 +31,6 @@ public class LisaaPizzaServlet extends HttpServlet {
 		Double pHinta = new Double(strPHinta);
 		String pSaatavuus = request.getParameter("valikoimassa");
 		
-		if(pSaatavuus.equalsIgnoreCase("kyllä")){
-			pSaatavuus = "true";
-		}else{
-			pSaatavuus = "false";
-		}
-		
 		Pizza pizza = new Pizza(pNimi, pHinta, pSaatavuus);
 		System.out.println(pizza);
 		PizzaDAO pizzadao = new PizzaDAO();
