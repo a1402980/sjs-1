@@ -25,11 +25,18 @@ public class LisaaPizzaServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String p_nimi = request.getParameter("p_nimi");
-		String strP_hinta = request.getParameter("p_hinta");
-		Double p_hinta = new Double(strP_hinta);
+		String pNimi = request.getParameter("nimi");
+		String strPHinta = request.getParameter("hinta");
+		Double pHinta = new Double(strPHinta);
+		String strPSaatavuus = request.getParameter("saatavuus");
+		boolean pSaatavuus;
+		if(strPSaatavuus.equalsIgnoreCase("kyllä")){
+			pSaatavuus = true;
+		}else{
+			pSaatavuus = false;
+		}
 		
-		Pizza pizza = new Pizza();
+		Pizza pizza = new Pizza(pNimi, pHinta, pSaatavuus);
 		PizzaDAO pizzadao = new PizzaDAO();
 		try {
 			pizzadao.addPizza(pizza);
@@ -37,8 +44,7 @@ public class LisaaPizzaServlet extends HttpServlet {
 			System.out.println("Sovelluksessa tapahtui virhe "+ e.getMessage());
 			e.printStackTrace();
 		}
-		response.sendRedirect("ListaaPizzatServlet");
-		//testi2
+		response.sendRedirect("ListaaPizzat");
 	}
 
 }

@@ -13,14 +13,17 @@ public class Pizza {
 		super();
 	}
 
-	public Pizza(int pizzaId, String pNimi, double pHinta, boolean pSaatavuus,
-			ArrayList<Tayte> taytteet) {
-		super();
-		this.pizzaId = pizzaId;
+	public Pizza(String pNimi, double pHinta, boolean pSaatavuus) {
 		this.pNimi = pNimi;
 		this.pHinta = pHinta;
 		this.pSaatavuus = pSaatavuus;
-		this.taytteet = taytteet;
+	}
+	
+	public Pizza(int pizzaId, String pNimi, double pHinta, boolean pSaatavuus) {
+		this.pizzaId = pizzaId;
+		this.pNimi = pNimi;
+		this.pHinta = pHinta;
+		this.pSaatavuus = pSaatavuus;		
 	}
 
 	public int getPizzaId() {

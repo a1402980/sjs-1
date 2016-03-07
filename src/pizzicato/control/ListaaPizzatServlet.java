@@ -26,6 +26,8 @@ public class ListaaPizzatServlet extends HttpServlet {
 		
 		request.setAttribute("pizzat", pizzat);
 		
+		System.out.println(pizzat);
+		
 		String jsp = "/view/pizzalista_omistajalle.jsp";
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
 		dispatcher.forward(request, response);
