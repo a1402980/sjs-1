@@ -122,7 +122,7 @@ public class PizzaDAO extends DataAccessObject {
 			ResultSet rs = null;
 			try {
 				conn = getConnection();
-				String sqlDelete ="DELETE FROM pizza WHERE pizza_id='?';";
+				String sqlDelete ="DELETE FROM pizza WHERE pizza_id=' "+pizza_id+"';";
 				stmt=conn.prepareStatement(sqlDelete);
 				rs=stmt.executeQuery(sqlDelete);
 			} catch(SQLException e) {
