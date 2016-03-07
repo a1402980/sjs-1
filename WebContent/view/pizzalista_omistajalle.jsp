@@ -96,7 +96,7 @@
 		</tr>
 			<%for(int i = 0; i < pizzat.size(); i++) {%>
 			<tr>
-				<td>01</td>
+				<td><%=pizzat.get(i).getPizzaId()%></td>
 				<td><%=pizzat.get(i).getpNimi()%></td>
 				<td>Tomaattikastike,Salami,Paprika</td>
 				<td><%=pizzat.get(i).getpHinta()%></td>
