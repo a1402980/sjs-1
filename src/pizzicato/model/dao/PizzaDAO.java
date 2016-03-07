@@ -116,6 +116,23 @@ public class PizzaDAO extends DataAccessObject {
 				throw new RuntimeException(e);
 			}
 		}
+		
+		private void deletePizza(int pizza_id){
+			Connection conn = null;
+			PreparedStatement stmt = null;
+			ResultSet rs = null;
+			try {
+				conn = getConnection();
+				String sqlDelete ="DELETE FROM pizza WHERE pizza_id='?';";
+				stmt=conn.prepareStatement(sqlDelete);
+				rs=stmt.executeQuery(sqlDelete);
+			} catch(SQLException e) {
+				throw new RuntimeException(e);
+			} finally {
+				close(rs,stmt,conn);
+			}
+			
+		}
 
 	
 
