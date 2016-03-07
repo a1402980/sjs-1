@@ -17,7 +17,6 @@ public class PizzaDAO extends DataAccessObject {
 			Connection connection = null;
 			PreparedStatement stmtInsert = null;
 		
-
 			try {
 				connection = getConnection();
 				String sqlInsert = "INSERT INTO pizza(p_nimi, p_hinta, p_saatavuus) VALUES (?, ?, ?)";
