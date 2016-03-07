@@ -28,8 +28,9 @@ public class LisaaPizzaServlet extends HttpServlet {
 		String pNimi = request.getParameter("nimi");
 		String strPHinta = request.getParameter("hinta");
 		Double pHinta = new Double(strPHinta);
-		String strPSaatavuus = request.getParameter("saatavuus");
+		String strPSaatavuus = request.getParameter("valikoimassa");
 		boolean pSaatavuus;
+		
 		if(strPSaatavuus.equalsIgnoreCase("kyllä")){
 			pSaatavuus = true;
 		}else{
@@ -37,6 +38,7 @@ public class LisaaPizzaServlet extends HttpServlet {
 		}
 		
 		Pizza pizza = new Pizza(pNimi, pHinta, pSaatavuus);
+		System.out.println(pizza);
 		PizzaDAO pizzadao = new PizzaDAO();
 		try {
 			pizzadao.addPizza(pizza);

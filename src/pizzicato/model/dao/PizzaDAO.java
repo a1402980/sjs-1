@@ -32,18 +32,19 @@ public class PizzaDAO extends DataAccessObject {
 			} finally {
 				close(stmtInsert, connection); 
 			}
-			}
+		}
 		
 		public void modifyPizza(Pizza pizza) throws SQLException {
 			Connection conn = null;
 			PreparedStatement stmt = null;
 			try {
 				conn = getConnection();
-				String sqlUpdate = "UPDATE pizza SET(p_nimi, p_hinta, p_saatavuus) VALUES (?, ?, ?)";
+				String sqlUpdate = "UPDATE pizza SET(pizza_id, p_nimi, p_hinta, p_saatavuus) VALUES (?, ?, ?, ?)";
 				stmt = conn.prepareStatement(sqlUpdate);
-				stmt.setString(1, pizza.getpNimi());
-				stmt.setDouble(2, pizza.getpHinta());
-				stmt.setBoolean(3, pizza.ispSaatavuus());
+				stmt.setInt(1, pizza.getPizzaId());
+				stmt.setString(2, pizza.getpNimi());
+				stmt.setDouble(3, pizza.getpHinta());
+				stmt.setBoolean(4, pizza.ispSaatavuus());
 				//lisää täyte ArrayList myöhemmin
 				stmt.executeUpdate();
 				
@@ -74,6 +75,28 @@ public class PizzaDAO extends DataAccessObject {
 			}
 			
 			return pizzat;
+		}
+		
+		public Pizza findCertainPizza(int pizza_id) {
+			Connection conn = null;
+			PreparedStatement stmt = null;
+			ResultSet rs = null;
+			Pizza pizza=null;
+			try {
+				conn = getConnection();
+				String sqlSelect ="SELECT pizza_id, p_nimi, p_hinta, p_saatavuus FROM pizza WHERE pizza_id='?';";
+				stmt=conn.prepareStatement(sqlSelect);
+				rs=stmt.executeQuery(sqlSelect);
+				while(rs.next()) {
+					pizza = readPizza(rs);
+				}
+			} catch(SQLException e) {
+				throw new RuntimeException(e);
+			} finally {
+				close(rs,stmt,conn);
+			}
+			
+			return pizza;
 		}
 		private Pizza readPizza(ResultSet rs) {
 			try {
