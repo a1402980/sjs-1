@@ -28,13 +28,12 @@ public class LisaaPizzaServlet extends HttpServlet {
 		String pNimi = request.getParameter("nimi");
 		String strPHinta = request.getParameter("hinta");
 		Double pHinta = new Double(strPHinta);
-		String strPSaatavuus = request.getParameter("valikoimassa");
-		boolean pSaatavuus;
+		String pSaatavuus = request.getParameter("valikoimassa");
 		
-		if(strPSaatavuus.equalsIgnoreCase("kyllä")){
-			pSaatavuus = true;
+		if(pSaatavuus.equalsIgnoreCase("kyllä")){
+			pSaatavuus = "true";
 		}else{
-			pSaatavuus = false;
+			pSaatavuus = "false";
 		}
 		
 		Pizza pizza = new Pizza(pNimi, pHinta, pSaatavuus);

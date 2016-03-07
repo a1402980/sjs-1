@@ -7,7 +7,7 @@ public class Pizza {
 	String pNimi;
 	double pHinta;
 	String pSaatavuus;
-	ArrayList<Tayte> taytteet = new ArrayList<Tayte>();
+	//ArrayList<Tayte> taytteet = new ArrayList<Tayte>();
 	
 	
 	public Pizza() {
@@ -32,8 +32,8 @@ public class Pizza {
 		return pSaatavuus;
 	}
 
-	public void setStrSaatavuus(String pSaatavuus) {
-		this.pSaatavuus = pSaatavuus;
+	public String setpSaatavuus() {
+		return pSaatavuus;
 	}
 
 	public int getPizzaId() {
@@ -60,6 +60,7 @@ public class Pizza {
 		this.pHinta = pHinta;
 	}
 
+	/*
 	public ArrayList<Tayte> getTaytteet() {
 		return taytteet;
 	}
@@ -67,12 +68,13 @@ public class Pizza {
 	public void setTaytteet(ArrayList<Tayte> taytteet) {
 		this.taytteet = taytteet;
 	}
+	*/
 
 	@Override
 	public String toString() {
 		return "Pizza [pizzaId=" + pizzaId + ", pNimi=" + pNimi + ", pHinta="
 				+ pHinta + ", pSaatavuus=" + pSaatavuus + ", taytteet="
-				+ taytteet + "]";
+				+ "]";
 	}
 	
 	

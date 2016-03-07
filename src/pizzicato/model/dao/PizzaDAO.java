@@ -103,15 +103,14 @@ public class PizzaDAO extends DataAccessObject {
 				int id=rs.getInt("pizza_id");
 				String nimi=rs.getString("p_nimi");
 				double hinta=rs.getDouble("p_hinta");
-				boolean saatavuus=rs.getBoolean("p_saatavuus");				
-				ArrayList<Tayte> taytteet = new ArrayList<Tayte>();
-				String strSaatavuus = null;				
-					if (saatavuus==true){
-						strSaatavuus = "kyllä";
-					}else if(saatavuus==false){
-						strSaatavuus = "ei";
+				String saatavuus=rs.getString("p_saatavuus");				
+				//ArrayList<Tayte> taytteet = new ArrayList<Tayte>();			
+					if (saatavuus.equalsIgnoreCase("kyllä")){
+						saatavuus = "true";
+					}else if(saatavuus.equalsIgnoreCase("ei")){
+						saatavuus = "false";
 					}
-				return new Pizza(id, nimi, hinta, strSaatavuus);
+				return new Pizza(id, nimi, hinta, saatavuus);
 			} catch (SQLException e) {
 				throw new RuntimeException(e);
 			}

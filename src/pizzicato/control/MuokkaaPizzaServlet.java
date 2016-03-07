@@ -35,7 +35,7 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 		
 		String pNimi = pizza.getpNimi();
 		Double pHinta = pizza.getpHinta();
-		boolean pSaatavuus = pizza.ispSaatavuus();
+		String pSaatavuus = pizza.getpSaatavuus();
 		
 		Pizza modifiedPizza = new Pizza(pNimi, pHinta, pSaatavuus);
 		PizzaDAO modifiedPizzadao = new PizzaDAO();
