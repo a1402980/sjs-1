@@ -5,6 +5,8 @@
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
+<%@ page import="pizzicato.model.Pizza"%>
+<jsp:getProperty name="pizza" property="pizzaId"/>
 <html lang="fi">
 <!--<![endif]-->
 <head>
@@ -72,7 +74,7 @@
         <div class="container">
             <div class="row text-center">
                 <div class="col-md-8 col-md-offset-2">
-				<H1>Lisää Pizza</H1>
+				<H1>Muokkaa Pizza</H1>
 				
 				<img src="noimage.png" alt="Ei kuvaa" style="width:35%;height:35%;">
 				 <form action="testi.asp">
