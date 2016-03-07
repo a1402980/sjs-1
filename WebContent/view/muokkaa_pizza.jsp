@@ -50,7 +50,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#home">Etusivu</a>
                     </li>
-                    <li><a href="#pizzat">Pizzat</a>
+                    <li><a href="LisaaPizza">Pizzat</a>
                     </li>
                     <li><a href="#services">Tilaukset</a>
                     </li>
@@ -188,7 +188,7 @@
 				 
 				<div id="lisaapizzanapit">
 				 <button input type="submit" class="btn btn-success btn-lg">Tallenna</button>
-				 <button type="button" class="btn btn-default btn-lg">Peruuta</button>
+				 <a href="LisaaPizza" class="btn btn-default btn-lg" role="button">Peruuta</a>
 				</div>
 				</form> 
                 </div>
