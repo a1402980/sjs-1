@@ -27,16 +27,12 @@ public class LisaaPizzaServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String pNimi = request.getParameter("nimi");
 		String strPHinta = request.getParameter("hinta");
+		strPHinta = strPHinta.replace(",", ".");
 		Double pHinta = new Double(strPHinta);
-		String strPSaatavuus = request.getParameter("saatavuus");
-		boolean pSaatavuus;
-		if(strPSaatavuus.equalsIgnoreCase("kyllä")){
-			pSaatavuus = true;
-		}else{
-			pSaatavuus = false;
-		}
+		String pSaatavuus = request.getParameter("valikoimassa");
 		
 		Pizza pizza = new Pizza(pNimi, pHinta, pSaatavuus);
+		System.out.println(pizza);
 		PizzaDAO pizzadao = new PizzaDAO();
 		try {
 			pizzadao.addPizza(pizza);

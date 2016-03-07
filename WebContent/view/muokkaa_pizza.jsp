@@ -5,6 +5,7 @@
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
+
 <html lang="fi">
 <!--<![endif]-->
 <head>
@@ -72,10 +73,10 @@
         <div class="container">
             <div class="row text-center">
                 <div class="col-md-8 col-md-offset-2">
-				<H1>Lisää Pizza</H1>
+				<H1>Muokkaa Pizza</H1>
 				
 				<img src="noimage.png" alt="Ei kuvaa" style="width:35%;height:35%;">
-				 <form action="testi.asp">
+				 <form method="post">
 				 <input type="file" name="pic" accept="image/*"><br>
 				 <input type="submit"value="Lisää kuva"><br>
 				  Nimi:<input type="text" name="nimi" placeholder="Testipizza" required><br><br>
@@ -184,11 +185,12 @@
 							<option value="false">Ei</option>
 							</select>
 							
-				 </form> 
+				 
 				<div id="lisaapizzanapit">
-				 <button type="button" class="btn btn-success btn-lg">Tallenna</button>
+				 <button input type="submit" class="btn btn-success btn-lg">Tallenna</button>
 				 <button type="button" class="btn btn-default btn-lg">Peruuta</button>
 				</div>
+				</form> 
                 </div>
 
             </div>
