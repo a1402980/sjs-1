@@ -28,30 +28,25 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String pNimi = request.getParameter("nimi");
-		String strPHinta = request.getParameter("hinta");
-		Double pHinta = new Double(strPHinta);
-		String strPSaatavuus = request.getParameter("saatavuus");
-		boolean pSaatavuus;
-		if(strPSaatavuus.equalsIgnoreCase("kyllä")){
-			pSaatavuus = true;
-		}else{
-			pSaatavuus = false;
-		}
-		
-		Pizza pizza = new Pizza(pNimi, pHinta, pSaatavuus);
+		String strId = request.getParameter("pizza_id");
+		int pizzaId = new Integer(strId);
 		PizzaDAO pizzadao = new PizzaDAO();
+		Pizza pizza = pizzadao.findCertainPizza(pizzaId);
+		
+		String pNimi = pizza.getpNimi();
+		Double pHinta = pizza.getpHinta();
+		boolean pSaatavuus = pizza.ispSaatavuus();
+		
+		Pizza modifiedPizza = new Pizza(pNimi, pHinta, pSaatavuus);
+		PizzaDAO modifiedPizzadao = new PizzaDAO();
 		try {
-			pizzadao.modifyPizza(pizza);
+			modifiedPizzadao.modifyPizza(modifiedPizza);
 		} catch (SQLException e) {
 			System.out.println("Sovelluksessa tapahtui virhe "+ e.getMessage());
 			e.printStackTrace();
 		}
 		response.sendRedirect("ListaaPizzat");
 		
-		/*Pizza pizza = new Pizza(pNimi, pHinta, pSaatavuus);
-		PizzaDAO pizzadao = new PizzaDAO();
-		pizzadao.modifyPizza(pizza);*/
 	}
 
 }
