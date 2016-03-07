@@ -33,7 +33,7 @@ public class PizzaDAO extends DataAccessObject {
 			} finally {
 				close(stmtInsert, connection); 
 			}
-			}
+		}
 		
 		public void modifyPizza(Pizza pizza) throws SQLException {
 			Connection conn = null;
