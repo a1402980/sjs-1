@@ -23,11 +23,11 @@ public class ListaaPizzatServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PizzaDAO pizzadao = new PizzaDAO();
 		ArrayList<Pizza> pizzat = pizzadao.findAll();
+			
 		
 		request.setAttribute("pizzat", pizzat);
 		
-		System.out.println(pizzat);
-		
+			
 		String jsp = "/view/pizzalista_omistajalle.jsp";
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
 		dispatcher.forward(request, response);

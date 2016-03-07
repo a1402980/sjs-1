@@ -8,6 +8,7 @@ public class Pizza {
 	double pHinta;
 	boolean pSaatavuus;
 	ArrayList<Tayte> taytteet = new ArrayList<Tayte>();
+	String strSaatavuus;
 	
 	public Pizza() {
 		super();
@@ -24,6 +25,21 @@ public class Pizza {
 		this.pNimi = pNimi;
 		this.pHinta = pHinta;
 		this.pSaatavuus = pSaatavuus;		
+	}
+	
+	public Pizza(int pizzaId, String pNimi, double pHinta, String strSaatavuus) {
+		this.pizzaId = pizzaId;
+		this.pNimi = pNimi;
+		this.pHinta = pHinta;
+		this.strSaatavuus = strSaatavuus;		
+	}
+
+	public String getStrSaatavuus() {
+		return strSaatavuus;
+	}
+
+	public void setStrSaatavuus(String strSaatavuus) {
+		this.strSaatavuus = strSaatavuus;
 	}
 
 	public int getPizzaId() {

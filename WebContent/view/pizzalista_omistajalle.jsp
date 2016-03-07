@@ -100,7 +100,7 @@
 				<td><%=pizzat.get(i).getpNimi()%></td>
 				<td>Tomaattikastike,Salami,Paprika</td>
 				<td><%=pizzat.get(i).getpHinta()%></td>
-				<td><%=pizzat.get(i).ispSaatavuus()%></td>
+				<td><%=pizzat.get(i).getStrSaatavuus()%></td>
 				<td><span class="glyphicon glyphicon-edit"></span></td>
 				<td><span class="glyphicon glyphicon-trash"></span></td>
 				
