@@ -43,14 +43,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="http://www.google.com">Pizzeria Pizzicato</a>
+                <a class="navbar-brand" href="ListaaPizzat">Pizzeria Pizzicato</a>
             </div>
             <!-- Collect the nav links for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#home">Etusivu</a>
                     </li>
-                    <li><a href="#pizzat">Pizzat</a>
+                    <li><a href="ListaaPizzat">Pizzat</a>
                     </li>
                     <li><a href="#services">Tilaukset</a>
                     </li>
@@ -188,7 +188,7 @@
 				 
 				<div id="lisaapizzanapit">
 				 <button input type="submit" class="btn btn-success btn-lg">Tallenna</button>
-				 <button type="button" class="btn btn-default btn-lg">Peruuta</button>
+				 <a href="LisaaPizza" class="btn btn-default btn-lg" role="button">Peruuta</a>
 				</div>
 				</form> 
                 </div>
