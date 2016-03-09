@@ -223,19 +223,9 @@ padding-bottom: 5%;
 ==================================================*/
 
 table {
-    border-collapse: collapse;
-    width: 100%;
+	font-size: 120%;
 }
 
-th, td {
-    padding: 8px;
-    text-align: left;
-	border: none;
-}
-
-tr:hover{background-color:#d9d9d9}
-tr{ border: none;
-}
 </style>
 </head>
 <body>

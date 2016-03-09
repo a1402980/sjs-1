@@ -80,8 +80,8 @@
 					<div id="lisaapizzanappi">
 					<a href="LisaaPizza" class="btn btn-success btn-xl" role="button">Lisää Pizza</a>
 					</div>
-					<div class="CSSTableGenerator" >
-                    <table width="336" border="1" align="center">
+					<div>
+                    <table class="table table-hover" align="center">
 		<tr>
 			<th>Id</th>
 				<th>Nimi</th>

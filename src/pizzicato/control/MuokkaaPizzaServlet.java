@@ -22,7 +22,7 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String jsp = "/view/muokkaa_pizza.jsp";
 		
-		// mikon testi
+		
 				String strId = request.getParameter("pizza_id");
 				int pizzaId = new Integer(strId);
 				PizzaDAO pizzadao = new PizzaDAO();
@@ -36,25 +36,41 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String strId = request.getParameter("pizza_id");
 		int pizzaId = new Integer(strId);
 		PizzaDAO pizzadao = new PizzaDAO();
-		Pizza pizza = pizzadao.findCertainPizza(pizzaId);  // mikon "poistama" koodi
+		Pizza pizza = pizzadao.findCertainPizza(pizzaId);  
 		
-		String pNimi = request.getParameter("nimi");
-		
+		String syotettyNimi = request.getParameter("nimi");
+		String syotettyHinta = request.getParameter("hinta");
 		String StrHinta = request.getParameter("hinta");
-		Double pHinta = new Double(StrHinta);
 		String pSaatavuus = request.getParameter("valikoimassa");
 		
-		Pizza modifiedPizza = new Pizza(pNimi, pHinta, pSaatavuus);
-		PizzaDAO modifiedPizzadao = new PizzaDAO();
-		try {
-			modifiedPizzadao.modifyPizza(modifiedPizza);
-		} catch (SQLException e) {
-			System.out.println("Sovelluksessa tapahtui virhe "+ e.getMessage());
-			e.printStackTrace();
+		if(syotettyNimi==null||syotettyNimi=="") {
+			String pNimi=pizza.getpNimi();
+			Double pHinta = new Double(StrHinta);
+			Pizza modifiedPizza = new Pizza(pNimi, pHinta, pSaatavuus);
+			PizzaDAO modifiedPizzadao = new PizzaDAO();
+			try {
+				modifiedPizzadao.modifyPizza(modifiedPizza);
+			} catch (SQLException e) {
+				System.out.println("Sovelluksessa tapahtui virhe "+ e.getMessage());
+				e.printStackTrace();
+			}
+		} if(syotettyHinta==null||syotettyHinta=="0.0"||syotettyHinta=="") {
+			String pNimi=syotettyNimi;
+			double pHinta=pizza.getpHinta();
+			Pizza modifiedPizza = new Pizza(pNimi, pHinta, pSaatavuus);
+			PizzaDAO modifiedPizzadao = new PizzaDAO();
+			try {
+				modifiedPizzadao.modifyPizza(modifiedPizza);
+			} catch (SQLException e) {
+				System.out.println("Sovelluksessa tapahtui virhe "+ e.getMessage());
+				e.printStackTrace();
+			}
 		}
+	
 		response.sendRedirect("ListaaPizzat");
 		
 		

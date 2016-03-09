@@ -77,7 +77,7 @@
 	<div class="container">
 		<div class="row text-center">
 			<div class="col-md-8 col-md-offset-2">
-				<H1>Lisää Pizza</H1>
+				<H1>Muokkaa Pizzaa</H1>
 
 
 				<form method="post">
@@ -89,11 +89,11 @@
 
 
 					Nimi:<br> <input type="text" name="nimi"
-						placeholder="<%=pizza.getpNimi()%>" required><br> <br>
+						placeholder="<%=pizza.getpNimi()%>"><br> <br>
 						<input type="hidden" name="pizza_id" value="<%=pizza.getPizzaId()%>"/>
 					Hinta:<br> <input type="decimal" name="hinta"
-						placeholder="8,95" pattern="[0-9,.]{4,5}"
-						title="Lisää hinta muodolla x,xx tai x.xx" required><br>
+						placeholder="<%=pizza.getpHinta()%>" pattern="[0-9,.]{4,5}"
+						title="Lisää hinta muodolla x,xx tai x.xx"><br>
 						
 						
 					<br> Täytteet: <br> <select name="tayte1">
