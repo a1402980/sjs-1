@@ -116,7 +116,7 @@ public class PizzaDAO extends DataAccessObject {
 			}
 		}
 		
-		private void deletePizza(int pizza_id){
+		public void deletePizza(int pizza_id){
 			Connection conn = null;
 			PreparedStatement stmt = null;
 			ResultSet rs = null;

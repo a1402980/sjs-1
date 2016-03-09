@@ -18,7 +18,8 @@ public class PoistaPizzaServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PizzaDAO pizzadao = new PizzaDAO();
-		Pizza pizza = pizzadao.deletePizza();
+		Pizza pizza = pizzadao.deletePizza(request.getParameter(pizza_id));
+		int pizza_id = new Integer(pizza_id);
 	}
 
 
