@@ -77,7 +77,7 @@
 	<div class="container">
 		<div class="row text-center">
 			<div class="col-md-8 col-md-offset-2">
-				<H1>Lisää Pizza</H1>
+				<H1>Muokkaa Pizzaa</H1>
 
 
 				<form method="post">
