@@ -52,7 +52,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#home">Etusivu</a>
                     </li>
-                    <li><a href="LisaaPizza">Pizzat</a>
+                    <li><a href="ListaaPizzat">Pizzat</a>
                     </li>
                     <li><a href="#services">Tilaukset</a>
                     </li>
