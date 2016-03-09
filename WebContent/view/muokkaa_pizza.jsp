@@ -92,7 +92,7 @@
 						placeholder="<%=pizza.getpNimi()%>" required><br> <br>
 						<input type="hidden" name="pizza_id" value="<%=pizza.getPizzaId()%>"/>
 					Hinta:<br> <input type="decimal" name="hinta"
-						placeholder="8,95" pattern="[0-9,.]{4,5}"
+						placeholder="<%=pizza.getpHinta()%>" pattern="[0-9,.]{4,5}"
 						title="Lisää hinta muodolla x,xx tai x.xx" required><br>
 						
 						
