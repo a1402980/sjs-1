@@ -106,7 +106,7 @@
 					<button onclick="poistapizza()">
 						<span class="glyphicon glyphicon-trash"></span></button></td>
 						<script>function poistapizza(){
-								var p = confirm("Poistetaanko pizza?");
+								var p = confirm("Poistetaanko pizza?"); // poistonappi
 								if(p==true){
 									window.location="PoistaPizza?pizza_id=<%=pizzat.get(i).getPizzaId()%>";
 								}else{
