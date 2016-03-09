@@ -9,10 +9,8 @@
 <body>
 
 
-<%
+<%response.sendRedirect("ListaaPizzat");%>"
 
-    response.sendRedirect("ListaaPizzat");
-%>
 
 </body>
 </html>
