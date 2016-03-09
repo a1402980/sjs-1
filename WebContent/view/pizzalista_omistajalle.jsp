@@ -83,13 +83,13 @@
 					<div class="CSSTableGenerator" >
                     <table width="336" border="1" align="center">
 		<tr>
-			<td>Id</td>
-				<td>Nimi</td>
-					<td>Täytteet</td>
-						<td>Hinta</td>
-							<td>Valikoimassa</td>
-								<td>Muokkaa</td>
-									<td>Poista</td>
+			<th>Id</th>
+				<th>Nimi</th>
+					<th>Täytteet</th>
+						<th>Hinta</th>
+							<th>Valikoimassa</th>
+								<th>Muokkaa</th>
+									<th>Poista</th>
 								
 						
 
