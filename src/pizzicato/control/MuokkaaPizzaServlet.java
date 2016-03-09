@@ -23,10 +23,11 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 		String jsp = "/view/muokkaa_pizza.jsp";
 		
 		// mikon testi
-				String strId = request.getParameter("pizzaId");
+				String strId = request.getParameter("pizza_id");
 				int pizzaId = new Integer(strId);
 				PizzaDAO pizzadao = new PizzaDAO();
 				Pizza pizza = pizzadao.findCertainPizza(pizzaId);
+				request.setAttribute("pizza", pizza);
 				
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
 		dispatcher.forward(request, response);
@@ -35,10 +36,10 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/**String strId = request.getParameter("pizzaId");
+		String strId = request.getParameter("pizza_id");
 		int pizzaId = new Integer(strId);
 		PizzaDAO pizzadao = new PizzaDAO();
-		Pizza pizza = pizzadao.findCertainPizza(pizzaId); */ // mikon "poistama" koodi
+		Pizza pizza = pizzadao.findCertainPizza(pizzaId);  // mikon "poistama" koodi
 		
 		String pNimi = request.getParameter("nimi");
 		
