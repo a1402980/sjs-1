@@ -102,8 +102,18 @@
 				<td><%=pizzat.get(i).getpHinta()%></td>
 				<td><%=pizzat.get(i).getpSaatavuus()%></td>
 				<td><a href="MuokkaaPizza?pizza_id=<%=pizzat.get(i).getPizzaId()%>" role="button"><span class="glyphicon glyphicon-edit"></span></a></td>
-				<td><a href="PoistaPizza?pizza_id=<%=pizzat.get(i).getPizzaId()%>" role="button"><span class="glyphicon glyphicon-trash"></span></a></td>
-				
+				<td>
+					<button onclick="poistapizza()">
+						<span class="glyphicon glyphicon-trash"></span></button></td>
+						<script>function poistapizza(){
+								var p = confirm("Poistetaanko pizza?");
+								if(p==true){
+									window.location="PoistaPizza?pizza_id=<%=pizzat.get(i).getPizzaId()%>";
+								}else{
+									window.location="ListaaPizzat";
+								}
+						}</script>
+								
 			</tr>
 			<% } %>
 		</table>

@@ -21,9 +21,9 @@ public class PoistaPizzaServlet extends HttpServlet {
 		String jsp = "/view/poista_pizza.jsp";
 		
 		String strId = request.getParameter("pizza_id");
-		int pizza_id = new Integer(strId);
+		int pizzaId = new Integer(strId);
 		PizzaDAO pizzadao = new PizzaDAO();
-		Pizza pizza = pizzadao.deletePizza(pizza_id);
+		Pizza pizza = pizzadao.deletePizza(pizzaId);
 		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
 		dispatcher.forward(request, response);
