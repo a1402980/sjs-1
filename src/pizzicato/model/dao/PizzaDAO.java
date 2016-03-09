@@ -116,7 +116,7 @@ public class PizzaDAO extends DataAccessObject {
 			}
 		}
 		
-		public void deletePizza(int pizza_id){
+		public Pizza deletePizza(int pizza_id){
 			Connection conn = null;
 			PreparedStatement stmt = null;
 			ResultSet rs = null;
@@ -130,6 +130,7 @@ public class PizzaDAO extends DataAccessObject {
 			} finally {
 				close(rs,stmt,conn);
 			}
+			return null;
 			
 		}
 
