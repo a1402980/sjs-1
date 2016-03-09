@@ -22,12 +22,13 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String jsp = "/view/muokkaa_pizza.jsp";
 		
-		// mikon testi
-		String strId = request.getParameter("pizzaId");
-		int pizzaId = new Integer(strId);
-		PizzaDAO pizzadao = new PizzaDAO();
-		Pizza pizza = pizzadao.findCertainPizza(pizzaId);
 		
+				String strId = request.getParameter("pizza_id");
+				int pizzaId = new Integer(strId);
+				PizzaDAO pizzadao = new PizzaDAO();
+				Pizza pizza = pizzadao.findCertainPizza(pizzaId);
+				request.setAttribute("pizza", pizza);
+				
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
 		dispatcher.forward(request, response);
 		
@@ -35,14 +36,16 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/**String strId = request.getParameter("pizzaId");
+		String strId = request.getParameter("pizza_id");
 		int pizzaId = new Integer(strId);
 		PizzaDAO pizzadao = new PizzaDAO();
-		Pizza pizza = pizzadao.findCertainPizza(pizzaId); */ // mikon "poistama" koodi
+		Pizza pizza = pizzadao.findCertainPizza(pizzaId);  
 		
-		String pNimi = pizza.getpNimi();
-		Double pHinta = pizza.getpHinta();
-		String pSaatavuus = pizza.getpSaatavuus();
+		String pNimi = request.getParameter("nimi");
+		
+		String StrHinta = request.getParameter("hinta");
+		Double pHinta = new Double(StrHinta);
+		String pSaatavuus = request.getParameter("valikoimassa");
 		
 		Pizza modifiedPizza = new Pizza(pNimi, pHinta, pSaatavuus);
 		PizzaDAO modifiedPizzadao = new PizzaDAO();
@@ -53,6 +56,7 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		response.sendRedirect("ListaaPizzat");
+		
 		
 	}
 

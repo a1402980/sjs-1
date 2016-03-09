@@ -6,7 +6,7 @@
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
 <%@ page import="pizzicato.model.Pizza"%>
-<jsp:useBean id="pizzat" type="java.util.ArrayList<Pizza>"
+<jsp:useBean id="pizza" class="pizzicato.model.Pizza"
 	scope="request" />
 <html lang="fi">
 <!--<![endif]-->
@@ -89,9 +89,10 @@
 
 
 					Nimi:<br> <input type="text" name="nimi"
-						placeholder="<%=pizzat.get().getPizzaNimi()%>" required><br> <br>
+						placeholder="<%=pizza.getpNimi()%>" required><br> <br>
+						<input type="hidden" name="pizza_id" value="<%=pizza.getPizzaId()%>"/>
 					Hinta:<br> <input type="decimal" name="hinta"
-						placeholder="8,95" pattern="[0-9,.]{4,5}"
+						placeholder="<%=pizza.getpHinta()%>" pattern="[0-9,.]{4,5}"
 						title="Lisää hinta muodolla x,xx tai x.xx" required><br>
 						
 						
