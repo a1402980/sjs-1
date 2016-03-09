@@ -37,7 +37,6 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="assets/js/html5.image.preview.min.js"></script>
 <!-- tämä on skripti kuvien esikatseluun  -->
-
 </head>
 <body>
 	<!-- Navigation -->
