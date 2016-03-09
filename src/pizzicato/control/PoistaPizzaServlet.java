@@ -17,9 +17,11 @@ public class PoistaPizzaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String strId = request.getParameter("pizza_id");
+		int pizza_id = new Integer(strId);
 		PizzaDAO pizzadao = new PizzaDAO();
-		Pizza pizza = pizzadao.deletePizza(request.getParameter(pizza_id));
-		int pizza_id = new Integer(pizza_id);
+		Pizza pizza = pizzadao.deletePizza(pizza_id);
+		
 	}
 
 
