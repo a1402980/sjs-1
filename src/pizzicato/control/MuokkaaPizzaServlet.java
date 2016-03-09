@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import pizzicato.model.Pizza;
 import pizzicato.model.dao.PizzaDAO;
 
-@WebServlet("/MuokkaaPizzaServlet")
+@WebServlet("/MuokkaaPizza")
 public class MuokkaaPizzaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
