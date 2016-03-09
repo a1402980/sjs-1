@@ -82,7 +82,7 @@
 					<a href="LisaaPizza" class="btn btn-success btn-xl" role="button">Lisää Pizza</a>
 					</div>
 					<div>
-                    <table class="table table-hover" align="center">
+                    <table class="table table-hover" align="center" id="pizzataulukko">
 		<tr>
 			<th>Id</th>
 				<th>Nimi</th>
