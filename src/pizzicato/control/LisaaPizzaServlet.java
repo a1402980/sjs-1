@@ -32,7 +32,7 @@ public class LisaaPizzaServlet extends HttpServlet {
 		String pSaatavuus = request.getParameter("valikoimassa");
 		
 		Pizza pizza = new Pizza(pNimi, pHinta, pSaatavuus);
-		System.out.println(pizza);
+		//*System.out.println(pizza);
 		PizzaDAO pizzadao = new PizzaDAO();
 		try {
 			pizzadao.addPizza(pizza);
