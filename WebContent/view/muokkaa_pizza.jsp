@@ -87,14 +87,10 @@
 						onchange="previewImage(this,[256],4);" /><br>
 					<!--  onchange="previewImage(this,[sizes],limit);" * limit is number of Mb  -->
 
+					<input type="hidden" name="pizza_id" value="<%=pizza.getPizzaId()%>"/>
+					Nimi:<br> <input type="text" name="nimi" value="<%=pizza.getpNimi()%>"><br> <br>
+					Hinta:<br> <input type="decimal" name="hinta" value="<%=pizza.getpHinta()%>"pattern="[0-9,.]{4,5}"><br>
 
-					Nimi:<br> <input type="text" name="nimi"
-						placeholder="<%=pizza.getpNimi()%>"><br> <br>
-						<input type="hidden" name="pizza_id" value="<%=pizza.getPizzaId()%>"/>
-					Hinta:<br> <input type="decimal" name="hinta"
-						placeholder="<%=pizza.getpHinta()%>" pattern="[0-9,.]{4,5}"><br>
-						
-						
 					<br> Täytteet: <br> <select name="tayte1">
 						<option value="eitaytetta">Täyte1</option>
 						<option value="tomaattikastike">Tomaattikastike</option>
