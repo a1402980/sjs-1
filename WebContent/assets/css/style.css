@@ -193,7 +193,7 @@ padding-bottom: 5%;
     EXTRA LARGE BOOTSTRAP BUTTON
 ==================================================*/
 .btn-xl {
-    padding: 2% 35%;
+    padding: 2% 24%;
     font-size: 200%; //change this to your desired size
     line-height: normal;
     -webkit-border-radius: 8px;

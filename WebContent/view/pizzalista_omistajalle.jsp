@@ -81,7 +81,7 @@
 					<div id="lisaapizzanappi">
 					<a href="LisaaPizza" class="btn btn-success btn-xl" role="button">Lisää Pizza</a>
 					</div>
-					<div>
+					<div class="table-responsive">
                     <table class="table table-hover" align="center" id="pizzataulukko">
 		<tr>
 			<th>Id</th>
