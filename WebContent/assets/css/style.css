@@ -235,3 +235,7 @@ table {
     outline:none;
     color: red;
 }
+#pizzataulukko button:hover {
+    color: DarkRed;
+} 
+
