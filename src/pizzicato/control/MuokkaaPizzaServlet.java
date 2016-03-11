@@ -50,7 +50,7 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 		if(syotettyNimi==null||syotettyNimi=="") {
 			String pNimi=pizza.getpNimi();
 			Double pHinta = new Double(StrHinta);
-			Pizza modifiedPizza = new Pizza(pNimi, pHinta, pSaatavuus);
+			Pizza modifiedPizza = new Pizza(pizzaId, pNimi, pHinta, pSaatavuus);
 			PizzaDAO modifiedPizzadao = new PizzaDAO();
 			try {
 				modifiedPizzadao.modifyPizza(modifiedPizza);
@@ -64,7 +64,7 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 			String pNimi=syotettyNimi;
 			double pHinta=pizza.getpHinta();			
 						
-		Pizza modifiedPizza = new Pizza(pNimi, pHinta, pSaatavuus);
+		Pizza modifiedPizza = new Pizza(pizzaId, pNimi, pHinta, pSaatavuus);
 		PizzaDAO modifiedPizzadao = new PizzaDAO();
 		
 		try {
