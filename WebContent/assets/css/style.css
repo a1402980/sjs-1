@@ -237,5 +237,9 @@ table {
 }
 #pizzataulukko button:hover {
     color: DarkRed;
-} 
+}
+#pizzat { 
+	background: url("pattern(1).png");
+	
+}
 
