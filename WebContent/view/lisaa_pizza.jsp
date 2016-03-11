@@ -85,10 +85,8 @@
 					<!--  onchange="previewImage(this,[sizes],limit);" * limit is number of Mb  -->
 
 
-					Nimi:<br> <input type="text" name="nimi"
-						placeholder="Kirjoita pizzan nimi tähän" required><br> <br>
-					Hinta:<br> <input type="decimal" name="hinta"
-						placeholder="X,XX" pattern="[0-9,.]{4,5}" required><br>
+					Nimi:<br> <input type="text" name="nimi" placeholder="Kirjoita pizzan nimi tähän" pattern="[a-zA-Z0-9]+[a-zA-Z0-9 ]+" required ><br> <br>
+					Hinta:<br> <input type="decimal" name="hinta" placeholder="X,XX" pattern="[0-9,.]{4,5}" required><br>
 					<br> Täytteet: <br> <select name="tayte1">
 						<option value="eitaytetta">Täyte1</option>
 						<option value="tomaattikastike">Tomaattikastike</option>
