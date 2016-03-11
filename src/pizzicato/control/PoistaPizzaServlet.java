@@ -8,8 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import pizzicato.model.Pizza;
 import pizzicato.model.dao.PizzaDAO;
 
 
@@ -23,7 +21,7 @@ public class PoistaPizzaServlet extends HttpServlet {
 		String strId = request.getParameter("pizza_id");
 		int pizzaId = new Integer(strId);
 		PizzaDAO pizzadao = new PizzaDAO();
-		Pizza pizza = pizzadao.deletePizza(pizzaId);
+		pizzadao.deletePizza(pizzaId);
 		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
 		dispatcher.forward(request, response);
