@@ -92,8 +92,7 @@
 						placeholder="<%=pizza.getpNimi()%>"><br> <br>
 						<input type="hidden" name="pizza_id" value="<%=pizza.getPizzaId()%>"/>
 					Hinta:<br> <input type="decimal" name="hinta"
-						placeholder="<%=pizza.getpHinta()%>" pattern="[0-9,.]{4,5}"
-						title="Lisää hinta muodolla x,xx tai x.xx"><br>
+						placeholder="<%=pizza.getpHinta()%>" pattern="[0-9,.]{4,5}"><br>
 						
 						
 					<br> Täytteet: <br> <select name="tayte1">
