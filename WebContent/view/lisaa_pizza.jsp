@@ -86,10 +86,9 @@
 
 
 					Nimi:<br> <input type="text" name="nimi"
-						placeholder="Testipizza" required><br> <br>
+						placeholder="Kirjoita pizzan nimi tähän" required><br> <br>
 					Hinta:<br> <input type="decimal" name="hinta"
-						placeholder="8,95" pattern="[0-9,.]{4,5}"
-						title="Lisää hinta muodolla x,xx tai x.xx" required><br>
+						placeholder="X,XX" pattern="[0-9,.]{4,5}" required><br>
 					<br> Täytteet: <br> <select name="tayte1">
 						<option value="eitaytetta">Täyte1</option>
 						<option value="tomaattikastike">Tomaattikastike</option>
