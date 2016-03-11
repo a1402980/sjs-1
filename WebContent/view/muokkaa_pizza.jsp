@@ -73,9 +73,9 @@
 
 	<!-- Free Section -->
 
-	<section class="for-full-back color-light " id="pizzat">
+	<section id="pizzat">
 	<div class="container">
-		<div class="row text-center">
+		<div class="row text-center for-full-back color-light ">
 			<div class="col-md-8 col-md-offset-2">
 				<H1>Muokkaa Pizzaa</H1>
 
