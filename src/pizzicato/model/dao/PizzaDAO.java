@@ -47,6 +47,8 @@ public class PizzaDAO extends DataAccessObject {
 				
 			} catch (SQLException e) {
 				throw new RuntimeException(e);
+			}finally {
+				close(stmt,conn);
 			}
 		}
 		
