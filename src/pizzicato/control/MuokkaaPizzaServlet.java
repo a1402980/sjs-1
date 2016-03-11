@@ -58,16 +58,20 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 				System.out.println("Sovelluksessa tapahtui virhe "+ e.getMessage());
 				e.printStackTrace();
 			}
-		} if(syotettyHinta==null||syotettyHinta=="0.0"||syotettyHinta=="") {
+		} 
+		
+		if(syotettyHinta==null||syotettyHinta=="0.0"||syotettyHinta=="") {
 			String pNimi=syotettyNimi;
-			double pHinta=pizza.getpHinta();
-			Pizza modifiedPizza = new Pizza(pNimi, pHinta, pSaatavuus);
-			PizzaDAO modifiedPizzadao = new PizzaDAO();
-			try {
-				modifiedPizzadao.modifyPizza(modifiedPizza);
-			} catch (SQLException e) {
-				System.out.println("Sovelluksessa tapahtui virhe "+ e.getMessage());
-				e.printStackTrace();
+			double pHinta=pizza.getpHinta();			
+						
+		Pizza modifiedPizza = new Pizza(pNimi, pHinta, pSaatavuus);
+		PizzaDAO modifiedPizzadao = new PizzaDAO();
+		
+		try {
+			modifiedPizzadao.modifyPizza(modifiedPizza);
+		} catch (SQLException e) {
+			System.out.println("Sovelluksessa tapahtui virhe "+ e.getMessage());
+			e.printStackTrace();
 			}
 		}
 	
