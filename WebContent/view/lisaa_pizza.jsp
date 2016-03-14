@@ -18,6 +18,8 @@
         <![endif]-->
 <title>Pizzeria Pizzicato</title>
 <!--REQUIRED STYLE SHEETS-->
+    <!-- JQUERY CODE SOURCE -->
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 <!-- BOOTSTRAP CORE STYLE CSS -->
 <link href="assets/css/bootstrap.css" rel="stylesheet" />
 <!-- FONTAWESOME STYLE CSS -->
