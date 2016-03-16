@@ -89,9 +89,12 @@ public class PizzaDAO extends DataAccessObject {
 			
 			return pizzat;
 		}
-		/** Hakee yhden pizzan tietokannasta kyseisen pizzan id:n perusteella 
-		 * 
-		 * @param pizzaId id muokkaapizzaservletistä, tietokannan automaattisesti luoma id**/
+		/** 
+		 * Avaa tietokantayhteyden. 
+		 * Hakee yhden pizzan tiedot tietokannasta kyseisen pizzan id:n perusteella 
+		 * Sulkee tietokantayhteyden. Palauttaa lopuksi pizzan tiedot.
+		 * @param pizzaId id tulee muokkaapizzaservletistä, tietokannan automaattisesti luoma id
+		 * **/
 		public Pizza findCertainPizza(int pizzaId) {
 			Connection conn = null;
 			PreparedStatement stmt = null;
@@ -113,7 +116,11 @@ public class PizzaDAO extends DataAccessObject {
 			
 			return pizza;
 		}
-		/** Lukee tietokannasta pizzalistan pizzat muita metodeita varten **/
+		/** 
+		 * Avaa tietokantayhteyden.
+		 * Lukee tietokannasta pizzalistan pizzat muita metodeita varten. 
+		 * Sulkee tietokantayhteyden.
+		 * **/
 		private Pizza readPizza(ResultSet rs) {
 			try {
 				int pizzaId=rs.getInt("pizza_id");
@@ -131,9 +138,12 @@ public class PizzaDAO extends DataAccessObject {
 				throw new RuntimeException(e);
 			}
 		}
-		/** Poistaa tietokannasta yhden pizzan halutun pizzan id:n perusteella 
-		 * 
-		 * @param pizzaId id poistapizzaservletistä, tietokannan automaattisesti luoma id**/
+		/** 
+		 * Avaa tietokantayhteyden.
+		 * Poistaa tietokannasta yhden pizzan halutun pizzan id:n perusteella 
+		 * Sulkee tietokantayhteyden.
+		 * @param pizzaId id tulee poistapizzaservletistä, tietokannan automaattisesti luoma id
+		 * **/
 		public Pizza deletePizza(int pizzaId){
 			Connection conn = null;
 			PreparedStatement stmt = null;
