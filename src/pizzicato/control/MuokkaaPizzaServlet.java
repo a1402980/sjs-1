@@ -18,23 +18,22 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
    
-	
+	/**MuokkaaPizzaServletin doGet metodi hakee muokattavan pizzan tiedot tietokannasta PizzaDAOn metodilla ja luo käyttäjän näkymän selaimelle**/
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String jsp = "/view/muokkaa_pizza.jsp";
+		String jsp = "/view/muokkaa_pizza.jsp";		
 		
-		
-				String strId = request.getParameter("pizza_id");
-				int pizzaId = new Integer(strId);
-				PizzaDAO pizzadao = new PizzaDAO();
-				Pizza pizza = pizzadao.findCertainPizza(pizzaId);
-				request.setAttribute("pizza", pizza);
+		String strId = request.getParameter("pizza_id");
+		int pizzaId = new Integer(strId);
+		PizzaDAO pizzadao = new PizzaDAO();
+		Pizza pizza = pizzadao.findCertainPizza(pizzaId);
+		request.setAttribute("pizza", pizza);
 				
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
 		dispatcher.forward(request, response);
 		
 	}
 
-	
+	/**MuokkaaPizzaServletin doPost metodi hakee käyttäjän syöttämät tiedot selaimelta ja lähettää muokatt tiedot PizzaDAOon.**/
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String strId = request.getParameter("pizza_id");
@@ -54,10 +53,9 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 		} catch (SQLException e) {
 			System.out.println("Sovelluksessa tapahtui virhe "+ e.getMessage());
 			e.printStackTrace();
-			}
+		}
 	
-		response.sendRedirect("ListaaPizzat");
-		
+		response.sendRedirect("ListaaPizzat");		
 		
 	}
 

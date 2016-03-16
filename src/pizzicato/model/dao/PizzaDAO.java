@@ -12,7 +12,10 @@ import pizzicato.model.dao.DataAccessObject;
 
 public class PizzaDAO extends DataAccessObject {
 
-		
+		/** 
+		 * Avaa yhteyden tietokantaan. Hakee pizza-olion tiedot.
+		 *  Lis‰‰ pizza-olion tiedot tietokantaan. Sulkee yhteyden. 
+		 *  @param pizza pizza-olio**/
 		public void addPizza(Pizza pizza) throws SQLException {
 			Connection connection = null;
 			PreparedStatement stmtInsert = null;
@@ -33,7 +36,10 @@ public class PizzaDAO extends DataAccessObject {
 				close(stmtInsert, connection); 
 			}
 		}
-		
+		/** 
+		 * Avaa yhteyden tietokantaan. Hakee pizza-olion tiedot.
+		 * Muokkaa haluttua pizzaa tietokannassa pizza Id:n perusteella. Sulkee yhteyden. 
+		 * @param pizza pizza-olio**/
 		public void modifyPizza(Pizza pizza) throws SQLException {
 			Connection conn = null;
 			PreparedStatement stmt = null;
@@ -51,7 +57,15 @@ public class PizzaDAO extends DataAccessObject {
 				close(stmt,conn);
 			}
 		}
-		
+		/** 
+		 * Avaa tietokantayhteyden. Alustaa pizzat-listan, johon voi sijoittaa pizza-olion.
+		 * Hakee tietokannasta pizzan tiedot ja luo niist‰ uuden pizza-olion, joka lis‰t‰‰n
+		 * pizzat-listaan. Sulkee tietokantayhteyden. 
+		 * Palauttaa lopuksi koko pizzat-listan.
+		 * Hakee kaikki listalla olevat pizzat tietokannasta 
+		 * @param Pizza Pizza-olio
+		 * @return Pizzat-lista
+		 * **/
 		public ArrayList<Pizza> findAll() {
 			Connection conn = null;
 			PreparedStatement stmt = null;
@@ -75,7 +89,7 @@ public class PizzaDAO extends DataAccessObject {
 			
 			return pizzat;
 		}
-		
+		/** Hakee yhden pizzan tietokannasta kyseisen pizzan id:n perusteella **/
 		public Pizza findCertainPizza(int pizza_id) {
 			Connection conn = null;
 			PreparedStatement stmt = null;
@@ -97,6 +111,7 @@ public class PizzaDAO extends DataAccessObject {
 			
 			return pizza;
 		}
+		/** Lukee tietokannasta pizzalistan pizzat muita metodeita varten **/
 		private Pizza readPizza(ResultSet rs) {
 			try {
 				int id=rs.getInt("pizza_id");
@@ -114,7 +129,7 @@ public class PizzaDAO extends DataAccessObject {
 				throw new RuntimeException(e);
 			}
 		}
-		
+		/** Poistaa tietokannasta yhden pizzan halutun pizzan id:n perusteella **/
 		public Pizza deletePizza(int pizza_id){
 			Connection conn = null;
 			PreparedStatement stmt = null;

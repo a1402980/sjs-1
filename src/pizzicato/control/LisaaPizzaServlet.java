@@ -17,13 +17,15 @@ import pizzicato.model.dao.PizzaDAO;
 @WebServlet("/LisaaPizza")
 public class LisaaPizzaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-   
+	
+	/**LisaaPizzaServletin doGet metodi luo käyttäjän näkymän selaimeen.**/   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String jsp ="/view/lisaa_pizza.jsp";
 		RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
 		dispather.forward(request, response);
 	}
-
+	
+	/**LisaaPizzaServletin doPost metodi hakee käyttäjän syöttämät tiedot selaimelta ja lähettää tiedot tietokantayhteysoliolle. (Käyttäjän syöttämien tietojen mukaan PizzaDAOn metodi luo uuden Pizzaolion tietokantaan) **/
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String pNimi = request.getParameter("nimi");
 		String strPHinta = request.getParameter("hinta");
