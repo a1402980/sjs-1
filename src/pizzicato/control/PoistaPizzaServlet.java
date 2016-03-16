@@ -15,16 +15,12 @@ import pizzicato.model.dao.PizzaDAO;
 public class PoistaPizzaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	/**PoistaPizzaServletin doGet metodi hakee poistettavan pizzan pizzaIdn selaimelta ja l‰hett‰‰ tiedon PizzaDAOon (jonka metodi poistaa pizzan tietokannasta). **/
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String jsp = "/view/poista_pizza.jsp";
-		
 		String strId = request.getParameter("pizza_id");
 		int pizzaId = new Integer(strId);
 		PizzaDAO pizzadao = new PizzaDAO();
 		pizzadao.deletePizza(pizzaId);
-		
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
-		dispatcher.forward(request, response);
 	}
 
 }

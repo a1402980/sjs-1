@@ -19,7 +19,7 @@ import pizzicato.model.dao.PizzaDAO;
 public class ListaaPizzatServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    
+    /**ListaaPizzatServletin doGet metodi hakee PizzaDAON metodilla kaikki pizzat tietokannasta Arraylistaan ja luo käyttäjän näkymän selaimella**/
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PizzaDAO pizzadao = new PizzaDAO();
 		ArrayList<Pizza> pizzat = pizzadao.findAll();	
