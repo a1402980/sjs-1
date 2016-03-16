@@ -13,10 +13,9 @@ import pizzicato.model.dao.DataAccessObject;
 public class PizzaDAO extends DataAccessObject {
 
 		/** 
-		 * Avaa yhteyden tietokantaan. Hakee metodin parametrina olevan pizza-olion tiedot.
+		 * Avaa yhteyden tietokantaan. Hakee pizza-olion tiedot.
 		 *  Lis‰‰ pizza-olion tiedot tietokantaan. Sulkee yhteyden. 
-		 *  @param pizza pizza-olio
-		 *  **/
+		 *  @param pizza pizza-olio**/
 		public void addPizza(Pizza pizza) throws SQLException {
 			Connection connection = null;
 			PreparedStatement stmtInsert = null;
@@ -38,10 +37,9 @@ public class PizzaDAO extends DataAccessObject {
 			}
 		}
 		/** 
-		 * Avaa yhteyden tietokantaan. Hakee metodin parametrina olevan pizza-olion tiedot.
-		 * Muokkaa haluttua pizzaa tietokannassa pizza-olion Id:n perusteella. Sulkee yhteyden. 
-		 * @param pizza pizza-olio
-		 * **/
+		 * Avaa yhteyden tietokantaan. Hakee pizza-olion tiedot.
+		 * Muokkaa haluttua pizzaa tietokannassa pizza Id:n perusteella. Sulkee yhteyden. 
+		 * @param pizza pizza-olio**/
 		public void modifyPizza(Pizza pizza) throws SQLException {
 			Connection conn = null;
 			PreparedStatement stmt = null;
@@ -62,8 +60,9 @@ public class PizzaDAO extends DataAccessObject {
 		/** 
 		 * Avaa tietokantayhteyden. Alustaa pizzat-listan, johon voi sijoittaa pizza-olion.
 		 * Hakee tietokannasta pizzan tiedot ja luo niist‰ uuden pizza-olion, joka lis‰t‰‰n
-		 * pizzat-listaan. Kun kaikki listalla olevat pizzat on k‰yty l‰pi tietokantayhteys suljetaan. 
+		 * pizzat-listaan. Sulkee tietokantayhteyden. 
 		 * Palauttaa lopuksi koko pizzat-listan.
+		 * Hakee kaikki listalla olevat pizzat tietokannasta 
 		 * @param Pizza Pizza-olio
 		 * @return Pizzat-lista
 		 * **/
@@ -90,15 +89,17 @@ public class PizzaDAO extends DataAccessObject {
 			
 			return pizzat;
 		}
-		/** Hakee yhden pizzan tietokannasta kyseisen pizzan id:n perusteella **/
-		public Pizza findCertainPizza(int pizza_id) {
+		/** Hakee yhden pizzan tietokannasta kyseisen pizzan id:n perusteella 
+		 * 
+		 * @param pizzaId id muokkaapizzaservletist‰, tietokannan automaattisesti luoma id**/
+		public Pizza findCertainPizza(int pizzaId) {
 			Connection conn = null;
 			PreparedStatement stmt = null;
 			ResultSet rs = null;
 			Pizza pizza=null;
 			try {
 				conn = getConnection();
-				String sqlSelect ="SELECT pizza_id, p_nimi, p_hinta, p_saatavuus FROM pizza WHERE pizza_id='"+pizza_id+"';";
+				String sqlSelect ="SELECT pizza_id, p_nimi, p_hinta, p_saatavuus FROM pizza WHERE pizza_id='"+pizzaId+"';";
 				stmt=conn.prepareStatement(sqlSelect);
 				rs=stmt.executeQuery(sqlSelect);
 				while(rs.next()) {
@@ -115,29 +116,31 @@ public class PizzaDAO extends DataAccessObject {
 		/** Lukee tietokannasta pizzalistan pizzat muita metodeita varten **/
 		private Pizza readPizza(ResultSet rs) {
 			try {
-				int id=rs.getInt("pizza_id");
-				String nimi=rs.getString("p_nimi");
-				double hinta=rs.getDouble("p_hinta");
-				String saatavuus=rs.getString("p_saatavuus");				
+				int pizzaId=rs.getInt("pizza_id");
+				String pNimi=rs.getString("p_nimi");
+				double pHinta=rs.getDouble("p_hinta");
+				String pSaatavuus=rs.getString("p_saatavuus");				
 				//ArrayList<Tayte> taytteet = new ArrayList<Tayte>();			
-					if (saatavuus.equalsIgnoreCase("true")){
-						saatavuus = "kyll‰";
-					}else if(saatavuus.equalsIgnoreCase("false")){
-						saatavuus = "ei";
+					if (pSaatavuus.equalsIgnoreCase("true")){
+						pSaatavuus = "kyll‰";
+					}else if(pSaatavuus.equalsIgnoreCase("false")){
+						pSaatavuus = "ei";
 					}
-				return new Pizza(id, nimi, hinta, saatavuus);
+				return new Pizza(pizzaId, pNimi, pHinta, pSaatavuus);
 			} catch (SQLException e) {
 				throw new RuntimeException(e);
 			}
 		}
-		/** Poistaa tietokannasta yhden pizzan halutun pizzan id:n perusteella **/
-		public Pizza deletePizza(int pizza_id){
+		/** Poistaa tietokannasta yhden pizzan halutun pizzan id:n perusteella 
+		 * 
+		 * @param pizzaId id poistapizzaservletist‰, tietokannan automaattisesti luoma id**/
+		public Pizza deletePizza(int pizzaId){
 			Connection conn = null;
 			PreparedStatement stmt = null;
 			ResultSet rs = null;
 			try {
 				conn = getConnection();
-				String sqlDelete ="DELETE FROM pizza WHERE pizza_id=' "+pizza_id+"';";
+				String sqlDelete ="DELETE FROM pizza WHERE pizza_id=' "+pizzaId+"';";
 				stmt=conn.prepareStatement(sqlDelete);
 				rs=stmt.executeQuery(sqlDelete);
 			} catch(SQLException e) {
