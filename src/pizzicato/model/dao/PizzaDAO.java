@@ -13,9 +13,10 @@ import pizzicato.model.dao.DataAccessObject;
 public class PizzaDAO extends DataAccessObject {
 
 		/** 
-		 * Avaa yhteyden tietokantaan. Hakee pizza-olion tiedot.
+		 * Avaa yhteyden tietokantaan. Hakee metodin parametrina olevan pizza-olion tiedot.
 		 *  Lis‰‰ pizza-olion tiedot tietokantaan. Sulkee yhteyden. 
-		 *  @param pizza pizza-olio**/
+		 *  @param pizza pizza-olio
+		 *  **/
 		public void addPizza(Pizza pizza) throws SQLException {
 			Connection connection = null;
 			PreparedStatement stmtInsert = null;
@@ -37,9 +38,10 @@ public class PizzaDAO extends DataAccessObject {
 			}
 		}
 		/** 
-		 * Avaa yhteyden tietokantaan. Hakee pizza-olion tiedot.
-		 * Muokkaa haluttua pizzaa tietokannassa pizza Id:n perusteella. Sulkee yhteyden. 
-		 * @param pizza pizza-olio**/
+		 * Avaa yhteyden tietokantaan. Hakee metodin parametrina olevan pizza-olion tiedot.
+		 * Muokkaa haluttua pizzaa tietokannassa pizza-olion Id:n perusteella. Sulkee yhteyden. 
+		 * @param pizza pizza-olio
+		 * **/
 		public void modifyPizza(Pizza pizza) throws SQLException {
 			Connection conn = null;
 			PreparedStatement stmt = null;
@@ -60,9 +62,8 @@ public class PizzaDAO extends DataAccessObject {
 		/** 
 		 * Avaa tietokantayhteyden. Alustaa pizzat-listan, johon voi sijoittaa pizza-olion.
 		 * Hakee tietokannasta pizzan tiedot ja luo niist‰ uuden pizza-olion, joka lis‰t‰‰n
-		 * pizzat-listaan. Sulkee tietokantayhteyden. 
+		 * pizzat-listaan. Kun kaikki listalla olevat pizzat on k‰yty l‰pi tietokantayhteys suljetaan. 
 		 * Palauttaa lopuksi koko pizzat-listan.
-		 * Hakee kaikki listalla olevat pizzat tietokannasta 
 		 * @param Pizza Pizza-olio
 		 * @return Pizzat-lista
 		 * **/
