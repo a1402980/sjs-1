@@ -138,7 +138,7 @@
 
             <div class="row">
                 <div class="col-md-5 contact-cls">
-                    <h3>Sijaintimme</h3>
+                    <h3>Yhteystiedot</h3>
                     <div>
                         <span><i class="fa fa-home"></i>&nbsp;Osoite</span>
                         <br />

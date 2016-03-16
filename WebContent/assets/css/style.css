@@ -86,6 +86,9 @@ form {
 margin: 0 auto; 
 width:70%;
 }
+input[type="checkbox"] {
+  width: 15px;
+}
 input {
     width: 60%;
     padding: 12px 20px;
@@ -94,6 +97,7 @@ input {
     border: 2px solid grey;
     border-radius: 4px;
 }
+
 input[type=file] {
     margin: 0 auto;
 }
