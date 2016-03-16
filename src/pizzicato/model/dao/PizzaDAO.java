@@ -94,6 +94,7 @@ public class PizzaDAO extends DataAccessObject {
 		 * Hakee yhden pizzan tiedot tietokannasta kyseisen pizzan id:n perusteella 
 		 * Sulkee tietokantayhteyden. Palauttaa lopuksi pizzan tiedot.
 		 * @param pizzaId id tulee muokkaapizzaservletistä, tietokannan automaattisesti luoma id
+		 * @return Pizza -olio
 		 * **/
 		public Pizza findCertainPizza(int pizzaId) {
 			Connection conn = null;
