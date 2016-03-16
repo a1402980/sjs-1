@@ -12,7 +12,7 @@ import pizzicato.model.dao.DataAccessObject;
 
 public class PizzaDAO extends DataAccessObject {
 
-		
+		/** Lis‰‰ pizzan tietokantaan **/
 		public void addPizza(Pizza pizza) throws SQLException {
 			Connection connection = null;
 			PreparedStatement stmtInsert = null;
@@ -33,7 +33,7 @@ public class PizzaDAO extends DataAccessObject {
 				close(stmtInsert, connection); 
 			}
 		}
-		
+		/** Muokkaa haluttua pizzaa tietokannassa **/
 		public void modifyPizza(Pizza pizza) throws SQLException {
 			Connection conn = null;
 			PreparedStatement stmt = null;
@@ -51,7 +51,7 @@ public class PizzaDAO extends DataAccessObject {
 				close(stmt,conn);
 			}
 		}
-		
+		/** Hakee kaikki listalla olevat pizzat tietokannasta **/
 		public ArrayList<Pizza> findAll() {
 			Connection conn = null;
 			PreparedStatement stmt = null;
@@ -75,7 +75,7 @@ public class PizzaDAO extends DataAccessObject {
 			
 			return pizzat;
 		}
-		
+		/** Hakee yhden pizzan tietokannasta kyseisen pizzan id:n perusteella **/
 		public Pizza findCertainPizza(int pizza_id) {
 			Connection conn = null;
 			PreparedStatement stmt = null;
@@ -97,6 +97,7 @@ public class PizzaDAO extends DataAccessObject {
 			
 			return pizza;
 		}
+		/** Lukee tietokannasta pizzalistan pizzat muita metodeita varten **/
 		private Pizza readPizza(ResultSet rs) {
 			try {
 				int id=rs.getInt("pizza_id");
@@ -114,7 +115,7 @@ public class PizzaDAO extends DataAccessObject {
 				throw new RuntimeException(e);
 			}
 		}
-		
+		/** Poistaa tietokannasta yhden pizzan halutun pizzan id:n perusteella **/
 		public Pizza deletePizza(int pizza_id){
 			Connection conn = null;
 			PreparedStatement stmt = null;
