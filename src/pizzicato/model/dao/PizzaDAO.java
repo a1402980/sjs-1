@@ -89,15 +89,21 @@ public class PizzaDAO extends DataAccessObject {
 			
 			return pizzat;
 		}
-		/** Hakee yhden pizzan tietokannasta kyseisen pizzan id:n perusteella **/
-		public Pizza findCertainPizza(int pizza_id) {
+		/** 
+		 * Avaa tietokantayhteyden. 
+		 * Hakee yhden pizzan tiedot tietokannasta kyseisen pizzan id:n perusteella 
+		 * Sulkee tietokantayhteyden. Palauttaa lopuksi pizzan tiedot.
+		 * @param pizzaId id tulee muokkaapizzaservletistä, tietokannan automaattisesti luoma id
+		 * @return Pizza -olio
+		 * **/
+		public Pizza findCertainPizza(int pizzaId) {
 			Connection conn = null;
 			PreparedStatement stmt = null;
 			ResultSet rs = null;
 			Pizza pizza=null;
 			try {
 				conn = getConnection();
-				String sqlSelect ="SELECT pizza_id, p_nimi, p_hinta, p_saatavuus FROM pizza WHERE pizza_id='"+pizza_id+"';";
+				String sqlSelect ="SELECT pizza_id, p_nimi, p_hinta, p_saatavuus FROM pizza WHERE pizza_id='"+pizzaId+"';";
 				stmt=conn.prepareStatement(sqlSelect);
 				rs=stmt.executeQuery(sqlSelect);
 				while(rs.next()) {
@@ -111,32 +117,41 @@ public class PizzaDAO extends DataAccessObject {
 			
 			return pizza;
 		}
-		/** Lukee tietokannasta pizzalistan pizzat muita metodeita varten **/
+		/** 
+		 * Avaa tietokantayhteyden.
+		 * Lukee tietokannasta pizzalistan pizzat muita metodeita varten. 
+		 * Sulkee tietokantayhteyden.
+		 * **/
 		private Pizza readPizza(ResultSet rs) {
 			try {
-				int id=rs.getInt("pizza_id");
-				String nimi=rs.getString("p_nimi");
-				double hinta=rs.getDouble("p_hinta");
-				String saatavuus=rs.getString("p_saatavuus");				
+				int pizzaId=rs.getInt("pizza_id");
+				String pNimi=rs.getString("p_nimi");
+				double pHinta=rs.getDouble("p_hinta");
+				String pSaatavuus=rs.getString("p_saatavuus");				
 				//ArrayList<Tayte> taytteet = new ArrayList<Tayte>();			
-					if (saatavuus.equalsIgnoreCase("true")){
-						saatavuus = "kyllä";
-					}else if(saatavuus.equalsIgnoreCase("false")){
-						saatavuus = "ei";
+					if (pSaatavuus.equalsIgnoreCase("true")){
+						pSaatavuus = "kyllä";
+					}else if(pSaatavuus.equalsIgnoreCase("false")){
+						pSaatavuus = "ei";
 					}
-				return new Pizza(id, nimi, hinta, saatavuus);
+				return new Pizza(pizzaId, pNimi, pHinta, pSaatavuus);
 			} catch (SQLException e) {
 				throw new RuntimeException(e);
 			}
 		}
-		/** Poistaa tietokannasta yhden pizzan halutun pizzan id:n perusteella **/
-		public Pizza deletePizza(int pizza_id){
+		/** 
+		 * Avaa tietokantayhteyden.
+		 * Poistaa tietokannasta yhden pizzan halutun pizzan id:n perusteella 
+		 * Sulkee tietokantayhteyden.
+		 * @param pizzaId id tulee poistapizzaservletistä, tietokannan automaattisesti luoma id
+		 * **/
+		public Pizza deletePizza(int pizzaId){
 			Connection conn = null;
 			PreparedStatement stmt = null;
 			ResultSet rs = null;
 			try {
 				conn = getConnection();
-				String sqlDelete ="DELETE FROM pizza WHERE pizza_id=' "+pizza_id+"';";
+				String sqlDelete ="DELETE FROM pizza WHERE pizza_id=' "+pizzaId+"';";
 				stmt=conn.prepareStatement(sqlDelete);
 				rs=stmt.executeQuery(sqlDelete);
 			} catch(SQLException e) {
