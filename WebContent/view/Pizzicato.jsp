@@ -28,7 +28,7 @@
     <!-- FONTAWESOME STYLE CSS -->
     <link type="text/css" href="assets/css/font-awesome.min.css" rel="stylesheet" />
     <!-- CUSTOM STYLE CSS -->
-    <link type="text/css" href="assets/css/style.css" rel="stylesheet" />
+    <link type="text/css" href="assets/css/Stylesheet.css" rel="stylesheet" />
     <!-- GOOGLE FONT -->
     <link type="text/css" href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -38,10 +38,11 @@
     <![endif]-->
 </head>
 <body id="home">
+
 	 <div class="intro-header">
 	 	<div class="col-xs-12 text-center abcen1">
 	 	<h1>Tervetuloa herkuttelemaan Pizzeria Pizzicatoon! </h1>
-	 	<h2>Tutustu monipuoliseen pizzalistaamme tästä.</h2>
+	 	<h3>Tutustu monipuoliseen pizzalistaamme tästä.</h3>
 	 	</div>
 	 </div>
 	 <div class="col-xs-12 text-center abcen wow fadeIn">
@@ -50,13 +51,11 @@
 	 	</div>	
 	 </div>
 	 </div>
-	
-	
-	
 			
 			<!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
+       
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -96,8 +95,6 @@
     <section class="for-full-back color-white " id="contact">
         <div class="container">
             <div class="row text-center">
-
-
             </div>
 
             <div class="row">
@@ -113,7 +110,6 @@
                         <span><i class="fa fa-phone"></i>&nbsp;Puhelin</span>
                         <br />
                     </div>
-                  
                 </div>
              </div>
         </div>
