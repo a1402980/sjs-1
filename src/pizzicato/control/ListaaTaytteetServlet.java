@@ -25,7 +25,7 @@ public class ListaaTaytteetServlet extends HttpServlet {
 		
 		request.setAttribute("taytteet", taytteet);		
 			
-		String jsp = "/view/lisaa_uusi_tayte.jsp";
+		String jsp = "/view/listaa_taytteet_omistaja.jsp";
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
 		dispatcher.forward(request, response);
 	}

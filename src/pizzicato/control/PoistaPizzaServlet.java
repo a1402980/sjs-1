@@ -23,7 +23,7 @@ public class PoistaPizzaServlet extends HttpServlet {
 		
 		pizzadao.deletePizza(pizzaId);
 		
-		response.sendRedirect("ListaaPizzat");
+		response.sendRedirect("ListaaTaytteet");
 	}
 
 }
