@@ -12,19 +12,11 @@ import pizzicato.model.Pizza;
 import pizzicato.model.Tayte;
 
 public class TayteDAO extends DataAccessObject{
-	private Pizza readPizza(ResultSet rs) {
+	private Tayte readTayte(ResultSet rs) {
 		try {
-			int pizzaId=rs.getInt("tayteid");
-			String pNimi=rs.getString("p_nimi");
-			double pHinta=rs.getDouble("p_hinta");
-			String pSaatavuus=rs.getString("p_saatavuus");				
-			//ArrayList<Tayte> taytteet = new ArrayList<Tayte>();			
-				if (pSaatavuus.equalsIgnoreCase("true")){
-					pSaatavuus = "kyllä";
-				}else if(pSaatavuus.equalsIgnoreCase("false")){
-					pSaatavuus = "ei";
-				}
-			return new Pizza(pizzaId, pNimi, pHinta, pSaatavuus);
+			int tayteId=rs.getInt("tayte_id");
+			String tNimi=rs.getString("t_nimi");				
+			return new Tayte(tayteId, tNimi);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -41,8 +33,8 @@ public Tayte findByName(String tNimi) {
 		stmt=conn.prepareStatement(sqlSelect);
 		stmt.setString(1, tayte.gettNimi());		
 		rs=stmt.executeQuery(sqlSelect);
-		while(rs.next()) {
-			tayte = readPizza(rs);
+		if(rs.next()) {
+			tayte = readTayte(rs);
 		}
 	} catch(SQLException e) {
 		throw new RuntimeException(e);
@@ -50,7 +42,7 @@ public Tayte findByName(String tNimi) {
 		close(rs,stmt,conn);
 	}
 	
-	return pizza;
+	return tayte;
 }
 	
 	public void addTayte(Tayte tayte) throws SQLException {
