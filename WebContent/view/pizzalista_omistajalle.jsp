@@ -89,7 +89,7 @@
 			<th>Id</th>
 				<th>Nimi</th>
 					<th>Täytteet</th>
-						<th>Hinta</th>
+						<th>Hinta €</th>
 							<th>Valikoimassa</th>
 								<th>Muokkaa</th>
 									<th>Poista</th>
