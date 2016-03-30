@@ -14,6 +14,12 @@ public class Tayte {
 		this.tayteId = tayteId;
 		this.tNimi = tNimi;
 	}
+	
+	
+	public Tayte(String tNimi) {
+		super();
+		this.tNimi = tNimi;
+	}
 
 	public int getTayteId() {
 		return tayteId;
