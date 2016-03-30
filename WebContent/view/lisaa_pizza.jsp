@@ -84,7 +84,7 @@
 				<H1>Lisää Pizza</H1>
 
 
-				<form method="post">
+				<form method="post" novalidate>
 
 					<div class="imagePreview"></div>
 					<input type="file" name="imagefile"
@@ -93,8 +93,29 @@
 
 
 					Nimi:<br> <input type="text" name="nimi" placeholder="Kirjoita pizzan nimi tähän" pattern="[a-zA-Z0-9]+[a-zA-Z0-9 ]+" required ><br> <br>
-					Hinta:<br> <input type="decimal" name="hinta" placeholder="X,XX Hinta ei yli 100€" pattern="[0-9,.]{4,5}" required><br>
-					<br> Täytteet: <br> <select name="tayte1">
+					Hinta:<br> <input type="decimal" name="hinta" placeholder="X,XX Hinta ei yli 100€" pattern="[0-9,.]{4,5}" required><br> <br>
+						
+						Täytteet: <br>
+						<input type="checkbox" name="Tomaattikastike" value="tomaattikastike"> Tomaattikastike<br>
+  						<input type="checkbox" name="Juusto" value="juusto" checked="checked"> Juusto<br>
+  						<input type="checkbox" name="Herkkusieni" value="herkkusieni"> Herkkusieni<br>
+  						<input type="checkbox" name="Sipuli" value="sipuli"> Sipuli<br>
+  						<input type="checkbox" name="Oliivi" value="oliivi"> Oliivi<br>
+  						<input type="checkbox" name="Pinaatti" value="pinaatti"> Pinaatti<br>
+  						<input type="checkbox" name="Tonnikala" value="tonnikala"> Tonnikala<br>
+  						<input type="checkbox" name="Katkarapu" value="katkarapu"> Katkarapu<br>
+  						<input type="checkbox" name="Simpukka" value="simpukka"> Simpukka<br>
+  						<input type="checkbox" name="Kinkku" value="kinkku"> Kinkku<br>
+  						<input type="checkbox" name="Salami" value="salami"> Salami<br>
+  						<input type="checkbox" name="Pepperoni" value="pepperoni"> Pepperoni<br>
+  						<input type="checkbox" name="Jalopeno" value="Jalopeno"> Jalopeno<br>
+  						
+  						
+  						
+  						
+  						
+  						
+						Täytteet: <br> <select name="tayte1">
 						<option value="eitaytetta">Täyte1</option>
 						<option value="tomaattikastike">Tomaattikastike</option>
 						<option value="juusto">Juusto</option>
@@ -209,7 +230,7 @@
 
 		<div class="row">
 			<div class="col-md-5 contact-cls">
-				<h3>Sijaintimme</h3>
+				<h3>Yhteystiedot</h3>
 				<div>
 					<span><i class="fa fa-home"></i>&nbsp;Osoite</span> <br /> <span><i
 						class="fa fa-phone"></i>&nbsp;Puhelin</span> <br /> <span><i

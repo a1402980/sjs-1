@@ -86,6 +86,9 @@ form {
 margin: 0 auto; 
 width:70%;
 }
+input[type="checkbox"] {
+  width: 15px;
+}
 input {
     width: 60%;
     padding: 12px 20px;
@@ -94,6 +97,7 @@ input {
     border: 2px solid grey;
     border-radius: 4px;
 }
+
 input[type=file] {
     margin: 0 auto;
 }
@@ -268,3 +272,54 @@ table {
 /*=======================================
     Login ikkunan tyylit LOPPUU
 ==================================================*/
+
+/*=======================================
+    editable tables alkaa
+==================================================*/
+@import "compass/css3";
+
+.table-editable {
+  position: relative;
+  
+  .glyphicon {
+    font-size: 20px;
+  }
+}
+
+.table-remove {
+  color: #700;
+  cursor: pointer;
+  
+  &:hover {
+    color: #f00;
+  }
+}
+
+.table-up, .table-down {
+  color: #007;
+  cursor: pointer;
+  
+  &:hover {
+    color: #00f;
+  }
+}
+
+.table-add {
+  color: #070;
+  cursor: pointer;
+  position: absolute;
+  top: 8px;
+  right: 0;
+  
+  &:hover {
+    color: #0b0;
+  }
+}
+/*=======================================
+    editable tables loppuu
+==================================================*/
+
+
+
+
+
