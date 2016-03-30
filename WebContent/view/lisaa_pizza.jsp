@@ -84,7 +84,7 @@
 				<H1>Lisää Pizza</H1>
 
 
-				<form method="post">
+				<form method="post" novalidate>
 
 					<div class="imagePreview"></div>
 					<input type="file" name="imagefile"
