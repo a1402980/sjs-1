@@ -18,14 +18,7 @@ import pizzicato.model.dao.PizzaDAO;
 @WebServlet("/MuokkaaPizza")
 public class MuokkaaPizzaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	static String idString;
-	static int pizzaId = 0;
-	static String syotettyNimi = null;
-	static String syotettyHinta = null;
-	static Double pHinta = 0.0;
-	static String pSaatavuus = null;
-	static Map<String, String> errors = new HashMap<String, String>();
-    
+
    
 	/**MuokkaaPizzaServletin doGet metodi hakee muokattavan pizzan tiedot tietokannasta PizzaDAOn metodilla ja luo käyttäjän näkymän selaimelle**/
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -48,8 +41,8 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 		String jsp = "/view/pizzalista_omistajalle.jsp";
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);		
 		
-	      errors = validate(request);
-	      if (!errors.isEmpty()) {
+		Map<String, String> errors = validate(request);
+	      if (errors.isEmpty()) {
 			  PizzaDAO modifiedPizzadao = new PizzaDAO();
 			  Pizza pizza = (Pizza) request.getAttribute("pizza");
 			  try {
@@ -66,21 +59,21 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 	    	  System.out.println(errors);
 	      }
 
-
 	   }
 	   
 	   public static Map<String, String> validate(HttpServletRequest request)
 	   {
 	      Pizza pizza = new Pizza();
+	      Map<String, String> errors = new HashMap<String, String>();
 	      request.setAttribute("errors", errors);
 	      request.setAttribute("pizza", pizza);
-
-	      //id
-	       idString = request.getParameter("pizza_id");
+	      
+	      //haetaan id
+	       String idString = request.getParameter("pizza_id");
 	       int pizzaId = new Integer(idString);
 	       pizza.setPizzaId(pizzaId);	 
 	      
-	      // nimi
+	      // nimen validointi
 	      String syotettyNimi = request.getParameter("nimi");
 	      if (syotettyNimi == null || syotettyNimi.trim().length() == 0)
 	      {
@@ -88,7 +81,7 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 	      }
 	      pizza.setpNimi(syotettyNimi);
 
-	      // hinta
+	      // hinnan validointi
 	      String syotettyHinta = request.getParameter("hinta");
 	      syotettyHinta = syotettyHinta.replace(",", ".");
 		  Double pHinta = new Double(syotettyHinta);
@@ -99,7 +92,8 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 	      }
 	      pizza.setpHinta(pHinta);
 	      
-	      pSaatavuus = request.getParameter("valikoimassa");
+	      
+	      String pSaatavuus = request.getParameter("valikoimassa");
 	      if (pSaatavuus.equalsIgnoreCase("kyllä")){
 	    	  pSaatavuus = "true";
 	    	  pizza.setpSaatavuus(pSaatavuus);
