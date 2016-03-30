@@ -38,7 +38,7 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="assets/js/html5.image.preview.min.js"></script>
-<!-- tämä on skripti kuvien esikatseluun  -->
+<!-- tämä on skripti tablen muokkaukseen  -->
 </head>
 <body>
     <!-- Navigation -->
@@ -81,28 +81,55 @@
 	<div class="container">
 		<div class="row text-center for-full-back color-light ">
 			<div class="col-md-8 col-md-offset-2">
-				<H1>Lisää Täyte</H1>
-
-
-				<form method="post">
-
-					<div class="imagePreview"></div>
-					<input type="file" name="imagefile"
-						onchange="previewImage(this,[256],4);" /><br>
-					<!--  onchange="previewImage(this,[sizes],limit);" * limit is number of Mb  -->
-
-
-					Nimi:<br> <input type="text" name="nimi" placeholder="Kirjoita täytteen nimi tähän" pattern="[a-zA-Z0-9]+[a-zA-Z0-9 ]+" required ><br> <br>
-					<!--  Hinta:<br> <input type="decimal" name="hinta" placeholder="X,XX Hinta ei yli 100€" pattern="[0-9,.]{4,5}" required><br> <br> -->
-						
-						
-
+				<H1>Lisää Tayte</H1>
 				
-				<div id="lisaapizzanapit">
-					<button input type="submit" class="btn btn-success btn-lg">Tallenna</button>
-					<a href="ListaaPizzat" class="btn btn-default btn-lg" role="button">Peruuta</a>
-				</div>
-				</form>
+				
+				<div class="container">
+  <h1>HTML5 Editable Table</h1>
+  <p>Through the powers of <strong>contenteditable</strong> and some simple jQuery you can easily create a custom editable table. No need for a robust JavaScript library anymore these days.</p>
+  
+  
+  <div id="table" class="table-editable">
+    <span class="table-add glyphicon glyphicon-plus"></span>
+    <table class="table">
+      <tr>
+        <th>Name</th>
+        <th>Value</th>
+        <th></th>
+        <th></th>
+      </tr>
+      <tr>
+        <td contenteditable="true">Stir Fry</td>
+        <td contenteditable="true">stir-fry</td>
+        <td>
+          <span class="table-remove glyphicon glyphicon-remove"></span>
+        </td>
+        <td>
+          <span class="table-up glyphicon glyphicon-arrow-up"></span>
+          <span class="table-down glyphicon glyphicon-arrow-down"></span>
+        </td>
+      </tr>
+      <!-- This is our clonable table line -->
+      <tr class="hide">
+        <td contenteditable="true">Untitled</td>
+        <td contenteditable="true">undefined</td>
+        <td>
+          <span class="table-remove glyphicon glyphicon-remove"></span>
+        </td>
+        <td>
+          <span class="table-up glyphicon glyphicon-arrow-up"></span>
+          <span class="table-down glyphicon glyphicon-arrow-down"></span>
+        </td>
+      </tr>
+    </table>
+  </div>
+  
+  <button id="export-btn" class="btn btn-primary">Export Data</button>
+  <p id="export"></p>
+</div>
+
+
+
 			</div>
 
 		</div>
