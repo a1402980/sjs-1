@@ -84,11 +84,8 @@
 				<H1>Lisää Tayte</H1>
 				
 				
-				<div class="container">
-  <h1>HTML5 Editable Table</h1>
-  <p>Through the powers of <strong>contenteditable</strong> and some simple jQuery you can easily create a custom editable table. No need for a robust JavaScript library anymore these days.</p>
-  
-  
+<div class="table-responsive">
+
   <div id="table" class="table-editable">
     <span class="table-add glyphicon glyphicon-plus"></span>
     <table class="table">
