@@ -55,6 +55,7 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 	    	  response.sendRedirect("ListaaPizzat");
 	         return;
 	      }else{
+	    	  
 	    	  response.sendRedirect("MuokkaaPizza");
 	    	  System.out.println(errors);
 	      }
