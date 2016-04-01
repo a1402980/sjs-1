@@ -20,7 +20,10 @@ public class PoistaPizzaServlet extends HttpServlet {
 		String strId = request.getParameter("pizza_id");
 		int pizzaId = new Integer(strId);
 		PizzaDAO pizzadao = new PizzaDAO();
+		
 		pizzadao.deletePizza(pizzaId);
+		
+		response.sendRedirect("ListaaTaytteet");
 	}
 
 }

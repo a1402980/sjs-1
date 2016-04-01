@@ -32,7 +32,7 @@ public class Pizza {
 		return pSaatavuus;
 	}
 
-	public String setpSaatavuus() {
+	public String setpSaatavuus(String pSaatavuus) {
 		return pSaatavuus;
 	}
 
