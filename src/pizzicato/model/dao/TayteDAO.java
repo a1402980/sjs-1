@@ -93,7 +93,7 @@ public class TayteDAO extends DataAccessObject{
 	
 		try {
 			connection = getConnection();
-			String sqlInsert = "INSERT INTO tayte(t_nimi) VALUES (?)";
+			String sqlInsert = "INSERT INTO tayte(t_nimi) VALUES (?); INSERT INTO pizzatayte(t_nimi) VALUES (?);";
 			stmtInsert = connection.prepareStatement(sqlInsert);
 			stmtInsert.setString(1, tayte.gettNimi());			
 			stmtInsert.executeUpdate();
