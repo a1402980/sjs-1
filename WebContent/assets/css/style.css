@@ -323,17 +323,24 @@ table {
     Asiakkaan sivun tyylit
 ==================================================*/
 
-.intro-header {
-	height: 100%; /* Full PAge */
-	padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
-	padding-bottom: 50px;
-	/*color: #f8f8f8;
-	background: url("assets/images/pizza2.jpg") no-repeat center center;*/
-	background-color: black;
-	background-size: cover;
-	text-align: center;
+#cover {
+    background: #222 url('pizza-stock.jpg') center center no-repeat;
+    background-size: cover;
+    color: white;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
 }
 
+  .affix {
+      top: 0;
+      width: 100%;
+  }
+
+  .affix + .container-fluid {
+      padding-top: 70px;
+  }
 
 
 
