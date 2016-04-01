@@ -9,6 +9,7 @@ PRIMARY KEY (pizza_id)
 CREATE TABLE tayte(
 tayte_id int NOT NULL AUTO_INCREMENT,
 t_nimi varchar(30) UNIQUE NOT NULL,
+t_hinta decimal(4,2) NOT NULL,
 PRIMARY KEY(tayte_id)
 )Engine="InnoDB";
 

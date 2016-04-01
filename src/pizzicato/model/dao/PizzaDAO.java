@@ -45,7 +45,7 @@ public class PizzaDAO extends DataAccessObject {
 			PreparedStatement stmt = null;
 			try {
 				conn = getConnection();
-				String sqlUpdate = "UPDATE pizza SET p_nimi='"+pizza.getpNimi()+"', p_hinta="+pizza.getpHinta()+", p_saatavuus='"+pizza.getpSaatavuus()+"' WHERE pizza_id="+pizza.getPizzaId();
+				String sqlUpdate = "UPDATE pizza SET p_nimi='"+pizza.getpNimi()+"', p_hinta="+pizza.getpHinta()+", p_saatavuus='"+pizza.getpSaatavuus()+"' WHERE pizza_id="+pizza.getPizzaId()+";";
 				stmt = conn.prepareStatement(sqlUpdate);
 				//lisää täyte ArrayList myöhemmin
 			
