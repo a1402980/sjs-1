@@ -43,8 +43,8 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 		
 		Map<String, String> errors = validate(request);
 	      if (errors.isEmpty()) {
-			  PizzaDAO modifiedPizzadao = new PizzaDAO();
 			  Pizza pizza = (Pizza) request.getAttribute("pizza");
+			  PizzaDAO modifiedPizzadao = new PizzaDAO();
 			  try {
 					modifiedPizzadao.modifyPizza(pizza);
 				} catch (SQLException e) {
@@ -64,7 +64,7 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 	   public static Map<String, String> validate(HttpServletRequest request)
 	   {
 	      Pizza pizza = new Pizza();
-	      Map<String, String> errors = new HashMap<String, String>();
+	      HashMap<String, String> errors = new HashMap<String, String>();
 	      request.setAttribute("errors", errors);
 	      request.setAttribute("pizza", pizza);
 	      
