@@ -37,21 +37,16 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 </head>
-<body id="home">
-
-	 <div class="intro-header">
+<div class="intro-header">
 	 	<div class="col-xs-12 text-center abcen1">
 	 	<h1>Tervetuloa herkuttelemaan Pizzeria Pizzicatoon! </h1>
 	 	<h3>Tutustu monipuoliseen pizzalistaamme tästä.</h3>
-	 	</div>
-	 </div>
-	 <div class="col-xs-12 text-center abcen wow fadeIn">
-	 	<div class="button_down">
-	 		<a class="button_down_img" href="#pizzamenu"><img class="button_img" src="assets/images/arrow.png"></a>
-	 	</div>	
-	 </div>
-	 </div>
+	 	<a class="button_down_img" href="#pizzamenu"><img class="button_img" src="assets/images/arrow.png"></a>
+</div>
 			
+<body id="home">
+
+	 
 			<!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">

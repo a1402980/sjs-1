@@ -14,7 +14,12 @@
 /*=======================================
     GENERAL STYLES
 ==================================================*/
-body {         font-family: 'Raleway', sans-serif;    font-size:14px;
+body {         
+	font-family: 'Raleway', sans-serif;    
+	font-size:14px;
+	height: 100%;
+	width: 100%;
+	overflow-x:hidden;
 }
 
 .nav a {
@@ -324,14 +329,18 @@ table {
 ==================================================*/
 
 .intro-header {
-	height: 100%; /* Full PAge */
-	padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
-	padding-bottom: 50px;
-	/*color: #f8f8f8;*/
-	background: url("pizza.jpg") no-repeat center center;
-	/*background-color: black;*/
-	background-size: cover;
-	text-align: center;
+
+    padding: 62px 63px;
+    text-align: center;
+    color: #fff;
+    background-attachment: scroll;
+    background-image: url("pizza.jpg");
+    background-position: center center;
+    background-repeat: none;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
 }
 
 
