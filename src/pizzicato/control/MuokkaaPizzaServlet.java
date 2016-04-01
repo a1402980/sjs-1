@@ -25,7 +25,7 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 		String jsp = "/view/muokkaa_pizza.jsp";		
 		
 		String idString = request.getParameter("pizza_id");
-		int pizzaId = new Integer(idString);
+		int pizzaId = new Integer (idString);
 		Pizza pizza = new PizzaDAO().findCertainPizza(pizzaId);
 		request.setAttribute("pizza", pizza);
 				
@@ -37,8 +37,9 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 	/**MuokkaaPizzaServletin doPost metodi hakee käyttäjän syöttämät tiedot selaimelta ja lähettää muokatt tiedot PizzaDAOon.**/
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String jsp = "/view/pizzalista_omistajalle.jsp";
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);		
+		//String jsp = "/view/pizzalista_omistajalle.jsp";
+		//RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
+		
 		
 		Map<String, String> errors = validate(request);
 	      if (errors.isEmpty()) {
