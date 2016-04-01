@@ -8,7 +8,7 @@
 <%@ page import="pizzicato.model.Pizza"%>
 <jsp:useBean id="pizza" class="pizzicato.model.Pizza"
 	scope="request" />
-<html lang="fi">
+<html lang="fi"> 
 <!--<![endif]-->
 <head>
 <meta charset="utf-8">
