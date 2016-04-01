@@ -26,8 +26,7 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 		
 		String idString = request.getParameter("pizza_id");
 		int pizzaId = new Integer(idString);
-		PizzaDAO pizzadao = new PizzaDAO();
-		Pizza pizza = pizzadao.findCertainPizza(pizzaId);
+		Pizza pizza = new PizzaDAO().findCertainPizza(pizzaId);
 		request.setAttribute("pizza", pizza);
 				
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
@@ -55,9 +54,9 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 	    	  response.sendRedirect("ListaaPizzat");
 	         return;
 	      }else{
-	    	  
-	    	  response.sendRedirect("MuokkaaPizza");
 	    	  System.out.println(errors);
+	    	  response.sendRedirect("MuokkaaPizza");
+	    	  
 	      }
 
 	   }
