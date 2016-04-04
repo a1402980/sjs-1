@@ -41,13 +41,13 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 	 * MuokkaaPizzaServletin doPost metodi hakee käyttäjän syöttämät tiedot
 	 * selaimelta ja lähettää muokatt tiedot PizzaDAOon.
 	 **/
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String jsp = "/view/muokkaa_pizza.jsp";
+		
 		Map<String, String> errors = validate(request);
 		if (!errors.isEmpty()) {
 			System.out.println("doPost "+errors);
-			//response.sendRedirect("MuokkaaPizza");
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
 			dispatcher.forward(request, response);
 			return;
@@ -57,21 +57,13 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 			try {
 				new PizzaDAO().modifyPizza(pizza);
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+				System.out.println("Sovelluksessa tapahtui virhe " + e.getMessage());
 				e.printStackTrace();
 			}
-			/*PizzaDAO modifiedPizzadao = new PizzaDAO();
-			try {
-				modifiedPizzadao.modifyPizza(pizza);
-			} catch (SQLException e) {
-				System.out.println("Sovelluksessa tapahtui virhe "
-						+ e.getMessage());
-				e.printStackTrace(); */
 
 			response.sendRedirect("ListaaPizzat");
 		}
 
-	//}
 
 	public static Map<String, String> validate(HttpServletRequest request) {
 		Pizza pizza = new Pizza();
@@ -100,14 +92,12 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 		pizza.setpHinta(pHinta);
 
 		String pSaatavuus = request.getParameter("valikoimassa");
-		if (pSaatavuus.equalsIgnoreCase("kyllä") || pSaatavuus.equalsIgnoreCase("true")) {
-			pSaatavuus = "true";
-			pizza.setpSaatavuus(pSaatavuus);
-		} else if (pSaatavuus.equalsIgnoreCase("ei") || pSaatavuus.equalsIgnoreCase("false")) {
-			pSaatavuus = "false";
+		
+		if (pSaatavuus == null) {
+			errors.put("pSaatavuus", " Saatavuus vaaditaan");
+		} else {
 			pizza.setpSaatavuus(pSaatavuus);
 		}
-		pizza.setpSaatavuus(pSaatavuus);
 		
 		request.setAttribute("errors", errors);
 		request.setAttribute("pizza", pizza);

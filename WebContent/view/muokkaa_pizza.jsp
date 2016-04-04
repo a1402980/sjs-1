@@ -80,7 +80,7 @@
 				<H1>Muokkaa Pizzaa</H1>
 
 
-				<form method="post" novalidate>
+				<form method="post">
 
 					<div class="imagePreview"></div>
 					<input type="file" name="imagefile"

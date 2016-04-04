@@ -4,38 +4,41 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import pizzicato.model.Omistaja;
+import pizzicato.model.Kayttaja;
 import pizzicato.model.dao.DataAccessObject;
 
-public class UserDAO extends DataAccessObject {
-   private static UserDAO instance = new UserDAO();
+public class KayttajaDAO extends DataAccessObject {
+   private static KayttajaDAO instance = new KayttajaDAO();
 
-   public static UserDAO getInstance() {
+   public static KayttajaDAO getInstance() {
       return instance;
    }
    
-   private Omistaja read(ResultSet rs) throws SQLException
+   private Kayttaja read(ResultSet rs) throws SQLException
    {
 	   int id = new Integer(rs.getInt("id"));
 	   String username = rs.getString("username");
 	   String password = rs.getString("password");
-	   Omistaja omistaja = new Omistaja();
-	   omistaja.setId(id);
-	   omistaja.setUsername(username);
-	   omistaja.setPassword(password);
-	   return omistaja;
+	   String userrole = rs.getString("userrole");
+	   Kayttaja kayttaja = new Kayttaja();
+	   kayttaja.setId(id);
+	   kayttaja.setUsername(username);
+	   kayttaja.setPassword(password);
+	   kayttaja.setUserRole(userrole);
+	   return kayttaja;
    }
    
-   public Omistaja find(int id) {
+   public Kayttaja find(int id) {
 	   ResultSet rs = null;
 	   PreparedStatement statement = null;
 	   Connection connection = null;
 	   try {
 		   connection = getConnection();
-		   String sql = "select * from omistaja where id=?";
+		   String sql = "select * from kayttaja where id=?";
 		   statement = connection.prepareStatement(sql);
 		   statement.setInt(1, id);
 		   rs = statement.executeQuery();
@@ -52,13 +55,13 @@ public class UserDAO extends DataAccessObject {
 	}
    }
    
-   public Omistaja findByUsername (String username) {
+   public Kayttaja findByUsername (String username) {
 	   ResultSet rs = null;
 	   PreparedStatement statement = null;
 	   Connection connection = null;
 	   try {
 		   connection = getConnection();
-		   String sql = "select * from omistaja where username=?";
+		   String sql = "select * from kayttaja where username=?";
 		   statement = connection.prepareStatement(sql);
 		   statement.setString(1, username);
 		   rs = statement.executeQuery();
@@ -75,20 +78,21 @@ public class UserDAO extends DataAccessObject {
 	         close(rs, statement, connection);
 	   }
    }
-/*   
-   public List<User> findAll() {
-	   LinkedList<User> users = new LinkedList<User>();
+}
+  
+/*   public ArrayList<Kayttaja> findAll() {
+	   ArrayList<Kayttaja> kayttajat = new ArrayList<Kayttaja>();
 	   ResultSet rs = null;
 	      PreparedStatement statement = null;
 	      Connection connection = null;
 	      try {
 	    	  connection = getConnection();
-	          String sql = "select * from user order by id";
+	          String sql = "select * from kayttaja order by id";
 	          statement = connection.prepareStatement(sql);
 	          rs = statement.executeQuery();
 	          while (rs.next()) {
-	        	  User user = read(rs);
-	              users.add(user);
+	        	  Kayttaja kayttaja = read(rs);
+	              kayttajat.add(kayttaja);
 	          }
 	          return users;
 		} catch (Exception e) {
@@ -98,17 +102,17 @@ public class UserDAO extends DataAccessObject {
 	    	  close(rs, statement, connection);
 	      }
    }
-   */
    
-   public void update(Omistaja omistaja) {
+   
+   public void update(Kayttaja kayttaja) {
 	   PreparedStatement statement = null;
 	   Connection connection = null;
 	   try {
 		   connection = getConnection();
-	         String sql = "update user set " + "password=? where id=?";
+	         String sql = "update kayttaja set " + "password=? where id=?";
 	         statement = connection.prepareStatement(sql);
-	         statement.setString(1, omistaja.getPassword());
-	         statement.setLong(2, omistaja.getId());
+	         statement.setString(1, kayttaja.getPassword());
+	         statement.setLong(2, kayttaja.getId());
 	         statement.executeUpdate();
 	   } catch (SQLException e) {
 	         throw new RuntimeException(e);
@@ -116,19 +120,20 @@ public class UserDAO extends DataAccessObject {
 	         close(statement, connection);
 	      }
    }
-   public void create(Omistaja omistaja) {
+   public void create(Kayttaja kayttaja) {
 	   //Long id = getUniqueId();
-	   int id = omistaja.getId();
-	   omistaja.setId(id);
+	   int id = kayttaja.getId();
+	   kayttaja.setId(id);
 	   PreparedStatement statement = null;
 	   Connection connection = null;
 	   try {
 		   connection = getConnection();
-		   String sql = "insert into user " + "(id, username, password) " + "values (?, ? ?)";
+		   String sql = "insert into user " + "(id, username, password, userrole) " + "values (?, ?, ? ?)";
 		   statement = connection.prepareStatement(sql);
-	       statement.setLong(1, omistaja.getId());
-	       statement.setString(2, omistaja.getUsername());
-	       statement.setString(3, omistaja.getPassword());
+	       statement.setLong(1, kayttaja.getId());
+	       statement.setString(2, kayttaja.getUsername());
+	       statement.setString(3, kayttaja.getPassword());
+	       statement.setString(4, kayttaja.getUserRole());
 	       statement.executeUpdate();
 	} catch (Exception e) {
 		throw new RuntimeException(e);
@@ -137,15 +142,15 @@ public class UserDAO extends DataAccessObject {
 	}
    }
    
-   public void delete(Omistaja omistaja){
+   public void delete(Kayttaja kayttaja){
 	   PreparedStatement statement = null;
 	   Connection connection = null;
 	   try {
 	      connection = getConnection();
 	      String sql = "delete from user where id=?";
 	      statement = connection.prepareStatement(sql);
-	      int id = omistaja.getId();
-	      statement.setLong(1, id);
+	      int id = kayttaja.getId();
+	      statement.setInt(1, id);
 	      statement.executeUpdate();
 	} catch (Exception e) {
 		throw new RuntimeException(e);
@@ -154,6 +159,6 @@ public class UserDAO extends DataAccessObject {
 	}
    }
 }
-   
+*/ 
 
 
