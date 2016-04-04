@@ -22,16 +22,11 @@ FOREIGN KEY (tayte_id) REFERENCES tayte(tayte_id)
 )Engine="InnoDB";
 
 
-CREATE TABLE omistaja(
-omistaja_id int NOT NULL AUTO_INCREMENT,
-o_username varchar(50) UNIQUE NOT NULL,
-o_password varchar(50) NOT NULL,
-PRIMARY KEY (omistaja_id)
+CREATE TABLE kayttaja(
+kayttaja_id int NOT NULL AUTO_INCREMENT,
+username varchar(50) UNIQUE NOT NULL,
+password varchar(50) NOT NULL,
+userrole varchar(15) NOT NULL,
+PRIMARY KEY (kayttaja_id)
 )Engine="InnoDB";
 
-CREATE TABLE asiakas(
-asiakas_id int NOT NULL AUTO_INCREMENT,
-a_username varchar(50) UNIQUE NOT NULL,
-a_password varchar(50) NOT NULL,
-PRIMARY KEY (asiakas_id)
-)Engine="InnoDB";

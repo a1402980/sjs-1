@@ -92,9 +92,8 @@ VALUES(2,6);
 
 /*KÄYTTÄJÄRYHMÄT*/
 
-INSERT INTO omistaja(omistaja_id,o_username, o_password)
-VALUES(1, 'admin', 'admin')
+INSERT INTO kayttaja(kayttaja_id, username, password, userrole)
+VALUES(1, 'admin', 'admin', 'omistaja')
 
-INSERT INTO asiakas(asiakas_id,a_username, a_password)
-VALUES(1, 'pizza', 'nalka')
+
 
