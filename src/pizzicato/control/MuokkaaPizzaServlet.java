@@ -28,15 +28,11 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 		String jsp = "/view/muokkaa_pizza.jsp";
 
 		String idString = request.getParameter("pizza_id");
-		System.out.println(idString);
 		int pizzaId = Integer.parseInt(idString);
-		System.out.println(pizzaId);
 		Pizza pizza = new PizzaDAO().findCertainPizza(pizzaId);
-		System.out.println(pizza);
 		request.setAttribute("pizza", pizza);
 
-		RequestDispatcher dispatcher = getServletContext()
-				.getRequestDispatcher(jsp);
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
 		dispatcher.forward(request, response);
 
 	}
@@ -45,43 +41,51 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 	 * MuokkaaPizzaServletin doPost metodi hakee käyttäjän syöttämät tiedot
 	 * selaimelta ja lähettää muokatt tiedot PizzaDAOon.
 	 **/
-	protected void doPost(HttpServletRequest req, HttpServletResponse response)
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		Map<String, String> errors = validate(req);
+		String jsp = "/view/muokkaa_pizza.jsp";
+		Map<String, String> errors = validate(request);
 		if (!errors.isEmpty()) {
 			System.out.println("doPost "+errors);
-			response.sendRedirect("MuokkaaPizza");
+			//response.sendRedirect("MuokkaaPizza");
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
+			dispatcher.forward(request, response);
 			return;
-		} else {
-			Pizza pizza = (Pizza) req.getAttribute("pizza");
-			PizzaDAO modifiedPizzadao = new PizzaDAO();
+		}
+		
+			Pizza pizza = (Pizza) request.getAttribute("pizza");
+			try {
+				new PizzaDAO().modifyPizza(pizza);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			/*PizzaDAO modifiedPizzadao = new PizzaDAO();
 			try {
 				modifiedPizzadao.modifyPizza(pizza);
 			} catch (SQLException e) {
 				System.out.println("Sovelluksessa tapahtui virhe "
 						+ e.getMessage());
-				e.printStackTrace();
-			}
+				e.printStackTrace(); */
+
 			response.sendRedirect("ListaaPizzat");
 		}
 
-	}
+	//}
 
 	public static Map<String, String> validate(HttpServletRequest request) {
 		Pizza pizza = new Pizza();
 		HashMap<String, String> errors = new HashMap<String, String>();
-		request.setAttribute("errors", errors);
-		request.setAttribute("pizza", pizza);
 
-		/*
-		 * /haetaan id String idString = request.getParameter("pizza_id"); int
-		 * Id = new Integer(idString); pizza.setPizzaId(Id)
-		 */
+		
+		 //haetaan id 
+		 String idString = request.getParameter("pizza_id"); 
+		 int Id = new Integer(idString); 
+		 pizza.setPizzaId(Id);
 
 		// nimen validointi
 		String syotettyNimi = request.getParameter("nimi");
-		if (syotettyNimi == null || syotettyNimi.trim().length() == 2) {
+		if (syotettyNimi == null || syotettyNimi.trim().length() < 2) {
 			errors.put("nimi", "Nimi vaaditaan.");
 		}
 		pizza.setpNimi(syotettyNimi);
@@ -96,14 +100,18 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 		pizza.setpHinta(pHinta);
 
 		String pSaatavuus = request.getParameter("valikoimassa");
-		if (pSaatavuus.equalsIgnoreCase("kyllä")) {
+		if (pSaatavuus.equalsIgnoreCase("kyllä") || pSaatavuus.equalsIgnoreCase("true")) {
 			pSaatavuus = "true";
 			pizza.setpSaatavuus(pSaatavuus);
-		} else if (pSaatavuus.equalsIgnoreCase("ei")) {
+		} else if (pSaatavuus.equalsIgnoreCase("ei") || pSaatavuus.equalsIgnoreCase("false")) {
 			pSaatavuus = "false";
 			pizza.setpSaatavuus(pSaatavuus);
 		}
 		pizza.setpSaatavuus(pSaatavuus);
+		
+		request.setAttribute("errors", errors);
+		request.setAttribute("pizza", pizza);
+		
 		return errors;
 
 	}

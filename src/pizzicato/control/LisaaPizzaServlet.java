@@ -29,6 +29,7 @@ public class LisaaPizzaServlet extends HttpServlet {
 	
 	/**LisaaPizzaServletin doPost metodi hakee käyttäjän syöttämät tiedot selaimelta ja lähettää tiedot tietokantayhteysoliolle. (Käyttäjän syöttämien tietojen mukaan PizzaDAOn metodi luo uuden Pizzaolion tietokantaan) **/
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		Map<String, String> errors = validate(request);
 		Pizza pizza = (Pizza) request.getAttribute("pizza");
 		System.out.println(pizza);
