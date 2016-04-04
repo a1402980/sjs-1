@@ -50,10 +50,10 @@ public class LisaaPizzaServlet extends HttpServlet {
 	}
 	
 	public static Map<String, String> validate(HttpServletRequest request) {
-		HashMap<String, String> errors = new HashMap<String, String>();
+		Map<String, String> errors = new HashMap<String, String>();
 		Pizza pizza = new Pizza();
 		Double pHinta = null;
-		
+	
 		String pNimi = request.getParameter("nimi");
 		if (pNimi == null || pNimi.trim().length() < 2) {
 			errors.put("nimi", "Nimen on oltava vähintään 2 merkkiä pitkä.");
