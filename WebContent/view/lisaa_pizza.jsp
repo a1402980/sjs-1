@@ -84,7 +84,7 @@
 				<H1>Lisää Pizza</H1>
 
 
-				<form method="post" novalidate>
+				<form method="post">
 
 					<div class="imagePreview"></div>
 					<input type="file" name="imagefile"
@@ -92,11 +92,8 @@
 					<!--  onchange="previewImage(this,[sizes],limit);" * limit is number of Mb  -->
 
 
-					Nimi:<br> <input type="text" name="nimi" placeholder="Kirjoita pizzan nimi tähän"  ><br> <br>
-					Hinta:<br> <input type="decimal" name="hinta" placeholder="X,XX Hinta ei yli 100€" ><br> <br>
-					
-					<!-- pattern="[a-zA-Z0-9]+[a-zA-Z0-9 ]+" required -->
-					<!-- pattern="[0-9,.]{4,5}" required -->
+					Nimi:<br> <input type="text" name="nimi" placeholder="Kirjoita pizzan nimi tähän" pattern="[a-zA-Z0-9]+[a-zA-Z0-9 ]+" required ><br> <br>
+					Hinta:<br> <input type="decimal" name="hinta" placeholder="X,XX Hinta ei yli 100€" pattern="[0-9,.]{4,5}" required ><br> <br>
 					
 						
 						Täytteet: <br>
