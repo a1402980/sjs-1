@@ -54,7 +54,7 @@ public class LisaaPizzaServlet extends HttpServlet {
 		Pizza pizza = new Pizza();
 		
 		String pNimi = request.getParameter("nimi");
-		if (pNimi == null || pNimi.trim().length() == 2) {
+		if (pNimi == null || pNimi.trim().length() < 2) {
 			errors.put("nimi", "Nimi vaaditaan.");
 		}else{
 			pizza.setpNimi(pNimi);
