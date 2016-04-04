@@ -46,18 +46,17 @@ public class LisaaPizzaServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			response.sendRedirect("ListaaPizzat");
-		}
-			
+		}			
 	}
 	
 	public static Map<String, String> validate(HttpServletRequest request) {
-		HashMap<String, String> errors = new HashMap<String, String>();
+		Map<String, String> errors = new HashMap<String, String>();
 		Pizza pizza = new Pizza();
 		Double pHinta = null;
-		
+	
 		String pNimi = request.getParameter("nimi");
 		if (pNimi == null || pNimi.trim().length() < 2) {
-			errors.put("nimi", "Nimen on oltava vähintään 2 merkkiä pitkä.");
+			errors.put("nimi", " Nimen on oltava vähintään 2 merkkiä pitkä.");
 		}else{
 			pizza.setpNimi(pNimi);
 		}
@@ -66,22 +65,27 @@ public class LisaaPizzaServlet extends HttpServlet {
 		try {
 			 pHinta = Double.parseDouble(strPHinta.replace(",", "."));
 		} catch (Exception e){
-			errors.put("hinta", "Hinnan on oltava väliltä 5-100€.");
+			errors.put("hinta", " Hinnan on oltava väliltä 5-100€.");
 		}
 		System.out.println(pHinta);
 		if (pHinta == null || pHinta < 5.0 || pHinta > 100.0) {
-			errors.put("pHinta", "Hinnan on oltava väliltä 5-100€.");
+			errors.put("pHinta", " Hinnan on oltava väliltä 5-100€.");
 		}else{
 			pizza.setpHinta(pHinta);
 		}
 		
-		String pSaatavuus = request.getParameter("valikoimassa");
-		if (pSaatavuus.equalsIgnoreCase("kyllä") || pSaatavuus.equalsIgnoreCase("true")) {
+		String pSaatavuus = null;
+		pSaatavuus = request.getParameter("valikoimassa");
+		if (pSaatavuus == null) {
+			errors.put("pSaatavuus", " Saatavuus vaaditaan");
+		} else if (pSaatavuus.equalsIgnoreCase("kyllä") || pSaatavuus.equalsIgnoreCase("true")) {
 			pSaatavuus = "true";
 			pizza.setpSaatavuus(pSaatavuus);
 		} else if (pSaatavuus.equalsIgnoreCase("ei") || pSaatavuus.equalsIgnoreCase("false")) {
 			pSaatavuus = "false";
 			pizza.setpSaatavuus(pSaatavuus);
+		} else {
+			errors.put("pSaatavuus", " Saatavuus on virheellinen");
 		}
 		pizza.setpSaatavuus(pSaatavuus);
 		
