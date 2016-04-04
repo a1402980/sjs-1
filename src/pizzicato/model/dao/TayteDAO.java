@@ -55,9 +55,8 @@ public class TayteDAO extends DataAccessObject{
 		Tayte tayte=null;
 		try {
 			conn = getConnection();
-			String sqlSelect ="SELECT tayte_id, t_nimi, t_hinta FROM tayte WHERE t_nimi=?;";		
+			String sqlSelect ="SELECT tayte_id, t_nimi, t_hinta FROM tayte WHERE t_nimi="+tNimi+";";		
 			stmt=conn.prepareStatement(sqlSelect);
-			stmt.setString(1, tayte.gettNimi());		
 			rs=stmt.executeQuery(sqlSelect);
 			if(rs.next()) {
 				tayte = readTayte(rs);
@@ -94,9 +93,10 @@ public class TayteDAO extends DataAccessObject{
 	
 		try {
 			connection = getConnection();
-			String sqlInsert = "INSERT INTO tayte(t_nimi) VALUES (?);";
+			String sqlInsert = "INSERT INTO tayte(t_nimi, t_hinta) VALUES (?,?);";
 			stmtInsert = connection.prepareStatement(sqlInsert);
-			stmtInsert.setString(1, tayte.gettNimi());			
+			stmtInsert.setString(1, tayte.gettNimi());
+			stmtInsert.setDouble(2, tayte.gettHinta());
 			stmtInsert.executeUpdate();
 		}catch (SQLException e) {
 			throw new RuntimeException(e);
