@@ -21,8 +21,18 @@ public class MuokkaaTayteServlet extends HttpServlet {
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String jsp ="/view/muokkaa_tayte.jsp";
-		RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
-		dispather.forward(request, response);
+		
+		String idString = request.getParameter("tayte_id");
+		System.out.println(idString);
+		int tayteId = Integer.parseInt(idString);
+		System.out.println(tayteId);
+		Tayte tayte = new TayteDAO().findCertainTayte(tayteId);
+		System.out.println(tayte);
+		request.setAttribute("tayte", tayte);
+
+		RequestDispatcher dispatcher = getServletContext()
+				.getRequestDispatcher(jsp);
+		dispatcher.forward(request, response);
 	}
 
 	

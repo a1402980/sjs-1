@@ -47,6 +47,28 @@ public class TayteDAO extends DataAccessObject{
 		
 		return taytteet;
 	}
+	
+	public Tayte findCertainTayte(int tayteId) {
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		Tayte tayte=null;
+		try {
+			conn = getConnection();
+			String sqlSelect ="SELECT tayte_id, t_nimi, t_hinta FROM tayte WHERE tayte_id='"+tayteId+"';";
+			stmt=conn.prepareStatement(sqlSelect);
+			rs=stmt.executeQuery(sqlSelect);
+			while(rs.next()) {
+				tayte = readTayte(rs);
+			}
+		} catch(SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			close(rs,stmt,conn);
+		}
+		
+		return tayte;
+	}
 
 	public Tayte findByName(String tNimi) {
 		Connection conn = null;
