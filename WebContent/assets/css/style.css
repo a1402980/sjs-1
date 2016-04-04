@@ -15,6 +15,7 @@
     GENERAL STYLES
 ==================================================*/
 body {         font-family: 'Raleway', sans-serif;    font-size:14px;
+
 }
 
 .nav a {
@@ -37,7 +38,6 @@ h1 {
     line-height:120px;
     text-transform:uppercase;
      color: #000000;
-     font-size:50px ;
     font-weight:900!important;
 }
 h3 {
@@ -126,9 +126,7 @@ select{
 /*=======================================
     HEADER STYLES
 ==================================================*/
-#home {
-    padding:20px 40px 130px 40px;
-}
+
 .head-main {
     font-size:120px !important;
     font-weight:900!important;
@@ -269,6 +267,12 @@ table {
     color: #fff;
     background: #3276B1;
 }
+.modal-backdrop {
+  z-index: -1;
+}
+#myModal{
+	top:15%;
+}
 /*=======================================
     Login ikkunan tyylit LOPPUU
 ==================================================*/
@@ -327,11 +331,32 @@ table {
     background: #222 url('pizza-stock.jpg') center center no-repeat;
     background-size: cover;
     color: white;
-    height: 100%;
-    text-align: center;
     display: flex;
     align-items: center;
+    height:100%;
+    min-height:100vh;
+    vertical-align: middle;
 }
+#cover-caption{
+text-shadow: 0px 1px 3px #000000;
+font-size: 300%;
+text-align: center;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    overflow: hidden;
+    outline:none;
+    color: white;
+}
+#cover-caption h1 {
+	color: white;
+	
+}
+
+#cover-caption a {
+	color: white;
+}
+
 
   .affix {
       top: 0;
@@ -341,6 +366,7 @@ table {
   .affix + .container-fluid {
       padding-top: 70px;
   }
+
 
 
 

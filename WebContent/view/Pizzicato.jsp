@@ -24,10 +24,15 @@
 <!--REQUIRED STYLE SHEETS-->
 <!-- JQUERY CODE SOURCE -->
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
 
 
 
@@ -47,31 +52,35 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
-    <script src="assets/js/navijutska.js"></script>
-</head>
 
+</head>
+</body>
 <header class="masthead">
 
-<section id="cover">
-        <div id="cover-caption">
-            <div class="container">
-                <div>
-                    <h1>Tervetuloa!</h1>
-                    <p>Just like the old Bootstrap, but better. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio quibusdam quis, repudiandae reprehenderit doloremque fugiat molestias, corporis voluptas.</p>
 
-                    
+<section id="cover">
+        <div class="col-lg-12" id="cover-caption">
+
+                <div>
+                	<h1>Pizzeria Pizzicato</h1>
+                    <h1>Tervetuloa!</h1>
+
+					<span><i class="fa fa-home"></i>&nbsp; <a href="https://goo.gl/maps/W61P9QmPrDC2">Pizzakatu 12</a> </span> <br /> <span><i
+						class="fa fa-phone"></i>&nbsp;(+030)123123</span> <br />
+
+
                     <br>
                     
-                    <a href="#nav-main" class="btn btn-secondary-outline btn-sm" role="button">&darr;</a>
+                    <a href="#home" class="glyphicon glyphicon-chevron-down"></a>
                 </div>
-            </div>
-        </div>
+		</div>
+
     </section>
 
 </header>
 
 <!-- navigation --> 
-<nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="197">
+<nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="500" id=navigaatio>
 <div class="container">
 
 		<div class="navbar-header">
@@ -90,9 +99,7 @@
 				<li><a href="#pizzamenu">Pizzat</a></li>
 				<li><a href="#services">Tilaukset</a></li>
 				<li><a href="#free-text">Yhteystiedot</a></li>
-				<li><a><button class="btn btn-primary btn-xs"
-							data-toggle="modal" data-target="#myModal" style="""center">Kirjaudu</button></a>
-				</li>
+				<li><a><button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal" style=text-align="center">Kirjaudu</button></a>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
@@ -101,8 +108,19 @@
 </nav>
 <!-- end of navigation --> 
 	
+<script type="text/javascript">
+
+	$('nav').affix({
+	    offset: {
+	      top: $('nav#navigaatio').offset().top
+	    }
+	}); 
+
+</script>
+	
+	
 	<div class="container">
-		<div class="row text-center for-full-back color-light">
+		<div class="row text-center for-full-back color-light" id=home>
 			<div class="col-md-8 col-md-offset-2">
 				<h3>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
 					Sed posuere interdum sem. Quisque ligula eros ullamcorper quis,
@@ -136,15 +154,29 @@
 					elit. Mauris consectetuer odio vitae augue.</h3>
 
 			</div>
-		</div>
-	</div>
+		
+		<div class="container">
 
+			<div class="col-md-8 col-md-offset-2">
+			
+							<h3>Uutuuksia.</h3>
+			
+		
+			
+			
+			
+			</div>
+
+			</div>
+		
+		
+		
+		
+		
 	<!-- Contact Section -->
 	<section class="for-full-back color-white " id="contact">
 	<div class="container">
-		<div class="row text-center"></div>
 
-		<div class="row">
 			<div class="col-md-5 contact-cls">
 				<h3>Sijaintimme</h3>
 				<div>
@@ -153,8 +185,7 @@
 						class="fa fa-envelope-o"></i>&nbsp;e-mail</span> <br /> <span><i
 						class="fa fa-phone"></i>&nbsp;Puhelin</span> <br />
 				</div>
-			</div>
-		</div>
+
 	</div>
 	</section>
 
@@ -165,72 +196,57 @@
 	<!--End footer Section -->
 	<!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
 	<!-- BOOTSTRAP CORE SCRIPT   -->
-	<script src="assets/plugins/bootstrap.js"></script>
+	<!-- <script src="assets/plugins/bootstrap.js"></script> tämä ei toiminut niin javascriptkirjasto haetaan netistä headerissa -->
 	<!-- CUSTOM SCRIPTS -->
 	<script src="assets/js/custom.js"></script>
+	
 
 
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
+<script type="text/javascript">
+$("#myModal").modal("show");
+$("#myModal").css("z-index", "1500");
+</script>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
 
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">×</button>
-					<h4 class="modal-title" id="myModalLabel">Kirjaudu sisään</h4>
-				</div>
-				<!-- /.modal-header -->
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">Kirjaudu Sisään</h4>
+			</div> <!-- /.modal-header -->
 
-				<div class="modal-body">
-					<form role="form">
-						<div class="form-group">
-							<div class="input-group">
-								<input type="text" class="form-control" id="uLogin"
-									placeholder="Käyttäjätunnus"> <label for="uLogin"
-									class="input-group-addon glyphicon glyphicon-user"></label>
-							</div>
+			<div class="modal-body">
+				<form role="form">
+					<div class="form-group">
+						<div class="input-group">
+							<i class="fa fa-user"></i><input type="text" class="form-control" id="uLogin" placeholder="Käyttäjätunnus">
+							
+
 						</div>
-						<!-- /.form-group -->
+					</div> <!-- /.form-group -->
 
-						<div class="form-group">
-							<div class="input-group">
-								<input type="password" class="form-control" id="uPassword"
-									placeholder="Salasana"> <label for="uPassword"
-									class="input-group-addon glyphicon glyphicon-lock"></label>
-							</div>
-							<!-- /.input-group -->
-						</div>
-						<!-- /.form-group -->
+					<div class="form-group">
+						<div class="input-group">
+							<i class="fa fa-unlock-alt"></i><input type="password" class="form-control" id="uPassword" placeholder="Salasana">
+							
 
-						<div class="checkbox">
-							<label> <input type="checkbox"> Muista minut
-							</label>
-						</div>
-						<!-- /.checkbox -->
-					</form>
+						</div> <!-- /.input-group -->
+					</div> <!-- /.form-group -->
+				</form>
+			</div> <!-- /.modal-body -->
+			<div class="modal-footer">
+				<button class="form-control btn btn-primary">Ok</button>
 
-				</div>
-				<!-- /.modal-body -->
+			</div> <!-- /.modal-footer -->
 
-				<div class="modal-footer">
-					<button class="form-control btn btn-primary">Kirjaudu</button>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
-					<div class="progress">
-						<div class="progress-bar progress-bar-primary" role="progressbar"
-							aria-valuenow="1" aria-valuemin="1" aria-valuemax="100"
-							style="width: 0%;">
-							<span class="sr-only">progress</span>
-						</div>
-					</div>
-				</div>
-				<!-- /.modal-footer -->
 
-			</div>
-			<!-- /.modal-content -->
-		</div>
-		<!-- /.modal-dialog -->
-	</div>
-	<!-- /.modal -->
 
-</html>
+
+	
+</body>	
+
+	</html>
