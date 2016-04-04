@@ -74,21 +74,14 @@ public class LisaaPizzaServlet extends HttpServlet {
 			pizza.setpHinta(pHinta);
 		}
 		
-		String pSaatavuus = null;
-		pSaatavuus = request.getParameter("valikoimassa");
+		
+		String pSaatavuus = request.getParameter("valikoimassa");
+		
 		if (pSaatavuus == null) {
 			errors.put("pSaatavuus", " Saatavuus vaaditaan");
-		} else if (pSaatavuus.equalsIgnoreCase("kyllä") || pSaatavuus.equalsIgnoreCase("true")) {
-			pSaatavuus = "true";
-			pizza.setpSaatavuus(pSaatavuus);
-		} else if (pSaatavuus.equalsIgnoreCase("ei") || pSaatavuus.equalsIgnoreCase("false")) {
-			pSaatavuus = "false";
-			pizza.setpSaatavuus(pSaatavuus);
 		} else {
-			errors.put("pSaatavuus", " Saatavuus on virheellinen");
+			pizza.setpSaatavuus(pSaatavuus);
 		}
-		pizza.setpSaatavuus(pSaatavuus);
-		
 		request.setAttribute("pizza", pizza);
 		return errors;
 	}
