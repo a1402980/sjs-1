@@ -1,10 +1,17 @@
 package pizzicato.model;
 
-public class Omistaja {
+public class Kayttaja {
 	private int id;
 	private String username;
 	private String password;
+	private String userRole;
 	
+	public String getUserRole() {
+		return userRole;
+	}
+	public void setUserRole(String userRole) {
+		this.userRole = userRole;
+	}
 	public int getId() {
 		return id;
 	}
