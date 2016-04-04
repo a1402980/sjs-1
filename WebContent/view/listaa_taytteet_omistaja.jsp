@@ -89,7 +89,7 @@
 			<th>Id</th>
 				<th>Nimi</th>
 					
-						<!-- <th>Hinta</th> -->
+						<th>Hinta</th>
 							
 								<th>Muokkaa</th>
 									<th>Poista</th>
@@ -101,7 +101,7 @@
 			<tr>
 				<td><%=taytteet.get(i).getTayteId()%></td>
 				<td><%=taytteet.get(i).gettNimi()%></td>
-				<!-- <td></td> -->
+				<td><%=taytteet.get(i).gettHinta()%></td>
 				<td><a href="MuokkaaTayte?tayte_id=<%=taytteet.get(i).getTayteId()%>" role="button"><span class="glyphicon glyphicon-edit"></span></a></td>
 				<td>
 					<button onclick="poistatayte()">
