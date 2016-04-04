@@ -3,22 +3,24 @@ package pizzicato.model;
 public class Tayte {
 	int tayteId;
 	String tNimi;
-	//tama on testi voinko pushata
+	double tHinta;
+	
 	public Tayte() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Tayte(String tNimi, double tHinta) {
+		super();
+		this.tNimi = tNimi;
+		this.tHinta = tHinta;
+	}
 
-	public Tayte(int tayteId, String tNimi) {
+	public Tayte(int tayteId, String tNimi, double tHinta) {
 		super();
 		this.tayteId = tayteId;
 		this.tNimi = tNimi;
-	}
-	
-	
-	public Tayte(String tNimi) {
-		super();
-		this.tNimi = tNimi;
+		this.tHinta = tHinta;
 	}
 
 	public int getTayteId() {
@@ -37,11 +39,19 @@ public class Tayte {
 		this.tNimi = tNimi;
 	}
 
+	public double gettHinta() {
+		return tHinta;
+	}
+
+	public void settHinta(double tHinta) {
+		this.tHinta = tHinta;
+	}
+
 	@Override
 	public String toString() {
-		return "Tayte [tayteId=" + tayteId + ", tNimi=" + tNimi + "]";
+		return "Tayte [tayteId=" + tayteId + ", tNimi=" + tNimi + ", tHinta="
+				+ tHinta + "]";
 	}
-	
 	
 
 }

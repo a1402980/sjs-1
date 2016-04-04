@@ -80,8 +80,12 @@
                 <div class="col-md-8 col-md-offset-2">
                     <h1>Pizzalista</h1>
 					<h2>(Omistajan näkymä)</h2>
-					<div id="lisaapizzanappi">
+					
+					<div class="col-xs-4" id="lisaapizzanappi">
 					<a href="LisaaPizza" class="btn btn-success btn-xl" role="button">Lisää Pizza</a>
+					</div>
+					<div class="col-xs-4" id="taytteetnappi">
+					<a href="ListaaTaytteet" class="btn btn-success btn-xl" role="button">Täytteet</a>
 					</div>
 					<div class="table-responsive">
                     <table class="table table-hover" align="center" id="pizzataulukko">

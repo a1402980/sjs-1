@@ -22,7 +22,7 @@ public class LisaaTayteServlet extends HttpServlet {
        
   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String jsp ="/view/lisaa_uusi_tayte.jsp";
+		String jsp ="/view/lisaa_tayte.jsp";
 		RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
 		dispather.forward(request, response);
 	}
@@ -30,8 +30,10 @@ public class LisaaTayteServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String tNimi = request.getParameter("nimi");
-		
-		Tayte tayte = new Tayte(tNimi);
+		String strHinta = request.getParameter("hinta");		
+		strHinta = strHinta.replace(",", ".");
+		Double tHinta = new Double(strHinta);
+		Tayte tayte = new Tayte(tNimi, tHinta);
 		
 		TayteDAO taytedao = new TayteDAO();
 		try {
@@ -40,7 +42,7 @@ public class LisaaTayteServlet extends HttpServlet {
 			System.out.println("Sovelluksessa tapahtui virhe "+ e.getMessage());
 			e.printStackTrace();
 		}
-		response.sendRedirect("LisaaTayte");
+		response.sendRedirect("ListaaTaytteet");
 	}
 
 }

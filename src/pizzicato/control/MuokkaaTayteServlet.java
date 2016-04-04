@@ -20,9 +20,19 @@ public class MuokkaaTayteServlet extends HttpServlet {
        
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String jsp ="/view/lisaa_uusi_tayte.jsp";
-		RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
-		dispather.forward(request, response);
+		String jsp ="/view/muokkaa_tayte.jsp";
+		
+		String idString = request.getParameter("tayte_id");
+		System.out.println(idString);
+		int tayteId = Integer.parseInt(idString);
+		System.out.println(tayteId);
+		Tayte tayte = new TayteDAO().findCertainTayte(tayteId);
+		System.out.println(tayte);
+		request.setAttribute("tayte", tayte);
+
+		RequestDispatcher dispatcher = getServletContext()
+				.getRequestDispatcher(jsp);
+		dispatcher.forward(request, response);
 	}
 
 	
@@ -31,11 +41,11 @@ public class MuokkaaTayteServlet extends HttpServlet {
 		int tayteId = new Integer(strId);	
 		
 		String syotettyNimi = request.getParameter("nimi");
-		//String syotettyHinta = request.getParameter("hinta");
-		//syotettyHinta = syotettyHinta.replace(",", ".");
-		//Double pHinta = new Double(syotettyHinta);
+		String syotettyHinta = request.getParameter("hinta");
+		syotettyHinta = syotettyHinta.replace(",", ".");
+		Double tHinta = new Double(syotettyHinta);
 				
-		Tayte modifiedTayte = new Tayte(tayteId, syotettyNimi);
+		Tayte modifiedTayte = new Tayte(tayteId, syotettyNimi, tHinta);
 		TayteDAO modifiedTaytedao = new TayteDAO();
 		
 		try {

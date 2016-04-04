@@ -21,6 +21,8 @@ public class PoistaTayteServlet extends HttpServlet {
 		int tayteId = new Integer(strId);
 		TayteDAO taytedao = new TayteDAO();
 		taytedao.deleteTayte(tayteId);
+		
+		response.sendRedirect("ListaaTaytteet");
 	}
 
 

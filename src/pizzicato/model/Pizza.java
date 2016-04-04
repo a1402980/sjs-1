@@ -32,8 +32,8 @@ public class Pizza {
 		return pSaatavuus;
 	}
 
-	public String setpSaatavuus(String pSaatavuus) {
-		return pSaatavuus;
+	public void setpSaatavuus(String pSaatavuus) {
+		this.pSaatavuus = pSaatavuus;
 	}
 
 	public int getPizzaId() {
