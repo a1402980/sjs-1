@@ -32,7 +32,7 @@ public class TestiServlet extends HttpServlet {
 		
 		String username = request.getParameter("username");
 	    Kayttaja kayttaja = new KayttajaDAO().findByUsername(username);
-	       if (username == null)
+	       if (kayttaja == null)
 	       {
 	    	 
 	          request.setAttribute("message", "Kirjautuminen epäonnistui");
