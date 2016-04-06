@@ -2,6 +2,7 @@ package pizzicato.control;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -37,25 +38,26 @@ public class MuokkaaTayteServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Map<String, String> errors = LisaaTayteServlet.validate(request);
+		Tayte tayte = (Tayte) request.getAttribute("tayte");
+		
 		String strId = request.getParameter("tayte_id");
 		int tayteId = new Integer(strId);	
+		tayte.setTayteId(tayteId);
 		
-		String syotettyNimi = request.getParameter("nimi");
-		String syotettyHinta = request.getParameter("hinta");
-		syotettyHinta = syotettyHinta.replace(",", ".");
-		Double tHinta = new Double(syotettyHinta);
-				
-		Tayte modifiedTayte = new Tayte(tayteId, syotettyNimi, tHinta);
-		TayteDAO modifiedTaytedao = new TayteDAO();
-		
-		try {
-			modifiedTaytedao.modifyTayte(modifiedTayte);
-		} catch (SQLException e) {
-			System.out.println("Sovelluksessa tapahtui virhe "+ e.getMessage());
-			e.printStackTrace();
-		}
-		
-		response.sendRedirect("ListaaTaytteet");
+		if (!errors.isEmpty()) {
+			System.out.println(errors);
+			response.sendRedirect("MuokkaaTayte");
+		} else {
+			TayteDAO taytedao = new TayteDAO();
+			try {
+				taytedao.modifyTayte(tayte);
+			} catch (SQLException e) {
+				System.out.println("Sovelluksessa tapahtui virhe "+ e.getMessage());
+				e.printStackTrace();
+			}
+			response.sendRedirect("ListaaTaytteet");
+		}			
 	}
 
 }

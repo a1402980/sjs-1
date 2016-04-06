@@ -2,6 +2,7 @@ package pizzicato.control;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,7 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import pizzicato.model.Pizza;
+import pizzicato.model.Tayte;
 import pizzicato.model.dao.PizzaDAO;
+import pizzicato.model.dao.TayteDAO;
 
 
 @WebServlet("/LisaaPizza")
@@ -23,16 +26,24 @@ public class LisaaPizzaServlet extends HttpServlet {
 	/**LisaaPizzaServletin doGet metodi luo käyttäjän näkymän selaimeen.**/   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String jsp ="/view/lisaa_pizza.jsp";
+		TayteDAO taytedao = new TayteDAO();
+		ArrayList<Tayte> taytteet = taytedao.findAll();
+		request.setAttribute("taytteet", taytteet);	
 		RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
 		dispather.forward(request, response);
 	}
 	
 	/**LisaaPizzaServletin doPost metodi hakee käyttäjän syöttämät tiedot selaimelta ja lähettää tiedot tietokantayhteysoliolle. (Käyttäjän syöttämien tietojen mukaan PizzaDAOn metodi luo uuden Pizzaolion tietokantaan) **/
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		
+		int maxlkm = 6;
+		String valituttaytteet[] = new String[maxlkm];
 		Map<String, String> errors = validate(request);
 		Pizza pizza = (Pizza) request.getAttribute("pizza");
-		System.out.println(pizza);
+	
+		valituttaytteet = request.getParameterValues("valittutayte");
+		System.out.println(valituttaytteet);
 		
 		if (!errors.isEmpty()) {
 			System.out.println(errors);
@@ -46,6 +57,7 @@ public class LisaaPizzaServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			response.sendRedirect("ListaaPizzat");
+			
 		}			
 	}
 	
