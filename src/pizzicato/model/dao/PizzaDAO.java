@@ -29,12 +29,36 @@ public class PizzaDAO extends DataAccessObject {
 				stmtInsert.setDouble(2, pizza.getpHinta());
 				stmtInsert.setString(3, pizza.getpSaatavuus());
 				stmtInsert.executeUpdate();
-				String sqlInsert2 = "INSERT INTO pizzatayte(pizza_id, tayte_id) VALUES (?, ?);";
-				stmtInsert.setInt(1, pizza.getPizzaId());
+				
 				
 				//stmtInsert.setInt(2, pizza.getTaytteet().get(i).gettayteId());
 				//lisää täyte ArrayList myöhemmin
 
+				
+			}catch (SQLException e) {
+				throw new RuntimeException(e);
+			} finally {
+				close(stmtInsert, connection); 
+			}
+		}
+		
+		public void addPizzanTayte(Pizza pizza) throws SQLException {
+			Connection connection = null;
+			PreparedStatement stmtInsert = null;
+		
+			try {
+				connection = getConnection();
+				
+								
+				for (int i=0; i < pizza.getTayteLkm(pizza.getPizzaId()); i++) {
+					String sqlInsert = "INSERT INTO pizzatayte(pizza_id, tayte_id) VALUES (?, ?);";
+					stmtInsert = connection.prepareStatement(sqlInsert);
+					stmtInsert.setInt(1, pizza.getPizzaId());
+					System.out.println(stmtInsert);
+					stmtInsert.setInt(2, pizza.getTayte(i).getTayteId());
+					System.out.println(stmtInsert);
+					stmtInsert.executeUpdate();
+				}
 				
 			}catch (SQLException e) {
 				throw new RuntimeException(e);
