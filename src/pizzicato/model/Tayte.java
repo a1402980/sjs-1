@@ -34,7 +34,8 @@ public class Tayte {
 	public String gettNimi() {
 		return tNimi;
 	}
-
+	
+	
 	public void settNimi(String tNimi) {
 		this.tNimi = tNimi;
 	}

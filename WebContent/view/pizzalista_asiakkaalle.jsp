@@ -28,7 +28,7 @@
     <!-- FONTAWESOME STYLE CSS -->
     <link type="text/css" href="assets/css/font-awesome.min.css" rel="stylesheet" />
     <!-- CUSTOM STYLE CSS -->
-    <link type="text/css" href="assets/css/style.css" rel="stylesheet" />
+    <link type="text/css" href="assets/css/pizzalista_tyylit.css" rel="stylesheet" />
     <!-- GOOGLE FONT -->
     <link type="text/css" href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->

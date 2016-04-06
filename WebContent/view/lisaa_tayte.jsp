@@ -51,12 +51,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="ListaaPizzat">Pizzeria Pizzicato</a>
+                <a class="navbar-brand" href="Etusivu">Pizzeria Pizzicato</a>
             </div>
             <!-- Collect the nav links for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#home">Etusivu</a>
+                    <li><a href="Etusivu">Etusivu</a>
                     </li>
                     <li><a href="ListaaPizzat">Pizzat</a>
                     </li>
@@ -84,15 +84,13 @@
 				<H1>Lisää Täyte</H1>
 
 
-				<form method="post" novalidate>
+				<form method="post">
 
 					
 
-					Nimi:<br> <input type="text" name="nimi" placeholder="Kirjoita täytteen nimi tähän"  ><br> <br>
-					Hinta:<br> <input type="decimal" name="hinta" placeholder="X,XX Hinta ei yli 100€" ><br> <br>
+					Nimi:<br> <input type="text" name="nimi" placeholder="Kirjoita täytteen nimi tähän" pattern="[a-zA-Z0-9]+[a-zA-Z0-9 ]+" required ><br> <br>
+					Hinta:<br> <input type="decimal" name="hinta" placeholder="X,XX Hinta ei yli 20€" pattern="[0-9,.]{4,2}" required><br> <br>
 					
-					<!-- pattern="[a-zA-Z0-9]+[a-zA-Z0-9 ]+" required -->
-					<!-- pattern="[0-9,.]{4,5}" required -->
 								
 				<div id="lisaapizzanapit">
 					<button input type="submit" class="btn btn-success btn-lg">Tallenna</button>

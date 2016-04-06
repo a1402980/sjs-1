@@ -2,6 +2,7 @@ package pizzicato.control;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,7 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import pizzicato.model.Pizza;
+import pizzicato.model.Tayte;
 import pizzicato.model.dao.PizzaDAO;
+import pizzicato.model.dao.TayteDAO;
 
 
 @WebServlet("/LisaaPizza")
@@ -23,6 +26,9 @@ public class LisaaPizzaServlet extends HttpServlet {
 	/**LisaaPizzaServletin doGet metodi luo käyttäjän näkymän selaimeen.**/   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String jsp ="/view/lisaa_pizza.jsp";
+		TayteDAO taytedao = new TayteDAO();
+		ArrayList<Tayte> kaikkitaytteet = taytedao.findAll();
+		request.setAttribute("kaikkitaytteet", kaikkitaytteet);	
 		RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
 		dispather.forward(request, response);
 	}
@@ -31,8 +37,7 @@ public class LisaaPizzaServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Map<String, String> errors = validate(request);
-		Pizza pizza = (Pizza) request.getAttribute("pizza");
-		System.out.println(pizza);
+		Pizza pizza = (Pizza) request.getAttribute("pizza");	
 		
 		if (!errors.isEmpty()) {
 			System.out.println(errors);
@@ -41,11 +46,13 @@ public class LisaaPizzaServlet extends HttpServlet {
 			PizzaDAO pizzadao = new PizzaDAO();
 			try {
 				pizzadao.addPizza(pizza);
+				pizzadao.addPizzanTayte(pizza);
 			} catch (SQLException e) {
 				System.out.println("Sovelluksessa tapahtui virhe "+ e.getMessage());
 				e.printStackTrace();
 			}
 			response.sendRedirect("ListaaPizzat");
+			
 		}			
 	}
 	
@@ -53,6 +60,8 @@ public class LisaaPizzaServlet extends HttpServlet {
 		Map<String, String> errors = new HashMap<String, String>();
 		Pizza pizza = new Pizza();
 		Double pHinta = null;
+		
+		
 	
 		String pNimi = request.getParameter("nimi");
 		if (pNimi == null || pNimi.trim().length() < 2) {
@@ -82,6 +91,31 @@ public class LisaaPizzaServlet extends HttpServlet {
 		} else {
 			pizza.setpSaatavuus(pSaatavuus);
 		}
+		//täytteiden käsittely
+		
+		
+		int tayteId;
+		int maxlkm =0;
+		String valituttaytteet[] = new String[maxlkm];
+		maxlkm = pizza.getTayteLkm(pizza.getPizzaId());
+		valituttaytteet = request.getParameterValues("tayte");
+		for (int i = 0; i < maxlkm; i++){
+			//muutetaan tayteId:t stringeistä inteiksi
+			tayteId = new Integer(valituttaytteet[i]);
+			//luodaan täyte olio ja lisätään täyteid:t niihin, täytedaosta haetaan muut täytteen tiedot
+			Tayte tayte = new Tayte();
+			TayteDAO taytedao = new TayteDAO();
+			tayte = taytedao.findCertainTayte(tayteId);
+			
+			//lisätään täyte-oliot pizza-olion täytelistaan
+			pizza.addTayte(tayte);
+		
+			System.out.println(tayte);
+
+		}
+		
+		System.out.println(valituttaytteet);
+		
 		request.setAttribute("pizza", pizza);
 		return errors;
 	}

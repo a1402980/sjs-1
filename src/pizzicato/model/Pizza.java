@@ -7,8 +7,7 @@ public class Pizza {
 	String pNimi;
 	double pHinta;
 	String pSaatavuus;
-	//ArrayList<Tayte> taytteet = new ArrayList<Tayte>();
-	
+	ArrayList<Tayte> taytteet = new ArrayList<Tayte>();	
 	
 	public Pizza() {
 		super();
@@ -26,8 +25,26 @@ public class Pizza {
 		this.pHinta = pHinta;
 		this.pSaatavuus = pSaatavuus;		
 	}
-	
-	
+		
+	public Pizza(int pizzaId, String pNimi, double pHinta, String pSaatavuus,
+			ArrayList<Tayte> taytteet) {
+		super();
+		this.pizzaId = pizzaId;
+		this.pNimi = pNimi;
+		this.pHinta = pHinta;
+		this.pSaatavuus = pSaatavuus;
+		this.taytteet = taytteet;
+	}
+
+	public Pizza(String pNimi, double pHinta, String pSaatavuus,
+			ArrayList<Tayte> taytteet) {
+		super();
+		this.pNimi = pNimi;
+		this.pHinta = pHinta;
+		this.pSaatavuus = pSaatavuus;
+		this.taytteet = taytteet;
+	}
+
 	public String getpSaatavuus() {
 		return pSaatavuus;
 	}
@@ -60,15 +77,19 @@ public class Pizza {
 		this.pHinta = pHinta;
 	}
 
-	/*
-	public ArrayList<Tayte> getTaytteet() {
-		return taytteet;
+	public void addTayte(Tayte tayte) {
+		this.taytteet.add(tayte);
+	}
+	
+	public Tayte getTayte(int idx) {
+		return this.taytteet.get(idx);		
+	}
+	
+	public int getTayteLkm(int pizzaId) {
+		int TayteLkm = this.taytteet.size();
+		return TayteLkm;
 	}
 
-	public void setTaytteet(ArrayList<Tayte> taytteet) {
-		this.taytteet = taytteet;
-	}
-	*/
 
 	@Override
 	public String toString() {

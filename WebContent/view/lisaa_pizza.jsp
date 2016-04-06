@@ -5,6 +5,10 @@
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
+<%@ page import="pizzicato.model.Tayte"%>
+<%@ page import="pizzicato.model.Pizza"%>
+<jsp:useBean id="kaikkitaytteet" type="java.util.ArrayList<Tayte>"
+	scope="request" />
 <html lang="fi">
 <!--<![endif]-->
 <head>
@@ -84,7 +88,7 @@
 				<H1>Lisää Pizza</H1>
 
 
-				<form method="post">
+				<form method="post" novalidate>
 
 					<div class="imagePreview"></div>
 					<input type="file" name="imagefile"
@@ -94,129 +98,27 @@
 
 					Nimi:<br> <input type="text" name="nimi" placeholder="Kirjoita pizzan nimi tähän" pattern="[a-zA-Z0-9]+[a-zA-Z0-9 ]+" required ><br> <br>
 					Hinta:<br> <input type="decimal" name="hinta" placeholder="X,XX Hinta ei yli 100€" pattern="[0-9,.]{4,5}" required ><br> <br>
-					
-						
-						Täytteet: <br>
-						<input type="checkbox" name="Tomaattikastike" value="tomaattikastike"> Tomaattikastike<br>
-  						<input type="checkbox" name="Juusto" value="juusto" checked="checked"> Juusto<br>
-  						<input type="checkbox" name="Herkkusieni" value="herkkusieni"> Herkkusieni<br>
-  						<input type="checkbox" name="Sipuli" value="sipuli"> Sipuli<br>
-  						<input type="checkbox" name="Oliivi" value="oliivi"> Oliivi<br>
-  						<input type="checkbox" name="Pinaatti" value="pinaatti"> Pinaatti<br>
-  						<input type="checkbox" name="Tonnikala" value="tonnikala"> Tonnikala<br>
-  						<input type="checkbox" name="Katkarapu" value="katkarapu"> Katkarapu<br>
-  						<input type="checkbox" name="Simpukka" value="simpukka"> Simpukka<br>
-  						<input type="checkbox" name="Kinkku" value="kinkku"> Kinkku<br>
-  						<input type="checkbox" name="Salami" value="salami"> Salami<br>
-  						<input type="checkbox" name="Pepperoni" value="pepperoni"> Pepperoni<br>
-  						<input type="checkbox" name="Jalopeno" value="Jalopeno"> Jalopeno<br>
-  						
-  						
-  						
-  						
-  						
-  						
-						Täytteet: <br> <select name="tayte1">
-						<option value="eitaytetta">Täyte1</option>
-						<option value="tomaattikastike">Tomaattikastike</option>
-						<option value="juusto">Juusto</option>
-						<option value="herkkusieni">Herkkusieni</option>
-						<option value="sipuli">Sipuli</option>
-						<option value="oliivi">Oliivi</option>
-						<option value="pinaatti">Pinaatti</option>
-						<option value="tonnikala">Tonnikala</option>
-						<option value="katkarapu">Katkarapu</option>
-						<option value="simpukka">Simpukka</option>
-						<option value="kinkku">Kinkku</option>
-						<option value="salami">Salami</option>
-						<option value="pepperoni">Pepperoni</option>
-						<option value="jalopeno">Jalopeno</option>
-					</select> <select name="tayte2">
-						<option value="eitaytetta">Täyte2</option>
-						<option value="tomaattikastike">Tomaattikastike</option>
-						<option value="juusto">Juusto</option>
-						<option value="herkkusieni">Herkkusieni</option>
-						<option value="sipuli">Sipuli</option>
-						<option value="oliivi">Oliivi</option>
-						<option value="pinaatti">Pinaatti</option>
-						<option value="tonnikala">Tonnikala</option>
-						<option value="katkarapu">Katkarapu</option>
-						<option value="simpukka">Simpukka</option>
-						<option value="kinkku">Kinkku</option>
-						<option value="salami">Salami</option>
-						<option value="pepperoni">Pepperoni</option>
-						<option value="jalopeno">Jalopeno</option>
-					</select> <select name="tayte3">
-						<option value="eitaytetta">Täyte3</option>
-						<option value="tomaattikastike">Tomaattikastike</option>
-						<option value="juusto">Juusto</option>
-						<option value="herkkusieni">Herkkusieni</option>
-						<option value="sipuli">Sipuli</option>
-						<option value="oliivi">Oliivi</option>
-						<option value="pinaatti">Pinaatti</option>
-						<option value="tonnikala">Tonnikala</option>
-						<option value="katkarapu">Katkarapu</option>
-						<option value="simpukka">Simpukka</option>
-						<option value="kinkku">Kinkku</option>
-						<option value="salami">Salami</option>
-						<option value="pepperoni">Pepperoni</option>
-						<option value="jalopeno">Jalopeno</option>
-					</select> <select name="tayte4">
-						<option value="eitaytetta">Täyte4</option>
-						<option value="tomaattikastike">Tomaattikastike</option>
-						<option value="juusto">Juusto</option>
-						<option value="herkkusieni">Herkkusieni</option>
-						<option value="sipuli">Sipuli</option>
-						<option value="oliivi">Oliivi</option>
-						<option value="pinaatti">Pinaatti</option>
-						<option value="tonnikala">Tonnikala</option>
-						<option value="katkarapu">Katkarapu</option>
-						<option value="simpukka">Simpukka</option>
-						<option value="kinkku">Kinkku</option>
-						<option value="salami">Salami</option>
-						<option value="pepperoni">Pepperoni</option>
-						<option value="jalopeno">Jalopeno</option>
-					</select> <select name="tayte5">
-						<option value="eitaytetta">Täyte5</option>
-						<option value="tomaattikastike">Tomaattikastike</option>
-						<option value="juusto">Juusto</option>
-						<option value="herkkusieni">Herkkusieni</option>
-						<option value="sipuli">Sipuli</option>
-						<option value="oliivi">Oliivi</option>
-						<option value="pinaatti">Pinaatti</option>
-						<option value="tonnikala">Tonnikala</option>
-						<option value="katkarapu">Katkarapu</option>
-						<option value="simpukka">Simpukka</option>
-						<option value="kinkku">Kinkku</option>
-						<option value="salami">Salami</option>
-						<option value="pepperoni">Pepperoni</option>
-						<option value="jalopeno">Jalopeno</option>
-					</select> <select name="tayte6">
-						<option value="eitaytetta">Täyte6</option>
-						<option value="tomaattikastike">Tomaattikastike</option>
-						<option value="juusto">Juusto</option>
-						<option value="herkkusieni">Herkkusieni</option>
-						<option value="sipuli">Sipuli</option>
-						<option value="oliivi">Oliivi</option>
-						<option value="pinaatti">Pinaatti</option>
-						<option value="tonnikala">Tonnikala</option>
-						<option value="katkarapu">Katkarapu</option>
-						<option value="simpukka">Simpukka</option>
-						<option value="kinkku">Kinkku</option>
-						<option value="salami">Salami</option>
-						<option value="pepperoni">Pepperoni</option>
-						<option value="jalopeno">Jalopeno</option>
-					</select> <br>Valikoimassa<br> <select name="valikoimassa">
-						<option value="true">Kyllä</option>
-						<option value="false">Ei</option>
-					</select>
 
-				
+
+
+						Täytteet: <br>
+						
+						<%for(int i = 0; i < kaikkitaytteet.size(); i++) {%>
+	
+						<input type="checkbox" name="tayte" value="<%=kaikkitaytteet.get(i).getTayteId()%>"><%=kaikkitaytteet.get(i).gettNimi()%><br>
+  												<%} %>		
+  												
+				 <br>Valikoimassa<br> <select name="valikoimassa">
+						<option value="true">Kyllä</option>
+						<option value="false">Ei</option></select>
+						
 				<div id="lisaapizzanapit">
 					<button input type="submit" class="btn btn-success btn-lg">Tallenna</button>
 					<a href="ListaaPizzat" class="btn btn-default btn-lg" role="button">Peruuta</a>
 				</div>
+			
 				</form>
+							
 			</div>
 
 		</div>

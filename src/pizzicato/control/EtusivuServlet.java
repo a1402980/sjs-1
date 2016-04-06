@@ -1,6 +1,7 @@
 package pizzicato.control;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import pizzicato.model.Kayttaja;
+import pizzicato.model.Pizza;
 import pizzicato.model.dao.KayttajaDAO;
+import pizzicato.model.dao.PizzaDAO;
 
 
 @WebServlet("/Etusivu")
@@ -26,6 +29,11 @@ public class EtusivuServlet extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		PizzaDAO pizzadao = new PizzaDAO();
+		ArrayList<Pizza> pizzat = pizzadao.findAll();	
+		
+		request.setAttribute("pizzat", pizzat);		
+		
 		String jsp = "/view/Pizzicato.jsp";
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
 		dispatcher.forward(request, response);

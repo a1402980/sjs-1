@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import pizzicato.model.Pizza;
 import pizzicato.model.Tayte;
@@ -22,14 +23,43 @@ public class PizzaDAO extends DataAccessObject {
 		
 			try {
 				connection = getConnection();
-				String sqlInsert = "INSERT INTO pizza(p_nimi, p_hinta, p_saatavuus) VALUES (?, ?, ?)";
+				String sqlInsert = "INSERT INTO pizza(p_nimi, p_hinta, p_saatavuus) VALUES (?, ?, ?);";
 				stmtInsert = connection.prepareStatement(sqlInsert);
 				stmtInsert.setString(1, pizza.getpNimi());
 				stmtInsert.setDouble(2, pizza.getpHinta());
 				stmtInsert.setString(3, pizza.getpSaatavuus());
+				stmtInsert.executeUpdate();
+				
+				
+				//stmtInsert.setInt(2, pizza.getTaytteet().get(i).gettayteId());
 				//lisää täyte ArrayList myöhemmin
 
-				stmtInsert.executeUpdate();
+				
+			}catch (SQLException e) {
+				throw new RuntimeException(e);
+			} finally {
+				close(stmtInsert, connection); 
+			}
+		}
+		
+		public void addPizzanTayte(Pizza pizza) throws SQLException {
+			Connection connection = null;
+			PreparedStatement stmtInsert = null;
+		
+			try {
+				connection = getConnection();
+				
+								
+				for (int i=0; i < pizza.getTayteLkm(pizza.getPizzaId()); i++) {
+					String sqlInsert = "INSERT INTO pizzatayte(pizza_id, tayte_id) VALUES (?, ?);";
+					stmtInsert = connection.prepareStatement(sqlInsert);
+					stmtInsert.setInt(1, pizza.getPizzaId());
+					System.out.println(stmtInsert);
+					stmtInsert.setInt(2, pizza.getTayte(i).getTayteId());
+					System.out.println(stmtInsert);
+					stmtInsert.executeUpdate();
+				}
+				
 			}catch (SQLException e) {
 				throw new RuntimeException(e);
 			} finally {
@@ -103,9 +133,11 @@ public class PizzaDAO extends DataAccessObject {
 			Pizza pizza=null;
 			try {
 				conn = getConnection();
-				String sqlSelect ="SELECT pizza_id, p_nimi, p_hinta, p_saatavuus FROM pizza WHERE pizza_id='"+pizzaId+"';";
+				String sqlSelect ="SELECT pizza_id, p_nimi, p_hinta, p_saatavuus FROM pizza WHERE pizza_id="+pizzaId+";";
 				stmt=conn.prepareStatement(sqlSelect);
 				rs=stmt.executeQuery(sqlSelect);
+				String sqlSelect2 ="SELECT pizza_id, tayte_id FROM pizzatayte WHERE pizza_id="+pizzaId+";";
+				
 				while(rs.next()) {
 					pizza = readPizza(rs);
 				}
@@ -127,8 +159,7 @@ public class PizzaDAO extends DataAccessObject {
 				int pizzaId=rs.getInt("pizza_id");
 				String pNimi=rs.getString("p_nimi");
 				double pHinta=rs.getDouble("p_hinta");
-				String pSaatavuus=rs.getString("p_saatavuus");				
-				//ArrayList<Tayte> taytteet = new ArrayList<Tayte>();			
+				String pSaatavuus=rs.getString("p_saatavuus");						
 					if (pSaatavuus.equalsIgnoreCase("true")){
 						pSaatavuus = "kyllä";
 					}else if(pSaatavuus.equalsIgnoreCase("false")){
@@ -151,7 +182,7 @@ public class PizzaDAO extends DataAccessObject {
 			ResultSet rs = null;
 			try {
 				conn = getConnection();
-				String sqlDelete ="DELETE FROM pizza WHERE pizza_id=' "+pizzaId+"';";
+				String sqlDelete ="DELETE FROM pizza WHERE pizza_id= "+pizzaId+";";
 				stmt=conn.prepareStatement(sqlDelete);
 				rs=stmt.executeQuery(sqlDelete);
 			} catch(SQLException e) {
@@ -162,6 +193,24 @@ public class PizzaDAO extends DataAccessObject {
 			return null;
 			
 		}
+		
+		/*private HashMap<Integer, ArrayList<Integer>> readPizzaTayte(ResultSet rs) {
+			try {
+				
+				ArrayList<Tayte> taytteet = new ArrayList<Tayte>();
+				HashMap<Integer, ArrayList<Integer>> pizzataytteet = new HashMap<Integer, ArrayList<Integer>>();
+				int pizzaId=rs.getInt("pizza_id");
+				int tayteId=rs.getInt("tayte_id");
+				for(int i=0; i<taytteet.length(); i++){
+					pizzataytteet.put(pizzaId, tayteId);
+				}
+				
+				return pizzataytteet;
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			}
+			
+		}*/
 
 	
 
