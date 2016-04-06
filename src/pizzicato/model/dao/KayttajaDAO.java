@@ -20,7 +20,7 @@ public class KayttajaDAO extends DataAccessObject {
    
    private Kayttaja read(ResultSet rs) throws SQLException
    {
-	   int id = new Integer(rs.getInt("id"));
+	   int id = new Integer(rs.getInt("kayttaja_id"));
 	   String username = rs.getString("username");
 	   String password = rs.getString("password");
 	   String userrole = rs.getString("userrole");
@@ -38,7 +38,7 @@ public class KayttajaDAO extends DataAccessObject {
 	   Connection connection = null;
 	   try {
 		   connection = getConnection();
-		   String sql = "select * from kayttaja where id=?";
+		   String sql = "select * from kayttaja where kayttaja_id=?";
 		   statement = connection.prepareStatement(sql);
 		   statement.setInt(1, id);
 		   rs = statement.executeQuery();
@@ -79,7 +79,9 @@ public class KayttajaDAO extends DataAccessObject {
 	   }
    }
 }
-  
+
+//Näitä metodeita ei tällä hetkellä tarvita
+
 /*   public ArrayList<Kayttaja> findAll() {
 	   ArrayList<Kayttaja> kayttajat = new ArrayList<Kayttaja>();
 	   ResultSet rs = null;
