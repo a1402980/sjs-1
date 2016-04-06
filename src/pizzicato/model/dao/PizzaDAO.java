@@ -48,14 +48,13 @@ public class PizzaDAO extends DataAccessObject {
 		
 			try {
 				connection = getConnection();
-				
+				int pizzaId = pizza.getPizzaId();
 								
-				for (int i=0; i < pizza.getTayteLkm(pizza.getPizzaId()); i++) {
-					String sqlInsert = "INSERT INTO pizzatayte(pizza_id, tayte_id) VALUES (?, ?);";
+				for (int i=0; i < pizza.getTayteLkm(pizzaId); i++) {
+					String sqlInsert = "INSERT INTO pizzatayte(pizza_id, tayte_id) VALUES ("+pizzaId+", ?);";
 					stmtInsert = connection.prepareStatement(sqlInsert);
-					stmtInsert.setInt(1, pizza.getPizzaId());
-					System.out.println(stmtInsert);
-					stmtInsert.setInt(2, pizza.getTayte(i).getTayteId());
+					
+					stmtInsert.setInt(1, pizza.getTayte(i).getTayteId());
 					System.out.println(stmtInsert);
 					stmtInsert.executeUpdate();
 				}

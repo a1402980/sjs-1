@@ -90,6 +90,12 @@ public class Pizza {
 		return TayteLkm;
 	}
 
+	
+	
+	public ArrayList<Tayte> getTaytteet() {
+		return taytteet;
+	}
+
 
 	@Override
 	public String toString() {
