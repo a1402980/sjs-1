@@ -93,7 +93,7 @@ VALUES(2,6);
 /*KÄYTTÄJÄRYHMÄT*/
 
 INSERT INTO kayttaja(kayttaja_id, username, password, userrole)
-VALUES(1, 'admin', 'admin', 'omistaja')
+VALUES(1, 'admin', 'admin', 'omistaja');
 
 
 

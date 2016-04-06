@@ -216,7 +216,7 @@ $("#myModal").css("z-index", "1500");
 			</div> <!-- /.modal-header -->
 
 			<div class="modal-body">
-				<form role="form">
+				<form method="post" action="Etusivu" role="form">
 					<div class="form-group">
 						<div class="input-group">
 							<i class="fa fa-user"></i><input type="text" class="form-control" id="uLogin" placeholder="Käyttäjätunnus">

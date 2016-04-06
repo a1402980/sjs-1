@@ -14,37 +14,40 @@ import pizzicato.model.Kayttaja;
 import pizzicato.model.dao.KayttajaDAO;
 
 
-@WebServlet("/Etusivu")
-public class EtusivuServlet extends HttpServlet {
+@WebServlet("/TestiServlet")
+public class TestiServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
-    public EtusivuServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String jsp = "/view/Pizzicato.jsp";
+		String jsp = "/view/testi.jsp";
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
 		dispatcher.forward(request, response);
 	}
 
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 System.out.println("jippii");
-		String jsp = "/view/Pizzicato.jsp";
+		String jsp = "/view/testi.jsp";
 		
 		String username = request.getParameter("username");
 	    Kayttaja kayttaja = new KayttajaDAO().findByUsername(username);
 	       if (username == null)
 	       {
-	          request.setAttribute("message", "Authentication failed.");
-	        // jsp.forward(request, response);
+	    	 
+	          request.setAttribute("message", "Kirjautuminen epäonnistui");
 	          RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
 	  		  dispather.forward(request, response);
 	          return;
+	       }
+	       if(!kayttaja.getUsername().equals(username))
+	       {
+	    	   request.setAttribute("message", "Kirjautuminen epäonnistui");
+		       RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
+		       dispather.forward(request, response);
+		       return;
+	    	   
+	  
 	       }
 	       
 	       String password = request.getParameter("password");
