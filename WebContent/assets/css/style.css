@@ -251,38 +251,6 @@ table {
 }
 
 /*=======================================
-    Login ikkunan tyylit
-==================================================*/
-.modal-dialog {
-    width: 300px;
-}
-.modal-footer {
-    height: 70px;
-    margin: 0;
-}
-.modal-footer .btn {
-    font-weight: bold;
-}
-.modal-footer .progress {
-    display: none;
-    height: 32px;
-    margin: 0;
-}
-.input-group-addon {
-    color: #fff;
-    background: #3276B1;
-}
-.modal-backdrop {
-  z-index: -1;
-}
-#myModal{
-	top:15%;
-}
-/*=======================================
-    Login ikkunan tyylit LOPPUU
-==================================================*/
-
-/*=======================================
     editable tables alkaa
 ==================================================*/
 @import "compass/css3";
@@ -371,6 +339,16 @@ text-align: center;
   .affix + .container-fluid {
       padding-top: 70px;
   }
+  
+  .dropdown-menu {
+    width: 450px !important;
+    height: 80px !important;
+}
+
+/*valkoinen palkki pois navigoinnin alta*/
+.navbar {
+	margin-bottom=0;
+}
 
 
 

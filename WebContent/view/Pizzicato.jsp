@@ -13,11 +13,6 @@
 <!--<![endif]-->
 <html>
 <head>
-<style> 
-section {
-	margin-top: -2%;	
-}
-</style>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -78,7 +73,7 @@ section {
 
                     <br>
                     
-                    <a href="#home" class="glyphicon glyphicon-chevron-down"></a>
+                    <a href="#pizzat" class="glyphicon glyphicon-chevron-down"></a>
                 </div>
 		</div>
 
@@ -106,7 +101,25 @@ section {
 				<li><a href="#pizzamenu">Pizzat</a></li>
 				<li><a href="#services">Tilaukset</a></li>
 				<li><a href="#free-text">Yhteystiedot</a></li>
-				<li><a><button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal" style=text-align="center">Kirjaudu</button></a>
+				<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Kirjaudu <b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<form method="post" role="form" class="navbar-form navbar-right">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="username" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="password" placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn btn-default">Sign In</button>
+                	</form>
+                	<p><% 
+   String message = (String) request.getAttribute("message");
+   if (message != null) {
+      out.println("<p>" + message + "</p>");
+   }
+%></p>
+                </ul>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
