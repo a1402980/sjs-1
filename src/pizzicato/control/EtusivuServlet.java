@@ -41,24 +41,33 @@ public class EtusivuServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 System.out.println("jippii");
+		
 		String jsp = "/view/Pizzicato.jsp";
 		
 		String username = request.getParameter("username");
 	    Kayttaja kayttaja = new KayttajaDAO().findByUsername(username);
-	       if (username == null)
+	       if (kayttaja == null)
 	       {
-	          request.setAttribute("message", "Authentication failed.");
-	        // jsp.forward(request, response);
+	    	 
+	          request.setAttribute("message", "Kirjautuminen epäonnistui");
 	          RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
 	  		  dispather.forward(request, response);
 	          return;
+	       }
+	       if(!kayttaja.getUsername().equals(username))
+	       {
+	    	   request.setAttribute("message", "Kirjautuminen epäonnistui");
+		       RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
+		       dispather.forward(request, response);
+		       return;
+	    	   
+	  
 	       }
 	       
 	       String password = request.getParameter("password");
 	       if (password == null || !kayttaja.getPassword().equals(password))
 	       {
-	          request.setAttribute("message", "Authentication failed.");
+	          request.setAttribute("message", "Kirjautuminen epäonnistui");
 	          RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
 	  		  dispather.forward(request, response);
 	          return;
