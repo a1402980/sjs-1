@@ -41,7 +41,7 @@ public class EtusivuServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		String jsp = "/view/Pizzicato.jsp";
 		
 		String username = request.getParameter("username");
@@ -80,4 +80,8 @@ public class EtusivuServlet extends HttpServlet {
 	       response.sendRedirect(url);
 	}
 
-}
+
+
+	}
+
+
