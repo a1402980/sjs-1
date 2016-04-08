@@ -220,7 +220,7 @@ padding-bottom: 5%;
 ==================================================*/
 
 #footer {
-    background-color:#000;
+    background-color:#525252;
     color:#525252;
     padding:20px 50px 20px 50px;
     text-align:right;
@@ -328,6 +328,8 @@ text-align: center;
 }
 #cover-caption h1 {
 	color: white;
+	font-family:Helvetica;
+	font-weight:bold;
 	
 }
 
