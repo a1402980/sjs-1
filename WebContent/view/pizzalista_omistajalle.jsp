@@ -7,7 +7,11 @@
 <!--[if (gte IE 9)|!(IE)]><!-->
 
 <%@ page import="pizzicato.model.Pizza"%>
+<%@ page import="pizzicato.model.Tayte"%>
+<!-- <%@ page import="pizzicato.model.dao.PizzaDAO"%> -->
 <jsp:useBean id="pizzat" type="java.util.ArrayList<Pizza>"
+	scope="request" />
+<jsp:useBean id="taytteet" type="java.util.ArrayList<Tayte>"
 	scope="request" />
 <html lang="fi">
 <!--<![endif]-->
@@ -116,9 +120,13 @@
 		</tr>
 			<%for(int i = 0; i < pizzat.size(); i++) {%>
 			<tr>
-				<td><%=pizzat.get(i).getPizzaId()%></td>
+				<td name="pizzaId"><%=pizzat.get(i).getPizzaId()%></td>
 				<td><%=pizzat.get(i).getpNimi()%></td>
-				<td><%=pizzat.get(i).getTaytteet()%></td>
+				
+				<%for(int j = 0; j < taytteet.size(); j++) {%>
+				<td><%=taytteet.get(j).gettNimi()%></td>
+						<%}%>
+				
 				<td><%=pizzat.get(i).getpHinta()%></td>
 				<td><%=pizzat.get(i).getpSaatavuus()%></td>
 				<td><a href="MuokkaaPizza?pizza_id=<%=pizzat.get(i).getPizzaId()%>" role="button"><span class="glyphicon glyphicon-edit"></span></a></td>
