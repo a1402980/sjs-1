@@ -25,21 +25,19 @@ public class PizzaDAO extends DataAccessObject {
 			try {
 				connection = getConnection();
 				String sqlInsert = "INSERT INTO pizza(p_nimi, p_hinta, p_saatavuus) VALUES (?, ?, ?);";
+				stmtInsert = connection.prepareStatement(sqlInsert, Statement.RETURN_GENERATED_KEYS);
 				stmtInsert = connection.prepareStatement(sqlInsert);
 				stmtInsert.setString(1, pizza.getpNimi());
 				stmtInsert.setDouble(2, pizza.getpHinta());
 				stmtInsert.setString(3, pizza.getpSaatavuus());
 				
-				pizzaId = stmtInsert.executeUpdate(sqlInsert, Statement.RETURN_GENERATED_KEYS);
+				stmtInsert.executeUpdate();
 				 try (ResultSet generatedKeys = stmtInsert.getGeneratedKeys()) {
 			            if (generatedKeys.next()) {
 			               pizza.setPizzaId(generatedKeys.getInt(1));
 			            }
 				 }
-				
-				System.out.println("luotu pizza id: "+ pizzaId);
-				
-		            
+						            
 			}catch (SQLException e) {
 				throw new RuntimeException(e);
 			} finally {
