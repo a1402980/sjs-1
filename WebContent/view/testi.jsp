@@ -10,7 +10,7 @@
 <link type="text/css" href="assets/css/font-awesome.min.css"
 	rel="stylesheet" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Pizzeria Pizzicato -Sisäänkirjautuminen</title>
 </head>
 <body>
 <nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="500" id=navigaatio>
@@ -64,6 +64,7 @@
 	<div class="container">
     	<div class="row text-center for-full-back color-light">
         	<div class="col-md-8 col-md-offset-2">
+        	
 <form method="post" action="TestiServlet" role="form">
 Kayttajatunnus:<br>
 <input type="text" name="username"><br>
