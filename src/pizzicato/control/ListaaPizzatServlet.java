@@ -22,12 +22,16 @@ public class ListaaPizzatServlet extends HttpServlet {
        
     /**ListaaPizzatServletin doGet metodi hakee PizzaDAON metodilla kaikki pizzat tietokannasta Arraylistaan ja luo käyttäjän näkymän selaimella**/
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int PizzaId = 0;
 		PizzaDAO pizzadao = new PizzaDAO();
-		ArrayList<Pizza> pizzat = pizzadao.findAll();
-		String strId = request.getParameter("pizzaId");
-		PizzaId = Integer.parseInt(strId);
-		ArrayList<Tayte> taytteet = pizzadao.findAllTaytteet(PizzaId);
+		ArrayList<Pizza> pizzat = new ArrayList<Pizza>();
+		pizzat = pizzadao.findAll();
+		for (int i=0; i<pizzat.size(); i++){
+			ArrayList<Tayte> taytteet = pizzadao.haePizzanTaytteet(pizzat.get(i).getPizzaId());
+			pizzat.get(i).setTaytteet(taytteet);
+			
+		}
+		
+		
 		
 		request.setAttribute("pizzat", pizzat);		
 			

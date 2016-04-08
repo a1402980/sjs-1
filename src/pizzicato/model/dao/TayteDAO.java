@@ -69,6 +69,7 @@ public class TayteDAO extends DataAccessObject{
 		
 		return tayte;
 	}
+	
 
 	public Tayte findByName(String tNimi) {
 		Connection conn = null;

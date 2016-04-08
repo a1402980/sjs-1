@@ -133,7 +133,7 @@ public class PizzaDAO extends DataAccessObject {
 			return pizzat;
 		}
 		
-		public ArrayList<Tayte> findAllTaytteet(int pizzaId) {
+		public ArrayList<Tayte> haePizzanTaytteet(int pizzaId) {
 			Connection conn = null;
 			PreparedStatement stmt = null;
 			ResultSet rs = null;
@@ -143,7 +143,8 @@ public class PizzaDAO extends DataAccessObject {
 			
 			try {
 				conn = getConnection();
-				String sqlSelect ="SELECT tayte_id FROM pizzatayte WHERE pizza_id = "+pizzaId+";";
+				String sqlSelect ="SELECT p.pizza_id, t.tayte_id, t_nimi, t_hinta FROM pizza p INNER JOIN pizzatayte pt ON p.pizza_id = pt.pizza_id INNER JOIN tayte t ON t.tayte_id = pt.tayte_id;";
+				
 				stmt=conn.prepareStatement(sqlSelect);
 				rs=stmt.executeQuery(sqlSelect);
 				
@@ -174,17 +175,19 @@ public class PizzaDAO extends DataAccessObject {
 			Connection conn = null;
 			PreparedStatement stmt = null;
 			ResultSet rs = null;
-			Pizza pizza=null;
+			Pizza pizza=null;	
+			TayteDAO taytedao = new TayteDAO();
+			
 			try {
 				conn = getConnection();
-				String sqlSelect ="SELECT pizza_id, p_nimi, p_hinta, p_saatavuus FROM pizza WHERE pizza_id="+pizzaId+";";
+				String sqlSelect ="SELECT pizza_id, p_nimi, p_hinta, p_saatavuus FROM pizza WHERE pizza_id="+pizzaId+"; SELECT p.pizza_id, p_nimi, p_hinta, p_saatavuus, t.tayte_id, t_nimi, t_hinta FROM pizza p INNER JOIN pizzatayte pt ON p.pizza_id = pt.pizza_id INNER JOIN tayte t ON t.tayte_id = pt.tayte_id;";
 				stmt=conn.prepareStatement(sqlSelect);
 				rs=stmt.executeQuery(sqlSelect);
-				String sqlSelect2 ="SELECT pizza_id, tayte_id FROM pizzatayte WHERE pizza_id="+pizzaId+";";
-				stmt=conn.prepareStatement(sqlSelect2);
-				rs=stmt.executeQuery(sqlSelect2);
 				while(rs.next()) {
 					pizza = readPizza(rs);
+					Tayte tayte = new Tayte();
+					tayte = taytedao.readTayte(rs);
+					pizza.addTayte(tayte);
 				}
 			} catch(SQLException e) {
 				throw new RuntimeException(e);
