@@ -26,14 +26,21 @@
 <!--REQUIRED STYLE SHEETS-->
 <!-- JQUERY CODE SOURCE -->
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+	crossorigin="anonymous">
 
 
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+	crossorigin="anonymous"></script>
 
 
 
@@ -57,80 +64,79 @@
 
 </head>
 </body>
-<header class="masthead">
+<header class="masthead"> <section id="cover">
+<div class="col-lg-12" id="cover-caption">
 
+	<div>
+		<h1>Pizzeria Pizzicato</h1>
+		<h1>Tervetuloa!</h1>
 
-<section id="cover">
-        <div class="col-lg-12" id="cover-caption">
+		<span><i class="fa fa-home"></i>&nbsp; <a
+			href="https://goo.gl/maps/W61P9QmPrDC2">Pizzakatu 12</a> </span> <br /> <span><i
+			class="fa fa-phone"></i>&nbsp;(+030)123123</span> <br /> <br> 
+			<h2>Tutustu Menuun!</h2>
+			<a href="#pizzamenu" class="glyphicon glyphicon-chevron-down"></a>
+	</div>
+</div>
 
-                <div>
-                	<h1>Pizzeria Pizzicato</h1>
-                    <h1>Tervetuloa!</h1>
+</section> </header>
 
-					<span><i class="fa fa-home"></i>&nbsp; <a href="https://goo.gl/maps/W61P9QmPrDC2">Pizzakatu 12</a> </span> <br /> <span><i
-						class="fa fa-phone"></i>&nbsp;(+030)123123</span> <br />
-
-
-                    <br>
-                    
-                    <a href="#pizzat" class="glyphicon glyphicon-chevron-down"></a>
-                </div>
-		</div>
-
-    </section>
-
-</header>
-
-<!-- navigation --> 
-<nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="500" id=navigaatio>
+<!-- navigation -->
+<nav class="navbar navbar-inverse" data-spy="affix"
+	data-offset-top="500" id=navigaatio>
 <div class="container">
 
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse"
-				data-target=".navbar-ex1-collapse">
-				<span class="sr-only">Toggle navigation</span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="ListaaPizzat">Pizzeria Pizzicato</a>
-		</div>
-		<!-- Collect the nav links for toggling -->
-		<div class="collapse navbar-collapse navbar-ex1-collapse">
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="Etusivu">Etusivu</a></li>
-				<li><a href="#pizzamenu">Pizzat</a></li>
-				<li><a href="#services">Tilaukset</a></li>
-				<li><a href="#contact">Yhteystiedot</a></li>
-				<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Kirjaudu <b class="caret"></b></a>
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse"
+			data-target=".navbar-ex1-collapse">
+			<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
+			<span class="icon-bar"></span> <span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="ListaaPizzat">Pizzeria Pizzicato</a>
+	</div>
+	<!-- Collect the nav links for toggling -->
+	<div class="collapse navbar-collapse navbar-ex1-collapse">
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="Etusivu">Etusivu</a></li>
+			<li><a href="#pizzamenu">Pizzat</a></li>
+			<li><a href="#services">Tilaukset</a></li>
+			<li><a href="#contact">Yhteystiedot</a></li>
+			<li class="dropdown"><a href="#" class="dropdown-toggle"
+				data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>
+					Kirjaudu <b class="caret"></b></a>
 				<ul class="dropdown-menu">
 					<form method="post" role="form" class="navbar-form navbar-right">
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="username" placeholder="Käyttäjätunnus">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="password" placeholder="Salasana">
-                    </div class="form-group">
-                    <button type="submit" class="btn btn-default">Kirjaudu</button>
-                	</form>
-                	<div>                	 <a href="TestiServlet"><span style="color:blue">klikkaa</span></a> 
-                	<p><% 
+						<div class="form-group">
+							<input type="text" class="form-control" name="username"
+								placeholder="Käyttäjätunnus">
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" name="password"
+								placeholder="Salasana">
+						</div class="form-group">
+						<button type="submit" class="btn btn-default">Kirjaudu</button>
+					</form>
+					<div>
+						<a href="TestiServlet"><span style="color: blue">klikkaa</span></a>
+						<p>
+							<% 
    String message = (String) request.getAttribute("message");
    if (message != null) {
       out.println("<p>" + message + "</p>");
    }
-%></p></div>
+%>
+						</p>
+					</div>
 
 
-                </ul>
-			</ul>
-		</div>
-		<!-- /.navbar-collapse -->
+				</ul>
+		</ul>
 	</div>
-	<!-- /.container --> 
-</nav>
-<!-- end of navigation --> 
-	
+	<!-- /.navbar-collapse -->
+</div>
+<!-- /.container --> </nav>
+<!-- end of navigation -->
+
 <script type="text/javascript">
 
 	$('nav').affix({
@@ -140,89 +146,199 @@
 	}); 
 
 </script>
-	
-	
-	
+
+<!-- Free Section -->
+<section id="tausta"> 
+<div class="container">
+	<div class="row text-center for-full-back color-light" id="pizzamenu">
+		<div class="col-md-8 col-md-offset-2">
+			<h1>Pizzalista</h1>
+			<div class="table-responsive">
+				<table class="table table-hover" align="center" id="pizzataulukko">
+					<tr>
+						<th>Nimi</th>
+						<th>Täytteet</th>
+						<th>Hinta</th>
+						<th></th>
+					</tr>
+					<%for(int i = 0; i < pizzat.size(); i++) {%>
+					<tr>
+						<td><%=pizzat.get(i).getpNimi()%></td>
+						<td>Tomaattikastike,Salami,Paprika</td>
+						<td><%=pizzat.get(i).getpHinta()%></td>
+						<td>
+							<button onclick="pizza()">
+								<span class="glyphicon glyphicon-shopping-cart"
+									style="color:#5cb85c"></span>
+							</button>
+						</td>
+					</tr>
+					<% } %>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+</section>
 <!-- Free Section -->
 
-<section id="tausta">
 
-	<div class="container">
-    	<div class="row text-center for-full-back color-light" id="pizzamenu">
-        	<div class="col-md-8 col-md-offset-2">
-            	<h1>Pizzalista</h1>
-					<div class="table-responsive">
-                    	<table class="table table-hover" align="center" id="pizzataulukko">
-							<tr>
-								<th>Nimi</th>
-								<th>Täytteet</th>
-								<th>Hinta</th>
-								<th></th>
-							</tr>
-							<%for(int i = 0; i < pizzat.size(); i++) {%>
-							<tr>
-								<td><%=pizzat.get(i).getpNimi()%></td>
-								<td>Tomaattikastike,Salami,Paprika</td>
-								<td><%=pizzat.get(i).getpHinta()%></td>
-								<td>
-							<button onclick="pizza()">
-							<span class="glyphicon glyphicon-shopping-cart" style="color:green"></span></button></td>				
-							</tr>
-							<% } %>
-						</table>
-					</div>
-              </div>
-          </div>
-      </div>
-      
-</section>    
 
-			
-		
-		<div class="container">
+<!-- Contact Section -->
+<section class="for-full-back color-white " id="contact">
+<div class="container">
 
-			<div class="col-md-8 col-md-offset-2">
-			
-			
-			
-			</div>
-
-			</div>
-		
-		
-		
-		
-		
-	<!-- Contact Section -->
-	<section class="for-full-back color-white " id="contact">
-	<div class="container">
-
-			<div class="col-md-5 contact-cls">
-				<h3>Sijaintimme</h3>
-				<div>
-					<span><i class="fa fa-home"></i>&nbsp;Osoite</span> <br /> <span><i
-						class="fa fa-phone"></i>&nbsp;Puhelin</span> <br /> <span><i
-						class="fa fa-envelope-o"></i>&nbsp;e-mail</span> <br /> <span><i
-						class="fa fa-phone"></i>&nbsp;Puhelin</span> <br />
-				</div>
+	<div class="col-lg-12 text-center">
+		<h1>Pizzeria Pizzicato</h1>
+		<div>
+			<h3>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+				Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque
+				penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+				Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+				Nulla consequat massa quis enim. Donec pede justo, fringilla vel,
+				aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut,
+				imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede
+				mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum
+				semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula,
+				porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem
+				ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra
+				nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet.
+				Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies
+				nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget
+				condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem
+				neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar,
+				hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus.
+				Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante.
+				Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed
+				fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed
+				consequat, leo eget bibendum sodales, augue velit cursus nunc,</h3>
+		</div>
 
 	</div>
-	</section>
+</div>
+</section>
 
-	<!--End Contact Section -->
-	<!--footer Section -->
-	<div class="for-full-back " id="footer">2016 | Silver Java
-		Slayers</div>
-	<!--End footer Section -->
-	<!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
-	<!-- BOOTSTRAP CORE SCRIPT   -->
-	<!-- <script src="assets/plugins/bootstrap.js"></script> tämä ei toiminut niin javascriptkirjasto haetaan netistä headerissa -->
-	<!-- CUSTOM SCRIPTS -->
-	<script src="assets/js/custom.js"></script>
-	
+<!--End Contact Section -->
+
+<!-- Free Section -->
+<section id="tausta2"> 
+<div class="container">
+	<div class="row text-center for-full-back color-light" id="uutuuksia">
+		<div class="col-sm-13">
+			<h1>Uutuuksia</h1>
+
+				<div class="col-sm-6 col-md-3">
+					<div class="thumbnail">
+						<img src="assets/images/americana.png" alt="pizza21">
+						<div class="caption">
+							<h3>Americana</h3>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+								Aenean commodo ligula eget dolor. Aenean massa. Cum sociis</p>
+
+							<a href="#" class="btn btn-success" role="button"><span
+								class="glyphicon glyphicon-shopping-cart"></span></a>
+
+						</div>
+					</div>
+					</div>
+					
+					<div class="col-sm-6 col-md-3">
+						<div class="thumbnail">
+							<img src="assets/images/quattro_stagioni.png" alt="pizza22">
+							<div class="caption">
+								<h3>Quattro Stagioni</h3>
+								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+									Aenean commodo ligula eget dolor. Aenean massa. Cum sociis</p>
+
+								<a href="#" class="btn btn-success" role="button"><span
+									class="glyphicon glyphicon-shopping-cart"></span></a>
+
+							</div>
+						</div>
+					</div>
+					
+					<div class="col-sm-6 col-md-3">
+					<div class="thumbnail">
+						<img src="assets/images/americana.png" alt="pizza23">
+						<div class="caption">
+							<h3>Mexicana</h3>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+								Aenean commodo ligula eget dolor. Aenean massa. Cum sociis</p>
+
+							<a href="#" class="btn btn-success" role="button"><span
+								class="glyphicon glyphicon-shopping-cart"></span></a>
+
+						</div>
+					</div>
+					</div>
+					
+					<div class="col-sm-6 col-md-3">
+					<div class="thumbnail">
+						<img src="assets/images/americana.png" alt="pizza21">
+						<div class="caption">
+							<h3>Americana</h3>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+								Aenean commodo ligula eget dolor. Aenean massa. Cum sociis</p>
+
+							<a href="#" class="btn btn-success" role="button"><span
+								class="glyphicon glyphicon-shopping-cart"></span></a>
+
+						</div>
+					</div>
+					</div>
+
+				
+
+
+	</div>
+	</div>
+</div>
+
+</section>
+<!-- Free Section -->
 
 
 
-</body>	
+<div class="container">
 
-	</html>
+	<div class="col-md-8 col-md-offset-2"></div>
+
+</div>
+
+
+
+
+
+<!-- Contact Section -->
+<section class="for-full-back color-white " id="contact">
+<div class="container">
+
+	<div class="col-md-5 contact-cls">
+		<h3>Sijaintimme</h3>
+		<div>
+			<span><i class="fa fa-home"></i>&nbsp;Osoite</span> <br /> <span><i
+				class="fa fa-phone"></i>&nbsp;Puhelin</span> <br /> <span><i
+				class="fa fa-envelope-o"></i>&nbsp;e-mail</span> <br /> <span><i
+				class="fa fa-phone"></i>&nbsp;Puhelin</span> <br />
+		</div>
+
+	</div>
+</section>
+
+<!--End Contact Section -->
+<!--footer Section -->
+<div class="for-full-back " id="footer">2016 | Silver Java Slayers</div>
+<!--End footer Section -->
+<!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
+<!-- BOOTSTRAP CORE SCRIPT   -->
+<!-- <script src="assets/plugins/bootstrap.js"></script> tämä ei toiminut niin javascriptkirjasto haetaan netistä headerissa -->
+<!-- CUSTOM SCRIPTS -->
+<script src="assets/js/custom.js"></script>
+
+
+
+
+</body>
+
+</html>

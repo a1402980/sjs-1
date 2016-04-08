@@ -23,7 +23,7 @@ body {         font-family: 'Raleway', sans-serif;    font-size:14px;
 }
 .navbar-header a {
     color:#ffffff !important;
-    padding-right:100px;
+    /*padding-right:100px; mikko otti pois koska teki palkista liian suuren*/
 }
 
 .text-center {
@@ -353,4 +353,13 @@ text-align: center;
 	background-image: url("tausta.jpg");
 	background-repeat: no-repeat;
     background-attachment: fixed;
+}
+#tausta2 { 
+	background-image: url("pizzatausta.jpg");
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.col-md-3{
+	margin:0;
 }
