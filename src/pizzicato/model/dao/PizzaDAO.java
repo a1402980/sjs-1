@@ -83,7 +83,7 @@ public class PizzaDAO extends DataAccessObject {
 			try {
 				conn = getConnection();
 				
-				String sqlUpdate = "UPDATE pizza SET p_nimi='"+pizza.getpNimi()+"', p_hinta="+pizza.getpHinta()+", p_saatavuus='"+pizza.getpSaatavuus()+"',  WHERE pizza_id="+pizza.getPizzaId()+";";
+				String sqlUpdate = "UPDATE pizza SET p_nimi='"+pizza.getpNimi()+"', p_hinta="+pizza.getpHinta()+", p_saatavuus='"+pizza.getpSaatavuus()+"' WHERE pizza_id="+pizza.getPizzaId()+";";
 				stmt = conn.prepareStatement(sqlUpdate);
 				stmt.executeUpdate();
 				
@@ -93,7 +93,7 @@ public class PizzaDAO extends DataAccessObject {
 				rs=stmt.executeQuery(sqlDelete);
 				
 				for (int i=0; i < pizza.getTayteLkm(pizza.getPizzaId()); i++) {
-					String sqlInsert = "INSERT INTO pizzatayte pizza_id, tayte_id) VALUES ("+pizza.getPizzaId()+", "+pizza.getTayte(i).getTayteId()+");";
+					String sqlInsert = "INSERT INTO pizzatayte (pizza_id, tayte_id) VALUES ("+pizza.getPizzaId()+", "+pizza.getTayte(i).getTayteId()+");";
 					stmt=conn.prepareStatement(sqlInsert);
 					rs=stmt.executeQuery(sqlInsert);
 					
@@ -185,7 +185,7 @@ public class PizzaDAO extends DataAccessObject {
 			
 			try {
 				conn = getConnection();
-				String sqlSelect ="SELECT pizza_id, p_nimi, p_hinta, p_saatavuus FROM pizza WHERE pizza_id="+pizzaId+"; SELECT p.pizza_id, p_nimi, p_hinta, p_saatavuus, t.tayte_id, t_nimi, t_hinta FROM pizza p INNER JOIN pizzatayte pt ON p.pizza_id = pt.pizza_id INNER JOIN tayte t ON t.tayte_id = pt.tayte_id;";
+				String sqlSelect ="SELECT p.pizza_id, p_nimi, p_hinta, p_saatavuus, t.tayte_id, t_nimi, t_hinta FROM pizza p INNER JOIN pizzatayte pt ON p.pizza_id = pt.pizza_id INNER JOIN tayte t ON t.tayte_id = pt.tayte_id WHERE pt.pizza_id="+pizzaId+";";
 				stmt=conn.prepareStatement(sqlSelect);
 				rs=stmt.executeQuery(sqlSelect);
 				while(rs.next()) {

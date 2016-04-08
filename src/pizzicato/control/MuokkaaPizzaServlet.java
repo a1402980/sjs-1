@@ -2,6 +2,7 @@ package pizzicato.control;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,7 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import pizzicato.model.Pizza;
+import pizzicato.model.Tayte;
 import pizzicato.model.dao.PizzaDAO;
+import pizzicato.model.dao.TayteDAO;
 
 @WebServlet("/MuokkaaPizza")
 public class MuokkaaPizzaServlet extends HttpServlet {
@@ -26,12 +29,17 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String jsp = "/view/muokkaa_pizza.jsp";
-
+		
 		String idString = request.getParameter("pizza_id");
 		int pizzaId = Integer.parseInt(idString);
-		Pizza pizza = new PizzaDAO().findCertainPizza(pizzaId);
+		PizzaDAO pizzadao = new PizzaDAO();
+		Pizza pizza = pizzadao.findCertainPizza(pizzaId);
 		request.setAttribute("pizza", pizza);
-
+		
+		TayteDAO taytedao = new TayteDAO();
+		ArrayList<Tayte> kaikkitaytteet = taytedao.findAll();
+		request.setAttribute("kaikkitaytteet", kaikkitaytteet);	
+		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
 		dispatcher.forward(request, response);
 
@@ -54,8 +62,10 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 		}
 		
 			Pizza pizza = (Pizza) request.getAttribute("pizza");
+			PizzaDAO pizzadao = new PizzaDAO();
 			try {
-				new PizzaDAO().modifyPizza(pizza);
+				pizzadao.modifyPizza(pizza);
+				pizzadao.addPizzanTayte(pizza);	
 			} catch (SQLException e) {
 				System.out.println("Sovelluksessa tapahtui virhe " + e.getMessage());
 				e.printStackTrace();
@@ -98,6 +108,27 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 		} else {
 			pizza.setpSaatavuus(pSaatavuus);
 		}
+		
+		//täytteiden käsittely
+				int tayteId;
+				int maxlkm = 6;
+					
+				String valituttaytteet[] = request.getParameterValues("tayte");
+				if (valituttaytteet.length < maxlkm){		
+					for (int i = 0; i < valituttaytteet.length; i++){
+						//muutetaan tayteId:t stringeistä inteiksi
+						tayteId = new Integer(valituttaytteet[i]);
+						//luodaan täyte olio ja lisätään täyteid:t niihin, täytedaosta haetaan muut täytteen tiedot
+						Tayte tayte = new Tayte();
+						TayteDAO taytedao = new TayteDAO();
+						tayte = taytedao.findCertainTayte(tayteId);
+							System.out.println(tayte);
+						//lisätään täyte-oliot pizza-olion täytelistaan
+						pizza.addTayte(tayte);	
+					} 
+				} else {
+					errors.put("Täytteet", " Täytteitä voi lisätä korkeintaan 6.");
+				}
 		
 		request.setAttribute("errors", errors);
 		request.setAttribute("pizza", pizza);
