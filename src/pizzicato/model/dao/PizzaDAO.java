@@ -227,7 +227,7 @@ public class PizzaDAO extends DataAccessObject {
 			ResultSet rs = null;
 			try {
 				conn = getConnection();
-				String sqlDelete ="DELETE FROM pizza WHERE pizza_id= "+pizzaId+";";
+				String sqlDelete ="DELETE FROM pizza WHERE pizza_id= "+pizzaId+"; DELETE FROM pizzatayte WHERE pizza_id="+pizzaId+";";
 				stmt=conn.prepareStatement(sqlDelete);
 				rs=stmt.executeQuery(sqlDelete);
 			} catch(SQLException e) {
@@ -238,25 +238,4 @@ public class PizzaDAO extends DataAccessObject {
 			return null;
 			
 		}
-		
-		/*private HashMap<Integer, ArrayList<Integer>> readPizzaTayte(ResultSet rs) {
-			try {
-				
-				ArrayList<Tayte> taytteet = new ArrayList<Tayte>();
-				HashMap<Integer, ArrayList<Integer>> pizzataytteet = new HashMap<Integer, ArrayList<Integer>>();
-				int pizzaId=rs.getInt("pizza_id");
-				int tayteId=rs.getInt("tayte_id");
-				for(int i=0; i<taytteet.length(); i++){
-					pizzataytteet.put(pizzaId, tayteId);
-				}
-				
-				return pizzataytteet;
-			} catch (SQLException e) {
-				throw new RuntimeException(e);
-			}
-			
-		}*/
-
-	
-
 }
