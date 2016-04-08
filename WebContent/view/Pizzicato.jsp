@@ -74,7 +74,7 @@
 		<span><i class="fa fa-home"></i>&nbsp; <a
 			href="https://goo.gl/maps/W61P9QmPrDC2">Pizzakatu 12</a> </span> <br /> <span><i
 			class="fa fa-phone"></i>&nbsp;(+030)123123</span> <br /> <br> 
-			<h2>Tutustu Menuun!</h2>
+			<h2>Tutustu menuun ja tee tilaus!</h2>
 			<a href="#pizzamenu" class="glyphicon glyphicon-chevron-down"></a>
 	</div>
 </div>
@@ -192,7 +192,7 @@
 	<div class="col-lg-12 text-center">
 		<h1>Pizzeria Pizzicato</h1>
 		<div>
-			<h3>Pizzeria Pizzicato on suomalainen pizzeria Pasilan syd‰mess‰. Panostamme menussamme hyv‰‰n hinta-laatusuhteeseen. 
+			<h3>Pizzicato on suomalainen pizzeria Pasilan syd‰mess‰. Panostamme menussamme hyv‰‰n hinta-laatusuhteeseen. 
 			Pizzamme ovat laadukkaita, mutta edullisia. Suosimme myˆs kotimaisia raaka-aineita. 
 			Voit nauttia pizzasi kodikkaassa ravintolassamme, noutaa pizzan mukaasi tai tilata sen k‰tev‰sti kotiisi kuljetettuna p‰‰kaupunkiseudun alueella. 
 			
