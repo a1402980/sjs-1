@@ -60,7 +60,7 @@
 			<%for(int i = 0; i < pizzat.size(); i++) {%>
 			<tr>
 				<td><%=pizzat.get(i).getpNimi()%></td>
-				<td>Tomaattikastike,Salami,Paprika</td>
+				<td>pizzat.get(i).getTaytteet()</td>
 				<td><%=pizzat.get(i).getpHinta()%></td>
 				<td>
 					<button onclick="poistapizza()">

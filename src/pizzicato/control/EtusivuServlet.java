@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import pizzicato.model.Kayttaja;
 import pizzicato.model.Pizza;
+import pizzicato.model.Tayte;
 import pizzicato.model.dao.KayttajaDAO;
 import pizzicato.model.dao.PizzaDAO;
 
@@ -31,6 +32,16 @@ public class EtusivuServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PizzaDAO pizzadao = new PizzaDAO();
 		ArrayList<Pizza> pizzat = pizzadao.findAll();	
+		
+		pizzat = pizzadao.findAll();
+		for (int i=0; i<pizzat.size(); i++){
+			ArrayList<Tayte> taytteet = new ArrayList<Tayte>();
+			taytteet = pizzadao.haePizzanTaytteet(pizzat.get(i).getPizzaId());
+			for (int j=0; j<taytteet.size(); j++){
+				pizzat.get(i).addTayte(taytteet.get(j));
+			}
+			System.out.println(pizzat.get(i).getTaytteet());
+		}
 		
 		request.setAttribute("pizzat", pizzat);		
 		
