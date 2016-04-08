@@ -142,7 +142,7 @@ select{
 nav {
 	position: absolute;
 	width: 100%;
-    background: #fff;
+    background: #525252;
     z-index:99;
 }
 .fixed {
@@ -231,6 +231,11 @@ padding-bottom: 5%;
 
 table {
 	font-size: 120%;
+}
+
+/*taulukot otsikot keskellä*/
+.table th {
+   text-align: center;   
 }
 
 #pizzataulukko button {
@@ -342,12 +347,10 @@ text-align: center;
   
   .dropdown-menu {
     width: 450px !important;
-    height: 80px !important;
+    height: 97px !important;
 }
-
-
-
-
-
-
-
+#tausta { 
+	background-image: url("tausta.jpg");
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+}

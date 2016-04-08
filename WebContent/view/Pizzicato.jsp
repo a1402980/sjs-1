@@ -97,28 +97,31 @@
 		<!-- Collect the nav links for toggling -->
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#home">Etusivu</a></li>
+				<li><a href="Etusivu">Etusivu</a></li>
 				<li><a href="#pizzamenu">Pizzat</a></li>
 				<li><a href="#services">Tilaukset</a></li>
-				<li><a href="#free-text">Yhteystiedot</a></li>
+				<li><a href="#contact">Yhteystiedot</a></li>
 				<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Kirjaudu <b class="caret"></b></a>
 				<ul class="dropdown-menu">
 					<form method="post" role="form" class="navbar-form navbar-right">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="username" placeholder="Username">
+                        <input type="text" class="form-control" name="username" placeholder="K‰ytt‰j‰tunnus">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="password" placeholder="Password">
-                    </div>
-                    <button type="submit" class="btn btn-default">Sign In</button>
+                        <input type="text" class="form-control" name="password" placeholder="Salasana">
+                    </div class="form-group">
+                    <button type="submit" class="btn btn-default">Kirjaudu</button>
                 	</form>
+                	<div>                	 <a href="TestiServlet"><span style="color:blue">klikkaa</span></a> 
                 	<p><% 
    String message = (String) request.getAttribute("message");
    if (message != null) {
       out.println("<p>" + message + "</p>");
    }
-%></p>
+%></p></div>
+
+
                 </ul>
 			</ul>
 		</div>
@@ -142,9 +145,10 @@
 	
 <!-- Free Section -->
 
-<section id="pizzat">
+<section id="tausta">
+
 	<div class="container">
-    	<div class="row text-center for-full-back color-light">
+    	<div class="row text-center for-full-back color-light" id="pizzamenu">
         	<div class="col-md-8 col-md-offset-2">
             	<h1>Pizzalista</h1>
 					<div class="table-responsive">
@@ -153,6 +157,7 @@
 								<th>Nimi</th>
 								<th>T‰ytteet</th>
 								<th>Hinta</th>
+								<th></th>
 							</tr>
 							<%for(int i = 0; i < pizzat.size(); i++) {%>
 							<tr>
@@ -160,7 +165,7 @@
 								<td>Tomaattikastike,Salami,Paprika</td>
 								<td><%=pizzat.get(i).getpHinta()%></td>
 								<td>
-							<button onclick="poistapizza()">
+							<button onclick="pizza()">
 							<span class="glyphicon glyphicon-shopping-cart" style="color:green"></span></button></td>				
 							</tr>
 							<% } %>
@@ -217,51 +222,7 @@
 	
 
 
-<script type="text/javascript">
-$("#myModal").modal("show");
-$("#myModal").css("z-index", "1500");
-</script>
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
 
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title" id="myModalLabel">Kirjaudu Sis‰‰n</h4>
-			</div> <!-- /.modal-header -->
-
-			<div class="modal-body">
-				<form method="post" action="Etusivu" role="form">
-					<div class="form-group">
-						<div class="input-group">
-							<i class="fa fa-user"></i><input type="text" class="form-control" id="uLogin" placeholder="K‰ytt‰j‰tunnus">
-							
-
-						</div>
-					</div> <!-- /.form-group -->
-
-					<div class="form-group">
-						<div class="input-group">
-							<i class="fa fa-unlock-alt"></i><input type="password" class="form-control" id="uPassword" placeholder="Salasana">
-							
-
-						</div> <!-- /.input-group -->
-					</div> <!-- /.form-group -->
-				</form>
-			</div> <!-- /.modal-body -->
-			<div class="modal-footer">
-				<button class="form-control btn btn-primary">Ok</button>
-
-			</div> <!-- /.modal-footer -->
-
-		</div><!-- /.modal-content -->
-	</div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-
-
-
-	
 </body>	
 
 	</html>
