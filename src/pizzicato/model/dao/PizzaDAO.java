@@ -74,7 +74,7 @@ public class PizzaDAO extends DataAccessObject {
 			PreparedStatement stmt = null;
 			try {
 				conn = getConnection();
-				String sqlSelect = "SELECT pizza_id, p_nimi, p_hinta, p_saatavuus, tayte_id, t_nimi, t_hinta, t_saatavuus FROM pizza p JOIN tayte t ON p.pizza_id = t.pizza_id JOIN pizzatayte pt ON t.tayte_id = pt.tayte_id" ;
+				String sqlSelect = "SELECT p.pizza_id, p_nimi, p_hinta, p_saatavuus, t.tayte_id, t_nimi, t_hinta FROM pizza p INNER JOIN pizzatayte pt ON p.pizza_id = pt.pizza_id INNER JOIN tayte t ON t.tayte_id = pt.tayte_id;";
 				stmt = conn.prepareStatement(sqlSelect);
 				String sqlUpdate = "UPDATE pizza SET p_nimi='"+pizza.getpNimi()+"', p_hinta="+pizza.getpHinta()+", p_saatavuus='"+pizza.getpSaatavuus()+"',  WHERE pizza_id="+pizza.getPizzaId()+";";
 				stmt = conn.prepareStatement(sqlUpdate);
