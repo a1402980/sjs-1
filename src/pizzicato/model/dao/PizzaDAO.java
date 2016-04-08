@@ -86,12 +86,7 @@ public class PizzaDAO extends DataAccessObject {
 				String sqlUpdate = "UPDATE pizza SET p_nimi='"+pizza.getpNimi()+"', p_hinta="+pizza.getpHinta()+", p_saatavuus='"+pizza.getpSaatavuus()+"' WHERE pizza_id="+pizza.getPizzaId()+";";
 				stmt = conn.prepareStatement(sqlUpdate);
 				stmt.executeUpdate();
-				
-				//Poistetaan alkuper‰iset t‰ytteet, lis‰t‰‰n uudet t‰ytteet
-				String sqlDelete ="DELETE FROM pizzatayte WHERE pizza_id= "+pizza.getPizzaId()+";";
-				stmt=conn.prepareStatement(sqlDelete);
-				rs=stmt.executeQuery(sqlDelete);
-				
+
 				for (int i=0; i < pizza.getTayteLkm(pizza.getPizzaId()); i++) {
 					String sqlInsert = "INSERT INTO pizzatayte (pizza_id, tayte_id) VALUES ("+pizza.getPizzaId()+", "+pizza.getTayte(i).getTayteId()+");";
 					stmt=conn.prepareStatement(sqlInsert);
@@ -235,7 +230,25 @@ public class PizzaDAO extends DataAccessObject {
 			ResultSet rs = null;
 			try {
 				conn = getConnection();
-				String sqlDelete ="DELETE FROM pizza WHERE pizza_id= "+pizzaId+"; DELETE FROM pizzatayte WHERE pizza_id="+pizzaId+";";
+				String sqlDelete ="DELETE FROM pizza WHERE pizza_id= "+pizzaId+";";
+				stmt=conn.prepareStatement(sqlDelete);
+				rs=stmt.executeQuery(sqlDelete);
+			} catch(SQLException e) {
+				throw new RuntimeException(e);
+			} finally {
+				close(rs,stmt,conn);
+			}
+			return null;
+			
+		}
+		
+		public Pizza deletePizzaTayte(int pizzaId){
+			Connection conn = null;
+			PreparedStatement stmt = null;
+			ResultSet rs = null;
+			try {
+				conn = getConnection();
+				String sqlDelete ="DELETE FROM pizzatayte WHERE pizza_id="+pizzaId+";";
 				stmt=conn.prepareStatement(sqlDelete);
 				rs=stmt.executeQuery(sqlDelete);
 			} catch(SQLException e) {
