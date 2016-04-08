@@ -102,7 +102,7 @@
 				<li><a href="#services">Tilaukset</a></li>
 				<li><a href="#free-text">Yhteystiedot</a></li>
 				<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Kirjaudu <b class="caret"></b></a>
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Kirjaudu <b class="caret"></b></a>
 				<ul class="dropdown-menu">
 					<form method="post" role="form" class="navbar-form navbar-right">
                     <div class="form-group">
@@ -161,7 +161,7 @@
 								<td><%=pizzat.get(i).getpHinta()%></td>
 								<td>
 							<button onclick="poistapizza()">
-							<span class="glyphicon glyphicon-shopping-cart"></span></button></td>				
+							<span class="glyphicon glyphicon-shopping-cart" style="color:green"></span></button></td>				
 							</tr>
 							<% } %>
 						</table>
