@@ -102,7 +102,7 @@ public class LisaaPizzaServlet extends HttpServlet {
 				Tayte tayte = new Tayte();
 				TayteDAO taytedao = new TayteDAO();
 				tayte = taytedao.findCertainTayte(tayteId);
-					
+					System.out.println(tayte);
 				//lis‰t‰‰n t‰yte-oliot pizza-olion t‰ytelistaan
 				pizza.addTayte(tayte);	
 			} 

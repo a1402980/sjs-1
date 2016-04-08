@@ -26,9 +26,12 @@ public class ListaaPizzatServlet extends HttpServlet {
 		ArrayList<Pizza> pizzat = new ArrayList<Pizza>();
 		pizzat = pizzadao.findAll();
 		for (int i=0; i<pizzat.size(); i++){
-			ArrayList<Tayte> taytteet = pizzadao.haePizzanTaytteet(pizzat.get(i).getPizzaId());
-			pizzat.get(i).setTaytteet(taytteet);
-			
+			ArrayList<Tayte> taytteet = new ArrayList<Tayte>();
+			taytteet = pizzadao.haePizzanTaytteet(pizzat.get(i).getPizzaId());
+			for (int j=0; j<taytteet.size(); j++){
+				pizzat.get(i).addTayte(taytteet.get(j));
+			}
+			System.out.println(pizzat.get(i).getTaytteet());
 		}
 		
 		

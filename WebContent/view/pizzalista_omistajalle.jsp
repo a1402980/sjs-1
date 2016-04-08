@@ -103,7 +103,7 @@
 			<tr>
 				<td><%=pizzat.get(i).getPizzaId()%></td>
 				<td><%=pizzat.get(i).getpNimi()%></td>
-				<td><%=pizzat.get(i).getTaytteet() %>
+				<td><%=pizzat.get(i).getTaytteet() %></td>
 				<td><%=pizzat.get(i).getpHinta()%></td>
 				<td><%=pizzat.get(i).getpSaatavuus()%></td>
 				<td><a href="MuokkaaPizza?pizza_id=<%=pizzat.get(i).getPizzaId()%>" role="button"><span class="glyphicon glyphicon-edit"></span></a></td>
