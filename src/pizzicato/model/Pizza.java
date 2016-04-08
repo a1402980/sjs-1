@@ -94,6 +94,9 @@ public class Pizza {
 		return taytteet;
 	}
 
+	public void setTaytteet(ArrayList<Tayte> taytteet) {
+		this.taytteet = taytteet;
+	}
 
 	@Override
 	public String toString() {

@@ -50,8 +50,7 @@ public class Tayte {
 
 	@Override
 	public String toString() {
-		return "Tayte [tayteId=" + tayteId + ", tNimi=" + tNimi + ", tHinta="
-				+ tHinta + "]";
+		return tNimi;
 	}
 	
 

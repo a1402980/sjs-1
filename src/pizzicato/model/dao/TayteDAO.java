@@ -13,7 +13,7 @@ import pizzicato.model.Tayte;
 
 public class TayteDAO extends DataAccessObject{
 	
-	private Tayte readTayte(ResultSet rs) {
+	public Tayte readTayte(ResultSet rs) {
 		try {
 			int tayteId=rs.getInt("tayte_id");
 			String tNimi=rs.getString("t_nimi");
@@ -69,6 +69,7 @@ public class TayteDAO extends DataAccessObject{
 		
 		return tayte;
 	}
+	
 
 	public Tayte findByName(String tNimi) {
 		Connection conn = null;

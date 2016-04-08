@@ -96,4 +96,8 @@ INSERT INTO kayttaja(kayttaja_id, username, password, userrole)
 VALUES(1, 'admin', 'admin', 'omistaja');
 
 
+/*POISTA PIZZA*/
+DELETE FROM pizza WHERE pizza_id= "+pizzaId+"; DELETE FROM pizzatayte WHERE pizza_id="+pizzaId+";
 
+/*YHDISTÄ PIZZA JA SEN TÄYTTEET */
+SELECT p.pizza_id, p_nimi, p_hinta, p_saatavuus, t.tayte_id, t_nimi, t_hinta FROM pizza p INNER JOIN pizzatayte pt ON p.pizza_id = pt.pizza_id INNER JOIN tayte t ON t.tayte_id = pt.tayte_id;
