@@ -46,11 +46,14 @@ public class LisaaPizzaServlet extends HttpServlet {
 			PizzaDAO pizzadao = new PizzaDAO();
 			try {
 				pizzadao.addPizza(pizza);
+						System.out.println("lähti DAOlle: "+pizza);
 				pizzadao.addPizzanTayte(pizza);
+						System.out.println("addPizzantayte: "+pizza);
 			} catch (SQLException e) {
 				System.out.println("Sovelluksessa tapahtui virhe "+ e.getMessage());
 				e.printStackTrace();
 			}
+
 			response.sendRedirect("ListaaPizzat");
 			
 		}			
@@ -60,8 +63,6 @@ public class LisaaPizzaServlet extends HttpServlet {
 		Map<String, String> errors = new HashMap<String, String>();
 		Pizza pizza = new Pizza();
 		Double pHinta = null;
-		
-		
 	
 		String pNimi = request.getParameter("nimi");
 		if (pNimi == null || pNimi.trim().length() < 2) {
@@ -83,22 +84,49 @@ public class LisaaPizzaServlet extends HttpServlet {
 			pizza.setpHinta(pHinta);
 		}
 		
-		
 		String pSaatavuus = request.getParameter("valikoimassa");
-		
 		if (pSaatavuus == null) {
 			errors.put("pSaatavuus", " Saatavuus vaaditaan");
 		} else {
 			pizza.setpSaatavuus(pSaatavuus);
 		}
+		
 		//täytteiden käsittely
-		
-		
 		int tayteId;
-		int maxlkm =0;
-		String valituttaytteet[] = new String[maxlkm];
+		int maxlkm = 6;
+			
+		String valituttaytteet[] = request.getParameterValues("tayte");
+		if (valituttaytteet.length < maxlkm){		
+			for (int i = 0; i < valituttaytteet.length; i++){
+				//muutetaan tayteId:t stringeistä inteiksi
+				tayteId = new Integer(valituttaytteet[i]);
+				//luodaan täyte olio ja lisätään täyteid:t niihin, täytedaosta haetaan muut täytteen tiedot
+				Tayte tayte = new Tayte();
+				TayteDAO taytedao = new TayteDAO();
+				tayte = taytedao.findCertainTayte(tayteId);
+					
+				//lisätään täyte-oliot pizza-olion täytelistaan
+				pizza.addTayte(tayte);	
+						System.out.println("pizza.addTayte: "+pizza.getTaytteet());
+			} 
+		} else {
+			errors.put("Täytteet", " Täytteitä voi lisätä korkeintaan 6.");
+		}
+		request.setAttribute("pizza", pizza);
+		return errors;
+	}
+	
+	
+	
+	/*
+	public static ArrayList<Tayte> validoiTaytteet (HttpServletRequest request){
+		Pizza pizza = (Pizza) request.getAttribute("pizza");
+		int tayteId;
+		int maxlkm;
+			
+		String valituttaytteet[] = request.getParameterValues("tayte");
+		
 		maxlkm = pizza.getTayteLkm(pizza.getPizzaId());
-		valituttaytteet = request.getParameterValues("tayte");
 		for (int i = 0; i < maxlkm; i++){
 			//muutetaan tayteId:t stringeistä inteiksi
 			tayteId = new Integer(valituttaytteet[i]);
@@ -106,18 +134,16 @@ public class LisaaPizzaServlet extends HttpServlet {
 			Tayte tayte = new Tayte();
 			TayteDAO taytedao = new TayteDAO();
 			tayte = taytedao.findCertainTayte(tayteId);
-			
+				
 			//lisätään täyte-oliot pizza-olion täytelistaan
 			pizza.addTayte(tayte);
-		
-			System.out.println(tayte);
-
-		}
-		
-		System.out.println(valituttaytteet);
-		
-		request.setAttribute("pizza", pizza);
-		return errors;
-	}
+			
+			System.out.println("täyte olio validoiTaytteet lopussa: "+tayte);
+			
+		}			
+			
+			return pizza.getTaytteet();
+		}*/
+	
 
 }

@@ -116,7 +116,7 @@
 					<button input type="submit" class="btn btn-success btn-lg">Tallenna</button>
 					<a href="ListaaPizzat" class="btn btn-default btn-lg" role="button">Peruuta</a>
 				</div>
-			
+
 				</form>
 							
 			</div>

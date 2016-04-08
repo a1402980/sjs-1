@@ -89,8 +89,6 @@ public class Pizza {
 		int TayteLkm = this.taytteet.size();
 		return TayteLkm;
 	}
-
-	
 	
 	public ArrayList<Tayte> getTaytteet() {
 		return taytteet;

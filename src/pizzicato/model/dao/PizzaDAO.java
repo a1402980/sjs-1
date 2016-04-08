@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -20,7 +21,7 @@ public class PizzaDAO extends DataAccessObject {
 		public void addPizza(Pizza pizza) throws SQLException {
 			Connection connection = null;
 			PreparedStatement stmtInsert = null;
-		
+			int pizzaId;
 			try {
 				connection = getConnection();
 				String sqlInsert = "INSERT INTO pizza(p_nimi, p_hinta, p_saatavuus) VALUES (?, ?, ?);";
@@ -28,18 +29,23 @@ public class PizzaDAO extends DataAccessObject {
 				stmtInsert.setString(1, pizza.getpNimi());
 				stmtInsert.setDouble(2, pizza.getpHinta());
 				stmtInsert.setString(3, pizza.getpSaatavuus());
-				stmtInsert.executeUpdate();
 				
+				pizzaId = stmtInsert.executeUpdate(sqlInsert, Statement.RETURN_GENERATED_KEYS);
+				 try (ResultSet generatedKeys = stmtInsert.getGeneratedKeys()) {
+			            if (generatedKeys.next()) {
+			               pizza.setPizzaId(generatedKeys.getInt(1));
+			            }
+				 }
 				
-				//stmtInsert.setInt(2, pizza.getTaytteet().get(i).gettayteId());
-				//lisää täyte ArrayList myöhemmin
-
+				System.out.println("luotu pizza id: "+ pizzaId);
 				
+		            
 			}catch (SQLException e) {
 				throw new RuntimeException(e);
 			} finally {
 				close(stmtInsert, connection); 
 			}
+			
 		}
 		
 		public void addPizzanTayte(Pizza pizza) throws SQLException {
