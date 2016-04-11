@@ -7,6 +7,7 @@
 <!--[if (gte IE 9)|!(IE)]><!-->
 
 <%@ page import="pizzicato.model.Pizza"%>
+<%@ page import="pizzicato.model.Tayte"%>
 <jsp:useBean id="pizzat" type="java.util.ArrayList<Pizza>"
 	scope="request" />
 
@@ -164,7 +165,10 @@
 					<%for(int i = 0; i < pizzat.size(); i++) {%>
 					<tr>
 						<td><%=pizzat.get(i).getpNimi()%></td>
-						<td><%=pizzat.get(i).getTaytteet()%></td>
+						<td><% for(int j=0; j < pizzat.get(i).getTaytteet().size(); j++){ %>
+							<%=pizzat.get(i).getTayte(j).gettNimi() %>
+						<% } %> 
+						</td>
 						<td><%=pizzat.get(i).getpHinta()%></td>
 						<td>
 							<button onclick="pizza()">
