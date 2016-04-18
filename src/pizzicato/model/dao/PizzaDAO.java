@@ -113,7 +113,7 @@ public class PizzaDAO extends DataAccessObject {
 			int nykyinenPizzaId=0;
 			try {
 				conn = getConnection();
-				String sqlSelect ="SELECT p.pizza_id, p_nimi, p_hinta, p_saatavuus, t.tayte_id, t_nimi, t_hinta FROM pizza p INNER JOIN pizzatayte pt ON p.pizza_id = pt.pizza_id INNER JOIN tayte t ON t.tayte_id = pt.tayte_id;";
+				String sqlSelect ="SELECT p.pizza_id, p_nimi, p_hinta, p_saatavuus, t.tayte_id, t_nimi, t_hinta FROM pizza p INNER JOIN pizzatayte pt ON p.pizza_id = pt.pizza_id INNER JOIN tayte t ON t.tayte_id = pt.tayte_id ORDER BY p_hinta;";
 				
 				stmt=conn.prepareStatement(sqlSelect);
 				
@@ -156,7 +156,7 @@ public class PizzaDAO extends DataAccessObject {
 			int nykyinenPizzaId=0;
 			try {
 				conn = getConnection();
-				String sqlSelect ="SELECT p.pizza_id, p_nimi, p_hinta, p_saatavuus, t.tayte_id, t_nimi, t_hinta FROM pizza p INNER JOIN pizzatayte pt ON p.pizza_id = pt.pizza_id INNER JOIN tayte t ON t.tayte_id = pt.tayte_id WHERE p_saatavuus = 'true';";
+				String sqlSelect ="SELECT p.pizza_id, p_nimi, p_hinta, p_saatavuus, t.tayte_id, t_nimi, t_hinta FROM pizza p INNER JOIN pizzatayte pt ON p.pizza_id = pt.pizza_id INNER JOIN tayte t ON t.tayte_id = pt.tayte_id WHERE p_saatavuus = 'true' ORDER BY p_hinta;";
 				
 				stmt=conn.prepareStatement(sqlSelect);
 				
@@ -251,12 +251,14 @@ public class PizzaDAO extends DataAccessObject {
 			ResultSet rs = null;
 			try {
 				conn = getConnection();
-				String sqlDelete ="DELETE FROM pizza WHERE pizza_id= "+pizzaId+";";
-				String sqlDelete2="DELETE FROM pizzatayte WHERE pizza_id="+pizzaId+";";
+				String sqlDelete ="DELETE FROM pizza WHERE pizza_id= ?;";
+				String sqlDelete2="DELETE FROM pizzatayte WHERE pizza_id= ?;";
 				stmt=conn.prepareStatement(sqlDelete);
 				stmt2=conn.prepareStatement(sqlDelete2);
-				rs=stmt2.executeQuery(sqlDelete2);
-				rs=stmt.executeQuery(sqlDelete);
+				stmt.setInt(1, pizzaId);
+				stmt2.setInt(1, pizzaId);
+				rs=stmt2.executeQuery();
+				rs=stmt.executeQuery();
 			} catch(SQLException e) {
 				throw new RuntimeException(e);
 			} finally {
