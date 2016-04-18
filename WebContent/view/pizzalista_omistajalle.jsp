@@ -78,13 +78,16 @@
                 <div class="col-md-8 col-md-offset-2">
                     <h1>Pizzalista</h1>
 					<h2>(Omistajan näkymä)</h2>
-					
+					<div class=container>
 					<div class="col-xs-4" id="lisaapizzanappi">
 					<a href="LisaaPizza" class="btn btn-success btn-xl" role="button">Lisää Pizza</a>
 					</div>
 					<div class="col-xs-4" id="taytteetnappi">
 					<a href="ListaaTaytteet" class="btn btn-success btn-xl" role="button">Täytteet</a>
 					</div>
+					</div>
+					
+					
 					<div class="table-responsive">
                     <table class="table table-hover" align="center" id="pizzataulukko">
 		<tr>
@@ -111,17 +114,8 @@
 				<td><%=pizzat.get(i).getpSaatavuus()%></td>
 				<td><a href="MuokkaaPizza?pizza_id=<%=pizzat.get(i).getPizzaId()%>" role="button"><span class="glyphicon glyphicon-edit"></span></a></td>
 				<td>
-					<button onclick="poistapizza()">
+					<button onclick="poistapizza(<%=pizzat.get(i).getPizzaId()%>)">
 						<span class="glyphicon glyphicon-trash"></span></button></td>
-						<script>function poistapizza(){
-								var p = confirm("Poistetaanko pizza?"); // poistonappi
-								if(p==true){
-									window.location="PoistaPizza?pizza_id=<%=pizzat.get(i).getPizzaId()%>";
-								}else{
-									window.location="ListaaPizzat";
-								}
-						}</script>
-								
 			</tr>
 			<% } %>
 		</table>
@@ -172,6 +166,18 @@
     <script src="assets/plugins/bootstrap.js"></script>
     <!-- CUSTOM SCRIPTS -->
     <script src="assets/js/custom.js"></script>
+
+
+
+						<script>function poistapizza(PizzaId){
+								var p = confirm("Poistetaanko täyte?"); // poistonappi
+								if(p==true){
+									window.location="PoistaPizza?pizza_id="+PizzaId;
+								}else{
+									window.location="ListaaTaytteet";
+								}
+						}</script>
+
 
 </body>
 </html>

@@ -18,6 +18,7 @@ public class PoistaTayteServlet extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String strId = request.getParameter("tayte_id");
+		System.out.println("lomakkeelta poistettavaksi tullut täyteID on"+strId);
 		int tayteId = new Integer(strId);
 		TayteDAO taytedao = new TayteDAO();
 		taytedao.deleteTayte(tayteId);

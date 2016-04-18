@@ -314,6 +314,7 @@ table {
     height:100%;
     min-height:100vh;
     vertical-align: middle;
+    
 }
 #cover-caption{
 text-shadow: 0px 1px 3px #000000;
@@ -325,6 +326,7 @@ text-align: center;
     overflow: hidden;
     outline:none;
     color: white;
+    margin:auto;
 }
 #cover-caption h1 {
 	color: white;

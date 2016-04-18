@@ -66,7 +66,7 @@
 </head>
 </body>
 <header class="masthead"> <section id="cover">
-<div class="col-lg-12" id="cover-caption">
+<div class="jumbotron text-center" id="cover-caption">
 
 	<div>
 		<h1>Pizzeria Pizzicato</h1>
@@ -118,15 +118,15 @@
 						<button type="submit" class="btn btn-default">Kirjaudu</button>
 					</form>
 					<div>
-						<a href="TestiServlet"><span style="color: blue">klikkaa</span></a>
-						<p>
-							<% 
-   String message = (String) request.getAttribute("message");
-   if (message != null) {
-      out.println("<p>" + message + "</p>");
-   }
-%>
-						</p>
+						<span style="color:red;"> <p>
+							<%
+								String message = (String) request.getAttribute("message");
+								if (message != null) {
+									out.println("<p>" + message + "</p>");
+								}
+							%>
+						</p></span>
+
 					</div>
 
 

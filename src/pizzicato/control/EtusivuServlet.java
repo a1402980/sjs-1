@@ -52,6 +52,8 @@ public class EtusivuServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
 
 		String jsp = "/view/Pizzicato.jsp";
 		
@@ -59,6 +61,22 @@ public class EtusivuServlet extends HttpServlet {
 	    Kayttaja kayttaja = new KayttajaDAO().findByUsername(username);
 	       if (kayttaja == null)
 	       {
+	    	   
+	    	   PizzaDAO pizzadao = new PizzaDAO();
+	   		ArrayList<Pizza> pizzat = pizzadao.findAll();	
+	   		
+	   		pizzat = pizzadao.findAll();
+	   		for (int i=0; i<pizzat.size(); i++){
+	   			ArrayList<Tayte> taytteet = new ArrayList<Tayte>();
+	   			taytteet = pizzadao.haePizzanTaytteet(pizzat.get(i).getPizzaId());
+	   			for (int j=0; j<taytteet.size(); j++){
+	   				pizzat.get(i).addTayte(taytteet.get(j));
+	   			}
+	   			System.out.println(pizzat.get(i).getTaytteet());
+	   		}
+	   		
+	   		request.setAttribute("pizzat", pizzat);		
+	    	   
 	    	 
 	          request.setAttribute("message", "Kirjautuminen epäonnistui");
 	          RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
