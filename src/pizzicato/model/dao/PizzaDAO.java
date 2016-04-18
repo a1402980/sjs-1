@@ -21,6 +21,7 @@ public class PizzaDAO extends DataAccessObject {
 		public void addPizza(Pizza pizza) throws SQLException {
 			Connection connection = null;
 			PreparedStatement stmtInsert = null;
+			PreparedStatement stmtInsert2 = null;
 			PreparedStatement stmtSelect = null;
 			ResultSet rs = null;
 			int lastId;
@@ -28,8 +29,10 @@ public class PizzaDAO extends DataAccessObject {
 				connection = getConnection();
 				String sqlInsert = "INSERT INTO pizza(p_nimi, p_hinta, p_saatavuus) VALUES (?, ?, ?);";
 				String sqlSelect = "SELECT LAST_INSERT_ID();";
-				stmtInsert = connection.prepareStatement(sqlInsert);				
+				
+				stmtInsert = connection.prepareStatement(sqlInsert);
 				stmtSelect = connection.prepareStatement(sqlSelect);
+				
 				
 				stmtInsert.setString(1, pizza.getpNimi());
 				stmtInsert.setDouble(2, pizza.getpHinta());
@@ -41,8 +44,11 @@ public class PizzaDAO extends DataAccessObject {
 					lastId = rs.getInt("last_insert_id()");
 					pizza.setPizzaId(lastId);
 				}
-				
-				
+				for (int i=0; i < pizza.getTayteLkm(pizza.getPizzaId()); i++) {
+				String sqlInsert2 = "INSERT INTO pizzatayte (pizza_id, tayte_id) VALUES ("+pizza.getPizzaId()+", "+pizza.getTayte(i).getTayteId()+");";
+				stmtInsert2 = connection.prepareStatement(sqlInsert2);
+				stmtInsert2.executeQuery(sqlInsert2);
+				}
 						            
 			}catch (SQLException e) {
 				throw new RuntimeException(e);
@@ -52,26 +58,7 @@ public class PizzaDAO extends DataAccessObject {
 			
 		}
 		
-		public void addPizzanTayte(Pizza pizza) throws SQLException {
-			Connection connection = null;
-			PreparedStatement stmt = null;
 		
-			try {
-				connection = getConnection();
-				int pizzaId = pizza.getPizzaId();
-								
-				for (int i=0; i < pizza.getTayteLkm(pizzaId); i++) {
-					String sqlInsert = "INSERT INTO pizzatayte (pizza_id, tayte_id) VALUES ("+pizzaId+", "+pizza.getTayte(i).getTayteId()+");";
-					stmt=connection.prepareStatement(sqlInsert);
-					stmt.executeQuery(sqlInsert);
-				}
-				
-			}catch (SQLException e) {
-				throw new RuntimeException(e);
-			} finally {
-				close(stmt,connection);
-			}
-		}
 		/** 
 		 * Avaa yhteyden tietokantaan. Hakee pizza-olion tiedot.
 		 * Muokkaa haluttua pizzaa tietokannassa pizza Id:n perusteella. Sulkee yhteyden. 
@@ -79,6 +66,7 @@ public class PizzaDAO extends DataAccessObject {
 		public void modifyPizza(Pizza pizza) throws SQLException {
 			Connection conn = null;
 			PreparedStatement stmt = null;
+			PreparedStatement stmt2 = null;
 			ResultSet rs = null;
 			try {
 				conn = getConnection();
@@ -86,7 +74,9 @@ public class PizzaDAO extends DataAccessObject {
 				String sqlUpdate = "UPDATE pizza SET p_nimi='"+pizza.getpNimi()+"', p_hinta="+pizza.getpHinta()+", p_saatavuus='"+pizza.getpSaatavuus()+"' WHERE pizza_id="+pizza.getPizzaId()+";";
 				stmt = conn.prepareStatement(sqlUpdate);
 				stmt.executeUpdate();
-
+				String sqlDelete = "DELETE FROM pizzatayte WHERE pizza_id ="+pizza.getPizzaId()+";";
+				stmt2=conn.prepareStatement(sqlDelete);
+				rs=stmt.executeQuery(sqlDelete);
 				for (int i=0; i < pizza.getTayteLkm(pizza.getPizzaId()); i++) {
 					String sqlInsert = "INSERT INTO pizzatayte (pizza_id, tayte_id) VALUES ("+pizza.getPizzaId()+", "+pizza.getTayte(i).getTayteId()+");";
 					stmt=conn.prepareStatement(sqlInsert);
@@ -97,7 +87,7 @@ public class PizzaDAO extends DataAccessObject {
 			} catch (SQLException e) {
 				throw new RuntimeException(e);
 			}finally {
-				close(rs,stmt,conn);
+				close2(rs,stmt,stmt2,conn);
 			}
 		}
 		/** 
@@ -115,13 +105,24 @@ public class PizzaDAO extends DataAccessObject {
 			ResultSet rs = null;
 			ArrayList<Pizza> pizzat = new ArrayList<Pizza>();
 			Pizza pizza=null;
+			//ArrayList<Tayte> taytteet = new ArrayList<Tayte>();
+			TayteDAO taytedao = new TayteDAO();
+			Tayte tayte;
 			try {
 				conn = getConnection();
 				String sqlSelect ="SELECT pizza_id, p_nimi, p_hinta, p_saatavuus FROM pizza;";
+				
 				stmt=conn.prepareStatement(sqlSelect);
+				
 				rs=stmt.executeQuery(sqlSelect);
+				
 				while(rs.next()) {
 					pizza = readPizza(rs);
+					String sqlSelect2 = "SELECT p.pizza_id, t.tayte_id, t_nimi, t_hinta FROM pizza p INNER JOIN pizzatayte pt ON p.pizza_id = pt.pizza_id INNER JOIN tayte t ON t.tayte_id = pt.tayte_id WHERE pt.pizza_id="+pizza.getPizzaId()+";";
+					stmt=conn.prepareStatement(sqlSelect2);
+					rs=stmt.executeQuery(sqlSelect2);
+					tayte = taytedao.readTayte(rs);
+					pizza.addTayte(tayte);
 					pizzat.add(pizza);
 				}
 			} catch(SQLException e) {
@@ -132,36 +133,6 @@ public class PizzaDAO extends DataAccessObject {
 			
 			return pizzat;
 		}
-		
-		public ArrayList<Tayte> haePizzanTaytteet(int pizzaId) {
-			Connection conn = null;
-			PreparedStatement stmt = null;
-			ResultSet rs = null;
-			ArrayList<Tayte> taytteet = new ArrayList<Tayte>();
-			TayteDAO taytedao = new TayteDAO();
-			Tayte tayte;
-			
-			try {
-				conn = getConnection();
-				String sqlSelect ="SELECT p.pizza_id, t.tayte_id, t_nimi, t_hinta FROM pizza p INNER JOIN pizzatayte pt ON p.pizza_id = pt.pizza_id INNER JOIN tayte t ON t.tayte_id = pt.tayte_id WHERE pt.pizza_id="+pizzaId+";";
-				
-				stmt=conn.prepareStatement(sqlSelect);
-				rs=stmt.executeQuery(sqlSelect);
-				
-				while(rs.next()) {
-					tayte = taytedao.readTayte(rs);
-					taytteet.add(tayte);
-				}
-			} catch(SQLException e) {
-				throw new RuntimeException(e);
-			} finally {
-				close(rs,stmt,conn);
-			}
-				
-				
-			return taytteet;
-		}
-		
 		
 		
 		/** 
@@ -235,8 +206,8 @@ public class PizzaDAO extends DataAccessObject {
 				String sqlDelete2="DELETE FROM pizzatayte WHERE pizza_id="+pizzaId+";";
 				stmt=conn.prepareStatement(sqlDelete);
 				stmt2=conn.prepareStatement(sqlDelete2);
-				rs=stmt.executeQuery(sqlDelete2);
-				rs=stmt2.executeQuery(sqlDelete);
+				rs=stmt2.executeQuery(sqlDelete2);
+				rs=stmt.executeQuery(sqlDelete);
 			} catch(SQLException e) {
 				throw new RuntimeException(e);
 			} finally {

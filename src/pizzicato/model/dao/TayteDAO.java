@@ -131,6 +131,7 @@ public class TayteDAO extends DataAccessObject{
 	public Tayte deleteTayte(int tayteId){
 		Connection conn = null;
 		PreparedStatement stmt = null;
+		PreparedStatement stmt2 = null;
 		ResultSet rs = null;
 		try {
 			conn = getConnection();
@@ -138,7 +139,10 @@ public class TayteDAO extends DataAccessObject{
 			String sqlDelete ="DELETE FROM tayte WHERE tayte_id="+tayteId+";";
 			String sqlDelete2 ="DELETE FROM pizzatayte WHERE tayte_id="+tayteId+";";
 			stmt=conn.prepareStatement(sqlDelete);
+			stmt2=conn.prepareStatement(sqlDelete2);
+			rs=stmt2.executeQuery(sqlDelete2);
 			rs=stmt.executeQuery(sqlDelete);
+			
 		} catch(SQLException e) {
 			throw new RuntimeException(e);
 		} finally {
