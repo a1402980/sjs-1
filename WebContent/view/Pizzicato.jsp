@@ -117,7 +117,7 @@
 						</div class="form-group">
 						<button type="submit" class="btn btn-default">Kirjaudu</button>
 					</form>
-					<div style="text-align:center;">
+					<div style="text-align:center" id="ilmoitus";>
 						<span style="color:red;"> <p>
 							<%
 								String message = (String) request.getAttribute("message");
