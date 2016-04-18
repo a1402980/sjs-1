@@ -72,60 +72,69 @@
 
     <!-- Free Section -->
 
-    <section id="pizzat" >
-        <div class="container">
-            <div class="row text-center for-full-back color-light">
-                <div class="col-md-8 col-md-offset-2">
-                    <h1>Pizzalista</h1>
-					<h2>(Omistajan näkymä)</h2>
-					<div class=container>
-					<div class="col-xs-4" id="lisaapizzanappi">
-					<a href="LisaaPizza" class="btn btn-success btn-xl" role="button">Lisää Pizza</a>
+	<section id="pizzat">
+	<div class="container">
+		<div class="row text-center for-full-back color-light">
+			<div class="col-md-8 col-md-offset-2">
+				<h1>Pizzalista</h1>
+				<h2>(Omistajan näkymä)</h2>
+				<div class=container>
+					<div class="row">
+						<div class="col-sm-3" id="lisaapizzanappi">
+							<a href="LisaaPizza" class="btn btn-success btn-xl" role="button">Lisää
+								Pizza</a>
+						</div>
+						<div class="col-sm-3" id="taytteetnappi">
+							<a href="ListaaTaytteet" class="btn btn-success btn-xl"
+								role="button">Täytteet</a>
+						</div>
 					</div>
-					<div class="col-xs-4" id="taytteetnappi">
-					<a href="ListaaTaytteet" class="btn btn-success btn-xl" role="button">Täytteet</a>
-					</div>
-					</div>
-					
-					
-					<div class="table-responsive">
-                    <table class="table table-hover" align="center" id="pizzataulukko">
-		<tr>
-			<th>Id</th>
-				<th>Nimi</th>
-					<th>Täytteet</th>
-						<th>Hinta</th>
-							<th>Valikoimassa</th>
-								<th>Muokkaa</th>
-									<th>Poista</th>
-								
-						
-
-		</tr>
-			<%for(int i = 0; i < pizzat.size(); i++) {%>
-			<tr>
-				<td><%=pizzat.get(i).getPizzaId()%></td>
-				<td><%=pizzat.get(i).getpNimi()%></td>
-				
-				<td><%for (int j=0; j<pizzat.get(i).getTaytteet().size(); j++){ %>
-				<%=pizzat.get(i).getTayte(j).gettNimi() %>
-				<% } %></td>
-				<td><%=pizzat.get(i).getpHinta()%></td>
-				<td><%=pizzat.get(i).getpSaatavuus()%></td>
-				<td><a href="MuokkaaPizza?pizza_id=<%=pizzat.get(i).getPizzaId()%>" role="button"><span class="glyphicon glyphicon-edit"></span></a></td>
-				<td>
-					<button onclick="poistapizza(<%=pizzat.get(i).getPizzaId()%>)">
-						<span class="glyphicon glyphicon-trash"></span></button></td>
-			</tr>
-			<% } %>
-		</table>
 				</div>
-                </div>
 
-            </div>
-            </div>
-    </section>    
-    <!--End Free Section -->
+
+				<div class="table-responsive">
+					<table class="table table-hover" align="center" id="pizzataulukko">
+						<tr>
+							<th>Id</th>
+							<th>Nimi</th>
+							<th>Täytteet</th>
+							<th>Hinta</th>
+							<th>Valikoimassa</th>
+							<th>Muokkaa</th>
+							<th>Poista</th>
+
+
+
+						</tr>
+						<%for(int i = 0; i < pizzat.size(); i++) {%>
+						<tr>
+							<td><%=pizzat.get(i).getPizzaId()%></td>
+							<td><%=pizzat.get(i).getpNimi()%></td>
+
+							<td>
+								<%for (int j=0; j<pizzat.get(i).getTaytteet().size(); j++){ %> <%=pizzat.get(i).getTayte(j).gettNimi() %>
+								<% } %>
+							</td>
+							<td><%=pizzat.get(i).getpHinta()%></td>
+							<td><%=pizzat.get(i).getpSaatavuus()%></td>
+							<td><a
+								href="MuokkaaPizza?pizza_id=<%=pizzat.get(i).getPizzaId()%>"
+								role="button"><span class="glyphicon glyphicon-edit"></span></a></td>
+							<td>
+								<button onclick="poistapizza(<%=pizzat.get(i).getPizzaId()%>)">
+									<span class="glyphicon glyphicon-trash"></span>
+								</button>
+							</td>
+						</tr>
+						<% } %>
+					</table>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	</section>
+	<!--End Free Section -->
 
     <!-- Contact Section -->
     <section class="for-full-back color-white " id="contact">
