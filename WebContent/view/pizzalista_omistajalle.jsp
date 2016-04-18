@@ -60,7 +60,7 @@
 				<li><a href="#pizzamenu">Pizzat</a></li>
 				<li><a href="#services">Tilaukset</a></li>
 				<li><a href="#contact">Yhteystiedot</a></li>
-				<li>Tervetuloa <span style="font-weight:bold">Admin</span>!</li>
+				<li><a href="">Tervetuloa <span style="font-weight:bold">Admin</span>!</a></li>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
