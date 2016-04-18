@@ -350,8 +350,8 @@ text-align: center;
   }
   
   .dropdown-menu {
-    width: 450px !important;
-    height: 97px !important;
+    width: 440% !important;
+   	height: 250% !important;
 }
 #tausta { 
 	background-image: url("tausta.jpg");
