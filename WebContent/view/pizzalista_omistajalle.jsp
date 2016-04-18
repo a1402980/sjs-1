@@ -179,11 +179,11 @@
 
 
 						<script>function poistapizza(PizzaId){
-								var p = confirm("Poistetaanko täyte?"); // poistonappi
+								var p = confirm("Poistetaanko pizza?"); // poistonappi
 								if(p==true){
 									window.location="PoistaPizza?pizza_id="+PizzaId;
 								}else{
-									window.location="ListaaTaytteet";
+									window.location="ListaaPizzat";
 								}
 						}</script>
 

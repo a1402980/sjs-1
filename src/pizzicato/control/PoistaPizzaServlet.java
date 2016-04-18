@@ -21,7 +21,6 @@ public class PoistaPizzaServlet extends HttpServlet {
 		int pizzaId = new Integer(strId);
 		PizzaDAO pizzadao = new PizzaDAO();
 		
-		pizzadao.deletePizzaTayte(pizzaId);
 		pizzadao.deletePizza(pizzaId);
 		
 		

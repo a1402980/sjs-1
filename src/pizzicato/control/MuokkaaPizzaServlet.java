@@ -64,7 +64,7 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 			Pizza pizza = (Pizza) request.getAttribute("pizza");
 			PizzaDAO pizzadao = new PizzaDAO();
 			try {
-				pizzadao.deletePizzaTayte(pizza.getPizzaId());
+				pizzadao.deletePizza(pizza.getPizzaId());
 				pizzadao.modifyPizza(pizza);
 				pizzadao.addPizzanTayte(pizza);	
 			} catch (SQLException e) {
