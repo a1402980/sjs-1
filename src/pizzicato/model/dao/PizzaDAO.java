@@ -135,6 +135,51 @@ public class PizzaDAO extends DataAccessObject {
 		}
 		
 		
+		
+		public ArrayList<Pizza> findAllAsiakas() {
+			Connection conn = null;
+			PreparedStatement stmt = null;
+			PreparedStatement stmt2 = null;
+			ResultSet rs = null;
+			ArrayList<Pizza> pizzat = new ArrayList<Pizza>();
+			Pizza pizza=null;
+			//ArrayList<Tayte> taytteet = new ArrayList<Tayte>();
+			TayteDAO taytedao = new TayteDAO();
+			Tayte tayte;
+			try {
+				conn = getConnection();
+				String sqlSelect ="SELECT pizza_id, p_nimi, p_hinta, p_saatavuus FROM pizza WHERE p_saatavuus = 'true';";
+				
+				stmt=conn.prepareStatement(sqlSelect);
+				
+				rs=stmt.executeQuery(sqlSelect);
+				
+				while(rs.next()) {
+					pizza = readPizza(rs);
+					pizzat.add(pizza);
+				}
+				for(int i=0; i<pizzat.size(); i++ ){
+					String sqlSelect2 = "SELECT t.tayte_id, t_nimi, t_hinta FROM pizzatayte pt INNER JOIN tayte t ON t.tayte_id = pt.tayte_id WHERE pt.pizza_id="+pizza.getPizzaId()+";";
+					stmt2=conn.prepareStatement(sqlSelect2);
+					rs=stmt2.executeQuery(sqlSelect2);
+					
+					while(rs.next()) {
+						tayte = taytedao.readTayte(rs);
+						pizza.addTayte(tayte);
+					}
+				}
+
+			
+			} catch(SQLException e) {
+				throw new RuntimeException(e);
+			} finally {
+				close2(rs,stmt,stmt2,conn);
+			}
+			
+			return pizzat;
+		}
+		
+		
 		/** 
 		 * Avaa tietokantayhteyden. 
 		 * Hakee yhden pizzan tiedot tietokannasta kyseisen pizzan id:n perusteella 
