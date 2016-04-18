@@ -80,9 +80,23 @@
                 <div class="col-md-8 col-md-offset-2">
                     <h1>Täytelista</h1>
 					<h2>(Omistajan näkymä)</h2>
-					<div id="lisaapizzanappi">
+					
+					<div class=container>
+					<div class="row">
+					
+					<div class="col-sm-3" id="lisaapizzanappi">
+					<a href="ListaaPizzat" class="btn btn-primary btn-xl" role="button"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i> Takaisin</a>
+					</div>
+					
+					<div class="col-sm-3" id="lisaapizzanappi">
 					<a href="LisaaTayte" class="btn btn-success btn-xl" role="button">Lisää Täyte</a>
 					</div>
+
+					
+					</div>
+					</div>
+					
+					
 					<div class="table-responsive">
                     <table class="table table-hover" align="center" id="pizzataulukko">
 		<tr>

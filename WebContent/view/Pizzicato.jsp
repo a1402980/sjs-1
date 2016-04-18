@@ -73,7 +73,7 @@
 		<h1>Tervetuloa!</h1>
 
 		<span><i class="fa fa-home"></i>&nbsp; <a
-			href="https://goo.gl/maps/W61P9QmPrDC2">Pizzakatu 12</a> </span> <br /> <span><i
+			href="https://goo.gl/maps/W61P9QmPrDC2">Kuusikatu 6, Helsinki</a> </span> <br /> <span><i
 			class="fa fa-phone"></i>&nbsp;(+030)123123</span> <br /> <br> 
 			<h2>Tutustu menuun ja tee tilaus!</h2>
 			<a href="#pizzamenu" class="glyphicon glyphicon-chevron-down"></a>
@@ -102,6 +102,7 @@
 			<li><a href="#pizzamenu">Pizzat</a></li>
 			<li><a href="#services">Tilaukset</a></li>
 			<li><a href="#contact">Yhteystiedot</a></li>
+			<li><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="badge">7</span></button></li>
 			<li class="dropdown"><a href="#" class="dropdown-toggle"
 				data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>
 					Kirjaudu <b class="caret"></b></a>
@@ -117,15 +118,15 @@
 						</div class="form-group">
 						<button type="submit" class="btn btn-default">Kirjaudu</button>
 					</form>
-					<div style="text-align:center" id="ilmoitus";>
-						<span style="color:red;"> <p>
+					<div id=huomio>
+						<span id="ilmoitus">
 							<%
 								String message = (String) request.getAttribute("message");
 								if (message != null) {
 									out.println("<p>" + message + "</p>");
 								}
 							%>
-						</p></span>
+						</span>
 
 					</div>
 
@@ -155,7 +156,7 @@
 		<div class="col-md-8 col-md-offset-2">
 			<h1>Pizzalista</h1>
 			<div class="table-responsive">
-				<table class="table table-hover" align="center" id="pizzataulukko">
+				<table class="table table-hover" align="center" id="pizzataulukko_asiakkaalle">
 					<tr>
 						<th>Nimi</th>
 						<th>T‰ytteet</th>
@@ -171,10 +172,21 @@
 						</td>
 						<td><%=pizzat.get(i).getpHinta()%></td>
 						<td>
-							<button onclick="pizza()">
-								<span class="glyphicon glyphicon-shopping-cart"
-									style="color:#5cb85c"></span>
-							</button>
+							<div class="dropdown">
+    						<button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-shopping-cart">
+    						<span class="caret"></span></button>
+    						<ul class="dropdown-menu noclose pull-right text-center">
+     						<li></li>
+      						<li><form role="form">
+   								<div id=pizzalkm>
+   								<label>Pizzojen lkm.</label>
+      							<input type="number" min="1" max="10" step="1" name="pizzamaara">
+      							</div> 
+      							</form>
+      							<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span><span class="glyphicon glyphicon-plus"></span></button>
+      							</li>
+    							</ul>
+  							</div>
 						</td>
 					</tr>
 					<% } %>
@@ -196,7 +208,7 @@
 	<div class="col-lg-12 text-center">
 		<h1>Pizzeria Pizzicato</h1>
 		<div>
-			<h3>Pizzicato on suomalainen pizzeria Pasilan syd‰mess‰. Panostamme menussamme hyv‰‰n hinta-laatusuhteeseen. 
+			<h3>Pizzicato on suomalainen pizzeria Meilahden syd‰mess‰. Panostamme menussamme hyv‰‰n hinta-laatusuhteeseen. 
 			Pizzamme ovat laadukkaita, mutta edullisia. Suosimme myˆs kotimaisia raaka-aineita. 
 			Voit nauttia pizzasi kodikkaassa ravintolassamme, noutaa pizzan mukaasi tai tilata sen k‰tev‰sti kotiisi kuljetettuna p‰‰kaupunkiseudun alueella. 
 			
@@ -308,8 +320,7 @@
 		<div>
 			<span><i class="fa fa-home"></i>&nbsp;Osoite</span> <br /> <span><i
 				class="fa fa-phone"></i>&nbsp;Puhelin</span> <br /> <span><i
-				class="fa fa-envelope-o"></i>&nbsp;e-mail</span> <br /> <span><i
-				class="fa fa-phone"></i>&nbsp;Puhelin</span> <br />
+				class="fa fa-envelope-o"></i>&nbsp;e-mail</span> <br />
 		</div>
 
 	</div>
