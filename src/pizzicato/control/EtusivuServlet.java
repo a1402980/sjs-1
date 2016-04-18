@@ -75,13 +75,12 @@ public class EtusivuServlet extends HttpServlet {
 	  		  dispather.forward(request, response);
 	          return;
 	       }
-
 	       HttpSession session = request.getSession();
-	       int kayttaja_id = kayttaja.getId();
-	       session.setAttribute("kayttaja_id", kayttaja_id);
+	       String kayttaja_rooli = kayttaja.getUserRole();
+	       session.setAttribute("rooli", kayttaja_rooli);
+	      
 	       response.sendRedirect("ListaaPizzat");
-	       //String url = "ListaaPizzat";
-	       //response.sendRedirect(url);
+	       
 	}
 
 
