@@ -136,6 +136,7 @@ public class TayteDAO extends DataAccessObject{
 			conn = getConnection();
 			System.out.println("poistettava täyteid on:"+tayteId);
 			String sqlDelete ="DELETE FROM tayte WHERE tayte_id="+tayteId+";";
+			String sqlDelete2 ="DELETE FROM pizzatayte WHERE tayte_id="+tayteId+";";
 			stmt=conn.prepareStatement(sqlDelete);
 			rs=stmt.executeQuery(sqlDelete);
 		} catch(SQLException e) {
