@@ -349,10 +349,22 @@ text-align: center;
       padding-top: 70px;
   }
   
-  .dropdown-menu {
-    width: 440% !important;
-   	height: 250% !important;
+.dropdown-menu @media screen and (min-width: 766px) {
+  	
+    width: 150px !important;
+   	height: 200px !important;
 }
+
+.dropdown-menu {
+  	
+    width: 200px !important;
+   	height: 200px !important;
+}
+
+#ilmoitus {
+	paddin-bottom: 0px !important;
+}
+
 #tausta { 
 	background-image: url("tausta.jpg");
 	background-repeat: no-repeat;
