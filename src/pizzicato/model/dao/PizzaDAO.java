@@ -102,33 +102,39 @@ public class PizzaDAO extends DataAccessObject {
 		public ArrayList<Pizza> findAll() {
 			Connection conn = null;
 			PreparedStatement stmt = null;
+			PreparedStatement stmt2 = null;
 			ResultSet rs = null;
 			ArrayList<Pizza> pizzat = new ArrayList<Pizza>();
 			Pizza pizza=null;
 			//ArrayList<Tayte> taytteet = new ArrayList<Tayte>();
 			TayteDAO taytedao = new TayteDAO();
 			Tayte tayte;
+			int edellinenPizzaId=0;
+			int nykyinenPizzaId=0;
 			try {
 				conn = getConnection();
-				String sqlSelect ="SELECT pizza_id, p_nimi, p_hinta, p_saatavuus FROM pizza;";
+				String sqlSelect ="SELECT p.pizza_id, p_nimi, p_hinta, p_saatavuus, t.tayte_id, t_nimi, t_hinta FROM pizza p INNER JOIN pizzatayte pt ON p.pizza_id = pt.pizza_id INNER JOIN tayte t ON t.tayte_id = pt.tayte_id;";
 				
 				stmt=conn.prepareStatement(sqlSelect);
 				
 				rs=stmt.executeQuery(sqlSelect);
 				
 				while(rs.next()) {
-					pizza = readPizza(rs);
-					String sqlSelect2 = "SELECT p.pizza_id, t.tayte_id, t_nimi, t_hinta FROM pizza p INNER JOIN pizzatayte pt ON p.pizza_id = pt.pizza_id INNER JOIN tayte t ON t.tayte_id = pt.tayte_id WHERE pt.pizza_id="+pizza.getPizzaId()+";";
-					stmt=conn.prepareStatement(sqlSelect2);
-					rs=stmt.executeQuery(sqlSelect2);
+					nykyinenPizzaId = rs.getInt("pizza_id");
+					if (nykyinenPizzaId != edellinenPizzaId) {
+						pizza = readPizza(rs);
+						pizzat.add(pizza);
+						edellinenPizzaId = nykyinenPizzaId;
+					}
 					tayte = taytedao.readTayte(rs);
 					pizza.addTayte(tayte);
-					pizzat.add(pizza);
 				}
+
+			
 			} catch(SQLException e) {
 				throw new RuntimeException(e);
 			} finally {
-				close(rs,stmt,conn);
+				close2(rs,stmt,stmt2,conn);
 			}
 			
 			return pizzat;
@@ -146,27 +152,25 @@ public class PizzaDAO extends DataAccessObject {
 			//ArrayList<Tayte> taytteet = new ArrayList<Tayte>();
 			TayteDAO taytedao = new TayteDAO();
 			Tayte tayte;
+			int edellinenPizzaId=0;
+			int nykyinenPizzaId=0;
 			try {
 				conn = getConnection();
-				String sqlSelect ="SELECT pizza_id, p_nimi, p_hinta, p_saatavuus FROM pizza WHERE p_saatavuus = 'true';";
+				String sqlSelect ="SELECT p.pizza_id, p_nimi, p_hinta, p_saatavuus, t.tayte_id, t_nimi, t_hinta FROM pizza p INNER JOIN pizzatayte pt ON p.pizza_id = pt.pizza_id INNER JOIN tayte t ON t.tayte_id = pt.tayte_id WHERE p_saatavuus = 'true';";
 				
 				stmt=conn.prepareStatement(sqlSelect);
 				
 				rs=stmt.executeQuery(sqlSelect);
 				
 				while(rs.next()) {
-					pizza = readPizza(rs);
-					pizzat.add(pizza);
-				}
-				for(int i=0; i<pizzat.size(); i++ ){
-					String sqlSelect2 = "SELECT t.tayte_id, t_nimi, t_hinta FROM pizzatayte pt INNER JOIN tayte t ON t.tayte_id = pt.tayte_id WHERE pt.pizza_id="+pizza.getPizzaId()+";";
-					stmt2=conn.prepareStatement(sqlSelect2);
-					rs=stmt2.executeQuery(sqlSelect2);
-					
-					while(rs.next()) {
-						tayte = taytedao.readTayte(rs);
-						pizza.addTayte(tayte);
+					nykyinenPizzaId = rs.getInt("pizza_id");
+					if (nykyinenPizzaId != edellinenPizzaId) {
+						pizza = readPizza(rs);
+						pizzat.add(pizza);
+						edellinenPizzaId = nykyinenPizzaId;
 					}
+					tayte = taytedao.readTayte(rs);
+					pizza.addTayte(tayte);
 				}
 
 			
