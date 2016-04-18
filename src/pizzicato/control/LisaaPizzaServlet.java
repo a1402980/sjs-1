@@ -45,8 +45,7 @@ public class LisaaPizzaServlet extends HttpServlet {
 		} else {
 			PizzaDAO pizzadao = new PizzaDAO();
 			try {
-				pizzadao.addPizza(pizza);		
-				pizzadao.addPizzanTayte(pizza);					
+				pizzadao.addPizza(pizza);							
 			} catch (SQLException e) {
 				System.out.println("Sovelluksessa tapahtui virhe "+ e.getMessage());
 				e.printStackTrace();

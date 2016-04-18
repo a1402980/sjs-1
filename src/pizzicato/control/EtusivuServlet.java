@@ -31,17 +31,7 @@ public class EtusivuServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PizzaDAO pizzadao = new PizzaDAO();
-		ArrayList<Pizza> pizzat = pizzadao.findAll();	
-		
-		pizzat = pizzadao.findAll();
-		for (int i=0; i<pizzat.size(); i++){
-			ArrayList<Tayte> taytteet = new ArrayList<Tayte>();
-			taytteet = pizzadao.haePizzanTaytteet(pizzat.get(i).getPizzaId());
-			for (int j=0; j<taytteet.size(); j++){
-				pizzat.get(i).addTayte(taytteet.get(j));
-			}
-			System.out.println(pizzat.get(i).getTaytteet());
-		}
+		ArrayList<Pizza> pizzat = pizzadao.findAllAsiakas();	
 		
 		request.setAttribute("pizzat", pizzat);		
 		
@@ -61,26 +51,10 @@ public class EtusivuServlet extends HttpServlet {
 	    Kayttaja kayttaja = new KayttajaDAO().findByUsername(username);
 	       if (kayttaja == null)
 	       {
-	    	   
-	    	   PizzaDAO pizzadao = new PizzaDAO();
-	   		ArrayList<Pizza> pizzat = pizzadao.findAll();	
-	   		
-	   		pizzat = pizzadao.findAll();
-	   		for (int i=0; i<pizzat.size(); i++){
-	   			ArrayList<Tayte> taytteet = new ArrayList<Tayte>();
-	   			taytteet = pizzadao.haePizzanTaytteet(pizzat.get(i).getPizzaId());
-	   			for (int j=0; j<taytteet.size(); j++){
-	   				pizzat.get(i).addTayte(taytteet.get(j));
-	   			}
-	   			System.out.println(pizzat.get(i).getTaytteet());
-	   		}
-	   		
-	   		request.setAttribute("pizzat", pizzat);		
-	    	   
-	    	 
-	          request.setAttribute("message", "Kirjautuminen epäonnistui");
+	    	   request.setAttribute("message", "Kirjautuminen epäonnistui");
 	          RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
 	  		  dispather.forward(request, response);
+	  		  response.sendRedirect("Etusivu");
 	          return;
 	       }
 	       if(!kayttaja.getUsername().equals(username))
@@ -101,16 +75,14 @@ public class EtusivuServlet extends HttpServlet {
 	  		  dispather.forward(request, response);
 	          return;
 	       }
-
 	       HttpSession session = request.getSession();
-	       int kayttaja_id = kayttaja.getId();
-	       session.setAttribute("kayttaja_id", kayttaja_id);
-	       String url = "ListaaPizzat";
-	       response.sendRedirect(url);
+	       String kayttaja_rooli = kayttaja.getUserRole();
+	       session.setAttribute("rooli", kayttaja_rooli);
+	      
+	       response.sendRedirect("ListaaPizzat");
+	       
 	}
 
 
 
 	}
-
-

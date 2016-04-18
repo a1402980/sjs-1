@@ -29,6 +29,31 @@ public class DataAccessObject {
 		return connection;
 	}
 	
+	protected static void close2(Statement stmt, Statement stmt2, Connection connection) {
+		close2 (null, stmt, stmt2, connection);
+	}
+	
+	protected static void close2(ResultSet rs, Statement stmt, Statement stmt2, Connection conn) {
+		
+		try {
+			if (rs !=null) {
+				rs.close();
+			}
+			if (stmt !=null) {
+				stmt.close();
+			}
+			if (stmt2 !=null) {
+				stmt2.close();
+			}
+			if (conn !=null) {
+				conn.close();
+			}
+		} catch(Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	
 	protected static void close(Statement stmt, Connection connection) {
 		close (null, stmt, connection);
 	}
@@ -42,6 +67,7 @@ public class DataAccessObject {
 			if (stmt !=null) {
 				stmt.close();
 			}
+			
 			if (conn !=null) {
 				conn.close();
 			}
