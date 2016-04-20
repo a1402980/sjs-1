@@ -48,38 +48,25 @@ public class EtusivuServlet extends HttpServlet {
 		String jsp = "/view/Pizzicato.jsp";
 		
 		String username = request.getParameter("username");
+		String password = request.getParameter("password");
 	    Kayttaja kayttaja = new KayttajaDAO().findByUsername(username);
-	       if (kayttaja == null)
+	       if (kayttaja == null || !kayttaja.getUsername().equals(username) || password == null || !kayttaja.getPassword().equals(password) )
 	       {
+	    	   PizzaDAO pizzadao = new PizzaDAO();
+	   			ArrayList<Pizza> pizzat = pizzadao.findAllAsiakas();	
+	   			request.setAttribute("pizzat", pizzat);		
 	    	   request.setAttribute("message", "Kirjautuminen epäonnistui");
-	          RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
+	         RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
 	  		  dispather.forward(request, response);
-	  		  response.sendRedirect("Etusivu");
-	          return;
+	       } else {
+	    	   HttpSession session = request.getSession();
+		       String kayttaja_rooli = kayttaja.getUserRole();
+		       session.setAttribute("rooli", kayttaja_rooli);
+		      
+		       response.sendRedirect("ListaaPizzat");
 	       }
-	       if(!kayttaja.getUsername().equals(username))
-	       {
-	    	   request.setAttribute("message", "Kirjautuminen epäonnistui");
-		       RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
-		       dispather.forward(request, response);
-		       return;
-	    	   
-	  
-	       }
-	       
-	       String password = request.getParameter("password");
-	       if (password == null || !kayttaja.getPassword().equals(password))
-	       {
-	          request.setAttribute("message", "Kirjautuminen epäonnistui");
-	          RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
-	  		  dispather.forward(request, response);
-	          return;
-	       }
-	       HttpSession session = request.getSession();
-	       String kayttaja_rooli = kayttaja.getUserRole();
-	       session.setAttribute("rooli", kayttaja_rooli);
 	      
-	       response.sendRedirect("ListaaPizzat");
+	       
 	       
 	}
 
