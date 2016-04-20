@@ -37,12 +37,17 @@ public class RekisteroityminenServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String jsp ="/view/rekisteroityminen.jsp";
 		
 		Map<String, String> errors = validate(request);
 		Kayttaja kayttaja = (Kayttaja) request.getAttribute("kayttaja");	
 		
 		if (!errors.isEmpty()) {
 			System.out.println(errors);
+			
+			RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
+			dispather.forward(request, response);
+			
 			response.sendRedirect("Rekisteroityminen");
 		} else {
 			KayttajaDAO kayttajadao = new KayttajaDAO();
