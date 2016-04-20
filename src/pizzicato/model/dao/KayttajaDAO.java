@@ -126,7 +126,7 @@ public class KayttajaDAO extends DataAccessObject {
 	   Connection connection = null;
 	   try {
 		   connection = getConnection();
-		   String sql = "insert into user " + "(username, password, userrole) " + "values (?, ? ?)";
+		   String sql = "insert into kayttaja (username, password, userrole) values (?, ?, ?)";
 		   statement = connection.prepareStatement(sql);
 	       statement.setString(1, kayttaja.getUsername());
 	       statement.setString(2, kayttaja.getPassword());

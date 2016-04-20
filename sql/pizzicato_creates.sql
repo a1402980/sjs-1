@@ -30,3 +30,36 @@ userrole varchar(15) NOT NULL,
 PRIMARY KEY (kayttaja_id)
 )Engine="InnoDB";
 
+
+CREATE TABLE asiakas(
+asiakas_id int NOT NULL AUTO_INCREMENT,
+etunimi varchar(30) NOT NULL,
+sukunimi varchar(30) NOT NULL,
+puh varchar(15) NOT NULL,
+osoite varchar(30) NOT NULL,
+posti_nro char(5) NOT NULL,
+posti_tmp varchar(15) NOT NULL,
+s_posti varchar(15) NOT NULL,
+PRIMARY KEY (asiakas_id)
+)Engine="InnoDB";
+
+
+CREATE TABLE tilaus(
+tilaus_id int NOT NULL AUTO_INCREMENT,
+asiakas_id int NOT NULL,
+status varchar(15) NOT NULL,
+til_ajankohta timestamp NOT NULL default CURRENT_TIMESTAMP(), 
+PRIMARY KEY (tilaus_id),
+FOREIGN KEY (asiakas_id) REFERENCES asiakas(asiakas_id)
+)Engine="InnoDB";
+
+
+CREATE TABLE pizzatilaus(
+tilaus_id int NOT NULL,
+asiakas_id int NOT NULL,
+lkm int NOT NULL,
+PRIMARY KEY (tilaus_id, asiakas_id),
+FOREIGN KEY (tilaus_id) REFERENCES tilaus(tilaus_id),
+FOREIGN KEY (asiakas_id) REFERENCES asiakas(asiakas_id)
+)Engine="InnoDB";
+
