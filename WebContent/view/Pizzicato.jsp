@@ -83,8 +83,7 @@
 </section> </header>
 
 <!-- navigation -->
-<nav class="navbar navbar-inverse" data-spy="affix"
-	data-offset-top="500" id=navigaatio>
+<nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="500" id=navigaatio>
 <div class="container">
 
 	<div class="navbar-header">
