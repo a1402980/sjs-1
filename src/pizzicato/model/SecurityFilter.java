@@ -37,19 +37,22 @@ public class SecurityFilter implements Filter {
 	      if (servletPath.equals("/Etusivu"))
 	      {
 	         chain.doFilter(req, resp);
-	         return;
+	      } else if (servletPath.endsWith(".css") || servletPath.endsWith(".png") || servletPath.endsWith(".jpg") || servletPath.endsWith(".js")) {
+	    	  chain.doFilter(req, resp);
+	    	  
+	      } else {
+	    	  HttpSession session = req.getSession();
+		      String kayttaja_rooli = (String) session.getAttribute("rooli");
+			  
+		      if (kayttaja_rooli != "omistaja")
+		      {
+		    	 resp.sendRedirect("Etusivu");
+		    	 
+		      } else {
+		    	  chain.doFilter(req, resp);
+		      }
+		     
 	      }
-	      
-	      // All other functionality requires authentication.
-	      HttpSession session = req.getSession();
-	      String kayttaja_rooli = (String) session.getAttribute("rooli");
-		  
-	      if (kayttaja_rooli != "omistaja")
-	      {
-	    	 resp.sendRedirect("Etusivu");
-	      }
-	      
-	      chain.doFilter(req, resp);
 
 	   }   
 	
