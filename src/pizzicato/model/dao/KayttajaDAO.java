@@ -121,6 +121,7 @@ public class KayttajaDAO extends DataAccessObject {
 	         close(statement, connection);
 	      }
    }
+   
    public void create(Kayttaja kayttaja) {
 	   PreparedStatement statement = null;
 	   Connection connection = null;
