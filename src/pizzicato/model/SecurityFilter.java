@@ -37,7 +37,8 @@ public class SecurityFilter implements Filter {
 	      if (servletPath.equals("/Etusivu") || servletPath.equals("/Rekisteroityminen"))
 	      {
 	         chain.doFilter(req, resp);
-	      } else if (servletPath.endsWith(".css") || servletPath.endsWith(".png") || servletPath.endsWith(".jpg") || servletPath.endsWith(".js")) {
+	      } else if (servletPath.endsWith(".css") || servletPath.endsWith(".png") || servletPath.endsWith(".jpg") || servletPath.endsWith(".js") || servletPath.endsWith(".eot") || servletPath.endsWith(".svg")
+	    		  || servletPath.endsWith(".ttf") || servletPath.endsWith(".woff") || servletPath.endsWith(".eot")) {
 	    	  chain.doFilter(req, resp);
 	    	  
 	      } else {
