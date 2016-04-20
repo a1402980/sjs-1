@@ -102,7 +102,7 @@
 	<div class="container">
 		<div class="row text-center for-full-back color-light ">
 			<div class="col-md-8 col-md-offset-2">
-				<H1>Rekisteröityminen</H1>
+				<H1>Rekisteröityminen </H1>
 
 				<%
 				
