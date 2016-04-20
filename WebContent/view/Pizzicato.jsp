@@ -155,7 +155,10 @@
 	<div class="row text-center for-full-back color-light" id="pizzamenu">
 		<div class="col-md-8 col-md-offset-2">
 			<h1>Pizzalista</h1>
-			<div class="alert alert-success"> <strong>Pizza lisätty ostoskoriin! (tämä on tässä vain merkkinä siitä mihin viesti tulee kun se on tehty servlettiin)</strong> </div>
+			<div class="alert alert-success">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> 
+			<strong>Pizza lisätty ostoskoriin! (tämä on tässä vain merkkinä siitä mihin viesti tulee kun se on tehty servlettiin)</strong>
+			</div>
 			<div class="table-responsive">
 				<table class="table table-hover" align="center" id="pizzataulukko_asiakkaalle">
 					<tr>
