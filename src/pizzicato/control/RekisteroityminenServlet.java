@@ -17,7 +17,7 @@ import pizzicato.model.dao.TayteDAO;
 /**
  * Servlet implementation class RekisteroityminenServlet
  */
-@WebServlet("/RekisteroityminenServlet")
+@WebServlet("/Rekisteroityminen")
 public class RekisteroityminenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -25,15 +25,13 @@ public class RekisteroityminenServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String jsp ="/view/rekisteroityminen.jsp";
-		KayttajaDAO kayttajadao = new KayttajaDAO();
-
 		RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
 		dispather.forward(request, response);
 	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		KayttajaDAO kayttajadao = new KayttajaDAO();
 	}
 
 }
