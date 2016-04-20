@@ -116,7 +116,7 @@
 							<input type="text" class="form-control" name="password"
 								placeholder="Salasana">
 						</div class="form-group">
-						<button type="submit" class="btn btn-default">Kirjaudu</button>
+						<button type="submit" name="kirjautumisnappi" class="btn btn-primary">Kirjaudu</button>
 					</form>
 					<div id=huomio>
 						<span id="ilmoitus">
@@ -155,6 +155,7 @@
 	<div class="row text-center for-full-back color-light" id="pizzamenu">
 		<div class="col-md-8 col-md-offset-2">
 			<h1>Pizzalista</h1>
+			<div class="alert alert-success"> <strong>Pizza lisätty ostoskoriin! (tämä on tässä vain merkkinä siitä mihin viesti tulee kun se on tehty servlettiin)</strong> </div>
 			<div class="table-responsive">
 				<table class="table table-hover" align="center" id="pizzataulukko_asiakkaalle">
 					<tr>
@@ -183,7 +184,7 @@
       							<input type="number" min="1" max="10" step="1" name="pizzamaara">
       							</div> 
       							</form>
-      							<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span><span class="glyphicon glyphicon-plus"></span></button>
+      							<button type="submit" class="btn btn-success" name="pizzanlisays"><span class="glyphicon glyphicon-shopping-cart"></span><span class="glyphicon glyphicon-plus"></span></button>
       							</li>
     							</ul>
   							</div>
@@ -335,6 +336,7 @@
 <!-- <script src="assets/plugins/bootstrap.js"></script> tämä ei toiminut niin javascriptkirjasto haetaan netistä headerissa -->
 <!-- CUSTOM SCRIPTS -->
 <script src="assets/js/custom.js"></script>
+
 
 
 

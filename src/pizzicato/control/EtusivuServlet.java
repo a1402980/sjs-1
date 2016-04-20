@@ -55,7 +55,7 @@ public class EtusivuServlet extends HttpServlet {
 	    	   PizzaDAO pizzadao = new PizzaDAO();
 	   			ArrayList<Pizza> pizzat = pizzadao.findAllAsiakas();	
 	   			request.setAttribute("pizzat", pizzat);		
-	    	   request.setAttribute("message", "Kirjautuminen epäonnistui");
+	    	   request.setAttribute("message", "Kirjautuminen epäonnistui!");
 	         RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
 	  		  dispather.forward(request, response);
 	       } else {
