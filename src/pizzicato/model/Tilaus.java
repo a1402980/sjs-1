@@ -73,6 +73,19 @@ public class Tilaus {
 	public void setPizzatilaukset(ArrayList<PizzaTilaus> pizzatilaukset) {
 		this.pizzatilaukset = pizzatilaukset;
 	}
+	
+	public void addPizzaTilaus(PizzaTilaus pizzatil) {
+		this.pizzatilaukset.add(pizzatil);
+	}
+	
+	public PizzaTilaus getPizzaTilaus(int idx) {
+		return this.pizzatilaukset.get(idx);		
+	}
+	
+	public int getPizzaTilLkm(int tilausId) {
+		int PizzaTilLkm = this.pizzatilaukset.size();
+		return PizzaTilLkm;
+	}
 
 	@Override
 	public String toString() {
