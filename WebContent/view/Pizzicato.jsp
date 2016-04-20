@@ -127,11 +127,11 @@
 								}
 							%>
 						</span>
-
 					</div>
 
 
 				</ul>
+			<li><a href="Rekisteroityminen">Rekisteröidy</a></li>
 		</ul>
 	</div>
 	<!-- /.navbar-collapse -->
