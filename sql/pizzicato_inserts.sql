@@ -95,6 +95,10 @@ VALUES(2,6);
 INSERT INTO kayttaja(kayttaja_id, username, password, userrole)
 VALUES(1, 'admin', 'admin', 'omistaja');
 
+INSERT INTO kayttaja(kayttaja_id, username, password, userrole)
+VALUES(1, 'admin', 'admin', 'omistaja');
+
+
 
 /*POISTA PIZZA*/
 DELETE FROM pizza WHERE pizza_id= "+pizzaId+"; DELETE FROM pizzatayte WHERE pizza_id="+pizzaId+";

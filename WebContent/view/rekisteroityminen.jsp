@@ -5,10 +5,7 @@
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
-<%@ page import="pizzicato.model.Tayte"%>
-<%@ page import="pizzicato.model.Pizza"%>
-<jsp:useBean id="kaikkitaytteet" type="java.util.ArrayList<Tayte>"
-	scope="request" />
+
 <html lang="fi">
 <!--<![endif]-->
 <head>
@@ -85,38 +82,18 @@
 	<div class="container">
 		<div class="row text-center for-full-back color-light ">
 			<div class="col-md-8 col-md-offset-2">
-				<H1>Lisää Pizza</H1>
+				<H1>Rekisteröityminen</H1>
 
 
 				<form method="post">
 
-					<div class="imagePreview"></div>
-					<input type="file" name="imagefile"
-						onchange="previewImage(this,[256],4);" /><br>
-					<!--  onchange="previewImage(this,[sizes],limit);" * limit is number of Mb  -->
-
-
-					Nimi:<br> <input type="text" name="nimi" placeholder="Kirjoita pizzan nimi tähän" pattern="[a-zA-Z0-9]+[a-zA-Z0-9 ]+" required ><br> <br>
-					Hinta:<br> <input type="decimal" name="hinta" placeholder="X,XX Hinta ei yli 100€" pattern="[0-9,.]{4,5}" required ><br> <br>
-
-
-
-						Täytteet: <br>
-						
-						<%for(int i = 0; i < kaikkitaytteet.size(); i++) {%>
-	
-						<input type="checkbox" name="tayte" value="<%=kaikkitaytteet.get(i).getTayteId()%>"><%=kaikkitaytteet.get(i).gettNimi()%><br>
-  												<%} %>		
-  												
-				 <br>Valikoimassa<br> <select name="valikoimassa">
-						<option value="true">Kyllä</option>
-						<option value="false">Ei</option></select>
-						
-				<div id="lisaapizzanapit">
-					<button input type="submit" class="btn btn-success btn-lg">Tallenna</button>
-					<a href="ListaaPizzat" class="btn btn-default btn-lg" role="button">Peruuta</a>
-				</div>
-
+					Käyttäjätunnus:<br><input type="text" name="kayttajatunnus" placeholder="Kirjoita haluamasi käyttäjätunnus" pattern="[a-zA-Z0-9]+[a-zA-Z0-9 ]+" required ><br><br>
+					Salasana:<br><input type="text" name="salasana" placeholder="Vähintään 8 merkkiä" pattern="[a-zA-Z0-9]+[a-zA-Z0-9 ]+" required ><br><br>
+					
+					<div id="lisaakayttajanapit">
+					<button input type="submit">Rekisteröidy</button>
+					<a href="Etusivu" role="button">Peruuta</a>
+					</div>
 				</form>
 							
 			</div>
