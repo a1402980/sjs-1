@@ -78,16 +78,15 @@ public class KayttajaDAO extends DataAccessObject {
 	         close(rs, statement, connection);
 	   }
    }
-}
 
 //Näitä metodeita ei tällä hetkellä tarvita
 
-/*   public ArrayList<Kayttaja> findAll() {
-	   ArrayList<Kayttaja> kayttajat = new ArrayList<Kayttaja>();
-	   ResultSet rs = null;
-	      PreparedStatement statement = null;
-	      Connection connection = null;
-	      try {
+		public ArrayList<Kayttaja> findAll() {
+			ArrayList<Kayttaja> kayttajat = new ArrayList<Kayttaja>();
+			ResultSet rs = null;
+			PreparedStatement statement = null;
+			Connection connection = null;
+			try {
 	    	  connection = getConnection();
 	          String sql = "select * from kayttaja order by id";
 	          statement = connection.prepareStatement(sql);
@@ -96,7 +95,7 @@ public class KayttajaDAO extends DataAccessObject {
 	        	  Kayttaja kayttaja = read(rs);
 	              kayttajat.add(kayttaja);
 	          }
-	          return users;
+	          return kayttajat;
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -123,19 +122,15 @@ public class KayttajaDAO extends DataAccessObject {
 	      }
    }
    public void create(Kayttaja kayttaja) {
-	   //Long id = getUniqueId();
-	   int id = kayttaja.getId();
-	   kayttaja.setId(id);
 	   PreparedStatement statement = null;
 	   Connection connection = null;
 	   try {
 		   connection = getConnection();
-		   String sql = "insert into user " + "(id, username, password, userrole) " + "values (?, ?, ? ?)";
+		   String sql = "insert into user " + "(username, password, userrole) " + "values (?, ? ?)";
 		   statement = connection.prepareStatement(sql);
-	       statement.setLong(1, kayttaja.getId());
-	       statement.setString(2, kayttaja.getUsername());
-	       statement.setString(3, kayttaja.getPassword());
-	       statement.setString(4, kayttaja.getUserRole());
+	       statement.setString(1, kayttaja.getUsername());
+	       statement.setString(2, kayttaja.getPassword());
+	       statement.setString(3, kayttaja.getUserRole());
 	       statement.executeUpdate();
 	} catch (Exception e) {
 		throw new RuntimeException(e);
@@ -160,7 +155,7 @@ public class KayttajaDAO extends DataAccessObject {
         close(statement, connection);
 	}
    }
+   
 }
-*/ 
 
 

@@ -6,74 +6,94 @@
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
 
+<jsp:useBean id="errors" type="java.util.Map" class="java.util.HashMap" scope= "request"/>
 <html lang="fi">
+
 <!--<![endif]-->
 <head>
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="">
-<meta name="author" content="">
-<!--[if IE]>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!--[if IE]>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <![endif]-->
-<title>Pizzeria Pizzicato</title>
-<!--REQUIRED STYLE SHEETS-->
+    <title>Pizzeria Pizzicato</title>
+    <!--REQUIRED STYLE SHEETS-->
     <!-- JQUERY CODE SOURCE -->
     <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-<!-- BOOTSTRAP CORE STYLE CSS -->
-<link href="assets/css/bootstrap.css" rel="stylesheet" />
-<!-- FONTAWESOME STYLE CSS -->
-<link href="assets/css/font-awesome.min.css" rel="stylesheet" />
-<!-- CUSTOM STYLE CSS -->
-<link href="assets/css/style.css" rel="stylesheet" />
-<!-- GOOGLE FONT -->
-<link href='https://fonts.googleapis.com/css?family=Raleway'
-	rel='stylesheet' type='text/css'>
-<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
+    <!-- BOOTSTRAP CORE STYLE CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONTAWESOME STYLE CSS -->
+    <link type="text/css" href="assets/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- CUSTOM STYLE CSS -->
+    <link type="text/css" href="assets/css/style.css" rel="stylesheet" />
+    <!-- GOOGLE FONT -->
+    <link type="text/css" href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
-
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<script src="assets/js/html5.image.preview.min.js"></script>
-<!-- tämä on skripti kuvien esikatseluun  -->
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="ListaaPizzat">Pizzeria Pizzicato</a>
-            </div>
-            <!-- Collect the nav links for toggling -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#home">Etusivu</a>
-                    </li>
-                    <li><a href="ListaaPizzat">Pizzat</a>
-                    </li>
-                    <li><a href="#services">Tilaukset</a>
-                    </li>
-                    <li><a href="#free-text">Yhteystiedot</a>
-                    </li>
-                     <li><a><button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal" style=text-align="center">Kirjaudu</button></a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-    <!--End Navigation -->
+    <!-- navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<div class="container">
+
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse"
+			data-target=".navbar-ex1-collapse">
+			<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
+			<span class="icon-bar"></span> <span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="ListaaPizzat">Pizzeria Pizzicato</a>
+	</div>
+	<!-- Collect the nav links for toggling -->
+	<div class="collapse navbar-collapse navbar-ex1-collapse">
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="Etusivu">Etusivu</a></li>
+			<li><a href="#pizzamenu">Pizzat</a></li>
+			<li><a href="#services">Tilaukset</a></li>
+			<li><a href="#contact">Yhteystiedot</a></li>
+			<li><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="badge">7</span></button></li>
+			<li class="dropdown"><a href="#" class="dropdown-toggle"
+				data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>
+					Kirjaudu <b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<form method="post" role="form" class="navbar-form navbar-right">
+						<div class="form-group">
+							<input type="text" class="form-control" name="username"
+								placeholder="Käyttäjätunnus">
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" name="password"
+								placeholder="Salasana">
+						</div class="form-group">
+						<button type="submit" name="kirjautumisnappi" class="btn btn-primary">Kirjaudu</button>
+					</form>
+					<div id=huomio>
+						<span id="ilmoitus">
+							<%
+								String message = (String) request.getAttribute("message");
+								if (message != null) {
+									out.println("<p>" + message + "</p>");
+								}
+							%>
+						</span>
+					</div>
+
+
+				</ul>
+			<li><a href="Rekisteroityminen">Rekisteröidy</a></li>
+		</ul>
+	</div>
+	<!-- /.navbar-collapse -->
+</div>
+<!-- /.container --> </nav>
+<!-- end of navigation -->
+
+
 
 
 	<!-- Free Section -->
@@ -84,17 +104,27 @@
 			<div class="col-md-8 col-md-offset-2">
 				<H1>Rekisteröityminen</H1>
 
-
-				<form method="post">
+				<%
+				
+				if(null!=request.getAttribute("errors"))
+				{
+					for(int i = 0; i < errors.size(); i++) {
+						out.println(request.getAttribute("<span class=\"errors\">" + errors.get(i) + "</span>"));
+					}
+				}%>
+				
+				
+				<form method="post" novalidate>
 
 					Käyttäjätunnus:<br><input type="text" name="kayttajatunnus" placeholder="Kirjoita haluamasi käyttäjätunnus" pattern="[a-zA-Z0-9]+[a-zA-Z0-9 ]+" required ><br><br>
 					Salasana:<br><input type="text" name="salasana" placeholder="Vähintään 8 merkkiä" pattern="[a-zA-Z0-9]+[a-zA-Z0-9 ]+" required ><br><br>
 					
 					<div id="lisaakayttajanapit">
 					<button input type="submit">Rekisteröidy</button>
-					<a href="Etusivu" role="button">Peruuta</a>
+					<a href="Etusivu#pizzamenu" role="button">Peruuta</a>
 					</div>
 				</form>
+				
 							
 			</div>
 
@@ -167,21 +197,7 @@
 					</div> <!-- /.checkbox -->
 				</form>
 
-			</div> <!-- /.modal-body -->
-
-			<div class="modal-footer">
-				<button class="form-control btn btn-primary">Kirjaudu</button>
-
-				<div class="progress">
-					<div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="100" style="width: 0%;">
-						<span class="sr-only">progress</span>
-					</div>
-				</div>
-			</div> <!-- /.modal-footer -->
-
-		</div><!-- /.modal-content -->
-	</div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+			</div>
 
 </body>
 </html>
