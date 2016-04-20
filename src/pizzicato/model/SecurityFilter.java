@@ -37,7 +37,7 @@ public class SecurityFilter implements Filter {
 	      if (servletPath.equals("/Etusivu"))
 	      {
 	         chain.doFilter(req, resp);
-	      } else if (servletPath.endsWith(".css") || servletPath.endsWith(".png") || servletPath.endsWith(".jpg")) {
+	      } else if (servletPath.endsWith(".css") || servletPath.endsWith(".png") || servletPath.endsWith(".jpg") || servletPath.endsWith(".js")) {
 	    	  chain.doFilter(req, resp);
 	    	  
 	      } else {
