@@ -7,8 +7,8 @@
 <!--[if (gte IE 9)|!(IE)]><!-->
 
 <jsp:useBean id="errors" type="java.util.Map" class="java.util.HashMap" scope= "request"/>
-<html lang="fi">
 
+<html lang="fi">
 <!--<![endif]-->
 <head>
     <meta charset="utf-8">
@@ -37,8 +37,8 @@
     <![endif]-->
 </head>
 <body>
-    <!-- navigation -->
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 <div class="container">
 
 	<div class="navbar-header">
@@ -90,13 +90,12 @@
 	</div>
 	<!-- /.navbar-collapse -->
 </div>
-<!-- /.container --> </nav>
-<!-- end of navigation -->
+<!-- /.container --> 
+    </nav>
+    <!--End Navigation -->
 
 
-
-
-	<!-- Free Section -->
+  <!-- Free Section -->
 
 	<section id="pizzat">
 	<div class="container">
@@ -114,18 +113,18 @@
 				}%>
 				
 				
-				<form method="post" novalidate>
+				<form method="post">
 
-					Käyttäjätunnus:<br><input type="text" name="kayttajatunnus" placeholder="Kirjoita haluamasi käyttäjätunnus" pattern="[a-zA-Z0-9]+[a-zA-Z0-9 ]+" required ><br><br>
-					Salasana:<br><input type="text" name="salasana" placeholder="Vähintään 8 merkkiä" pattern="[a-zA-Z0-9]+[a-zA-Z0-9 ]+" required ><br><br>
+					<span style="color:red;">*</span>Käyttäjätunnus:<br><input type="text" name="kayttajatunnus" placeholder="Kirjoita haluamasi käyttäjätunnus" pattern="[a-zA-Z0-9]+[a-zA-Z0-9 ]+" oninvalid="setCustomValidity('Nimessä ei voi olla erikoismerkkejä ja pituus vähintään 2 merkkiä!')" required ><br><br>
+					<span style="color:red;">*</span>Salasana:<br><input type="text" name="salasana" placeholder="Vähintään 8 merkkiä" pattern="[a-zA-Z0-9]+[a-zA-Z0-9 ]+" oninvalid="setCustomValidity('Salasanassa ei voi olla erikoismerkkejä ja pituus vähintään 8 merkkiä!')" required ><br><br>
 					
 					<div id="lisaakayttajanapit">
-					<button input type="submit">Rekisteröidy</button>
-					<a href="Etusivu#pizzamenu" role="button">Peruuta</a>
+					<button input type="submit" class="btn btn-success btn-lg">Rekisteröidy</button>
+					<a class="btn btn-default" href="Etusivu#pizzamenu" role="button">Peruuta</a>
 					</div>
 				</form>
 				
-							
+						<span style="color:red;">* Pakollinen kenttä</span>	
 			</div>
 
 		</div>
@@ -133,71 +132,57 @@
 	</section>
 	<!--End Free Section -->
 
-	<!-- Contact Section -->
-	<section class="for-full-back color-white " id="contact">
-	<div class="container">
-		<div class="row text-center"></div>
+    <!-- Contact Section -->
+    <section class="for-full-back color-white " id="contact">
+        <div class="container">
+            <div class="row text-center">
 
-		<div class="row">
-			<div class="col-md-5 contact-cls">
-				<h3>Yhteystiedot</h3>
-				<div>
-					<span><i class="fa fa-home"></i>&nbsp;Osoite</span> <br /> <span><i
-						class="fa fa-phone"></i>&nbsp;Puhelin</span> <br /> <span><i
-						class="fa fa-envelope-o"></i>&nbsp;e-mail</span> <br /> <span><i
-						class="fa fa-phone"></i>&nbsp;Puhelin</span> <br />
-				</div>
 
-			</div>
-		</div>
-	</div>
-	</section>
+            </div>
 
-	<!--End Contact Section -->
-	<!--footer Section -->
-	<div class="for-full-back " id="footer">2016 | Silver Java
-		Slayers</div>
-	<!--End footer Section -->
-	<!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
-	<!-- BOOTSTRAP CORE SCRIPT   -->
-	<script src="assets/plugins/bootstrap.js"></script>
-	<!-- CUSTOM SCRIPTS -->
-	<script src="assets/js/custom.js"></script>
-	
-	
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
+            <div class="row">
+                <div class="col-md-5 contact-cls">
+                    <h3>Yhteystiedot</h3>
+                    <div>
+                        <span><i class="fa fa-home"></i>&nbsp;Osoite</span>
+                        <br />
+                        <span><i class="fa fa-phone"></i>&nbsp;Puhelin</span>
+                        <br />
+                        <span><i class="fa fa-envelope-o"></i>&nbsp;e-mail</span>
+                        <br />
+                        <span><i class="fa fa-phone"></i>&nbsp;Puhelin</span>
+                        <br />
+                    </div>
+                  
+                </div>
+             </div>
+        </div>
+    </section>
 
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-				<h4 class="modal-title" id="myModalLabel">Kirjaudu sisään</h4>
-			</div> <!-- /.modal-header -->
+    <!--End Contact Section -->
+    <!--footer Section -->
+    <div class="for-full-back " id="footer">
+        2016 | Silver Java Slayers
+         
+    </div>
+    <!--End footer Section -->
+    <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
+    <!-- BOOTSTRAP CORE SCRIPT   -->
+    <script src="assets/plugins/bootstrap.js"></script>
+    <!-- CUSTOM SCRIPTS -->
+    <script src="assets/js/custom.js"></script>
 
-			<div class="modal-body">
-				<form role="form">
-					<div class="form-group">
-						<div class="input-group">
-							<input type="text" class="form-control" id="uLogin" placeholder="Käyttäjätunnus">
-							<label for="uLogin" class="input-group-addon glyphicon glyphicon-user"></label>
-						</div>
-					</div> <!-- /.form-group -->
 
-					<div class="form-group">
-						<div class="input-group">
-							<input type="password" class="form-control" id="uPassword" placeholder="Salasana">
-							<label for="uPassword" class="input-group-addon glyphicon glyphicon-lock"></label>
-						</div> <!-- /.input-group -->
-					</div> <!-- /.form-group -->
 
-					<div class="checkbox">
-						<label>
-							<input type="checkbox"> Muista minut
-						</label>
-					</div> <!-- /.checkbox -->
-				</form>
+						<script>function poistapizza(PizzaId){
+								var p = confirm("Poistetaanko pizza?"); // poistonappi
+								if(p==true){
+									window.location="PoistaPizza?pizza_id="+PizzaId;
+								}else{
+									window.location="ListaaPizzat";
+								}
+						}</script>
 
-			</div>
 
 </body>
 </html>
