@@ -1,29 +1,31 @@
 package pizzicato.model;
 
 public class Asiakas {
-	private int asiakasId;
-	private int postiNro;
+	private int asiakasId;	
 	private String etuNimi; 
 	private String sukuNimi;
-	private String osoite;
-	private String sPosti; 
+	private String puh;	
+	private String osoite;	 
+	private int postiNro;	
 	private String postiTmp;
+	private String sPosti;
 	
 	public Asiakas() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Asiakas(int asiakasId, int postiNro, String etuNimi,
-			String sukuNimi, String osoite, String sPosti, String postiTmp) {
+	public Asiakas(int asiakasId, String etuNimi, String sukuNimi, String puh,
+			String osoite, int postiNro, String postiTmp, String sPosti) {
 		super();
 		this.asiakasId = asiakasId;
-		this.postiNro = postiNro;
 		this.etuNimi = etuNimi;
 		this.sukuNimi = sukuNimi;
+		this.puh = puh;
 		this.osoite = osoite;
-		this.sPosti = sPosti;
+		this.postiNro = postiNro;
 		this.postiTmp = postiTmp;
+		this.sPosti = sPosti;
 	}
 
 	public int getAsiakasId() {
@@ -32,14 +34,6 @@ public class Asiakas {
 
 	public void setAsiakasId(int asiakasId) {
 		this.asiakasId = asiakasId;
-	}
-
-	public int getPostiNro() {
-		return postiNro;
-	}
-
-	public void setPostiNro(int postiNro) {
-		this.postiNro = postiNro;
 	}
 
 	public String getEtuNimi() {
@@ -58,6 +52,14 @@ public class Asiakas {
 		this.sukuNimi = sukuNimi;
 	}
 
+	public String getPuh() {
+		return puh;
+	}
+
+	public void setPuh(String puh) {
+		this.puh = puh;
+	}
+
 	public String getOsoite() {
 		return osoite;
 	}
@@ -66,12 +68,12 @@ public class Asiakas {
 		this.osoite = osoite;
 	}
 
-	public String getsPosti() {
-		return sPosti;
+	public int getPostiNro() {
+		return postiNro;
 	}
 
-	public void setsPosti(String sPosti) {
-		this.sPosti = sPosti;
+	public void setPostiNro(int postiNro) {
+		this.postiNro = postiNro;
 	}
 
 	public String getPostiTmp() {
@@ -82,15 +84,24 @@ public class Asiakas {
 		this.postiTmp = postiTmp;
 	}
 
+	public String getsPosti() {
+		return sPosti;
+	}
+
+	public void setsPosti(String sPosti) {
+		this.sPosti = sPosti;
+	}
+
 	@Override
 	public String toString() {
-		return "Asiakas [asiakasId=" + asiakasId + ", postiNro=" + postiNro
-				+ ", etuNimi=" + etuNimi + ", sukuNimi=" + sukuNimi
-				+ ", osoite=" + osoite + ", sPosti=" + sPosti + ", postiTmp="
-				+ postiTmp + "]";
+		return "Asiakas [asiakasId=" + asiakasId + ", etuNimi=" + etuNimi
+				+ ", sukuNimi=" + sukuNimi + ", puh=" + puh + ", osoite="
+				+ osoite + ", postiNro=" + postiNro + ", postiTmp=" + postiTmp
+				+ ", sPosti=" + sPosti + "]";
 	}
 	
 	
 	
-
+	
 }
+	
