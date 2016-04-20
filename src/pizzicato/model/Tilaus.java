@@ -8,7 +8,7 @@ public class Tilaus {
 	private int tilausId;
 	private int asiakasId;
 	private String status;
-	private Date tilausAjankohta = new Date();
+	private Date tilAjankohta = new Date();
 	private ArrayList<PizzaTilaus> pizzatilaukset = new ArrayList<PizzaTilaus>();
 	
 	public Tilaus() {
@@ -17,13 +17,21 @@ public class Tilaus {
 	}
 
 	public Tilaus(int tilausId, int asiakasId, String status,
-			Date tilausAjankohta, ArrayList<PizzaTilaus> pizzatilaukset) {
+			Date tilAjankohta, ArrayList<PizzaTilaus> pizzatilaukset) {
 		super();
 		this.tilausId = tilausId;
 		this.asiakasId = asiakasId;
 		this.status = status;
-		this.tilausAjankohta = tilausAjankohta;
+		this.tilAjankohta = tilAjankohta;
 		this.pizzatilaukset = pizzatilaukset;
+	}
+	
+	public Tilaus(int tilausId, int asiakasId, String status, Date tilAjankohta) {
+		super();
+		this.tilausId = tilausId;
+		this.asiakasId = asiakasId;
+		this.status = status;
+		this.tilAjankohta = tilAjankohta;
 	}
 
 	public int getTilausId() {
@@ -50,12 +58,12 @@ public class Tilaus {
 		this.status = status;
 	}
 
-	public Date getTilausAjankohta() {
-		return tilausAjankohta;
+	public Date getTilAjankohta() {
+		return tilAjankohta;
 	}
 
-	public void setTilausAjankohta(Date tilausAjankohta) {
-		this.tilausAjankohta = tilausAjankohta;
+	public void setTilAjankohta(Date tilAjankohta) {
+		this.tilAjankohta = tilAjankohta;
 	}
 
 	public ArrayList<PizzaTilaus> getPizzatilaukset() {
@@ -69,7 +77,7 @@ public class Tilaus {
 	@Override
 	public String toString() {
 		return "Tilaus [tilausId=" + tilausId + ", asiakasId=" + asiakasId
-				+ ", status=" + status + ", tilausAjankohta=" + tilausAjankohta
+				+ ", status=" + status + ", tilAjankohta=" + tilAjankohta
 				+ ", pizzatilaukset=" + pizzatilaukset + "]";
 	}
 	
