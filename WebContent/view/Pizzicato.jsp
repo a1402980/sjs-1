@@ -8,6 +8,7 @@
 
 <%@ page import="pizzicato.model.Pizza"%>
 <%@ page import="pizzicato.model.Tayte"%>
+<%@ page import="pizzicato.model.Kayttaja"%>
 <jsp:useBean id="pizzat" type="java.util.ArrayList<Pizza>"
 	scope="request" />
 
@@ -100,7 +101,28 @@
 			<li><a href="Etusivu">Etusivu</a></li>
 			<li><a href="#pizzamenu">Pizzat</a></li>
 			<li><a href="#contact">Yhteystiedot</a></li>
-			<li><a href="ostoskori" class="btn btn-primary" role="button" id="ostoskorinappi"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="badge">7</span></a></li>
+			
+			<%-- <!-- - --><li>
+			<% 	String kapy =  kayttaja.getUserRole();
+			if (session.getAttribute("rooli")!= null){
+				
+				if (kayttaja.getUserRole().equals("asiakas")){
+					
+					out.println("<p>" + "Tervetuloa+ " + kayttaja.getUsername() + "</p>");		
+					}
+			}
+			
+				%>
+		
+			
+			
+			</li>
+			--> --%>
+			
+			
+			
+			
+			<li><button type="button" class="btn btn-primary" id="ostoskorinappi"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="badge">7</span></button></li>
 			<li class="dropdown"><a href="#" class="dropdown-toggle"
 				data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>
 					Kirjaudu <b class="caret"></b></a>
@@ -130,6 +152,7 @@
 
 				</ul>
 			<li><a href="Rekisteroityminen">Rekisteröidy</a></li>
+			<li><a href="Kirjaudu ulos">Kirjaudu ulos</a></li>
 		</ul>
 	</div>
 	<!-- /.navbar-collapse -->
