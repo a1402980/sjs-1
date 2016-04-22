@@ -165,8 +165,6 @@ public class KayttajaDAO extends DataAccessObject {
 		Asiakas uusiAsiakas = new Asiakas(lastId, asiakas.getEtuNimi(), asiakas.getSukuNimi(), asiakas.getPuh(), asiakas.getOsoite(), asiakas.getPostiNro(), asiakas.getPostiTmp(),asiakas.getsPosti(), lastId);
 		asiakasdao.createAsiakas(uusiAsiakas);
 		
-		
-		
 	} catch (Exception e) {
 		throw new RuntimeException(e);
 	} finally {
@@ -183,6 +181,28 @@ public class KayttajaDAO extends DataAccessObject {
 	      statement = connection.prepareStatement(sql);
 	      int id = kayttaja.getId();
 	      statement.setInt(1, id);
+	      statement.executeUpdate();
+	} catch (Exception e) {
+		throw new RuntimeException(e);
+	} finally {
+        close(statement, connection);
+	}
+   }
+   
+   public void deleteAsiakas(Kayttaja kayttaja){
+	   PreparedStatement statement = null;
+	   PreparedStatement stmt2 = null;
+	   Connection connection = null;
+	   ResultSet rs = null;
+	   try {
+	      connection = getConnection();
+	      String sql = "delete from user where id=?";
+	      String sqlDelete2="DELETE FROM asiakas WHERE asiakas_id= "+kayttaja.getId()+";";
+	      statement = connection.prepareStatement(sql);
+	      stmt2=connection.prepareStatement(sqlDelete2);
+	      int id = kayttaja.getId();
+	      statement.setInt(1, id);
+	      rs=stmt2.executeQuery();
 	      statement.executeUpdate();
 	} catch (Exception e) {
 		throw new RuntimeException(e);
