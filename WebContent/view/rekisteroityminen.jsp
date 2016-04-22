@@ -115,7 +115,13 @@
 
 					<span style="color:red;">*</span>Käyttäjätunnus:<br><input type="text" name="kayttajatunnus" placeholder="Kirjoita haluamasi käyttäjätunnus" pattern="[a-zA-Z0-9]+[a-zA-Z0-9 ]+{2,10}" oninvalid="setCustomValidity('Nimessä ei voi olla erikoismerkkejä ja pituus vähintään 2 merkkiä!')" required ><br><br>
 					<span style="color:red;">*</span>Salasana:<br><input type="text" name="salasana" placeholder="Vähintään 8 merkkiä" pattern="[a-zA-Z0-9]+[a-zA-Z0-9 ]+{2,10}" oninvalid="setCustomValidity('Salasanassa ei voi olla erikoismerkkejä ja pituus vähintään 8 merkkiä!')" required ><br><br>
-					
+					<span style="color:red;">*</span>Etunimi: <br><input type="text" name="etunimi" required ><br><br>
+					<span style="color:red;">*</span>Sukunimi: <br><input type="text" name="sukunimi" required ><br><br>
+					<span style="color:red;">*</span>Puhelin: <br><input type="text" name="puh" required ><br><br>
+					<span style="color:red;">*</span>Katuosoite: <br><input type="text" name="osoite" required ><br><br>
+					<span style="color:red;">*</span>Postinumero: <br><input type="text" name="postinro" required ><br><br>
+					<span style="color:red;">*</span>Postitoimipaikka: <br><input type="text" name="postitmp" required ><br><br>
+					<span style="color:red;">*</span>Sähköposti: <br><input type="text" name="sposti" required ><br><br>
 					<div id="lisaakayttajanapit">
 					<button input type="submit" class="btn btn-success btn-lg">Rekisteröidy</button>
 					<a class="btn btn-default" href="Etusivu#pizzamenu" role="button">Peruuta</a>
