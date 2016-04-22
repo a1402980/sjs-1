@@ -1,5 +1,7 @@
 package pizzicato.model.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -18,5 +20,23 @@ public class PizzaTilausDAO extends DataAccessObject {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public void addPizzaTilaus(PizzaTilaus pizzatil) throws SQLException {
+		Connection connection = null;
+		PreparedStatement stmtInsert = null;		
+		try {
+			connection = getConnection();
+			String sqlInsert = "INSERT INTO pizzatilaus(tilaus_id, pizza_id, lkm) VALUES ("+pizzatil.getTilausId()+","+pizzatil.getPizzaId()+","+pizzatil.getLkm()+");";
+			stmtInsert = connection.prepareStatement(sqlInsert);		
+			stmtInsert.executeUpdate();
+					            
+		}catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			close(stmtInsert, connection); 
+		}		
+	}
+	
+	
 
 }
