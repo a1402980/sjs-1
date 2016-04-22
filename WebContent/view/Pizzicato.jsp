@@ -152,7 +152,7 @@
 
 				</ul>
 			<li><a href="Rekisteroityminen">Rekisteröidy</a></li>
-			<li><a href="Kirjaudu ulos">Rekisteröidy</a></li>
+			<li><a href="Kirjaudu ulos">Kirjaudu ulos</a></li>
 		</ul>
 	</div>
 	<!-- /.navbar-collapse -->
