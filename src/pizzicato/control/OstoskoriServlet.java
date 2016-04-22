@@ -36,6 +36,7 @@ public class OstoskoriServlet extends HttpServlet {
 		Tilaus tilaus;
 		PizzaTilaus pizzatilaus;
 		
+		
 		//avataan uusi sessio
 		HttpSession session = request.getSession(true);
 		tilaus = (Tilaus) session.getAttribute("tilaus");
@@ -44,17 +45,18 @@ public class OstoskoriServlet extends HttpServlet {
 		if(tilaus ==null) {
 			tilaus=new Tilaus();
 			session.setAttribute("tilaus", tilaus);
-		} /*else {
-			tilaus.addPizzaTilaus(pizzatilaus);
+		} else {
+			
+			//tilaus.addPizzaTilaus(pizzatilaus);
 			try {
-				pizzatilausdao.addPizzaTilaus(pizzatilaus);
+				tilausdao.addTilaus(tilaus);
 			} catch (Exception e) {
 				System.out.println("Sovelluksessa tapahtui virhe "+ e.getMessage());
 				e.printStackTrace();
 			}
 			
 			
-		}*/
+		}
 		
 		
 		
