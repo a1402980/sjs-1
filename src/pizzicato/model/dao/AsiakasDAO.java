@@ -19,7 +19,7 @@ public class AsiakasDAO extends DataAccessObject {
 		int lastId;
 		try {
 			connection = getConnection();
-			String sqlInsert = "INSERT INTO asiakas(etunimi, sukunimi, puh, osoite, posti_nro, posti_tmp, s_posti) VALUES (?, ?, ?, ?, ?, ?, ?);";
+			String sqlInsert = "INSERT INTO asiakas(etunimi, sukunimi, puh, osoite, posti_nro, posti_tmp, s_posti, kayttaja_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
 			String sqlSelect = "SELECT LAST_INSERT_ID();";
 			
 			stmtInsert = connection.prepareStatement(sqlInsert);

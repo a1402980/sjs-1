@@ -9,6 +9,7 @@ public class Asiakas {
 	private int postiNro;	
 	private String postiTmp;
 	private String sPosti;
+	private int kayttaja_id;
 	
 	public Asiakas() {
 		super();
@@ -26,6 +27,22 @@ public class Asiakas {
 		this.postiNro = postiNro;
 		this.postiTmp = postiTmp;
 		this.sPosti = sPosti;
+	}
+	
+		
+	public Asiakas(int asiakasId, String etuNimi, String sukuNimi, String puh,
+			String osoite, int postiNro, String postiTmp, String sPosti,
+			int kayttaja_id) {
+		super();
+		this.asiakasId = asiakasId;
+		this.etuNimi = etuNimi;
+		this.sukuNimi = sukuNimi;
+		this.puh = puh;
+		this.osoite = osoite;
+		this.postiNro = postiNro;
+		this.postiTmp = postiTmp;
+		this.sPosti = sPosti;
+		this.kayttaja_id = kayttaja_id;
 	}
 
 	public int getAsiakasId() {
@@ -90,6 +107,14 @@ public class Asiakas {
 
 	public void setsPosti(String sPosti) {
 		this.sPosti = sPosti;
+	}
+
+	public int getKayttaja_id() {
+		return kayttaja_id;
+	}
+
+	public void setKayttaja_id(int kayttaja_id) {
+		this.kayttaja_id = kayttaja_id;
 	}
 
 	@Override

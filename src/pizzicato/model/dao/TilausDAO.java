@@ -28,35 +28,12 @@ public class TilausDAO extends DataAccessObject{
 	
 	public void addTilaus(Tilaus tilaus) throws SQLException {
 		Connection connection = null;
-		PreparedStatement stmtInsert = null;
-		PreparedStatement stmtInsert2 = null;
-		PreparedStatement stmtSelect = null;
-		ResultSet rs = null;
-		int lastId;
+		PreparedStatement stmtInsert = null;		
 		try {
 			connection = getConnection();
-			String sqlInsert = "INSERT INTO tilaus(tilaus_id, asiakas_id) VALUES ("+tilaus.getTilausId()+", "+tilaus.getAsiakasId()+");";
-			//String sqlSelect = "SELECT LAST_INSERT_ID();";
-			
-			stmtInsert = connection.prepareStatement(sqlInsert);
-			//stmtSelect = connection.prepareStatement(sqlSelect);
-			
-			
-			stmtInsert.setString(1, tilaus.());
-			stmtInsert.setDouble(2, tilaus.());
-			stmtInsert.setString(3, tilaus.());
+			String sqlInsert = "INSERT INTO tilaus(asiakas_id) VALUES ("+tilaus.getAsiakasId()+");";
+			stmtInsert = connection.prepareStatement(sqlInsert);		
 			stmtInsert.executeUpdate();
-			rs = stmtSelect.executeQuery();
-			
-			/**while(rs.next()){
-				lastId = rs.getInt("last_insert_id()");
-				tilaus.setTilausId(lastId);
-			}**/
-			//for (int i=0; i < tilaus.getTayteLkm(pizza.getPizzaId()); i++) {
-			//String sqlInsert2 = "INSERT INTO pizzatayte (pizza_id, tayte_id) VALUES ("+pizza.getPizzaId()+", "+pizza.getTayte(i).getTayteId()+");";
-			//stmtInsert2 = connection.prepareStatement(sqlInsert2);
-			//stmtInsert2.executeQuery(sqlInsert2);
-			//}
 					            
 		}catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -131,7 +108,7 @@ public class TilausDAO extends DataAccessObject{
 		return tilaukset;
 	}
 	
-	public void modifyTilaus(Tilaus tilaus) throws SQLException { // pizzatilausdaossa muokataan mitä pizzoja ja kuinka monta
+	/**public void modifyTilaus(Tilaus tilaus) throws SQLException { // pizzatilausdaossa muokataan mitä pizzoja ja kuinka monta
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		PreparedStatement stmt2 = null;
@@ -157,6 +134,6 @@ public class TilausDAO extends DataAccessObject{
 		}finally {
 			close2(rs,stmt,stmt2,conn);
 		}
-	}
+	}**/
 
 }
