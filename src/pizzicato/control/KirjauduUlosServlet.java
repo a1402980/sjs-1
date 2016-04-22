@@ -22,9 +22,8 @@ public class KirjauduUlosServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 HttpSession session = request.getSession();
-	     session.invalidate();
-	     String jsp = "/view/Pizzicato.jsp";	    
-	     response.sendRedirect(jsp);
+	     session.invalidate();	    
+	     response.sendRedirect("Etusivu");
 	}
 
 	

@@ -111,16 +111,14 @@
 					out.println("<p>" + "Tervetuloa+ " + kayttaja.getUsername() + "</p>");		
 					}
 			}
-			
-				%>
+		
 		
 			
 			
 			</li>
-			--> --%>
 			
 			
-			
+			--%>
 			
 			<li><button type="button" class="btn btn-primary" id="ostoskorinappi"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="badge">7</span></button></li>
 			<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -152,7 +150,7 @@
 
 				</ul>
 			<li><a href="Rekisteroityminen">Rekisteröidy</a></li>
-			<li><a href="Kirjaudu ulos">Kirjaudu ulos</a></li>
+			<li><a href="KirjauduUlos">Kirjaudu ulos</a></li>
 		</ul>
 	</div>
 	<!-- /.navbar-collapse -->
