@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import pizzicato.model.Asiakas;
 import pizzicato.model.Kayttaja;
+import pizzicato.model.dao.AsiakasDAO;
 import pizzicato.model.dao.KayttajaDAO;
 
 /**
@@ -36,7 +38,8 @@ public class RekisteroityminenServlet extends HttpServlet {
 		String jsp ="/view/rekisteroityminen.jsp";
 		
 		Map<String, String> errors = validate(request);
-		Kayttaja kayttaja = (Kayttaja) request.getAttribute("kayttaja");	
+		Kayttaja kayttaja = (Kayttaja) request.getAttribute("kayttaja");
+		Asiakas asiakas = (Asiakas) request.getAttribute("asiakas");
 		
 		if (!errors.isEmpty()) {
 			System.out.println(errors);
@@ -47,7 +50,7 @@ public class RekisteroityminenServlet extends HttpServlet {
 			response.sendRedirect("Rekisteroityminen");
 		} else {
 			KayttajaDAO kayttajadao = new KayttajaDAO();
-			kayttajadao.create(kayttaja);
+			kayttajadao.createAsiakas(kayttaja, asiakas);
 
 			response.sendRedirect("Etusivu#pizzamenu");
 		}
@@ -57,33 +60,73 @@ public class RekisteroityminenServlet extends HttpServlet {
 	public static Map<String, String> validate(HttpServletRequest request) {
 		Map<String, String> errors = new HashMap<String, String>();
 		Kayttaja kayttaja = new Kayttaja();
+		Asiakas asiakas = new Asiakas();
 	
 	
 		String username = request.getParameter("kayttajatunnus");
 		if (username == null || username.trim().length() < 2 ) {
-			errors.put("nimi", " Nimen on oltava v�hint��n 2 merkki� pitk�.");
+			errors.put("nimi", " Nimen on oltava vähintään 2 merkkiä pitkä.");
 		}else{
 			kayttaja.setUsername(username);}
 		if (username.trim().length() > 15 ){
-			errors.put("nimi", " Nimen on oltava lyhyempi kuin 15 merkki�.");
+			errors.put("nimi", " Nimen on oltava lyhyempi kuin 15 merkkiä.");
 		}else{
 			kayttaja.setUsername(username);}
 		if (username.matches("^[a-zA-Z0-9]*$")){
 			kayttaja.setUsername(username);	
 		}else{
-			errors.put("nimi", " Nimess� ei saa olla erikoismerkkej�.");
+			errors.put("nimi", " Nimessä ei saa olla erikoismerkkejä.");
 		}
 		
 		String password = request.getParameter("salasana");
 		
 		if (password == null || password.trim().length() < 8 ) {
-			errors.put("salasana", " Salasanan on oltava v�hint��n 8 merkki� pitk�.");
+			errors.put("salasana", " Salasanan on oltava vähintään 8 merkkiä pitkä.");
 		}else{
 			kayttaja.setPassword(password);
 		}
 		String userrole = "asiakas";
 		kayttaja.setUserRole(userrole);
 		request.setAttribute("kayttaja", kayttaja);
+		
+		// Asiakkaan tarkastukset
+		
+		String enimi = request.getParameter("etunimi");
+		if (enimi == null || enimi.trim().length() < 2 ) {
+			errors.put("nimi", " Nimen on oltava vähintään 2 merkkiä pitkä.");
+		}else{
+			 asiakas.setEtuNimi(enimi);}
+		if (enimi.trim().length() > 15 ){
+			errors.put("nimi", " Nimen on oltava lyhyempi kuin 15 merkkiä.");
+		}else{
+			asiakas.setEtuNimi(enimi);}
+		if (username.matches("^[a-zA-Z0-9]*$")){
+			asiakas.setEtuNimi(enimi);
+		}else{
+			errors.put("nimi", " Nimessä ei saa olla erikoismerkkejä.");
+		}
+		
+		String snimi = request.getParameter("sukunimi");
+		if (snimi == null || snimi.trim().length() < 2 ) {
+			errors.put("nimi", " Nimen on oltava vähintään 2 merkkiä pitkä.");
+		}else{
+			 asiakas.setSukuNimi(enimi);}
+		if (snimi.trim().length() > 15 ){
+			errors.put("nimi", " Nimen on oltava lyhyempi kuin 15 merkkiä.");
+		}else{
+			asiakas.setSukuNimi(enimi);}
+		if (username.matches("^[a-zA-Z0-9]*$")){
+			asiakas.setSukuNimi(enimi);
+		}else{
+			errors.put("nimi", " Nimessä ei saa olla erikoismerkkejä.");
+		}
+		
+		
+		
+		
+		
+		
+		
 		return errors;
 	}
 }

@@ -205,7 +205,9 @@
       						<li><form role="form">
    								<div id=pizzalkm>
    								<label>Pizzojen lkm.</label>
-      							<input type="number" min="1" max="10" step="1" name="pizzamaara">
+      							<input type="number" min="1" max="10" step="1" name="pizzamaara"><br>
+      							<input type="checkbox" name="oregano"> Oregano <br>
+      							<input type="checkbox" name="valkosipuli"> Valkosipuli
       							</div> 
       							</form>
       							<button type="submit" class="btn btn-success" name="pizzanlisays"><span class="glyphicon glyphicon-shopping-cart"></span><span class="glyphicon glyphicon-plus"></span></button>

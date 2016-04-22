@@ -44,6 +44,18 @@ public class Asiakas {
 		this.sPosti = sPosti;
 		this.kayttaja_id = kayttaja_id;
 	}
+	
+	public Asiakas(String etuNimi, String sukuNimi, String puh, String osoite,
+			int postiNro, String postiTmp, String sPosti) {
+		super();
+		this.etuNimi = etuNimi;
+		this.sukuNimi = sukuNimi;
+		this.puh = puh;
+		this.osoite = osoite;
+		this.postiNro = postiNro;
+		this.postiTmp = postiTmp;
+		this.sPosti = sPosti;
+	}
 
 	public int getAsiakasId() {
 		return asiakasId;

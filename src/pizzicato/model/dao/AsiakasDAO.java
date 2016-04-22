@@ -10,28 +10,28 @@ import pizzicato.model.Tayte;
 
 public class AsiakasDAO extends DataAccessObject {
 
-	public void addAsiakas(Asiakas asiakas) throws SQLException {
+	public void createAsiakas(Asiakas asiakas) throws SQLException {
 		Connection connection = null;
 		PreparedStatement stmtInsert = null;
-		PreparedStatement stmtInsert2 = null;
-		PreparedStatement stmtSelect = null;
-		ResultSet rs = null;
-		int lastId;
+		//PreparedStatement stmtSelect = null;
+		//ResultSet rs = null;
+		//int lastId;
 		try {
 			connection = getConnection();
-			String sqlInsert = "INSERT INTO asiakas(etunimi, sukunimi, puh, osoite, posti_nro, posti_tmp, s_posti, kayttaja_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
-			String sqlSelect = "SELECT LAST_INSERT_ID();";
+			String sqlInsert = "INSERT INTO asiakas(asiakas_id, etunimi, sukunimi, puh, osoite, posti_nro, posti_tmp, s_posti, kayttaja_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			//String sqlSelect = "SELECT LAST_INSERT_ID();";
 			
 			stmtInsert = connection.prepareStatement(sqlInsert);
-			stmtSelect = connection.prepareStatement(sqlSelect);
+			//stmtSelect = connection.prepareStatement(sqlSelect);
 			
-			stmtInsert.setString(1, asiakas.getEtuNimi());
-			stmtInsert.setString(2, asiakas.getSukuNimi());
-			stmtInsert.setString(3, asiakas.getPuh());
-			stmtInsert.setString(4, asiakas.getOsoite());
-			stmtInsert.setInt(5, asiakas.getPostiNro());
-			stmtInsert.setString(6, asiakas.getPostiTmp());
-			stmtInsert.setString(7, asiakas.getsPosti());
+			stmtInsert.setInt(1, asiakas.getAsiakasId());
+			stmtInsert.setString(2, asiakas.getEtuNimi());
+			stmtInsert.setString(3, asiakas.getSukuNimi());
+			stmtInsert.setString(4, asiakas.getPuh());
+			stmtInsert.setString(5, asiakas.getOsoite());
+			stmtInsert.setInt(6, asiakas.getPostiNro());
+			stmtInsert.setString(7, asiakas.getPostiTmp());
+			stmtInsert.setString(8, asiakas.getsPosti());
 			stmtInsert.executeUpdate();
 			
 		}catch (SQLException e) {
@@ -64,7 +64,6 @@ public class AsiakasDAO extends DataAccessObject {
 	public Asiakas deleteAsiakas(int asiakasId){
 		Connection conn = null;
 		PreparedStatement stmt = null;
-		PreparedStatement stmt2 = null;
 		ResultSet rs = null;
 		try {
 			conn = getConnection();

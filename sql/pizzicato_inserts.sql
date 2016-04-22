@@ -30,7 +30,7 @@ VALUES ('Fantasia 4', 10.90, 'true');
 
 
 
-/*TÄYTTEET*/
+/*Tï¿½YTTEET*/
 
 INSERT INTO tayte(t_nimi)
 VALUES ('tomaattikastike');
@@ -64,7 +64,7 @@ VALUES ('kinkku');
 
 
 
-/*YKSITTÄISEN PIZZAN TÄYTTEET*/
+/*YKSITTï¿½ISEN PIZZAN Tï¿½YTTEET*/
 
 INSERT INTO pizzatayte(pizza_id, tayte_id)
 VALUES(1,1);
@@ -90,7 +90,7 @@ VALUES(2,5);
 INSERT INTO pizzatayte(pizza_id, tayte_id)
 VALUES(2,6);
 
-/*KÄYTTÄJÄRYHMÄT*/
+/*Kï¿½YTTï¿½Jï¿½RYHMï¿½T*/
 
 INSERT INTO kayttaja(kayttaja_id, username, password, userrole)
 VALUES(1, 'admin', 'admin', 'omistaja');
@@ -103,5 +103,17 @@ VALUES(1, 'admin', 'admin', 'omistaja');
 /*POISTA PIZZA*/
 DELETE FROM pizza WHERE pizza_id= "+pizzaId+"; DELETE FROM pizzatayte WHERE pizza_id="+pizzaId+";
 
-/*YHDISTÄ PIZZA JA SEN TÄYTTEET */
+/*YHDISTï¿½ PIZZA JA SEN Tï¿½YTTEET */
 SELECT p.pizza_id, p_nimi, p_hinta, p_saatavuus, t.tayte_id, t_nimi, t_hinta FROM pizza p INNER JOIN pizzatayte pt ON p.pizza_id = pt.pizza_id INNER JOIN tayte t ON t.tayte_id = pt.tayte_id;
+
+
+
+/*tilaus ja pizzatilaus*/
+
+INSERT INTO asiakas(etunimi, sukunimi, puh, osoite, posti_nro, posti_tmp, s_posti, kayttaja_id) VALUES ('Matti', 'Virtanen', '040-1234568', 'Kujakatu 2', 01232, 'Hattula', 'etu.suku@net.com', 5);
+
+INSERT INTO tilaus(asiakas_id) VALUES (3);
+
+INSERT INTO pizzatilaus(tilaus_id, pizza_id, lkm) VALUES (1,104,2);
+INSERT INTO pizzatilaus(tilaus_id, pizza_id, lkm) VALUES (2,103,2);
+INSERT INTO pizzatilaus(tilaus_id, pizza_id, lkm) VALUES (2,107,5);

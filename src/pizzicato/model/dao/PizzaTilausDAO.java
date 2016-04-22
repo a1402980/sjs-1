@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import pizzicato.model.Asiakas;
 import pizzicato.model.PizzaTilaus;
 import pizzicato.model.Tilaus;
 
@@ -22,21 +23,54 @@ public class PizzaTilausDAO extends DataAccessObject {
 	}
 	
 	public void addPizzaTilaus(PizzaTilaus pizzatil) throws SQLException {
-		Connection connection = null;
+		Connection conn = null;
 		PreparedStatement stmtInsert = null;		
 		try {
-			connection = getConnection();
+			conn = getConnection();
 			String sqlInsert = "INSERT INTO pizzatilaus(tilaus_id, pizza_id, lkm) VALUES ("+pizzatil.getTilausId()+","+pizzatil.getPizzaId()+","+pizzatil.getLkm()+");";
-			stmtInsert = connection.prepareStatement(sqlInsert);		
+			stmtInsert = conn.prepareStatement(sqlInsert);		
 			stmtInsert.executeUpdate();
 					            
 		}catch (SQLException e) {
 			throw new RuntimeException(e);
 		} finally {
-			close(stmtInsert, connection); 
+			close(stmtInsert, conn); 
 		}		
 	}
 	
+	public PizzaTilaus deletePizzafromTilaus(PizzaTilaus pizzatil){
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		try {
+			conn = getConnection();
+			String sqlDelete ="DELETE FROM pizzatilaus WHERE tilaus_id="+pizzatil.getTilausId()+" AND pizza_id="+pizzatil.getPizzaId()+";";
+			stmt=conn.prepareStatement(sqlDelete);
+			rs=stmt.executeQuery();
+		} catch(SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			close(rs,stmt,conn);
+		}
+		return null;
+		
+	}
 	
-
+	public void modifyPizzaLkm(PizzaTilaus pizzatil) throws SQLException {
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		try {
+			conn = getConnection();
+			String sqlUpdate =  "UPDATE pizzatilaus SET lkm="+pizzatil.getLkm()+" WHERE tilaus_id="+pizzatil.getTilausId()+" AND pizza_id="+pizzatil.getPizzaId()+";";
+			stmt = conn.prepareStatement(sqlUpdate);
+					
+			stmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}finally {
+			close(stmt,conn);
+		}
+	}
+	
 }
