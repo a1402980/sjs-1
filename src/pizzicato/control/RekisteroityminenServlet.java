@@ -14,11 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import pizzicato.model.Kayttaja;
-import pizzicato.model.Pizza;
-import pizzicato.model.Tayte;
 import pizzicato.model.dao.KayttajaDAO;
-import pizzicato.model.dao.PizzaDAO;
-import pizzicato.model.dao.TayteDAO;
 
 /**
  * Servlet implementation class RekisteroityminenServlet
@@ -73,18 +69,20 @@ public class RekisteroityminenServlet extends HttpServlet {
 		}else{
 			kayttaja.setUsername(username);}
 		if (username.matches("^[a-zA-Z0-9]*$")){
-			errors.put("nimi", " Nimessä ei saa olla erikoismerkkejä.");	
+			kayttaja.setUsername(username);	
 		}else{
-			kayttaja.setUsername(username);
+			errors.put("nimi", " Nimessä ei saa olla erikoismerkkejä.");
 		}
 		
 		String password = request.getParameter("salasana");
 		
 		if (password == null || password.trim().length() < 8 ) {
-			errors.put("salasana", " Salasanan on oltava vähintään 2 merkkiä pitkä.");
+			errors.put("salasana", " Salasanan on oltava vähintään 8 merkkiä pitkä.");
 		}else{
 			kayttaja.setPassword(password);
 		}
+		String userrole = "asiakas";
+		kayttaja.setUserRole(userrole);
 		request.setAttribute("kayttaja", kayttaja);
 		return errors;
 	}
