@@ -47,10 +47,10 @@ public class SecurityFilter implements Filter {
 			  
 		      if (kayttaja_rooli != "omistaja")
 		      {
-		    	 resp.sendRedirect("Etusivu");
+		    	  chain.doFilter(req, resp);
 		    	 
 		      } else {
-		    	  chain.doFilter(req, resp);
+		    	  resp.sendRedirect("Etusivu");
 		      }
 		     
 	      }

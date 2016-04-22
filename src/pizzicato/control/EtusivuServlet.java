@@ -62,10 +62,15 @@ public class EtusivuServlet extends HttpServlet {
 	    	   HttpSession session = request.getSession();
 		       String kayttaja_rooli = kayttaja.getUserRole();
 		       session.setAttribute("rooli", kayttaja_rooli);
+		    	   if(kayttaja_rooli.equals("omistaja"))
+		    			   {
 		      
 		       response.sendRedirect("ListaaPizzat");
 	       }
-	      
+		    	   else{
+		    		   response.sendRedirect("Etusivu#pizzamenu"); 
+		    	   }
+		}
 	       
 	       
 	}
