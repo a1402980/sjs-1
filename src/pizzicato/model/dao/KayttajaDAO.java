@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import pizzicato.model.Asiakas;
 import pizzicato.model.Kayttaja;
 import pizzicato.model.dao.DataAccessObject;
 
@@ -79,7 +80,7 @@ public class KayttajaDAO extends DataAccessObject {
 	   }
    }
 
-//Näitä metodeita ei tällä hetkellä tarvita
+//Nï¿½itï¿½ metodeita ei tï¿½llï¿½ hetkellï¿½ tarvita
 
 		public ArrayList<Kayttaja> findAll() {
 			ArrayList<Kayttaja> kayttajat = new ArrayList<Kayttaja>();
@@ -137,6 +138,39 @@ public class KayttajaDAO extends DataAccessObject {
 		throw new RuntimeException(e);
 	} finally {
         close(statement, connection);
+	}
+   }
+   
+   public void createAsiakas(Kayttaja kayttaja, Asiakas asiakas) {
+	   PreparedStatement statement = null;
+	   Connection conn = null;
+	   PreparedStatement stmtSelect = null;
+	   ResultSet rs = null;
+	   int lastId;
+	   try {
+		   conn = getConnection();
+		   String sql = "insert into kayttaja (username, password, userrole) values (?, ?, ?)";
+		   String sqlSelect = "SELECT LAST_INSERT_ID();";
+		   statement = conn.prepareStatement(sql);
+		   stmtSelect = conn.prepareStatement(sqlSelect);
+	       statement.setString(1, kayttaja.getUsername());
+	       statement.setString(2, kayttaja.getPassword());
+	       statement.setString(3, kayttaja.getUserRole());
+	       statement.executeUpdate();
+	       rs = stmtSelect.executeQuery();
+	       
+	    lastId = rs.getInt("last_insert_id()");
+		kayttaja.setId(lastId);
+		AsiakasDAO asiakasdao = new AsiakasDAO();
+		Asiakas uusiAsiakas = new Asiakas(lastId, asiakas.getEtuNimi(), asiakas.getSukuNimi(), asiakas.getPuh(), asiakas.getOsoite(), asiakas.getPostiNro(), asiakas.getPostiTmp(),asiakas.getsPosti(), lastId);
+		asiakasdao.createAsiakas(uusiAsiakas);
+		
+		
+		
+	} catch (Exception e) {
+		throw new RuntimeException(e);
+	} finally {
+        close(statement, conn);
 	}
    }
    
