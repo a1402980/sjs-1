@@ -16,10 +16,7 @@ import pizzicato.model.dao.TilausDAO;
 import pizzicato.model.dao.PizzaTilausDAO; 
 
 
-<<<<<<< HEAD
 
-=======
->>>>>>> branch 'master' of https://github.com/a1500847/SJS.git
 @WebServlet("/ostoskori")
 public class OstoskoriServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
