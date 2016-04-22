@@ -32,7 +32,7 @@ public class EtusivuServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PizzaDAO pizzadao = new PizzaDAO();
 		ArrayList<Pizza> pizzat = pizzadao.findAllAsiakas();	
-		
+		Kayttaja kayttaja;
 		request.setAttribute("pizzat", pizzat);		
 		
 		String jsp = "/view/Pizzicato.jsp";
@@ -62,13 +62,16 @@ public class EtusivuServlet extends HttpServlet {
 	    	   HttpSession session = request.getSession();
 		       String kayttaja_rooli = kayttaja.getUserRole();
 		       session.setAttribute("rooli", kayttaja_rooli);
+		       request.setAttribute("kayttaja",  kayttaja);
 		    	   if(kayttaja_rooli.equals("omistaja"))
 		    			   {
 		      
 		       response.sendRedirect("ListaaPizzat");
 	       }
 		    	   else{
+		    		  
 		    		   response.sendRedirect("Etusivu#pizzamenu"); 
+		    		  
 		    	   }
 		}
 	       
