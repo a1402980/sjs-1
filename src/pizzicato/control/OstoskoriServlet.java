@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import pizzicato.model.Tilaus; 
 
 
-@WebServlet("/Ostoskori")
+@WebServlet("/ostoskori")
 public class OstoskoriServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
