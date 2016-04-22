@@ -102,6 +102,10 @@ input[type=file] {
     margin: 0 auto;
 }
 
+input[type="radio"] {
+  width: 0;
+}
+
 select{
     width: 60%;
     padding: 12px 20px;
@@ -397,5 +401,5 @@ div#huomio span#ilmoitus {
 }	
 	
 #ostoskorinappi{
-	margin-top: 8px;
+	
 }

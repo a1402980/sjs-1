@@ -1,12 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
-
-<jsp:useBean id="errors" type="java.util.Map" class="java.util.HashMap" scope= "request"/>
 
 <html lang="fi">
 <!--<![endif]-->
@@ -55,7 +53,7 @@
 			<li><a href="Etusivu">Etusivu</a></li>
 			<li><a href="#pizzamenu">Pizzat</a></li>
 			<li><a href="#contact">Yhteystiedot</a></li>
-			<li><button type="button" class="btn btn-primary" id="ostoskorinappi"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="badge">7</span></button></li>
+			<li><a href="ostoskori" class="btn btn-primary" role="button" id="ostoskorinappi"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="badge">7</span></a></li>
 			<li class="dropdown"><a href="#" class="dropdown-toggle"
 				data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>
 					Kirjaudu <b class="caret"></b></a>
@@ -101,43 +99,54 @@
 			<div class="col-md-8 col-md-offset-2">
 				<H1>Ostoskori</H1>
 
+<div class="table-responsive">
+				<table class="table table-hover" align="center" id="ostoskori_asiakkaalle">
+					<tr>
+						<th>Nimi</th>
+						<th>Täytteet</th>
+						<th>Hinta</th>
+						<th>Lisätäytteet</th>
+					</tr>
+					<tr>
+					<td>Lorem Pizza</td>
+					<td>Lorem täyte</td>
+					<td>x,xx</td>
+					<td><input type="checkbox" name="oregano"> Oregano
+						<input type="checkbox" name="valkosipuli"> Valkosipuli
+					</tr>
 
-
-
-				<table>
-					<thead>
-						<tr>
-							<th></th>
-							<th></th>
-							<th></th>
-							<th></th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-					</tbody>
 				</table>
 				
-				<h2>Lopullinen summa XX,XX€</h2>
 
-				<span style="color:red;">* Pakollinen kenttä</span>	
+			</div>
+			
+			<div>
+				<h3>Maksutapa</h3>
+				<h4>
+				<form>
+				<input type="radio" name="maksutapa"> Pankkikortilla <i class="fa fa-credit-card" aria-hidden="true"></i><br>
+				<input type="radio" name="maksutapa"> Käteisellä <i class="fa fa-money" aria-hidden="true"></i><br>
+				</form>
+				</h4>
+				
+				<h3>
+				Juomat (1,5L)
+				<form>
+				<input type="checkbox" name="kokis"><img src="assets/images/cola.png" alt="Coca Cola" style="height:50px;">
+				<input type="checkbox" name="fanta"><img src="assets/images/sprite.png" alt="Sprite" style="height:50px;">
+				<input type="checkbox" name="sprite"><img src="assets/images/fanta.png" alt="Fanta" style="height:50px;;">
+				</form>
+				</h3>
+			</div>
+				<h2>Lopullinen summa XX,XX<i class="fa fa-eur" aria-hidden="true"></i></h2>
+				
+					<div>
+					<button input type="submit" class="btn btn-success btn-lg">Tilaa</button>
+					<a class="btn btn-default" href="Etusivu" role="button">Peruuta</a>
+					</div>
+				
+				<p>Ongelmia? Lähetä sähköpostia osoitteeseen apua@silverjavaslayers.fi</p>
+
 			</div>
 
 		</div>
