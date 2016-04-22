@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
@@ -99,9 +99,8 @@
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href="Etusivu">Etusivu</a></li>
 			<li><a href="#pizzamenu">Pizzat</a></li>
-			<li><a href="#services">Tilaukset</a></li>
 			<li><a href="#contact">Yhteystiedot</a></li>
-			<li><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="badge">7</span></button></li>
+			<li><button type="button" class="btn btn-primary" id="ostoskorinappi"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="badge">7</span></button></li>
 			<li class="dropdown"><a href="#" class="dropdown-toggle"
 				data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>
 					Kirjaudu <b class="caret"></b></a>
@@ -109,11 +108,11 @@
 					<form method="post" role="form" class="navbar-form navbar-right">
 						<div class="form-group">
 							<input type="text" class="form-control" name="username"
-								placeholder="K‰ytt‰j‰tunnus">
+								placeholder="K√§ytt√§j√§tunnus" autocomplete="off">
 						</div>
 						<div class="form-group">
-							<input type="text" class="form-control" name="password"
-								placeholder="Salasana">
+							<input type="password" class="form-control" name="password"
+								placeholder="Salasana" autocomplete="off">
 						</div class="form-group">
 						<button type="submit" name="kirjautumisnappi" class="btn btn-primary">Kirjaudu</button>
 					</form>
@@ -130,7 +129,7 @@
 
 
 				</ul>
-			<li><a href="Rekisteroityminen">Rekisterˆidy</a></li>
+			<li><a href="Rekisteroityminen">Rekister√∂idy</a></li>
 		</ul>
 	</div>
 	<!-- /.navbar-collapse -->
@@ -156,13 +155,13 @@
 			<h1>Pizzalista</h1>
 			<div class="alert alert-success">
 			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> 
-			<strong>Pizza lis‰tty ostoskoriin! (t‰m‰ on t‰ss‰ vain merkkin‰ siit‰ mihin viesti tulee kun se on tehty servlettiin)</strong>
+			<strong>Pizza lis√§tty ostoskoriin! (t√§m√§ on t√§ss√§ vain merkkin√§ siit√§ mihin viesti tulee kun se on tehty servlettiin)</strong>
 			</div>
 			<div class="table-responsive">
 				<table class="table table-hover" align="center" id="pizzataulukko_asiakkaalle">
 					<tr>
 						<th>Nimi</th>
-						<th>T‰ytteet</th>
+						<th>T√§ytteet</th>
 						<th>Hinta</th>
 						<th></th>
 					</tr>
@@ -211,9 +210,9 @@
 	<div class="col-lg-12 text-center">
 		<h1>Pizzeria Pizzicato</h1>
 		<div>
-			<h3>Pizzicato on suomalainen pizzeria Meilahden syd‰mess‰. Panostamme menussamme hyv‰‰n hinta-laatusuhteeseen. 
-			Pizzamme ovat laadukkaita, mutta edullisia. Suosimme myˆs kotimaisia raaka-aineita. 
-			Voit nauttia pizzasi kodikkaassa ravintolassamme, noutaa pizzan mukaasi tai tilata sen k‰tev‰sti kotiisi kuljetettuna p‰‰kaupunkiseudun alueella. 
+			<h3>Pizzicato on suomalainen pizzeria Meilahden syd√§mess√§. Panostamme menussamme hyv√§√§n hinta-laatusuhteeseen. 
+			Pizzamme ovat laadukkaita, mutta edullisia. Suosimme my√∂s kotimaisia raaka-aineita. 
+			Voit nauttia pizzasi kodikkaassa ravintolassamme, noutaa pizzan mukaasi tai tilata sen k√§tev√§sti kotiisi kuljetettuna p√§√§kaupunkiseudun alueella. 
 			
 			
 			</h3>
@@ -335,7 +334,7 @@
 <!--End footer Section -->
 <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
 <!-- BOOTSTRAP CORE SCRIPT   -->
-<!-- <script src="assets/plugins/bootstrap.js"></script> t‰m‰ ei toiminut niin javascriptkirjasto haetaan netist‰ headerissa -->
+<!-- <script src="assets/plugins/bootstrap.js"></script> t√§m√§ ei toiminut niin javascriptkirjasto haetaan netist√§ headerissa -->
 <!-- CUSTOM SCRIPTS -->
 <script src="assets/js/custom.js"></script>
 

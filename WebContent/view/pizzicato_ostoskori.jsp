@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
@@ -99,30 +99,45 @@
 	<div class="container">
 		<div class="row text-center for-full-back color-light ">
 			<div class="col-md-8 col-md-offset-2">
-				<H1>Rekisteröityminen</H1>
+				<H1>Ostoskori</H1>
 
-				<%
-				
-				if(null!=request.getAttribute("errors"))
-				{
-					for(int i = 0; i < errors.size(); i++) {
-						out.println(request.getAttribute("<span class=\"errors\">" + errors.get(i) + "</span>"));
-					}
-				}%>
-				
-				
-				<form method="post">
 
-					<span style="color:red;">*</span>Käyttäjätunnus:<br><input type="text" name="kayttajatunnus" placeholder="Kirjoita haluamasi käyttäjätunnus" pattern="[a-zA-Z0-9]+[a-zA-Z0-9 ]+{2,10}" oninvalid="setCustomValidity('Nimessä ei voi olla erikoismerkkejä ja pituus vähintään 2 merkkiä!')" required ><br><br>
-					<span style="color:red;">*</span>Salasana:<br><input type="text" name="salasana" placeholder="Vähintään 8 merkkiä" pattern="[a-zA-Z0-9]+[a-zA-Z0-9 ]+{2,10}" oninvalid="setCustomValidity('Salasanassa ei voi olla erikoismerkkejä ja pituus vähintään 8 merkkiä!')" required ><br><br>
-					
-					<div id="lisaakayttajanapit">
-					<button input type="submit" class="btn btn-success btn-lg">Rekisteröidy</button>
-					<a class="btn btn-default" href="Etusivu#pizzamenu" role="button">Peruuta</a>
-					</div>
-				</form>
+
+
+				<table>
+					<thead>
+						<tr>
+							<th></th>
+							<th></th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
 				
-						<span style="color:red;">* Pakollinen kenttä</span>	
+				<h2>Lopullinen summa XX,XX€</h2>
+
+				<span style="color:red;">* Pakollinen kenttä</span>	
 			</div>
 
 		</div>
