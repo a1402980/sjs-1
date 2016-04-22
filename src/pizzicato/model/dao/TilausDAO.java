@@ -35,11 +35,11 @@ public class TilausDAO extends DataAccessObject{
 		int lastId;
 		try {
 			connection = getConnection();
-			String sqlInsert = "INSERT INTO tilaus(p_nimi, p_hinta, p_saatavuus) VALUES (?, ?, ?);";
-			String sqlSelect = "SELECT LAST_INSERT_ID();";
+			String sqlInsert = "INSERT INTO tilaus(tilaus_id, asiakas_id) VALUES ("+tilaus.getTilausId()+", "+tilaus.getAsiakasId()+");";
+			//String sqlSelect = "SELECT LAST_INSERT_ID();";
 			
 			stmtInsert = connection.prepareStatement(sqlInsert);
-			stmtSelect = connection.prepareStatement(sqlSelect);
+			//stmtSelect = connection.prepareStatement(sqlSelect);
 			
 			
 			stmtInsert.setString(1, tilaus.());
@@ -48,15 +48,15 @@ public class TilausDAO extends DataAccessObject{
 			stmtInsert.executeUpdate();
 			rs = stmtSelect.executeQuery();
 			
-			while(rs.next()){
+			/**while(rs.next()){
 				lastId = rs.getInt("last_insert_id()");
 				tilaus.setTilausId(lastId);
-			}
-			/**for (int i=0; i < tilaus.getTayteLkm(pizza.getPizzaId()); i++) {
-			String sqlInsert2 = "INSERT INTO pizzatayte (pizza_id, tayte_id) VALUES ("+pizza.getPizzaId()+", "+pizza.getTayte(i).getTayteId()+");";
-			stmtInsert2 = connection.prepareStatement(sqlInsert2);
-			stmtInsert2.executeQuery(sqlInsert2);
 			}**/
+			//for (int i=0; i < tilaus.getTayteLkm(pizza.getPizzaId()); i++) {
+			//String sqlInsert2 = "INSERT INTO pizzatayte (pizza_id, tayte_id) VALUES ("+pizza.getPizzaId()+", "+pizza.getTayte(i).getTayteId()+");";
+			//stmtInsert2 = connection.prepareStatement(sqlInsert2);
+			//stmtInsert2.executeQuery(sqlInsert2);
+			//}
 					            
 		}catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -97,7 +97,7 @@ public class TilausDAO extends DataAccessObject{
 		ResultSet rs = null;
 		ArrayList<Tilaus> tilaukset = new ArrayList<Tilaus>();
 		Tilaus tilaus=null;
-		ArrayList<PizzaTilaus> pizzatilaukset = new ArrayList<PizzaTilaus>();
+		//ArrayList<PizzaTilaus> pizzatilaukset = new ArrayList<PizzaTilaus>();
 		PizzaTilausDAO pizzatildao = new PizzaTilausDAO();
 		PizzaTilaus pizzatil;
 		int edellinenTilausId=0;
@@ -131,5 +131,32 @@ public class TilausDAO extends DataAccessObject{
 		return tilaukset;
 	}
 	
+	public void modifyTilaus(Tilaus tilaus) throws SQLException { // pizzatilausdaossa muokataan mitä pizzoja ja kuinka monta
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		PreparedStatement stmt2 = null;
+		ResultSet rs = null;
+		try {
+			conn = getConnection();
+			
+			String sqlUpdate = "UPDATE tilaus SET p_nimi='"+pizza.getpNimi()+"', p_hinta="+pizza.getpHinta()+", p_saatavuus='"+pizza.getpSaatavuus()+"' WHERE pizza_id="+pizza.getPizzaId()+";";
+			stmt = conn.prepareStatement(sqlUpdate);
+			stmt.executeUpdate();
+			String sqlDelete = "DELETE FROM pizzatayte WHERE pizza_id ="+pizza.getPizzaId()+";";
+			stmt2=conn.prepareStatement(sqlDelete);
+			rs=stmt.executeQuery(sqlDelete);
+			for (int i=0; i < pizza.getTayteLkm(pizza.getPizzaId()); i++) {
+				String sqlInsert = "INSERT INTO pizzatayte (pizza_id, tayte_id) VALUES ("+pizza.getPizzaId()+", "+pizza.getTayte(i).getTayteId()+");";
+				stmt=conn.prepareStatement(sqlInsert);
+				rs=stmt.executeQuery(sqlInsert);
+				
+			}
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}finally {
+			close2(rs,stmt,stmt2,conn);
+		}
+	}
 
 }

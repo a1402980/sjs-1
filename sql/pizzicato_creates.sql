@@ -47,7 +47,7 @@ PRIMARY KEY (asiakas_id)
 CREATE TABLE tilaus(
 tilaus_id int NOT NULL AUTO_INCREMENT,
 asiakas_id int NOT NULL,
-status varchar(15) NOT NULL,
+status varchar(15) NOT NULL default 'Odottaa',
 til_ajankohta timestamp NOT NULL default CURRENT_TIMESTAMP(), 
 PRIMARY KEY (tilaus_id),
 FOREIGN KEY (asiakas_id) REFERENCES asiakas(asiakas_id)

@@ -33,6 +33,12 @@ public class Tilaus {
 		this.status = status;
 		this.tilAjankohta = tilAjankohta;
 	}
+	
+	public Tilaus(int tilausId, int asiakasId) {
+		super();
+		this.tilausId = tilausId;
+		this.asiakasId = asiakasId;
+	}
 
 	public int getTilausId() {
 		return tilausId;
