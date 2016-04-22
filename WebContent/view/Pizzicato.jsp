@@ -73,7 +73,7 @@
 		<h1>Tervetuloa!</h1>
 
 		<span><i class="fa fa-home"></i>&nbsp; <a
-			href="https://goo.gl/maps/W61P9QmPrDC2">Kuusikatu 6, Helsinki</a> </span> <br /> <span><i
+			href="https://goo.gl/maps/W61P9QmPrDC2">Kuusitie 6, Helsinki</a> </span> <br /> <span><i
 			class="fa fa-phone"></i>&nbsp;(+030)123123</span> <br /> <br> 
 			<h2>Tutustu menuun ja tee tilaus!</h2>
 			<a href="#pizzamenu" class="glyphicon glyphicon-chevron-down"></a>
