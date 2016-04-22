@@ -44,7 +44,7 @@ public class PizzaTilausDAO extends DataAccessObject {
 		ResultSet rs = null;
 		try {
 			conn = getConnection();
-			String sqlDelete ="DELETE FROM pizzatilaus WHERE pizza_id= "+pizzatil.getPizzaId()+";";
+			String sqlDelete ="DELETE FROM pizzatilaus WHERE tilaus_id="+pizzatil.getTilausId()+" AND pizza_id="+pizzatil.getPizzaId()+";";
 			stmt=conn.prepareStatement(sqlDelete);
 			rs=stmt.executeQuery();
 		} catch(SQLException e) {

@@ -13,17 +13,16 @@ public class AsiakasDAO extends DataAccessObject {
 	public void addAsiakas(Asiakas asiakas) throws SQLException {
 		Connection connection = null;
 		PreparedStatement stmtInsert = null;
-		PreparedStatement stmtInsert2 = null;
-		PreparedStatement stmtSelect = null;
-		ResultSet rs = null;
-		int lastId;
+		//PreparedStatement stmtSelect = null;
+		//ResultSet rs = null;
+		//int lastId;
 		try {
 			connection = getConnection();
 			String sqlInsert = "INSERT INTO asiakas(etunimi, sukunimi, puh, osoite, posti_nro, posti_tmp, s_posti, kayttaja_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
-			String sqlSelect = "SELECT LAST_INSERT_ID();";
+			//String sqlSelect = "SELECT LAST_INSERT_ID();";
 			
 			stmtInsert = connection.prepareStatement(sqlInsert);
-			stmtSelect = connection.prepareStatement(sqlSelect);
+			//stmtSelect = connection.prepareStatement(sqlSelect);
 			
 			stmtInsert.setString(1, asiakas.getEtuNimi());
 			stmtInsert.setString(2, asiakas.getSukuNimi());
@@ -64,7 +63,6 @@ public class AsiakasDAO extends DataAccessObject {
 	public Asiakas deleteAsiakas(int asiakasId){
 		Connection conn = null;
 		PreparedStatement stmt = null;
-		PreparedStatement stmt2 = null;
 		ResultSet rs = null;
 		try {
 			conn = getConnection();
