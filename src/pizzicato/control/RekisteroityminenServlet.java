@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import pizzicato.model.Kayttaja;
+import pizzicato.model.dao.AsiakasDAO;
 import pizzicato.model.dao.KayttajaDAO;
 
 /**
@@ -61,23 +62,23 @@ public class RekisteroityminenServlet extends HttpServlet {
 	
 		String username = request.getParameter("kayttajatunnus");
 		if (username == null || username.trim().length() < 2 ) {
-			errors.put("nimi", " Nimen on oltava v‰hint‰‰n 2 merkki‰ pitk‰.");
+			errors.put("nimi", " Nimen on oltava v√§hint√§√§n 2 merkki√§ pitk√§.");
 		}else{
 			kayttaja.setUsername(username);}
 		if (username.trim().length() > 15 ){
-			errors.put("nimi", " Nimen on oltava lyhyempi kuin 15 merkki‰.");
+			errors.put("nimi", " Nimen on oltava lyhyempi kuin 15 merkki√§.");
 		}else{
 			kayttaja.setUsername(username);}
 		if (username.matches("^[a-zA-Z0-9]*$")){
 			kayttaja.setUsername(username);	
 		}else{
-			errors.put("nimi", " Nimess‰ ei saa olla erikoismerkkej‰.");
+			errors.put("nimi", " Nimess√§ ei saa olla erikoismerkkej√§.");
 		}
 		
 		String password = request.getParameter("salasana");
 		
 		if (password == null || password.trim().length() < 8 ) {
-			errors.put("salasana", " Salasanan on oltava v‰hint‰‰n 8 merkki‰ pitk‰.");
+			errors.put("salasana", " Salasanan on oltava v√§hint√§√§n 8 merkki√§ pitk√§.");
 		}else{
 			kayttaja.setPassword(password);
 		}
