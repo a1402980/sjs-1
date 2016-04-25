@@ -119,7 +119,7 @@
 				<form method="post">
 
 					<span style="color:red;">*</span>Käyttäjätunnus:<br><input type="text" name="kayttajatunnus" placeholder="Kirjoita haluamasi käyttäjätunnus" pattern="[a-zA-Z0-9]+[a-zA-Z0-9 ]{2,15}" oninvalid="setCustomValidity('Nimessä ei voi olla erikoismerkkejä ja pituus vähintään 2 merkkiä!')" required ><br><br>
-					<span style="color:red;">*</span>Salasana:<br><input type="text" name="salasana" placeholder="Vähintään 8 merkkiä" pattern="[a-zA-Z0-9]+[a-zA-Z0-9 ]{8,10}" oninvalid="setCustomValidity('Salasanassa ei voi olla erikoismerkkejä ja pituus vähintään 8 merkkiä!')" required ><br><br>
+					<span style="color:red;">*</span>Salasana:<br><input type="password" name="salasana" placeholder="Vähintään 8 merkkiä" pattern="[a-zA-Z0-9]+[a-zA-Z0-9 ]{8,10}" oninvalid="setCustomValidity('Salasanassa ei voi olla erikoismerkkejä ja pituus vähintään 8 merkkiä!')" required ><br><br>
 					<span style="color:red;">*</span>Etunimi: <br><input type="text" placeholder="Etunimi" pattern="[a-zåäöA-ZÅÄÖ0-9- ]{2,30}" name="etunimi" oninvalid="setCustomValidity('Nimen on oltava vähintään 2, enintään 30 merkkiä, ei erikoismerkkejä tai numeroita')" required ><br><br>
 					<span style="color:red;">*</span>Sukunimi: <br><input type="text" placeholder="Sukunimi" name="sukunimi" pattern="[a-zåäöA-ZÅÄÖ0-9- ]+[a-zåäöA-ZÅÄÖ0-9- ]{2,30}" oninvalid="setCustomValidity('Nimen on oltava vähintään 2, enintään 30 merkkiä, ei erikoismerkkejä tai numeroita')" required ><br><br>
 					<span style="color:red;">*</span>Puhelin: <br><input type="text" name="puh" placeholder="Puhelinnumero" pattern="[0-9]{7,16}" title="Numeron on oltava vähintään 7, enintään 16 merkkiä, ei erikoismerkkejä tai kirjaimia" required ><br><br>
