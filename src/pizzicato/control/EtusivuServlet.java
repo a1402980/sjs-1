@@ -47,6 +47,8 @@ public class EtusivuServlet extends HttpServlet {
 
 		String jsp = "/view/Pizzicato.jsp";
 		
+		
+		
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 	    Kayttaja kayttaja = new KayttajaDAO().findByUsername(username);

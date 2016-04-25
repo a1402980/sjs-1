@@ -11,7 +11,8 @@
 <%@ page import="pizzicato.model.Kayttaja"%>
 <jsp:useBean id="pizzat" type="java.util.ArrayList<Pizza>"
 	scope="request" />
-
+<jsp:useBean id="kayttaja" class="pizzicato.model.Kayttaja"
+	scope="session" />
 <!--<![endif]-->
 <html>
 <head>
@@ -102,23 +103,22 @@
 			<li><a href="#pizzamenu">Pizzat</a></li>
 			<li><a href="#contact">Yhteystiedot</a></li>
 			
-			<%-- <!-- - --><li>
-			<% 	String kapy =  kayttaja.getUserRole();
-			if (session.getAttribute("rooli")!= null){
+			<li>
+			<% 	
+			
 				
-				if (kayttaja.getUserRole().equals("asiakas")){
+				if (kayttaja!= null &&  kayttaja.getUserRole()!= null && kayttaja.getUserRole().equals("asiakas")){
 					
 					out.println("<p>" + "Tervetuloa+ " + kayttaja.getUsername() + "</p>");		
 					}
-			}
-		
-		
 			
+		
+		
+			%>
 			
 			</li>
 			
-			
-			--%>
+		
 			
 			<li><button type="button" class="btn btn-primary" id="ostoskorinappi"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="badge">7</span></button></li>
 			<li class="dropdown"><a href="#" class="dropdown-toggle"
