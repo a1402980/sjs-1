@@ -394,8 +394,19 @@ div#huomio span#ilmoitus {
 	}
 #pizzalkm input[type='checkbox']{
 	float:left;
-}	
-	
-#ostoskorinappi{
-	margin-top: 8px;
 }
+
+#ostoskorinvalinnat input{
+	width: 1px;
+}	
+
+
+
+#ostoskorinappi{
+	padding-top: 9px;
+    padding-bottom: 9px;
+    margin-top: 5px;
+
+}
+
+

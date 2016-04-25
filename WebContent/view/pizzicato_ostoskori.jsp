@@ -58,6 +58,11 @@
 				data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>
 					Kirjaudu <b class="caret"></b></a>
 				<ul class="dropdown-menu">
+				
+				<li role="separator" class="divider" id="kirjaudu-ulos-nappi"></li>
+           		<li><a href="KirjauduUlos">Kirjaudu ulos</a></li>
+            	<li role="separator" class="divider"></li>
+            	
 					<form method="post" role="form" class="navbar-form navbar-right">
 						<div class="form-group">
 							<input type="text" class="form-control" name="username"
@@ -120,7 +125,7 @@
 
 			</div>
 			
-			<div>
+			<div id="ostoskorinvalinnat">
 				<h3>Maksutapa</h3>
 				<h4>
 				<form>
@@ -138,6 +143,7 @@
 				</form>
 				</h3>
 			</div>
+			<hr>
 				<h2>Lopullinen summa XX,XX<i class="fa fa-eur" aria-hidden="true"></i></h2>
 				
 					<div>
