@@ -34,7 +34,7 @@ public class RekisteroityminenServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String jsp ="/view/rekisteroityminen.jsp";
+		//String jsp ="/view/rekisteroityminen.jsp";
 		
 		Map<String, String> errors = validate(request);
 		Kayttaja kayttaja = (Kayttaja) request.getAttribute("kayttaja");
@@ -43,8 +43,8 @@ public class RekisteroityminenServlet extends HttpServlet {
 		if (!errors.isEmpty()) {
 			System.out.println(errors);
 			
-			RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
-			dispather.forward(request, response);
+			//RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
+			//dispather.forward(request, response);
 			
 			response.sendRedirect("Rekisteroityminen");
 		} else {
@@ -114,7 +114,7 @@ public class RekisteroityminenServlet extends HttpServlet {
 			errors.put("snimi", " Nimen on oltava lyhyempi kuin 30 merkkiä.");
 		}else{
 			asiakas.setSukuNimi(snimi);}
-		if (snimi.matches("^[a-zåäöA-ZÅÄÖ\b-]*$")){
+		if (snimi.matches("^[a-zåäöA-ZÅÄÖ-]*$")){
 			asiakas.setSukuNimi(snimi);
 		}else{
 			errors.put("snimi", " Nimessä ei saa olla numeroita tai erikoismerkkejä.");
@@ -129,22 +129,22 @@ public class RekisteroityminenServlet extends HttpServlet {
 			errors.put("puh", " Puhelinnumeron oltava on oltava lyhyempi kuin 16 merkkiä.");
 		}else{
 			asiakas.setPuh(puh);}
-		if (puh.matches("^[0-9+-]*$")){
+		if (puh.matches("^[0-9]*$")){
 			asiakas.setPuh(puh);
 		}else{
 			errors.put("puh", " Puhelinnumerossa ei saa olla kirjaimia tai erikoismerkkejä.");
 		}
 				
 		String osoite = request.getParameter("osoite");
-		if (osoite == null || osoite.trim().length() < 3 ) {
-			errors.put("osoite", " Osoitteen on oltava vähintään 3 merkkiä pitkä.");
+		if (osoite == null || osoite.trim().length() < 2 ) {
+			errors.put("osoite", " Osoitteen on oltava vähintään 2 merkkiä pitkä.");
 		}else{
 			 asiakas.setOsoite(osoite);}
 		if (osoite.trim().length() > 30 ){
 			errors.put("osoite", " Osoitteen on oltava lyhyempi kuin 30 merkkiä.");
 		}else{
 			asiakas.setOsoite(osoite);}
-		if (osoite.matches("^[a-zåäöA-ZÅÄÖ0-9]*$")){
+		if (osoite.matches("^[a-zåäöA-ZÅÄÖ0-9-]*$")){
 			asiakas.setOsoite(osoite);
 		}else{
 			errors.put("osoite", "Osoitteessa ei saa olla erikoismerkkejä.");
@@ -152,12 +152,8 @@ public class RekisteroityminenServlet extends HttpServlet {
 				
 		String strPNro = request.getParameter("postinro");
 		int pNro = new Integer(strPNro);
-		if (strPNro == null || strPNro.trim().length() < 5 ) {
+		if (strPNro == null || strPNro.trim().length() != 5 ) {
 			errors.put("postinro", "Postinumeron on oltava 5 numeroa");
-		}else{
-			asiakas.setPostiNro(pNro);}
-		if (strPNro.trim().length() > 5 ){
-			errors.put("postinro", " Postinumeron oltava on oltava 5 numeroa.");
 		}else{
 			asiakas.setPostiNro(pNro);}
 		if (strPNro.matches("^[0-9]*$")){
