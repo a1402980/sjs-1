@@ -146,7 +146,7 @@ public class KayttajaDAO extends DataAccessObject {
 	    Connection conn = null;
 	    PreparedStatement stmtSelect = null;
 	    ResultSet rs = null;
-	    int lastId;
+	    int lastId = 0;
 	    try {
 	      conn = getConnection();
 	      String sql = "insert into kayttaja (username, password, userrole) values (?, ?, ?)";
@@ -158,11 +158,13 @@ public class KayttajaDAO extends DataAccessObject {
 	      statement.setString(3, kayttaja.getUserRole());
 	      statement.executeUpdate();
 	      rs = stmtSelect.executeQuery();
-	   	       
-	      lastId = rs.getInt("last_insert_id()");
-	      kayttaja.setId(lastId);
+	   	  
+	      while(rs.next()) {
+	    	lastId = rs.getInt("last_insert_id()");
+			kayttaja.setId(lastId);
+	      }
 	      AsiakasDAO asiakasdao = new AsiakasDAO();
-	      Asiakas uusiAsiakas = new Asiakas(lastId, asiakas.getEtuNimi(), asiakas.getSukuNimi(), asiakas.getPuh(), asiakas.getOsoite(), asiakas.getPostiNro(), asiakas.getPostiTmp(),asiakas.getsPosti(), lastId);
+	      Asiakas uusiAsiakas = new Asiakas(kayttaja.getId(), asiakas.getEtuNimi(), asiakas.getSukuNimi(), asiakas.getPuh(), asiakas.getOsoite(), asiakas.getPostiNro(), asiakas.getPostiTmp(), asiakas.getsPosti());
 	      asiakasdao.createAsiakas(uusiAsiakas);
 	    	} catch (Exception e) {
 	    		throw new RuntimeException(e);

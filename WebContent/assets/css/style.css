@@ -356,11 +356,6 @@ text-align: center;
    	height: 200px !important;
 }
 
-#navigaatio .dropdown-menu {
-  	
-    width: 200px !important;
-   	height: 200px !important;
-}
 
 div#huomio span#ilmoitus {
 	paddin-bottom: 0px !important;
@@ -394,8 +389,19 @@ div#huomio span#ilmoitus {
 	}
 #pizzalkm input[type='checkbox']{
 	float:left;
-}	
-	
-#ostoskorinappi{
-	margin-top: 8px;
 }
+
+#ostoskorinvalinnat input{
+	width: 1px;
+}	
+
+
+
+#ostoskorinappi{
+	padding-top: 9px;
+    padding-bottom: 9px;
+    margin-top: 5px;
+
+}
+
+

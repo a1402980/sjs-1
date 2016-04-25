@@ -1,6 +1,7 @@
 package pizzicato.control;
 
 import java.io.IOException;
+import java.util.Enumeration;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,13 +23,17 @@ public class OstoskoriServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Enumeration<String> parametrienNimet = request.getParameterNames();
+		System.out.println(parametrienNimet);
 		String jsp = "/view/pizzicato_ostoskori.jsp";
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
 		dispatcher.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		System.out.println("Heippa! olen doPost ostoskori");
+		Enumeration<String> parametrienNimet = request.getParameterNames();
+		System.out.println(parametrienNimet);
 		String jsp = "/view/pizzicato_ostoskori.jsp";
 		
 		TilausDAO tilausdao = new TilausDAO();
@@ -45,20 +50,10 @@ public class OstoskoriServlet extends HttpServlet {
 		if(tilaus ==null) {
 			tilaus=new Tilaus();
 			session.setAttribute("tilaus", tilaus);
-		} else {
-			
-			//tilaus.addPizzaTilaus(pizzatilaus);
-			try {
-				tilausdao.addTilaus(tilaus);
-			} catch (Exception e) {
-				System.out.println("Sovelluksessa tapahtui virhe "+ e.getMessage());
-				e.printStackTrace();
-			}
-			
-			
 		}
-		
-		
+		//luodaan pizzatilaus-olio
+		//lis‰t‰‰n pt-oliolle aseta lkm, pizzaId, tilausId
+		//tilaus-olioon lis‰t‰‰n(add) pizzatilausolio
 		
 	}
 
