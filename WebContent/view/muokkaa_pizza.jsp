@@ -61,7 +61,7 @@
 		<!-- Collect the nav links for toggling -->
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#home">Etusivu</a></li>
+				<li><a href="Etusivu#pizzamenu">Etusivu</a></li>
 				<li><a href="ListaaPizzat">Pizzat</a></li>
 				<li><a href="#services">Tilaukset</a></li>
 				<li><a href="#free-text">Linkki</a></li>
@@ -92,14 +92,24 @@
 
 					<input type="hidden" name="pizza_id" value="<%=pizza.getPizzaId()%>"/>
 					Nimi:<br> <input type="text" name="nimi" value="<%=pizza.getpNimi()%>" pattern="[a-zA-Z0-9]+[a-zA-Z0-9 ]+" required ><br> <br>
-					Hinta:<br> <input type="decimal" name="hinta" value="<%=pizza.getpHinta()%>"pattern="[0-9,.]{4,5}" required><br> <br>
+					Hinta:<br> <input type="decimal" name="hinta" value="<%=pizza.getpHinta()%>" pattern="[0-9,.]{4,5}" required><br> <br>
 						
 						Täytteet: <br>
-						
-						<%for(int i = 0; i < kaikkitaytteet.size(); i++) {%>
-	
-						<input type="checkbox" name="tayte" value="<%=kaikkitaytteet.get(i).getTayteId()%>"><%=kaikkitaytteet.get(i).gettNimi()%><br>
-  												<%} %>	
+						<%-- <%String box = null;
+						for (int i = 0; i < kaikkitaytteet.size(); i++) {
+							for (int j = 0; j < pizza.getTaytteet().size(); j++) { 
+								
+								if (pizza.getTaytteet().get(j).getTayteId() == kaikkitaytteet.get(i).getTayteId()) {
+								
+									box = "checked"; 	
+								} 
+							}%>
+							<input type="checkbox" name="tayte" <%+" "+box+" "+ %> value="<%=kaikkitaytteet.get(i).getTayteId()%>">  <%=kaikkitaytteet.get(i).gettNimi()%><br> 	
+						<%}%> --%>
+							
+											
+					 					
+  					
 						
 					
 					<br>Valikoimassa<br> <select name="valikoimassa">

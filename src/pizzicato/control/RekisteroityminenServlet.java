@@ -37,7 +37,8 @@ public class RekisteroityminenServlet extends HttpServlet {
 		String jsp ="/view/rekisteroityminen.jsp";
 		
 		Map<String, String> errors = validate(request);
-		Kayttaja kayttaja = (Kayttaja) request.getAttribute("kayttaja");	
+		Kayttaja kayttaja = (Kayttaja) request.getAttribute("kayttaja");
+		Asiakas asiakas = (Asiakas) request.getAttribute("asiakas");
 		
 		if (!errors.isEmpty()) {
 			System.out.println(errors);
@@ -48,7 +49,7 @@ public class RekisteroityminenServlet extends HttpServlet {
 			response.sendRedirect("Rekisteroityminen");
 		} else {
 			KayttajaDAO kayttajadao = new KayttajaDAO();
-			kayttajadao.create(kayttaja);
+			kayttajadao.createAsiakas(kayttaja, asiakas);
 
 			response.sendRedirect("Etusivu#pizzamenu");
 		}
