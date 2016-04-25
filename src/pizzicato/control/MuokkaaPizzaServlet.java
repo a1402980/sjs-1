@@ -65,8 +65,8 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 			PizzaDAO pizzadao = new PizzaDAO();
 			try {
 				pizzadao.deletePizza(pizza.getPizzaId());
-				pizzadao.modifyPizza(pizza);
 				pizzadao.addPizza(pizza);	
+				pizzadao.modifyPizza(pizza);
 			} catch (SQLException e) {
 				System.out.println("Sovelluksessa tapahtui virhe " + e.getMessage());
 				e.printStackTrace();
