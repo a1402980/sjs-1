@@ -127,21 +127,22 @@
 			
 			<div id="ostoskorinvalinnat">
 				<h3>Maksutapa</h3>
-				<h4>
+
 				<form>
 				<input type="radio" name="maksutapa"> Pankkikortilla <i class="fa fa-credit-card" aria-hidden="true"></i><br>
 				<input type="radio" name="maksutapa"> Käteisellä <i class="fa fa-money" aria-hidden="true"></i><br>
 				</form>
-				</h4>
+
 				
 				<h3>
 				Juomat (1,5L)
+				</h3>
 				<form>
 				<input type="checkbox" name="kokis"><img src="assets/images/cola.png" alt="Coca Cola" style="height:50px;">
 				<input type="checkbox" name="fanta"><img src="assets/images/sprite.png" alt="Sprite" style="height:50px;">
 				<input type="checkbox" name="sprite"><img src="assets/images/fanta.png" alt="Fanta" style="height:50px;;">
 				</form>
-				</h3>
+				
 			</div>
 			<hr>
 				<h2>Lopullinen summa XX,XX<i class="fa fa-eur" aria-hidden="true"></i></h2>
