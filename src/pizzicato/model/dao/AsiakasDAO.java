@@ -16,8 +16,7 @@ public class AsiakasDAO extends DataAccessObject {
 		
 		try {
 			connection = getConnection();
-			String sqlInsert = "INSERT INTO asiakas(asiakas_id, etunimi, sukunimi, puh, osoite, posti_nro, posti_tmp, s_posti, kayttaja_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
-						
+			String sqlInsert = "INSERT INTO asiakas(asiakas_id, etunimi, sukunimi, puh, osoite, posti_nro, posti_tmp, s_posti, kayttaja_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";		
 			stmtInsert = connection.prepareStatement(sqlInsert);
 						
 			stmtInsert.setInt(1, asiakas.getAsiakasId());
