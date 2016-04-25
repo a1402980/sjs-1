@@ -16,6 +16,12 @@ public class PizzaTilaus {
 		this.tilausId = tilausId;
 		this.lkm = lkm;
 	}
+		
+	public PizzaTilaus(int pizzaId, int lkm) {
+		super();
+		this.pizzaId = pizzaId;
+		this.lkm = lkm;
+	}
 
 	public int getPizzaId() {
 		return pizzaId;
