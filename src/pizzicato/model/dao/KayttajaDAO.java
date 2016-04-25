@@ -164,7 +164,7 @@ public class KayttajaDAO extends DataAccessObject {
 			kayttaja.setId(lastId);
 	      }
 	      AsiakasDAO asiakasdao = new AsiakasDAO();
-	      Asiakas uusiAsiakas = new Asiakas(lastId, asiakas.getEtuNimi(), asiakas.getSukuNimi(), asiakas.getPuh(), asiakas.getOsoite(), asiakas.getPostiNro(), asiakas.getPostiTmp(),asiakas.getsPosti(), lastId);
+	      Asiakas uusiAsiakas = new Asiakas(kayttaja.getId(), asiakas.getEtuNimi(), asiakas.getSukuNimi(), asiakas.getPuh(), asiakas.getOsoite(), asiakas.getPostiNro(), asiakas.getPostiTmp(), asiakas.getsPosti(), kayttaja.getId());
 	      asiakasdao.createAsiakas(uusiAsiakas);
 	    	} catch (Exception e) {
 	    		throw new RuntimeException(e);

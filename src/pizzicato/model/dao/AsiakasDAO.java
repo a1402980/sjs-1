@@ -27,6 +27,7 @@ public class AsiakasDAO extends DataAccessObject {
 			stmtInsert.setInt(6, asiakas.getPostiNro());
 			stmtInsert.setString(7, asiakas.getPostiTmp());
 			stmtInsert.setString(8, asiakas.getsPosti());
+			stmtInsert.setInt(9, asiakas.getKayttaja_id());
 			stmtInsert.executeUpdate();
 			
 		}catch (SQLException e) {
