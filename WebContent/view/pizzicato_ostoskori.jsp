@@ -53,14 +53,14 @@
 			<li><a href="Etusivu">Etusivu</a></li>
 			<li><a href="#pizzamenu">Pizzat</a></li>
 			<li><a href="#contact">Yhteystiedot</a></li>
-			<li><a href="ostoskori" class="btn btn-primary" role="button" id="ostoskorinappi"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="badge">7</span></a></li>
+			<li id="ostoskorinappi2"><a href="ostoskori" class="btn btn-primary" role="button" id="ostoskorinappi"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="badge">7</span></a></li>
 			<li class="dropdown"><a href="#" class="dropdown-toggle"
 				data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>
 					Kirjaudu <b class="caret"></b></a>
 				<ul class="dropdown-menu">
 				
-				<li role="separator" class="divider" id="kirjaudu-ulos-nappi"></li>
-           		<li><a href="KirjauduUlos">Kirjaudu ulos</a></li>
+				<li role="separator" class="divider" ></li>
+           		<li><a href="KirjauduUlos" id="kirjaudu-ulos-nappi">Kirjaudu ulos</a></li>
             	<li role="separator" class="divider"></li>
             	
 					<form method="post" role="form" class="navbar-form navbar-right">
@@ -127,22 +127,19 @@
 			
 			<div id="ostoskorinvalinnat">
 				<h3>Maksutapa</h3>
-
 				<form>
 				<input type="radio" name="maksutapa"> Pankkikortilla <i class="fa fa-credit-card" aria-hidden="true"></i><br>
 				<input type="radio" name="maksutapa"> Käteisellä <i class="fa fa-money" aria-hidden="true"></i><br>
-				</form>
-
-				
 				<h3>
 				Juomat (1,5L)
 				</h3>
-				<form>
-				<input type="checkbox" name="kokis"><img src="assets/images/cola.png" alt="Coca Cola" style="height:50px;">
-				<input type="checkbox" name="fanta"><img src="assets/images/sprite.png" alt="Sprite" style="height:50px;">
-				<input type="checkbox" name="sprite"><img src="assets/images/fanta.png" alt="Fanta" style="height:50px;;">
+				<div class="row" id=juomat>
+
+				<input type="checkbox" name="kokis"><img src="assets/images/cola.png" alt="Coca Cola" style="height:35px;"><br>
+				<input type="checkbox" name="fanta"><img src="assets/images/sprite.png" alt="Sprite" style="height:100%;"><br>
+				<input type="checkbox" name="sprite"><img src="assets/images/fanta.png" alt="Fanta" style="height:100%;"><br>
 				</form>
-				
+				</div>
 			</div>
 			<hr>
 				<h2>Lopullinen summa XX,XX<i class="fa fa-eur" aria-hidden="true"></i></h2>

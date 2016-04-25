@@ -62,9 +62,9 @@ public class OstoskoriServlet extends HttpServlet {
 		pizzatilaus.setPizzaId(pizza_id);
 		
 		//tilaus-olioon lis‰t‰‰n(add) pizzatilausolio
-		tilaus = new Tilaus();
 		tilaus.addPizzaTilaus(pizzatilaus);
 		
+		response.sendRedirect("ostoskori");
 	}
-
+	
 }

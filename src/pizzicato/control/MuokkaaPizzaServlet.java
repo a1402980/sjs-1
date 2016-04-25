@@ -34,6 +34,7 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 		int pizzaId = Integer.parseInt(idString);
 		PizzaDAO pizzadao = new PizzaDAO();
 		Pizza pizza = pizzadao.findCertainPizza(pizzaId);
+		System.out.println("pizzan täytteet" + pizza);
 		request.setAttribute("pizza", pizza);
 		
 		TayteDAO taytedao = new TayteDAO();
