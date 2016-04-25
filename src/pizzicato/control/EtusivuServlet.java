@@ -62,9 +62,8 @@ public class EtusivuServlet extends HttpServlet {
 	  		  dispather.forward(request, response);
 	       } else {
 	    	   HttpSession session = request.getSession();
-		       String kayttaja_rooli = kayttaja.getUserRole();
-		       session.setAttribute("rooli", kayttaja_rooli);
-		    	   if(kayttaja_rooli.equals("omistaja"))
+		       session.setAttribute("kayttaja", kayttaja);
+		    	   if(kayttaja.getUserRole().equals("omistaja"))
 		    			   {
 		      
 		       response.sendRedirect("ListaaPizzat");

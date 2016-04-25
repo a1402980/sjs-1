@@ -43,9 +43,9 @@ public class SecurityFilter implements Filter {
 	    	  
 	      } else {
 	    	  HttpSession session = req.getSession();
-		      String kayttaja_rooli = (String) session.getAttribute("rooli");
+		      Kayttaja kayttaja  = (Kayttaja) session.getAttribute("kayttaja");
 			  
-		      if (kayttaja_rooli != "omistaja")
+		      if (kayttaja.getUsername().equals("omistaja"))
 		      {
 		    	  chain.doFilter(req, resp);
 		    	 

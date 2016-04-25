@@ -11,7 +11,8 @@
 <%@ page import="pizzicato.model.Kayttaja"%>
 <jsp:useBean id="pizzat" type="java.util.ArrayList<Pizza>"
 	scope="request" />
-
+<jsp:useBean id="kayttaja" class="pizzicato.model.Kayttaja"
+	scope="session" />
 <!--<![endif]-->
 <html>
 <head>
@@ -102,55 +103,65 @@
 			<li><a href="#pizzamenu">Pizzat</a></li>
 			<li><a href="#contact">Yhteystiedot</a></li>
 			
-			<%-- <!-- - --><li>
-			<% 	String kapy =  kayttaja.getUserRole();
-			if (session.getAttribute("rooli")!= null){
-				
-				if (kayttaja.getUserRole().equals("asiakas")){
-					
-					out.println("<p>" + "Tervetuloa+ " + kayttaja.getUsername() + "</p>");		
-					}
-			}
-		
-		
 			
-			
-			</li>
-			
-			
-			--%>
 			
 			<li><button type="button" class="btn btn-primary" id="ostoskorinappi"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="badge">7</span></button></li>
-			<li class="dropdown"><a href="#" class="dropdown-toggle"
-				data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>
-					Kirjaudu <b class="caret"></b></a>
-				<ul class="dropdown-menu">
-					<form method="post" role="form" class="navbar-form navbar-right">
-						<div class="form-group">
-							<input type="text" class="form-control" name="username"
-								placeholder="Käyttäjätunnus" autocomplete="off">
+			<li>
+			<% 		
+				if (kayttaja!= null &&  kayttaja.getUserRole()!= null){
+					
+					%> <li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown">
+						<%out.println("<p>" + "Tervetuloa "+ kayttaja.getUsername() + "!" + "</p>"); %><b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<form method="post" role="form" class="navbar-form navbar-right">
+								<div class="form-group">
+								<li><a href="KirjauduUlos">Kirjaudu ulos</a></li>	
+							
+							</form>
+							
+							</div>
+
+
+						</ul>
+					<%} 
+			
+					
+				else {%> <li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>
+						Kirjaudu <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<form method="post" role="form" class="navbar-form navbar-right">
+							<div class="form-group">
+								<input type="text" class="form-control" name="username"
+									placeholder="Käyttäjätunnus" autocomplete="off">
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control" name="password"
+									placeholder="Salasana" autocomplete="off">
+							</div class="form-group">
+							<button type="submit" name="kirjautumisnappi" class="btn btn-primary">Kirjaudu</button>
+						</form>
+						<div id=huomio>
+							<span id="ilmoitus">
+								<%
+									String message = (String) request.getAttribute("message");
+									if (message != null) {
+										out.println("<p>" + message + "</p>");
+									}
+								%>
+							</span>
 						</div>
-						<div class="form-group">
-							<input type="password" class="form-control" name="password"
-								placeholder="Salasana" autocomplete="off">
-						</div class="form-group">
-						<button type="submit" name="kirjautumisnappi" class="btn btn-primary">Kirjaudu</button>
-					</form>
-					<div id=huomio>
-						<span id="ilmoitus">
-							<%
-								String message = (String) request.getAttribute("message");
-								if (message != null) {
-									out.println("<p>" + message + "</p>");
-								}
-							%>
-						</span>
-					</div>
 
 
-				</ul>
+					</ul>
+				<%} %>
+		
+		
+			
+			</li>
+		
 			<li><a href="Rekisteroityminen">Rekisteröidy</a></li>
-			<li><a href="KirjauduUlos">Kirjaudu ulos</a></li>
 		</ul>
 	</div>
 	<!-- /.navbar-collapse -->
