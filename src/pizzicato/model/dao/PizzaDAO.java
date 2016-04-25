@@ -197,6 +197,10 @@ public class PizzaDAO extends DataAccessObject {
 			ResultSet rs = null;
 			Pizza pizza=null;	
 			TayteDAO taytedao = new TayteDAO();
+			Tayte tayte;
+			int edellinenPizzaId=0;
+			int nykyinenPizzaId=0;
+			ArrayList<Pizza> pizzat = new ArrayList<Pizza>();
 			
 			try {
 				conn = getConnection();
@@ -204,8 +208,12 @@ public class PizzaDAO extends DataAccessObject {
 				stmt=conn.prepareStatement(sqlSelect);
 				rs=stmt.executeQuery(sqlSelect);
 				while(rs.next()) {
-					pizza = readPizza(rs);
-					Tayte tayte = new Tayte();
+					nykyinenPizzaId = rs.getInt("pizza_id");
+					if (nykyinenPizzaId != edellinenPizzaId) {
+						pizza = readPizza(rs);
+						pizzat.add(pizza);
+						edellinenPizzaId = nykyinenPizzaId;
+					}
 					tayte = taytedao.readTayte(rs);
 					pizza.addTayte(tayte);
 				}
