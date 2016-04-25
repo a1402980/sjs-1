@@ -99,7 +99,7 @@ public class RekisteroityminenServlet extends HttpServlet {
 			errors.put("enimi", " Nimen on oltava lyhyempi kuin 30 merkkiä.");
 		}else{
 			asiakas.setEtuNimi(enimi);}
-		if (enimi.matches("^[a-zåäöA-ZÅÄÖ\b-]*$")){
+		if (enimi.matches("^[a-zåäöA-ZÅÄÖ-]*$")){
 			asiakas.setEtuNimi(enimi);
 		}else{
 			errors.put("enimi", " Nimessä ei saa olla numeroita tai erikoismerkkejä.");
