@@ -6,6 +6,15 @@
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
 
+<%@ page import="pizzicato.model.Pizza"%>
+<%@ page import="pizzicato.model.Tilaus"%>
+<%@ page import="pizzicato.model.PizzaTilaus"%>
+
+<jsp:useBean id="pizza" class="pizzicato.model.Pizza"
+	scope="request" />
+	<jsp:useBean id="tilaus" class="pizzicato.model.Pizza"
+	scope="request" />
+
 <html lang="fi">
 <!--<![endif]-->
 <head>
@@ -113,7 +122,7 @@
 						<th>Lisätäytteet</th>
 					</tr>
 					<tr>
-					<td>Lorem Pizza</td>
+					<td>Lorem pizza</td>
 					<td>Lorem täyte</td>
 					<td>x,xx</td>
 					<td><input type="checkbox" name="oregano"> Oregano
