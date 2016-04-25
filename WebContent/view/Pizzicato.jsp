@@ -11,7 +11,8 @@
 <%@ page import="pizzicato.model.Kayttaja"%>
 <jsp:useBean id="pizzat" type="java.util.ArrayList<Pizza>"
 	scope="request" />
-
+<jsp:useBean id="pizza" class="pizzicato.model.Pizza"
+	scope="request" />
 <!--<![endif]-->
 <html>
 <head>
@@ -188,17 +189,20 @@
     						<span class="caret"></span></button>
     						<ul class="dropdown-menu noclose pull-right text-center">
      						<li></li>
-      						<li><form role="form">
+      						<li><form role="form" method="post" action="ostoskori">
    								<div id=pizzalkm>
    								<label>Pizzojen lkm.</label>
       							<input type="number" min="1" max="10" step="1" name="pizzamaara"><br>
       							<input type="checkbox" name="oregano"> Oregano <br>
       							<input type="checkbox" name="valkosipuli"> Valkosipuli
+      							<input type="hidden" name="pizza_id" value="<%=pizza.getPizzaId()%>"/>
       							</div> 
-      							</form>
+      							
       							<button type="submit" class="btn btn-success" name="pizzanlisays"><span class="glyphicon glyphicon-shopping-cart"></span><span class="glyphicon glyphicon-plus"></span></button>
+      							</form>
       							</li>
     							</ul>
+    							
   							</div>
 						</td>
 					</tr>
