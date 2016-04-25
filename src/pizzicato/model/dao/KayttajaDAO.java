@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import pizzicato.model.Asiakas;
 import pizzicato.model.Kayttaja;
 import pizzicato.model.dao.DataAccessObject;
 
@@ -79,7 +80,7 @@ public class KayttajaDAO extends DataAccessObject {
 	   }
    }
 
-//Näitä metodeita ei tällä hetkellä tarvita
+//Nï¿½itï¿½ metodeita ei tï¿½llï¿½ hetkellï¿½ tarvita
 
 		public ArrayList<Kayttaja> findAll() {
 			ArrayList<Kayttaja> kayttajat = new ArrayList<Kayttaja>();
@@ -140,6 +141,36 @@ public class KayttajaDAO extends DataAccessObject {
 	}
    }
    
+   public void createAsiakas(Kayttaja kayttaja, Asiakas asiakas) {
+	    PreparedStatement statement = null;
+	    Connection conn = null;
+	    PreparedStatement stmtSelect = null;
+	    ResultSet rs = null;
+	    int lastId;
+	    try {
+	      conn = getConnection();
+	      String sql = "insert into kayttaja (username, password, userrole) values (?, ?, ?)";
+	      String sqlSelect = "SELECT LAST_INSERT_ID();";
+	      statement = conn.prepareStatement(sql);
+	      stmtSelect = conn.prepareStatement(sqlSelect);
+	      statement.setString(1, kayttaja.getUsername());
+	      statement.setString(2, kayttaja.getPassword());
+	      statement.setString(3, kayttaja.getUserRole());
+	      statement.executeUpdate();
+	      rs = stmtSelect.executeQuery();
+	   	       
+	      lastId = rs.getInt("last_insert_id()");
+	      kayttaja.setId(lastId);
+	      AsiakasDAO asiakasdao = new AsiakasDAO();
+	      Asiakas uusiAsiakas = new Asiakas(lastId, asiakas.getEtuNimi(), asiakas.getSukuNimi(), asiakas.getPuh(), asiakas.getOsoite(), asiakas.getPostiNro(), asiakas.getPostiTmp(),asiakas.getsPosti(), lastId);
+	      asiakasdao.createAsiakas(uusiAsiakas);
+	    	} catch (Exception e) {
+	    		throw new RuntimeException(e);
+	    	} finally {
+	    		close(statement, conn);
+	    	}
+	   	}
+   
    public void delete(Kayttaja kayttaja){
 	   PreparedStatement statement = null;
 	   Connection connection = null;
@@ -156,6 +187,28 @@ public class KayttajaDAO extends DataAccessObject {
         close(statement, connection);
 	}
    }
+   
+   public void deleteAsiakas(Kayttaja kayttaja){
+	    PreparedStatement statement = null;
+	    PreparedStatement stmt2 = null;
+	    Connection connection = null;
+	    ResultSet rs = null;
+	    try {
+	    connection = getConnection();
+	    String sql = "delete from user where id=?";
+	    String sqlDelete2="DELETE FROM asiakas WHERE asiakas_id= "+kayttaja.getId()+";";
+	    statement = connection.prepareStatement(sql);
+	    stmt2=connection.prepareStatement(sqlDelete2);
+	    int id = kayttaja.getId();
+	    statement.setInt(1, id);
+	    rs=stmt2.executeQuery();
+	    statement.executeUpdate();
+	    } catch (Exception e) {
+	    	throw new RuntimeException(e);
+	    } finally {
+	        close(statement, connection);
+		}
+	  }
    
 }
 
