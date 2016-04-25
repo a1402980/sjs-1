@@ -404,4 +404,16 @@ div#huomio span#ilmoitus {
 
 }
 
+#ostoskorinappi2 a:hover{
+	background-color: #3276b1;
+	border-color: #285e8e;
+}
+
+#kirjaudu-ulos-nappi{
+	color:black !important;
+}
+#juomat{
+	margin:auto;
+}
+
 
