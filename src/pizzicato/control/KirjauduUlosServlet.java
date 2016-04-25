@@ -25,7 +25,7 @@ public class KirjauduUlosServlet extends HttpServlet {
 		 if (session != null){
 			 session.invalidate();	    
 		 }
-	     response.sendRedirect("Etusivu");
+	     response.sendRedirect("Etusivu#contact");
 	}
 
 	
