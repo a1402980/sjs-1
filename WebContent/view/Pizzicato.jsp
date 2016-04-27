@@ -13,6 +13,8 @@
 	scope="request" />
 <jsp:useBean id="kayttaja" class="pizzicato.model.Kayttaja"
 	scope="session" />
+	<jsp:useBean id="pizza" class="pizzicato.model.Pizza"
+	scope="request" />
 <!--<![endif]-->
 <html>
 <head>
@@ -102,27 +104,16 @@
 			<li><a href="Etusivu">Etusivu</a></li>
 			<li><a href="#pizzamenu">Pizzat</a></li>
 			<li><a href="#contact">Yhteystiedot</a></li>
-			
-			
-			
-			<li><button type="button" class="btn btn-primary" id="ostoskorinappi"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="badge">7</span></button></li>
+			<li id="ostoskorinappi2"><a href="ostoskori" class="btn btn-primary" role="button" id="ostoskorinappi"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="badge">7</span></a></li>
 			<li>
 			<% 		
 				if (kayttaja!= null &&  kayttaja.getUserRole()!= null){
 					
 					%> <li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown">
-						<%out.println("Tervetuloa "+ kayttaja.getUsername() + "!"); %><b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<form method="post" role="form" class="navbar-form navbar-right">
-								<div class="form-group">
-								<li><a href="KirjauduUlos">Kirjaudu ulos</a></li>	
-							
-							</form>
-							
-							</div>
-
-
+						<%out.println("Tervetuloa "+"<b>"+ kayttaja.getUsername() +"</b>"+ "!"); %><b class="caret"></b></a>
+						<ul class="dropdown-menu">	
+           				<li>  <a href="KirjauduUlos" id="kirjaudu-ulos-nappi"><span class="glyphicon glyphicon-log-out"></span> Kirjaudu ulos</a></li>
 						</ul>
 					<%} 
 			
@@ -214,15 +205,17 @@
     						<span class="caret"></span></button>
     						<ul class="dropdown-menu noclose pull-right text-center">
      						<li></li>
-      						<li><form role="form">
+      						<li><form role="form" method="post" action="ostoskori">
    								<div id=pizzalkm>
    								<label>Pizzojen lkm.</label>
       							<input type="number" min="1" max="10" step="1" name="pizzamaara"><br>
       							<input type="checkbox" name="oregano"> Oregano <br>
       							<input type="checkbox" name="valkosipuli"> Valkosipuli
+      							<input type="hidden" name="pizza_id" value="<%=pizza.getPizzaId()%>"/>
       							</div> 
-      							</form>
+      							
       							<button type="submit" class="btn btn-success" name="pizzanlisays"><span class="glyphicon glyphicon-shopping-cart"></span><span class="glyphicon glyphicon-plus"></span></button>
+      							</form>
       							</li>
     							</ul>
   							</div>
