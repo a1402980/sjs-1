@@ -210,12 +210,13 @@ public class PizzaDAO extends DataAccessObject {
 				while(rs.next()) {
 					nykyinenPizzaId = rs.getInt("pizza_id");
 					if (nykyinenPizzaId != edellinenPizzaId) {
-						pizza = readPizza(rs);
-						pizzat.add(pizza);
 						edellinenPizzaId = nykyinenPizzaId;
+						pizza = readPizza(rs);
 					}
+					pizzat.add(pizza);
 					tayte = taytedao.readTayte(rs);
 					pizza.addTayte(tayte);
+					
 				}
 			} catch(SQLException e) {
 				throw new RuntimeException(e);

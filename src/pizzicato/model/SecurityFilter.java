@@ -34,7 +34,7 @@ public class SecurityFilter implements Filter {
 	      String servletPath = req.getServletPath();
 
 	      // Allow access to login functionality.
-	      if (servletPath.equals("/Etusivu") || servletPath.equals("/Rekisteroityminen") || servletPath.equals("/KirjauduUlos") || servletPath.equals("/ostoskori"))
+	      if (servletPath.equals("/Etusivu") || servletPath.equals("/Rekisteroityminen") || servletPath.equals("/ostoskori"))
 	      {
 	         chain.doFilter(req, resp);
 	      } else if (servletPath.endsWith(".css") || servletPath.endsWith(".png") || servletPath.endsWith(".jpg") || servletPath.endsWith(".js") || servletPath.endsWith(".eot") || servletPath.endsWith(".svg")
