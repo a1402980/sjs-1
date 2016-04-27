@@ -112,7 +112,7 @@
 					
 					%> <li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown">
-						<%out.println("<p>" + "Tervetuloa "+ kayttaja.getUsername() + "!" + "</p>"); %><b class="caret"></b></a>
+						<%out.println("Tervetuloa "+ kayttaja.getUsername() + "!"); %><b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<form method="post" role="form" class="navbar-form navbar-right">
 								<div class="form-group">
