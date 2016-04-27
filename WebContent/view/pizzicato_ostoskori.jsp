@@ -13,8 +13,8 @@
 
 <jsp:useBean id="pizza" class="pizzicato.model.Pizza"
 	scope="request" />
-<jsp:useBean id="tilaus" class="pizzicato.model.Pizza"
-	scope="request" />
+<jsp:useBean id="tilaus" class="pizzicato.model.Tilaus"
+	scope="session" />
 <jsp:useBean id="kayttaja" class="pizzicato.model.Kayttaja"
 	scope="session" />
 
@@ -142,6 +142,12 @@
 						<th>Lisätäytteet</th>
 					</tr>
 					<tr>
+					<td>
+					<%if (tilaus != null) {%>
+						<%=tilaus%>
+					<% }%>
+						
+					</td>
 					<td>Lorem pizza</td>
 					<td>Lorem täyte</td>
 					<td>x,xx</td>
