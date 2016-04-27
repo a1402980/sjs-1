@@ -6,6 +6,10 @@
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
 
+<%@ page import="pizzicato.model.Kayttaja"%>
+
+<jsp:useBean id="kayttaja" class="pizzicato.model.Kayttaja"
+	scope="session" />
 <jsp:useBean id="errors" type="java.util.Map" class="java.util.HashMap" scope= "request"/>
 
 <html lang="fi">

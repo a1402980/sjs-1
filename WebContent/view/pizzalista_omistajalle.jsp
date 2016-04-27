@@ -46,41 +46,32 @@
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-         		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse"
-				data-target=".navbar-ex1-collapse">
-				<span class="sr-only">Toggle navigation</span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="ListaaPizzat">Pizzeria Pizzicato</a>
-		</div>
-		<!-- Collect the nav links for toggling -->
-		<div class="collapse navbar-collapse navbar-ex1-collapse">
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="Etusivu">Etusivu</a></li>
-				<li><a href="#pizzamenu">Pizzat</a></li>
-				<li><a href="#services">Tilaukset</a></li>
-				<li><a href="#contact">Yhteystiedot</a></li>
-				
-					<li>
+<div class="container">
+
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse"
+			data-target=".navbar-ex1-collapse">
+			<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
+			<span class="icon-bar"></span> <span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="ListaaPizzat">Pizzeria Pizzicato</a>
+	</div>
+	<!-- Collect the nav links for toggling -->
+	<div class="collapse navbar-collapse navbar-ex1-collapse">
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="Etusivu">Etusivu</a></li>
+			<li><a href="Etusivu#pizzamenu">Pizzat</a></li>
+			<li><a href="#contact">Yhteystiedot</a></li>
+			<li id="ostoskorinappi2"><a href="ostoskori" class="btn btn-primary" role="button" id="ostoskorinappi"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="badge">7</span></a></li>
+			<li>
 			<% 		
 				if (kayttaja!= null &&  kayttaja.getUserRole()!= null){
 					
 					%> <li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown">
-						<%out.println("Tervetuloa "+ kayttaja.getUsername() + "!"); %><b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<form method="post" role="form" class="navbar-form navbar-right">
-								<div class="form-group">
-								<li><a href="KirjauduUlos">Kirjaudu ulos</a></li>	
-							
-							</form>
-							
-							</div>
-
-
+						<%out.println("Tervetuloa "+"<b>"+ kayttaja.getUsername() +"</b>"+ "!"); %><b class="caret"></b></a>
+						<ul class="dropdown-menu">	
+           				<li>  <a href="KirjauduUlos" id="kirjaudu-ulos-nappi"><span class="glyphicon glyphicon-log-out"></span> Kirjaudu ulos</a></li>
 						</ul>
 					<%} 
 			
@@ -113,22 +104,22 @@
 
 
 					</ul>
+					
+				<li><a href="Rekisteroityminen">Rekisteröidy</a></li>
+					</li>
+		
+		
 				<%} %>
 		
 		
 			
-			</li>
-				
-				
-				
-				
-			</ul>
-		</div>
-		<!-- /.navbar-collapse -->
+			
+		</ul>
 	</div>
-        <!-- /.container -->
-    </nav>
-    <!--End Navigation -->
+	<!-- /.navbar-collapse -->
+</div>
+<!-- /.container --> </nav>
+<!-- end of navigation -->
 
 
     <!-- Free Section -->
