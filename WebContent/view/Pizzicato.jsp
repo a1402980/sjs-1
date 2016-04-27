@@ -155,13 +155,16 @@
 
 
 					</ul>
+					
+				<li><a href="Rekisteroityminen">Rekisteröidy</a></li>
+					</li>
+		
+		
 				<%} %>
 		
 		
 			
-			</li>
-		
-			<li><a href="Rekisteroityminen">Rekisteröidy</a></li>
+			
 		</ul>
 	</div>
 	<!-- /.navbar-collapse -->
