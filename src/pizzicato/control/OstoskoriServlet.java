@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import pizzicato.model.Pizza;
 import pizzicato.model.Tilaus; 
 import pizzicato.model.PizzaTilaus; 
 import pizzicato.model.dao.TilausDAO; 
@@ -39,6 +40,7 @@ public class OstoskoriServlet extends HttpServlet {
 		
 		TilausDAO tilausdao = new TilausDAO();
 		PizzaTilausDAO pizzatilausdao = new PizzaTilausDAO();
+		PizzaDAO pizzadao = new PizzaDAO();
 		Tilaus tilaus;
 		PizzaTilaus pizzatilaus;
 		
@@ -61,13 +63,16 @@ public class OstoskoriServlet extends HttpServlet {
 		
 		String StrPizzaId = request.getParameter("pizza_id");
 		int pizza_id = Integer.parseInt(StrPizzaId);
-		pizzatilaus.setPizzaId(pizza_id);
+		Pizza pizza =pizzadao.findCertainPizza(pizza_id);
 		
-		/*PizzaDAO pizzadao = new PizzaDAO();
+		pizzatilaus.setPizza(pizza);
+		//tilaus-olion pizzatilaukset-listaan lis‰t‰‰n pizzatilausolio
+		tilaus.addPizzaTilaus(pizzatilaus);
+		session.setAttribute("tilaus", tilaus);
 		
 		
-		//tilaus-olioon lis‰t‰‰n(add) pizzatilausolio
-		tilaus.addPizzaTilaus(pizzatilaus);*/
+		
+		
 		
 		response.sendRedirect("ostoskori");
 	}
