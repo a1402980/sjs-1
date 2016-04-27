@@ -102,27 +102,16 @@
 			<li><a href="Etusivu">Etusivu</a></li>
 			<li><a href="#pizzamenu">Pizzat</a></li>
 			<li><a href="#contact">Yhteystiedot</a></li>
-			
-			
-			
-			<li><button type="button" class="btn btn-primary" id="ostoskorinappi"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="badge">7</span></button></li>
+			<li id="ostoskorinappi2"><a href="ostoskori" class="btn btn-primary" role="button" id="ostoskorinappi"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="badge">7</span></a></li>
 			<li>
 			<% 		
 				if (kayttaja!= null &&  kayttaja.getUserRole()!= null){
 					
 					%> <li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown">
-						<%out.println("Tervetuloa "+ kayttaja.getUsername() + "!"); %><b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<form method="post" role="form" class="navbar-form navbar-right">
-								<div class="form-group">
-								<li><a href="KirjauduUlos">Kirjaudu ulos</a></li>	
-							
-							</form>
-							
-							</div>
-
-
+						<%out.println("Tervetuloa "+"<b>"+ kayttaja.getUsername() +"</b>"+ "!"); %><b class="caret"></b></a>
+						<ul class="dropdown-menu">	
+           				<li>  <a href="KirjauduUlos" id="kirjaudu-ulos-nappi"><span class="glyphicon glyphicon-log-out"></span> Kirjaudu ulos</a></li>
 						</ul>
 					<%} 
 			
