@@ -257,52 +257,6 @@ table {
 }
 
 /*=======================================
-    editable tables alkaa
-==================================================*/
-@import "compass/css3";
-
-.table-editable {
-  position: relative;
-  
-  .glyphicon {
-    font-size: 20px;
-  }
-}
-
-.table-remove {
-  color: #700;
-  cursor: pointer;
-  
-  &:hover {
-    color: #f00;
-  }
-}
-
-.table-up, .table-down {
-  color: #007;
-  cursor: pointer;
-  
-  &:hover {
-    color: #00f;
-  }
-}
-
-.table-add {
-  color: #070;
-  cursor: pointer;
-  position: absolute;
-  top: 8px;
-  right: 0;
-  
-  &:hover {
-    color: #0b0;
-  }
-}
-/*=======================================
-    editable tables loppuu
-==================================================*/
-
-/*=======================================
     Asiakkaan sivun tyylit
 ==================================================*/
 
@@ -339,6 +293,22 @@ text-align: center;
 #cover-caption a {
 	color: white;
 }
+
+
+@media all and (max-width: 500px) {
+    #cover-caption h1,h2{
+        line-height: 30px;
+        font-size: 70%;
+    }
+}
+
+@media all and (max-width: 500px) {
+    #cover-caption a,span{
+        line-height: 90%;
+        font-size: 70%;
+    }
+}
+
 
 
 .affix {
