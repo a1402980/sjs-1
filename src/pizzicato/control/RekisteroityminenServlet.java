@@ -67,8 +67,8 @@ public class RekisteroityminenServlet extends HttpServlet {
 			errors.put("nimi", " Nimen on oltava v�hint��n 2 merkki� pitk�.");
 		}else{
 			kayttaja.setUsername(username);}
-		if (username.trim().length() > 15 ){
-			errors.put("nimi", " Nimen on oltava lyhyempi kuin 15 merkki�.");
+		if (username.trim().length() > 30 ){
+			errors.put("nimi", " Nimen on oltava lyhyempi kuin 30 merkki�.");
 		}else{
 			kayttaja.setUsername(username);}
 		if (username.matches("^[a-zA-Z0-9]*$")){
