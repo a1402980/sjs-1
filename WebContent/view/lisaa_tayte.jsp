@@ -5,6 +5,12 @@
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
+
+<%@ page import="pizzicato.model.Kayttaja"%>
+
+<jsp:useBean id="kayttaja" class="pizzicato.model.Kayttaja"
+	scope="session" />
+
 <html lang="fi">
 <!--<![endif]-->
 <head>
@@ -43,36 +49,80 @@
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="Etusivu">Pizzeria Pizzicato</a>
-            </div>
-            <!-- Collect the nav links for toggling -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="Etusivu">Etusivu</a>
-                    </li>
-                    <li><a href="ListaaPizzat">Pizzat</a>
-                    </li>
-                    <li><a href="#services">Tilaukset</a>
-                    </li>
-                    <li><a href="#free-text">Yhteystiedot</a>
-                    </li>
-                     <li><a><button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal" style=text-align="center">Kirjaudu</button></a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-    <!--End Navigation -->
+<div class="container">
+
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse"
+			data-target=".navbar-ex1-collapse">
+			<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
+			<span class="icon-bar"></span> <span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="ListaaPizzat">Pizzeria Pizzicato</a>
+	</div>
+	<!-- Collect the nav links for toggling -->
+	<div class="collapse navbar-collapse navbar-ex1-collapse">
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="Etusivu">Etusivu</a></li>
+			<li><a href="Etusivu#pizzamenu">Pizzat</a></li>
+			<li><a href="#contact">Yhteystiedot</a></li>
+			<li id="ostoskorinappi2"><a href="ostoskori" class="btn btn-primary" role="button" id="ostoskorinappi"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="badge">7</span></a></li>
+			<li>
+			<% 		
+				if (kayttaja!= null &&  kayttaja.getUserRole()!= null){
+					
+					%> <li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown">
+						<%out.println("Tervetuloa "+"<b>"+ kayttaja.getUsername() +"</b>"+ "!"); %><b class="caret"></b></a>
+						<ul class="dropdown-menu">	
+           				<li>  <a href="KirjauduUlos" id="kirjaudu-ulos-nappi"><span class="glyphicon glyphicon-log-out"></span> Kirjaudu ulos</a></li>
+						</ul>
+					<%} 
+			
+					
+				else {%> <li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>
+						Kirjaudu <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<form method="post" role="form" class="navbar-form navbar-right">
+							<div class="form-group">
+								<input type="text" class="form-control" name="username"
+									placeholder="Käyttäjätunnus" autocomplete="off">
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control" name="password"
+									placeholder="Salasana" autocomplete="off">
+							</div class="form-group">
+							<button type="submit" name="kirjautumisnappi" class="btn btn-primary">Kirjaudu</button>
+						</form>
+						<div id=huomio>
+							<span id="ilmoitus">
+								<%
+									String message = (String) request.getAttribute("message");
+									if (message != null) {
+										out.println("<p>" + message + "</p>");
+									}
+								%>
+							</span>
+						</div>
+
+
+					</ul>
+					
+				<li><a href="Rekisteroityminen">Rekisteröidy</a></li>
+					</li>
+		
+		
+				<%} %>
+		
+		
+			
+			
+		</ul>
+	</div>
+	<!-- /.navbar-collapse -->
+</div>
+<!-- /.container --> </nav>
+<!-- end of navigation -->
 
 
 	<!-- Free Section -->
