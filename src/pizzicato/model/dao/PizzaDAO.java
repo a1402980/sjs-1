@@ -217,7 +217,7 @@ public class PizzaDAO extends DataAccessObject {
 					tayte = taytedao.readTayte(rs);
 					pizza.addTayte(tayte);
 					pizzat.add(pizza);
-					rs.first();
+					//rs.first();
 				}
 			} catch(SQLException e) {
 				throw new RuntimeException(e);
