@@ -207,16 +207,17 @@ public class PizzaDAO extends DataAccessObject {
 				String sqlSelect ="SELECT p.pizza_id, p_nimi, p_hinta, p_saatavuus, t.tayte_id, t_nimi, t_hinta FROM pizza p INNER JOIN pizzatayte pt ON p.pizza_id = pt.pizza_id INNER JOIN tayte t ON t.tayte_id = pt.tayte_id WHERE pt.pizza_id="+pizzaId+";";
 				stmt=conn.prepareStatement(sqlSelect);
 				rs=stmt.executeQuery(sqlSelect);
+				
 				while(rs.next()) {
 					nykyinenPizzaId = rs.getInt("pizza_id");
 					if (nykyinenPizzaId != edellinenPizzaId) {
 						edellinenPizzaId = nykyinenPizzaId;
 						pizza = readPizza(rs);
 					}
-					pizzat.add(pizza);
 					tayte = taytedao.readTayte(rs);
 					pizza.addTayte(tayte);
-					
+					pizzat.add(pizza);
+					rs.first();
 				}
 			} catch(SQLException e) {
 				throw new RuntimeException(e);
