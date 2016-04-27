@@ -53,6 +53,8 @@ public class SecurityFilter implements Filter {
 		    	  resp.sendRedirect("Etusivu");
 		      }
 		     
+		      
+		      
 	      }
 
 	   }   
