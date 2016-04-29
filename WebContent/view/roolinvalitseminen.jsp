@@ -29,7 +29,7 @@
 <!-- BOOTSTRAP CORE STYLE CSS -->
 <link href="assets/css/bootstrap.css" rel="stylesheet" />
 <!-- FONTAWESOME STYLE CSS -->
-<link href="assets/css/font-awesome.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 <!-- CUSTOM STYLE CSS -->
 <link href="assets/css/style.css" rel="stylesheet" />
 <!-- GOOGLE FONT -->
@@ -129,24 +129,27 @@
 
 	<section id="pizzat">
 	<div class="container">
-		<div class="row text-center for-full-back color-light ">
-			<div class="col-md-8 col-md-offset-2">
-				<H1>Lisää Täyte</H1>
+		<div class="row text-center for-full-back color-light" id="rooliruutu">
+			<H1>Valitse Näkymä</H1>
+			<div class="span12 col-sm-offset-1">
+				
 
-
-				<form method="post">
-
-					
-
-					Nimi:<br> <input type="text" name="nimi" placeholder="Kirjoita täytteen nimi tähän" pattern="[a-zA-Z0-9]+[a-zA-Z0-9 ]+" required ><br> <br>
-					Hinta:<br> <input type="decimal" name="hinta" placeholder="X,XX Hinta ei yli 20€" pattern="[0-9,.]{4,2}" required><br> <br>
-					
-								
-				<div id="lisaapizzanapit">
-					<button input type="submit" class="btn btn-success btn-lg">Tallenna</button>
-					<a href="ListaaTaytteet" class="btn btn-default btn-lg" role="button">Peruuta</a>
+				<div class=container>
+					<div class="row">
+						<div class="col-sm-3">
+							<a href="kokinsivu" class="btn btn-success btn-xl" role="button"><i class="fa fa-cutlery" aria-hidden="true"></i> Kokki</a>
+						</div>
+						<div class="col-sm-3">
+							<a href="ListaaPizzat" class="btn btn-primary btn-xl" role="button"><i class="fa fa-car" aria-hidden="true"></i> Kuski</a>
+						</div>
+						<div class="col-sm-3">
+							<a href="ListaaPizzat" class="btn btn-warning btn-xl" role="button"><i class="fa fa-star" aria-hidden="true"></i> Omistaja</a>
+						</div>
+					</div>
 				</div>
-				</form>
+				
+
+				
 			</div>
 
 		</div>
@@ -155,26 +158,40 @@
 	<!--End Free Section -->
 
 	<!-- Contact Section -->
-	<section class="for-full-back color-white " id="contact">
-	<div class="container">
-		<div class="row text-center"></div>
+<section class="for-full-back color-white " id="contact">
+<div class="container">
 
-		<div class="row">
-			<div class="col-md-5 contact-cls">
-				<h3>Yhteystiedot</h3>
-				<div>
-					<span><i class="fa fa-home"></i>&nbsp;Osoite</span> <br /> <span><i
-						class="fa fa-phone"></i>&nbsp;Puhelin</span> <br /> <span><i
-						class="fa fa-envelope-o"></i>&nbsp;e-mail</span> <br /> <span><i
-						class="fa fa-phone"></i>&nbsp;Puhelin</span> <br />
-				</div>
+	<div class="col-md-4 contact-cls"  id="osoitekartta">
+		<h3><span><i class="fa fa-home"></i>&nbsp;Osoite:</span></h3>
+		<div>
+			<span>Kuusitie 6, Meilahti, Helsinki</span> <br />
+			<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script><div style="overflow:hidden;height:200px;width:250px;"><div id="gmap_canvas" style="height:200px;width:290px;"><style>#gmap_canvas img{max-width:none!important;background:none!important}</style><a class="google-map-code" href="http://www.themecircle.net" id="get-map-data">Kartta</a></div></div><script type="text/javascript"> function init_map(){var myOptions = {zoom:16,center:new google.maps.LatLng(60.19484920000001,24.89962639999999),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(60.19484920000001, 24.89962639999999)});infowindow = new google.maps.InfoWindow({content:"<b>Pizzeria Pizzicato</b><br/>kuusitie 6<br/> Helsinki" });google.maps.event.addListener(marker, "click", function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
 
-			</div>
+		</div>
+
+	</div>
+	
+	<div class="col-md-2 contact-cls">
+		<h3><span><i class="fa fa-clock-o"></i>&nbsp;Aukioloajat:</span></h3>
+		<div>
+			<span>ma-to 11 - 21<br>pe-la  11 - 22<br>su		12 - 19  </span>
+			
+
+		</div>
+
+	</div>
+	
+	<div class="col-md-5 contact-cls">
+		<h3><span><i class="fa fa-phone"></i>&nbsp;Puhelin:</span></h3>
+		<div>
+			<span>(+358) 040-123456</span> <br /> 
 		</div>
 	</div>
-	</section>
+	
+	
+</section>
 
-	<!--End Contact Section -->
+<!--End Contact Section -->
 	<!--footer Section -->
 	<div class="for-full-back " id="footer">2016 | Silver Java
 		Slayers</div>

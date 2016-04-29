@@ -371,7 +371,7 @@
 	<div class="col-md-5 contact-cls">
 		<h3><span><i class="fa fa-phone"></i>&nbsp;Puhelin:</span></h3>
 		<div>
-			<span><i class="fa fa-phone"></i>&nbsp;(+358) 040-123456</span> <br /> 
+			<span>(+358) 040-123456</span> <br /> 
 		</div>
 	</div>
 	
