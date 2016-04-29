@@ -144,7 +144,7 @@ public class RekisteroityminenServlet extends HttpServlet {
 			errors.put("osoite", " Osoitteen on oltava lyhyempi kuin 30 merkkiä.");
 		}else{
 			asiakas.setOsoite(osoite);}
-		if (osoite.matches("^[a-zåäöA-ZÅÄÖ0-9-]*$")){
+		if (osoite.matches("^[a-z åäöA-ZÅÄÖ0-9-]*$")){
 			asiakas.setOsoite(osoite);
 		}else{
 			errors.put("osoite", "Osoitteessa ei saa olla erikoismerkkejä.");
