@@ -150,15 +150,16 @@
 					Hinta:<br> <input type="decimal" name="hinta" value="<%=pizza.getpHinta()%>" pattern="[0-9,.]{4,5}" required><br> <br>
 						
 						Täytteet: <br>
+						
 						<% for (int i = 0; i < kaikkitaytteet.size(); i++) {
 							String checked="";
 							 for (int j = 0; j < pizza.getTaytteet().size(); j++) {
 								 if (pizza.getTaytteet().get(j).getTayteId() == kaikkitaytteet.get(i).getTayteId()) {
-									 checked=checked;
+									 checked="checked";
 								 }																
 							}	
 							%><input type="checkbox" name="tayte" <%=checked%> value="<%=kaikkitaytteet.get(i).getTayteId()%>">  <%=kaikkitaytteet.get(i).gettNimi()%><br>
-						
+					
 						<%} %>
 					
 					<br>Valikoimassa<br> <select name="valikoimassa">
