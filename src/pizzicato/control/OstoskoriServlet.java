@@ -1,6 +1,7 @@
 package pizzicato.control;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Enumeration;
 
 import javax.servlet.RequestDispatcher;
@@ -43,6 +44,7 @@ public class OstoskoriServlet extends HttpServlet {
 		PizzaDAO pizzadao = new PizzaDAO();
 		Tilaus tilaus;
 		PizzaTilaus pizzatilaus;
+		ArrayList<PizzaTilaus> pizzatil = new ArrayList<PizzaTilaus>();
 		
 		
 		//avataan uusi sessio

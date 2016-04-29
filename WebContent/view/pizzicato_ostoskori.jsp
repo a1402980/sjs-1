@@ -11,7 +11,7 @@
 <%@ page import="pizzicato.model.PizzaTilaus"%>
 <%@ page import="pizzicato.model.Kayttaja"%>
 <jsp:useBean id="pizzatilaukset" type="java.util.ArrayList<PizzaTilaus>"
-	scope="session" />
+	scope="request" />
 <jsp:useBean id="pizza" class="pizzicato.model.Pizza"
 	scope="request" />
 <jsp:useBean id="tilaus" class="pizzicato.model.Tilaus"
