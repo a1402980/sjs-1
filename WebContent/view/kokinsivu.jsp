@@ -132,35 +132,47 @@
 		<div class="row text-center for-full-back color-light jumbotron">
 			<H1>Tilaukset</H1>
 			<div class="container" id="kokintilaukset">
-			
-			<div class="table-responsive">
-				<table class="table table-hover" align="center" id="ostoskori_asiakkaalle">
-					<tr>
-						<th>Nimi</th>
-						<th>Täytteet</th>
-						<th>Lisätäytteet</th>
-						<th></th>
-					</tr>
-					<tr>
-					<td>Lorem pizza</td>
-					<td>Lorem täyte</td>
-					<td><input type="checkbox" name="oregano"> Oregano
-						<input type="checkbox" name="valkosipuli"> Valkosipuli
-					</td>
-					<td><button type="button" class="btn btn-success">Valmis <i class="fa fa-check" aria-hidden="true"></i></button></td>
-					</tr>
 
-				</table>
+				<div class="table-responsive">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Nimi</th>
+								<th>Täytteet</th>
+								<th>Lisätäytteet</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="danger">
+								<td>Lorempizza</td>
+								<td>Loremtäyte</td>
+								<td><input type="checkbox" name="oregano"> Oregano <input type="checkbox" name="valkosipuli"> Valkosipuli</td>
+								<td><button type="button" class="btn btn-success">Valmis <i class="fa fa-check" aria-hidden="true"></i></button></td>
+							</tr>
+							<tr class="warning">
+								<td>Lorempizza</td>
+								<td>Loremtäyte</td>
+								<td><input type="checkbox" name="oregano"> Oregano <input type="checkbox" name="valkosipuli"> Valkosipuli</td>
+								<td><button type="button" class="btn btn-success">Valmis <i class="fa fa-check" aria-hidden="true"></i></button></td>
+							</tr>
+							<tr class="success">
+								<td>Lorempizza</td>
+								<td>Loremtäyte</td>
+								<td><input type="checkbox" name="oregano"> Oregano <input type="checkbox" name="valkosipuli"> Valkosipuli</td>
+								<td><button type="button" class="btn btn-success">Valmis <i class="fa fa-check" aria-hidden="true"></i></button></td>
+							</tr>
+						</tbody>
+					</table>
 
 
-				
 
-				
+
+
+				</div>
+
 			</div>
-
-		</div>
-	</div>
-	</section>
+		</div></section>
 	<!--End Free Section -->
 
 	<!-- Contact Section -->

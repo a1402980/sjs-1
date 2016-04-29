@@ -284,6 +284,8 @@ table {
     Kokki sivun tyylit
 ==================================================*/
 
+
+
 #cover {
     background: #222 url('pizza-stock.jpg') center center no-repeat;
     background-size: cover;
@@ -409,5 +411,4 @@ div#huomio span#ilmoitus {
 #juomat{
 	margin:auto;
 }
-
 
