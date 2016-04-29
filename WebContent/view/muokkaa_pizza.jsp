@@ -151,21 +151,20 @@
 						
 						Täytteet: <br>
 
-						<%
-						for (int i = 0; i < kaikkitaytteet.size(); i++) {
-							for (int j = 0; j < pizza.getTaytteet().size(); j++) { 
+						<%String box = null;%>
+						<%for (int i = 0; i<kaikkitaytteet.size(); i++) {
+							for (int j = 0; j<pizza.getTaytteet().size(); j++) {
 								
 								if (pizza.getTaytteet().get(j).getTayteId() == kaikkitaytteet.get(i).getTayteId()) {
 								
-								 %>
-									<input type="checkbox" name="tayte" checked value="<%=kaikkitaytteet.get(i).getTayteId()%>">  <%=kaikkitaytteet.get(i).gettNimi()%>
-								<%} else{
-									%>
-									<input type="checkbox" name="tayte" value="<%=kaikkitaytteet.get(i).getTayteId()%>">  <%=kaikkitaytteet.get(i).gettNimi()%>
-								<%}
+									box = "checked"; 	
+								} 
 							}%>
-							<br> 	
-						<%} %>
+							<input type="checkbox" name="tayte" <%=box%> value="<%=kaikkitaytteet.get(i).getTayteId()%>">  <%=kaikkitaytteet.get(i).gettNimi()%> <br>	
+						<%}%>
+					
+
+
 							
 					
 					<br>Valikoimassa<br> <select name="valikoimassa">
