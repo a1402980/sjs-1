@@ -164,7 +164,8 @@
 							<td><%=pizzat.get(i).getpNimi()%></td>
 
 							<td>
-								<%for (int j=0; j<pizzat.get(i).getTaytteet().size(); j++){ %> <%=pizzat.get(i).getTayte(j).gettNimi() %>
+								<%for (int j=0; j<pizzat.get(i).getTaytteet().size(); j++){ %> 
+									<%=pizzat.get(i).getTayte(j).gettNimi() %>
 								<% } %>
 							</td>
 							<td><%=pizzat.get(i).getpHinta()%></td>

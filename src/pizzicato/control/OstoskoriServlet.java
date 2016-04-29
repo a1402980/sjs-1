@@ -23,7 +23,7 @@ import pizzicato.model.dao.PizzaTilausDAO;
 @WebServlet("/ostoskori")
 public class OstoskoriServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+	//näyttää ostoskorin sisällön
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Enumeration<String> parametrienNimet = request.getParameterNames();
 		System.out.println(parametrienNimet);
@@ -31,7 +31,7 @@ public class OstoskoriServlet extends HttpServlet {
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
 		dispatcher.forward(request, response);
 	}
-
+//lisää ostoskoriin
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Heippa! olen doPost ostoskori");
 		Enumeration<String> parametrienNimet = request.getParameterNames();
