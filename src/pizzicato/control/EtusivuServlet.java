@@ -66,7 +66,7 @@ public class EtusivuServlet extends HttpServlet {
 		    	   if(kayttaja.getUserRole().equals("omistaja"))
 		    			   {
 		      
-		       response.sendRedirect("ListaaPizzat");
+		       response.sendRedirect("roolinvalitseminen");
 	       }
 		    	   else{
 		    		   response.sendRedirect("Etusivu#pizzamenu"); 
