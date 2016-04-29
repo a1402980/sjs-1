@@ -10,7 +10,8 @@
 <%@ page import="pizzicato.model.Tilaus"%>
 <%@ page import="pizzicato.model.PizzaTilaus"%>
 <%@ page import="pizzicato.model.Kayttaja"%>
-
+<jsp:useBean id="pizzatilaukset" type="java.util.ArrayList<PizzaTilaus>"
+	scope="session" />
 <jsp:useBean id="pizza" class="pizzicato.model.Pizza"
 	scope="request" />
 <jsp:useBean id="tilaus" class="pizzicato.model.Tilaus"
@@ -141,20 +142,23 @@
 						<th>Hinta</th>
 						<th>Lisätäytteet</th>
 					</tr>
-					<tr>
-					<td>
-					<%if (tilaus != null) {%>
-						<%=tilaus%>
-					<% }%>
-						
-					</td>
-					<td>Lorem pizza</td>
-					<td>Lorem täyte</td>
-					<td>x,xx</td>
-					<td><input type="checkbox" name="oregano"> Oregano
-						<input type="checkbox" name="valkosipuli"> Valkosipuli
+					<%for(int i = 0; i < pizzatilaukset.size(); i++) {%>
+					<tr>					
+						<td>
+						<%=pizzatilaukset.get(i).getPizza().getpNimi()%>						
+						</td>
+						<td>
+						<%for (int j=0; j<pizzatilaukset.get(i).getPizza().getTaytteet().size(); j++){ %> 
+									<%=pizzatilaukset.get(i).getPizza().getTayte(j).gettNimi() %>
+								<% } %>
+						</td>
+						<td>
+						<%=pizzatilaukset.get(i).getPizza().getpHinta()%>
+						</td>
+						<td><input type="checkbox" name="oregano"> Oregano
+							<input type="checkbox" name="valkosipuli"> Valkosipuli
 					</tr>
-
+					<% } %>
 				</table>
 				
 

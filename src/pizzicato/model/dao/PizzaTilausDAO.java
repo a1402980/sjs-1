@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import pizzicato.model.Asiakas;
+import pizzicato.model.Pizza;
 import pizzicato.model.PizzaTilaus;
 import pizzicato.model.Tilaus;
 
@@ -16,7 +17,10 @@ public class PizzaTilausDAO extends DataAccessObject {
 			int tilausId=rs.getInt("tilaus_id");
 			int pizzaId=rs.getInt("pizza_id");
 			int lkm=rs.getInt("lkm");
-			return new PizzaTilaus(tilausId, pizzaId, lkm);
+			PizzaDAO pizzadao = new PizzaDAO();
+			Pizza pizza;
+			pizza = pizzadao.findCertainPizza(pizzaId);
+			return new PizzaTilaus(pizza, tilausId, lkm);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -27,7 +31,7 @@ public class PizzaTilausDAO extends DataAccessObject {
 		PreparedStatement stmtInsert = null;		
 		try {
 			conn = getConnection();
-			String sqlInsert = "INSERT INTO pizzatilaus(tilaus_id, pizza_id, lkm) VALUES ("+pizzatil.getTilausId()+","+pizzatil.getPizzaId()+","+pizzatil.getLkm()+");";
+			String sqlInsert = "INSERT INTO pizzatilaus(tilaus_id, pizza_id, lkm) VALUES ("+pizzatil.getTilausId()+","+pizzatil.getPizza().getPizzaId()+","+pizzatil.getLkm()+");";
 			stmtInsert = conn.prepareStatement(sqlInsert);		
 			stmtInsert.executeUpdate();
 					            
@@ -44,7 +48,7 @@ public class PizzaTilausDAO extends DataAccessObject {
 		ResultSet rs = null;
 		try {
 			conn = getConnection();
-			String sqlDelete ="DELETE FROM pizzatilaus WHERE tilaus_id="+pizzatil.getTilausId()+" AND pizza_id="+pizzatil.getPizzaId()+";";
+			String sqlDelete ="DELETE FROM pizzatilaus WHERE tilaus_id="+pizzatil.getTilausId()+" AND pizza_id="+pizzatil.getPizza().getPizzaId()+";";
 			stmt=conn.prepareStatement(sqlDelete);
 			rs=stmt.executeQuery();
 		} catch(SQLException e) {
@@ -61,7 +65,7 @@ public class PizzaTilausDAO extends DataAccessObject {
 		PreparedStatement stmt = null;
 		try {
 			conn = getConnection();
-			String sqlUpdate =  "UPDATE pizzatilaus SET lkm="+pizzatil.getLkm()+" WHERE tilaus_id="+pizzatil.getTilausId()+" AND pizza_id="+pizzatil.getPizzaId()+";";
+			String sqlUpdate =  "UPDATE pizzatilaus SET lkm="+pizzatil.getLkm()+" WHERE tilaus_id="+pizzatil.getTilausId()+" AND pizza_id="+pizzatil.getPizza().getPizzaId()+";";
 			stmt = conn.prepareStatement(sqlUpdate);
 					
 			stmt.executeUpdate();
