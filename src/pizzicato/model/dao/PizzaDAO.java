@@ -206,8 +206,10 @@ public class PizzaDAO extends DataAccessObject {
 				
 				while(rs.next()) {
 					pizza = readPizza(rs);
+					Tayte tayte = taytedao.readTayte(rs);
+					pizza.addTayte(tayte);
 					while(rs.next()) {
-						Tayte tayte = taytedao.readTayte(rs);
+						tayte = taytedao.readTayte(rs);
 						pizza.addTayte(tayte);
 					}
 				}
