@@ -32,18 +32,12 @@ public class ListaaTilauksetOmistaja extends HttpServlet {
 		ArrayList<Tilaus> tilaukset = tilausdao.omistajaFindAll();
 		
 		
-		
-		
 		request.setAttribute("tilaukset", tilaukset);		
 			
 		String jsp = "/view/tilaukset_omistajalle.jsp";
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
 		dispatcher.forward(request, response);
 		
-		
-		
-		
-		// TODO Auto-generated method stub
 	}
 
 
