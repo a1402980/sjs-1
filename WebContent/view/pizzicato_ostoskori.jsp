@@ -182,7 +182,7 @@
 				<h2>Lopullinen summa XX,XX<i class="fa fa-eur" aria-hidden="true"></i></h2>
 				
 					<div>
-					<button input type="submit" class="btn btn-success btn-lg">Tilaa</button>
+					<button input type="submit" onClick="window.location='TilaajanTiedot';" class="btn btn-success btn-lg">Tilaa</button>
 					<a class="btn btn-default" href="Etusivu" role="button">Peruuta</a>
 					</div>
 				
