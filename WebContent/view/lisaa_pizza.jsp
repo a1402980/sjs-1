@@ -143,8 +143,8 @@
 					<!--  onchange="previewImage(this,[sizes],limit);" * limit is number of Mb  -->
 
 
-					Nimi:<br> <input type="text" name="nimi" placeholder="Kirjoita pizzan nimi tähän" pattern="[a-zA-Z0-9]+[a-zA-Z0-9 ]+" oninvalid="setCustomValidity('Käytä vain kirjaimia tai numeroita')" required  ><br> <br>
-					Hinta:<br> <input type="decimal" name="hinta" placeholder="X,XX Hinta ei yli 100€" pattern="[0-9,.]{4,5}" oninvalid="setCustomValidity('Hinta ei yli 100€ ja pelkästään numeroita')" required ><p>€</p><br> <br>
+					Nimi:<br> <input type="text" name="nimi" placeholder="Kirjoita pizzan nimi tähän" pattern="[a-zA-Z0-9]+[a-zA-Z0-9 ]+"  oninvalid="setCustomValidity('Käytä vain kirjaimia')" oninput="setCustomValidity('')"  required  ><br> <br>
+					Hinta:<br> <input type="decimal" name="hinta" placeholder="X,XX Hinta ei yli 100€" pattern="[0-9,.]{4,5}"  oninvalid="setCustomValidity('Hinta ei yli 100€ ja pelkkiä numeroita')" oninput="setCustomValidity('')"  required ><br> <br>
 
 
 

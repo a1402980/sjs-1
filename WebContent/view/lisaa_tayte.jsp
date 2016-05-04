@@ -138,8 +138,8 @@
 
 					
 
-					Nimi:<br> <input type="text" name="nimi" placeholder="Kirjoita täytteen nimi tähän" pattern="[a-zA-Z0-9]+[a-zA-Z0-9 ]+" required ><br> <br>
-					Hinta:<br> <input type="decimal" name="hinta" placeholder="X,XX Hinta ei yli 20€" pattern="[0-9,.]{4,2}" required><br> <br>
+					Nimi:<br> <input type="text" name="nimi" placeholder="Kirjoita täytteen nimi tähän" pattern="[a-zA-Z0-9]+[a-zA-Z0-9 ]+" oninvalid="setCustomValidity('Nimessä ei voi olla erikoismerkkejä')" oninput="setCustomValidity('')" required ><br> <br>
+					Hinta:<br> <input type="decimal" name="hinta" placeholder="X,XX Hinta ei yli 20€" pattern="[0-9,.]{4,2}" oninvalid="setCustomValidity('Hinnassa ei voi olla erikoismerkkejä ja muodossa x,xx')" oninput="setCustomValidity('')" required><br> <br>
 					
 								
 				<div id="lisaapizzanapit">

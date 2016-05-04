@@ -74,7 +74,8 @@
 <div class="jumbotron text-center" id="cover-caption">
 
 	<div>
-		<h1>Pizzeria Pizzicato</h1>
+		
+		<img src="assets/images/logo.png" alt="pizzicato" class="img-responsive"style="height:50%;">
 		<h1>Tervetuloa!</h1>
 
 		<span><i class="fa fa-home"></i>&nbsp; <a href="https://goo.gl/maps/so8N2prRDWS2">Kuusitie 6, Helsinki</a> </span> <br> 
@@ -208,7 +209,7 @@
      						<li></li>
       						<li><form role="form" method="post" action="ostoskori">
    								<div id=pizzalkm>
-   								<label>Pizzojen lkm.</label>
+   								<label>Pizzojen lkm.</label><br>
       							<input type="number" min="1" max="10" step="1" name="pizzamaara"><br>
       							<input type="checkbox" name="oregano"> Oregano <br>
       							<input type="checkbox" name="valkosipuli"> Valkosipuli
@@ -234,8 +235,8 @@
 
 
 
-<!-- Contact Section -->
-<section class="for-full-back color-white " id="contact">
+<!-- Info Section -->
+<section class="for-full-back color-white " id="info">
 <div class="container">
 
 	<div class="col-lg-12 text-center">
@@ -253,7 +254,7 @@
 </div>
 </section>
 
-<!--End Contact Section -->
+<!--End Info Section -->
 
 <!-- Free Section -->
 <section id="tausta2"> 
