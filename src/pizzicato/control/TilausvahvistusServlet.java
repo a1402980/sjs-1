@@ -8,6 +8,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import pizzicato.model.PizzaTilaus;
+import pizzicato.model.Tilaus;
+import pizzicato.model.dao.PizzaDAO;
+import pizzicato.model.dao.PizzaTilausDAO;
+import pizzicato.model.dao.TilausDAO;
 
 @WebServlet("/tilausvahvistus")
 public class TilausvahvistusServlet extends HttpServlet {
@@ -25,7 +32,23 @@ public class TilausvahvistusServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		TilausDAO tilausdao = new TilausDAO();
+		PizzaTilausDAO pizzatilausdao = new PizzaTilausDAO();
+		PizzaDAO pizzadao = new PizzaDAO();
+		Tilaus tilaus;
+		PizzaTilaus pizzatilaus;
+		
+		HttpSession session = request.getSession(true);
+		tilaus = (Tilaus) session.getAttribute("tilaus");
+		try {
+			tilausdao.addTilaus(tilaus);
+		} catch (Exception e) {
+			System.out.println("Sovelluksessa tapahtui virhe "+ e.getMessage());
+			e.printStackTrace();
+		}
+		
+		
+		
 	}
 
 }
