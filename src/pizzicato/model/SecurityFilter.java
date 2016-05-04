@@ -31,12 +31,8 @@ public class SecurityFilter implements Filter {
 	      
 	      HttpServletResponse resp = (HttpServletResponse) response;
 	      HttpServletRequest req = (HttpServletRequest) request;
-	      FilterChain ownChain = (FilterChain) chain;
 	      String servletPath = req.getServletPath();
-	      System.out.println("servlet path: "+servletPath);
-	      System.out.println("request " + req);
-	      System.out.println("response: " + resp);
-	      System.out.println("chain: "+ ownChain);
+
 	      // Allow access to login functionality.
 	      if (servletPath.equals("/Etusivu") || servletPath.equals("/Rekisteroityminen") || servletPath.equals("/KirjauduUlos") || servletPath.equals("/ostoskori"))
 	      {
