@@ -222,6 +222,39 @@ public class PizzaDAO extends DataAccessObject {
 			
 			return pizza;
 		}
+		
+		public Pizza findCertainPizzaKokki(int pizzaId) {
+			Connection conn = null;
+			PreparedStatement stmt = null;
+			ResultSet rs = null;
+			Pizza pizza=null;	
+			TayteDAO taytedao = new TayteDAO();
+			
+			try {
+				conn = getConnection();
+				String sqlSelect ="SELECT p_nimi, t_nimi FROM pizza p INNER JOIN pizzatayte pt ON p.pizza_id = pt.pizza_id INNER JOIN tayte t ON t.tayte_id = pt.tayte_id WHERE pt.pizza_id="+pizzaId+";";
+				stmt=conn.prepareStatement(sqlSelect);
+				rs=stmt.executeQuery(sqlSelect);
+				
+				while(rs.next()) {
+					pizza = readPizza(rs);
+					while(rs.next()) {
+						Tayte tayte = taytedao.readTayte(rs);
+						pizza.addTayte(tayte);
+					}
+				}
+				
+			} catch(SQLException e) {
+				throw new RuntimeException(e);
+			} finally {
+				close(rs,stmt,conn);
+			}
+			
+			return pizza;
+		}
+		
+		
+		
 		/** 
 		 * Avaa tietokantayhteyden.
 		 * Lukee tietokannasta pizzalistan pizzat muita metodeita varten. 
