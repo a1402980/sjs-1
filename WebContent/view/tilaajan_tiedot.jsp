@@ -65,41 +65,56 @@
 			<li><a href="#pizzamenu">Pizzat</a></li>
 			<li><a href="#contact">Yhteystiedot</a></li>
 			<li><a href="ostoskori" class="btn btn-primary" role="button" id="ostoskorinappi"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="badge">7</span></a></li>
-			<li class="dropdown"><a href="#" class="dropdown-toggle"
-				data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>
-					Kirjaudu <b class="caret"></b></a>
-				<ul class="dropdown-menu">
-				
-				<li role="separator" class="divider" id="kirjaudu-ulos-nappi"></li>
-           		<li><a href="KirjauduUlos">Kirjaudu ulos</a></li>
-            	<li role="separator" class="divider"></li>
-            	
-					<form method="post" role="form" class="navbar-form navbar-right">
-						<div class="form-group">
-							<input type="text" class="form-control" name="username"
-								placeholder="Käyttäjätunnus" autocomplete="off">
+			<% 		
+				if (kayttaja!= null &&  kayttaja.getUserRole()!= null){
+					
+					%> <li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown">
+						<%out.println("Tervetuloa "+"<b>"+ kayttaja.getUsername() +"</b>"+ "!"); %><b class="caret"></b></a>
+						<ul class="dropdown-menu">	
+           				<li>  <a href="KirjauduUlos" id="kirjaudu-ulos-nappi"><span class="glyphicon glyphicon-log-out"></span> Kirjaudu ulos</a></li>
+						</ul>
+					<%} 
+				else {%> <li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>
+						Kirjaudu <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<form method="post" role="form" class="navbar-form navbar-right">
+							<div class="form-group">
+								<input type="text" class="form-control" name="username"
+									placeholder="Käyttäjätunnus" autocomplete="off">
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control" name="password"
+									placeholder="Salasana" autocomplete="off">
+							</div>
+							<button type="submit" name="kirjautumisnappi" class="btn btn-primary">Kirjaudu</button>
+						</form>
+						<div id=huomio>
+							<span id="ilmoitus">
+								<%
+									String message = (String) request.getAttribute("message");
+									if (message != null) {
+										out.println("<p>" + message + "</p>");
+									}
+								%>
+							</span>
 						</div>
-						<div class="form-group">
-							<input type="password" class="form-control" name="password"
-								placeholder="Salasana" autocomplete="off">
-						</div class="form-group">
-						<button type="submit" name="kirjautumisnappi" class="btn btn-primary">Kirjaudu</button>
-					</form>
-					<div id=huomio>
-						<span id="ilmoitus">
-							<%
-								String message = (String) request.getAttribute("message");
-								if (message != null) {
-									out.println("<p>" + message + "</p>");
-								}
-							%>
-						</span>
-					</div>
 
 
-				</ul>
-			<li><a href="Rekisteroityminen">Rekisteröidy</a></li>
+					</ul>
+					
+				<li><a href="Rekisteroityminen">Rekisteröidy</a></li>
+					
+		
+		
+				<%} %>
+		
+		
+			
+			
 		</ul>
+		
 	</div>
 	<!-- /.navbar-collapse -->
 </div>
@@ -115,22 +130,6 @@
 			<div class="col-md-8 col-md-offset-2">
 				<H1>Asiakastiedot</H1>
 				
-				<h2>Rekisteröityneet asiakkaat</h2>
-				
-				<form method="post" role="form" class="navbar-form navbar-right">
-						<div class="form-group">
-							<input type="text" class="form-control" name="username"
-								placeholder="Käyttäjätunnus" autocomplete="off"><br><br>
-						</div>
-						<div class="form-group">
-							<input type="password" class="form-control" name="password"
-								placeholder="Salasana" autocomplete="off"><br><br>
-						</div class="form-group">
-						<button type="submit" name="kirjautumisnappi" class="btn btn-success btn-lg">Kirjaudu ja siirry kassalle</button>
-					</form>
-				
-				<h2>Rekisteröitymättömät asiakkaat</h2><br>
-				<span style="color:red;">* Pakollinen kenttä</span>	<br><br>
 				<%
 				
 				if(null!=request.getAttribute("errors"))
@@ -140,26 +139,48 @@
 					}
 				}%>
 				
+				<span style="color:red;">* Pakollinen kenttä</span>	<br><br>
+				
+				
+<!-- Jos asiakas on kirjautuneena, näytetään valmiiksi täytetty lomake ja napit "peruuta" ja "tee tilaus"-->
+			<%if(kayttaja.getUsername()!= null) { %>
+				
+<!-- Näiden input-tagien default tiedoiksi tulee asiakkaan tiedot kun niille on lisätty getterit tilaus.javaan 
+			esim. < % = tilaus.getAsiakasEtunimi % > jne -->
 				
 				<form method="post">
-
+				<span style="color:red;">*</span>Etunimi: <br><input type="text" placeholder="Etunimi" pattern="[a-zåäöA-ZÅÄÖ0-9- ]{2,30}" name="etunimi" oninvalid="setCustomValidity('Nimen on oltava vähintään 2, enintään 30 merkkiä, ei erikoismerkkejä tai numeroita')" oninput="setCustomValidity('')" required ><br><br>
+					<span style="color:red;">*</span>Sukunimi: <br><input type="text" placeholder="Sukunimi" name="sukunimi" pattern="[a-zåäöA-ZÅÄÖ0-9- ]+[a-zåäöA-ZÅÄÖ0-9- ]{2,30}" oninvalid="setCustomValidity('Nimen on oltava vähintään 2, enintään 30 merkkiä, ei erikoismerkkejä tai numeroita')" oninput="setCustomValidity('')" required ><br><br>
+					<span style="color:red;">*</span>Puhelin: <br><input type="text" name="puh" placeholder="Puhelinnumero" pattern="[0-9]{7,16}" title="Numeron on oltava vähintään 7, enintään 16 merkkiä, ei erikoismerkkejä tai kirjaimia" oninput="setCustomValidity('')" required ><br><br>
+					<span style="color:red;">*</span>Katuosoite: <br><input type="text" name="osoite" placeholder="Katuosoite" pattern="[a-zåäöA-ZÅÄÖ0-9- ]{2,30}" oninvalid="setCustomValidity('Osoitteen on oltava vähintään 2, enintään 30 merkkiä, ei erikoismerkkejä tai numeroita')" oninput="setCustomValidity('')" required ><br><br>
+					<span style="color:red;">*</span>Postinumero: <br><input type="text" name="postinro" placeholder="Postinumero" pattern="[0-9]{5}" oninvalid="setCustomValidity('Postinumerossa on oltava viisi numeroa!')" oninput="setCustomValidity('')" required ><br><br>
+					<span style="color:red;">*</span>Postitoimipaikka: <br><input type="text" name="postitmp" placeholder="Postitoimipaikka" pattern="[a-zåäöA-ZÅÄÖ- ]{2,15}" oninvalid="setCustomValidity('Postitoimipaikan on oltava vähintään 2, enintään 15 merkkiä, ei erikoismerkkejä tai numeroita')" oninput="setCustomValidity('')" required ><br><br>
+					<span style="color:red;">*</span>Sähköposti: <br><input type="text" name="sposti" placeholder="Sähköposti" pattern="[a-zA-Z0-9@.]{6,50}" oninvalid="setCustomValidity('Sähköpostin on oltava vähintään 6, enintään 50 merkkiä, ei muita erikoismerkkejä kuin @')" oninput="setCustomValidity('')" required ><br><br>
+					
+					<button type="submit" onClick="window.location='tilausvahvistus';" name="kirjautumisnappi" class="btn btn-success btn-lg">Tee tilaus</button>
+					<a class="btn btn-default" href="ostoskori" role="button">Takaisin</a><br><br>
+					
+				</form>
+			<%} else { %>
+						
+<!--  Jos asiakas ei ole kirjautunut, näytetään nämä -->
+			
+				<form method="post">
 					<span style="color:red;">*</span>Etunimi: <br><input type="text" placeholder="Etunimi" pattern="[a-zåäöA-ZÅÄÖ0-9- ]{2,30}" name="etunimi" oninvalid="setCustomValidity('Nimen on oltava vähintään 2, enintään 30 merkkiä, ei erikoismerkkejä tai numeroita')" oninput="setCustomValidity('')" required ><br><br>
 					<span style="color:red;">*</span>Sukunimi: <br><input type="text" placeholder="Sukunimi" name="sukunimi" pattern="[a-zåäöA-ZÅÄÖ0-9- ]+[a-zåäöA-ZÅÄÖ0-9- ]{2,30}" oninvalid="setCustomValidity('Nimen on oltava vähintään 2, enintään 30 merkkiä, ei erikoismerkkejä tai numeroita')" oninput="setCustomValidity('')" required ><br><br>
 					<span style="color:red;">*</span>Puhelin: <br><input type="text" name="puh" placeholder="Puhelinnumero" pattern="[0-9]{7,16}" title="Numeron on oltava vähintään 7, enintään 16 merkkiä, ei erikoismerkkejä tai kirjaimia" oninput="setCustomValidity('')" required ><br><br>
 					<span style="color:red;">*</span>Katuosoite: <br><input type="text" name="osoite" placeholder="Katuosoite" pattern="[a-zåäöA-ZÅÄÖ0-9- ]{2,30}" oninvalid="setCustomValidity('Osoitteen on oltava vähintään 2, enintään 30 merkkiä, ei erikoismerkkejä tai numeroita')" oninput="setCustomValidity('')" required ><br><br>
 					<span style="color:red;">*</span>Postinumero: <br><input type="text" name="postinro" placeholder="Postinumero" pattern="[0-9]{5}" oninvalid="setCustomValidity('Postinumerossa on oltava viisi numeroa!')" oninput="setCustomValidity('')" required ><br><br>
 					<span style="color:red;">*</span>Postitoimipaikka: <br><input type="text" name="postitmp" placeholder="Postitoimipaikka" pattern="[a-zåäöA-ZÅÄÖ- ]{2,15}" oninvalid="setCustomValidity('Postitoimipaikan on oltava vähintään 2, enintään 15 merkkiä, ei erikoismerkkejä tai numeroita')" oninput="setCustomValidity('')" required ><br><br>
-					Sähköposti: <br><input type="text" name="sposti" placeholder="Sähköposti" pattern="[a-zA-Z0-9@.]{6,50}" oninvalid="setCustomValidity('Sähköpostin on oltava vähintään 6, enintään 50 merkkiä, ei muita erikoismerkkejä kuin @')" oninput="setCustomValidity('')" ><br><br>
+					<span style="color:red;">*</span>Sähköposti: <br><input type="text" name="sposti" placeholder="Sähköposti" pattern="[a-zA-Z0-9@.]{6,50}" oninvalid="setCustomValidity('Sähköpostin on oltava vähintään 6, enintään 50 merkkiä, ei muita erikoismerkkejä kuin @')" oninput="setCustomValidity('')" required ><br><br>
 					
-					<div id="lisaakayttajanapit">
-					<button input type="submit" class="btn btn-success btn-lg">Rekisteröidy ja siirry kassalle</button><br><br>
-					<button input type="submit" class="btn btn-success btn-lg">Tilaa rekisteröitymättä</button><br><br>
-					<a class="btn btn-default" href="Etusivu#pizzamenu" role="button">Peruuta</a>
-					</div>
+					<button type="submit" onClick="window.location='tilausvahvistus';" name="kirjautumisnappi" class="btn btn-success btn-lg">Tee tilaus</button>
+					<a class="btn btn-default" href="ostoskori" role="button">Takaisin</a><br><br>
+					
 				</form>
-					
+			<%}%>
 			</div>
-
+			
 		</div>
 	</div>
 	</section>
