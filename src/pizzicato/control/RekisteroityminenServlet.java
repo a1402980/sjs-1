@@ -159,32 +159,32 @@ public class RekisteroityminenServlet extends HttpServlet {
 		if (strPNro.matches("^[0-9]*$")){
 			asiakas.setPostiNro(pNro);
 		}else{
-			errors.put("postinro", " Postinumerossa ei saa olla kirjaimia tai erikoismerkkej√§.");
+			errors.put("postinro", " Postinumerossa ei saa olla kirjaimia tai erikoismerkkej‰.");
 		}
 				
 				
 		String pTmp = request.getParameter("postitmp");
 		if (pTmp == null || pTmp.trim().length() < 2 ) {
-			errors.put("postitmp", " Postitoimipaikan on oltava v√§hint√§√§n 2 merkki√§ pitk√§.");
+			errors.put("postitmp", " Postitoimipaikan on oltava v‰hint‰‰n 2 merkki‰ pitk‰.");
 		}else{
 			 asiakas.setPostiTmp(pTmp);}
 		if (pTmp.trim().length() > 15 ){
-			errors.put("postitmp", " Postitoimipaikan on oltava lyhyempi kuin 15 merkki√§.");
+			errors.put("postitmp", " Postitoimipaikan on oltava lyhyempi kuin 15 merkki‰.");
 		}else{
 			asiakas.setPostiTmp(pTmp);}
-		if (pTmp.matches("^[a-z√•√§√∂A-Z√Ö√Ñ√ñ-]*$")){
+		if (pTmp.matches("^[a-z Â‰ˆA-Z≈ƒ÷-]*$")){
 			asiakas.setPostiTmp(pTmp);
 		}else{
-			errors.put("postitmp", "Postitoimipaikassa ei saa olla erikoismerkkej√§.");
+			errors.put("postitmp", "Postitoimipaikassa ei saa olla erikoismerkkej‰.");
 		}
 				
 		String sPosti = request.getParameter("sposti");
 		if (sPosti == null || sPosti.trim().length() < 6 ) {
-			errors.put("sposti", " S√§hk√∂postin on oltava v√§hint√§√§n 6 merkki√§ pitk√§.");
+			errors.put("sposti", " S‰hkˆpostin on oltava v‰hint‰‰n 6 merkki‰ pitk‰.");
 		}else{
 			 asiakas.setsPosti(sPosti);}
 		if (sPosti.trim().length() > 50 ){
-			errors.put("sposti", " S√§hk√∂postin on oltava lyhyempi kuin 50 merkki√§.");
+			errors.put("sposti", " S‰hkˆpostin on oltava lyhyempi kuin 50 merkki‰.");
 		}else{
 			asiakas.setsPosti(sPosti);}
 		if (sPosti.matches("^[a-zA-Z0-9@.]*$")){

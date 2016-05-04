@@ -6,12 +6,17 @@
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
 
+<%@ page import="pizzicato.model.Pizza"%>
+<%@ page import="pizzicato.model.Tilaus"%>
+<%@ page import="pizzicato.model.PizzaTilaus"%>
 <%@ page import="pizzicato.model.Kayttaja"%>
 
+<jsp:useBean id="tilaus" class="pizzicato.model.Tilaus"
+	scope="session" />
 <jsp:useBean id="kayttaja" class="pizzicato.model.Kayttaja"
 	scope="session" />
 <jsp:useBean id="errors" type="java.util.Map" class="java.util.HashMap" scope= "request"/>
-
+	
 <html lang="fi">
 <!--<![endif]-->
 <head>
@@ -108,8 +113,24 @@
 	<div class="container">
 		<div class="row text-center for-full-back color-light ">
 			<div class="col-md-8 col-md-offset-2">
-				<H1>Rekisteröityminen</H1>
-
+				<H1>Asiakastiedot</H1>
+				
+				<h2>Rekisteröityneet asiakkaat</h2>
+				
+				<form method="post" role="form" class="navbar-form navbar-right">
+						<div class="form-group">
+							<input type="text" class="form-control" name="username"
+								placeholder="Käyttäjätunnus" autocomplete="off"><br><br>
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control" name="password"
+								placeholder="Salasana" autocomplete="off"><br><br>
+						</div class="form-group">
+						<button type="submit" name="kirjautumisnappi" class="btn btn-success btn-lg">Kirjaudu ja siirry kassalle</button>
+					</form>
+				
+				<h2>Rekisteröitymättömät asiakkaat</h2><br>
+				<span style="color:red;">* Pakollinen kenttä</span>	<br><br>
 				<%
 				
 				if(null!=request.getAttribute("errors"))
@@ -119,26 +140,24 @@
 					}
 				}%>
 				
-				<br><br><span style="color:red;">* Pakollinen kenttä</span>	<br><br>
+				
 				<form method="post">
 
-					<span style="color:red;">*</span>Käyttäjätunnus:<br><input type="text" name="kayttajatunnus" placeholder="Kirjoita haluamasi käyttäjätunnus" pattern="[a-zA-Z0-9]+[a-zA-Z0-9 ]{2,15}" oninvalid="setCustomValidity('Nimessä ei voi olla erikoismerkkejä ja pituus vähintään 2 merkkiä!')" oninput="setCustomValidity('')" required ><br><br>
-					<span style="color:red;">*</span>Salasana:<br><input type="password" name="salasana" placeholder="Vähintään 8 merkkiä" pattern="[a-zA-Z0-9]+[a-zA-Z0-9 ]{8,10}" oninvalid="setCustomValidity('Salasanassa ei voi olla erikoismerkkejä ja pituus vähintään 8 merkkiä!')" oninput="setCustomValidity('')" required ><br><br>
 					<span style="color:red;">*</span>Etunimi: <br><input type="text" placeholder="Etunimi" pattern="[a-zåäöA-ZÅÄÖ0-9- ]{2,30}" name="etunimi" oninvalid="setCustomValidity('Nimen on oltava vähintään 2, enintään 30 merkkiä, ei erikoismerkkejä tai numeroita')" oninput="setCustomValidity('')" required ><br><br>
 					<span style="color:red;">*</span>Sukunimi: <br><input type="text" placeholder="Sukunimi" name="sukunimi" pattern="[a-zåäöA-ZÅÄÖ0-9- ]+[a-zåäöA-ZÅÄÖ0-9- ]{2,30}" oninvalid="setCustomValidity('Nimen on oltava vähintään 2, enintään 30 merkkiä, ei erikoismerkkejä tai numeroita')" oninput="setCustomValidity('')" required ><br><br>
 					<span style="color:red;">*</span>Puhelin: <br><input type="text" name="puh" placeholder="Puhelinnumero" pattern="[0-9]{7,16}" title="Numeron on oltava vähintään 7, enintään 16 merkkiä, ei erikoismerkkejä tai kirjaimia" oninput="setCustomValidity('')" required ><br><br>
-					<span style="color:red;">*</span>Katuosoite: <br><input type="text" name="osoite" placeholder="Katuosoite" pattern="[a-z åäöA-ZÅÄÖ0-9-]{2,30}" oninvalid="setCustomValidity('Osoitteen on oltava vähintään 2, enintään 30 merkkiä, ei erikoismerkkejä tai numeroita')" oninput="setCustomValidity('')" required ><br><br>
+					<span style="color:red;">*</span>Katuosoite: <br><input type="text" name="osoite" placeholder="Katuosoite" pattern="[a-zåäöA-ZÅÄÖ0-9- ]{2,30}" oninvalid="setCustomValidity('Osoitteen on oltava vähintään 2, enintään 30 merkkiä, ei erikoismerkkejä tai numeroita')" oninput="setCustomValidity('')" required ><br><br>
 					<span style="color:red;">*</span>Postinumero: <br><input type="text" name="postinro" placeholder="Postinumero" pattern="[0-9]{5}" oninvalid="setCustomValidity('Postinumerossa on oltava viisi numeroa!')" oninput="setCustomValidity('')" required ><br><br>
-					<span style="color:red;">*</span>Postitoimipaikka: <br><input type="text" name="postitmp" placeholder="Postitoimipaikka" pattern="[a-z åäöA-ZÅÄÖ-]{2,15}" oninvalid="setCustomValidity('Postitoimipaikan on oltava vähintään 2, enintään 15 merkkiä, ei erikoismerkkejä tai numeroita')" oninput="setCustomValidity('')" required ><br><br>
-					<span style="color:red;">*</span>Sähköposti: <br><input type="text" name="sposti" placeholder="Sähköposti" pattern="[a-zA-Z0-9@.]{6,50}" oninvalid="setCustomValidity('Sähköpostin on oltava vähintään 6, enintään 50 merkkiä, ei muita erikoismerkkejä kuin @')" oninput="setCustomValidity('')" required><br><br>
+					<span style="color:red;">*</span>Postitoimipaikka: <br><input type="text" name="postitmp" placeholder="Postitoimipaikka" pattern="[a-zåäöA-ZÅÄÖ- ]{2,15}" oninvalid="setCustomValidity('Postitoimipaikan on oltava vähintään 2, enintään 15 merkkiä, ei erikoismerkkejä tai numeroita')" oninput="setCustomValidity('')" required ><br><br>
+					Sähköposti: <br><input type="text" name="sposti" placeholder="Sähköposti" pattern="[a-zA-Z0-9@.]{6,50}" oninvalid="setCustomValidity('Sähköpostin on oltava vähintään 6, enintään 50 merkkiä, ei muita erikoismerkkejä kuin @')" oninput="setCustomValidity('')" ><br><br>
 					
 					<div id="lisaakayttajanapit">
-					<button input type="submit" class="btn btn-success btn-lg">Rekisteröidy</button>
+					<button input type="submit" class="btn btn-success btn-lg">Rekisteröidy ja siirry kassalle</button><br><br>
+					<button input type="submit" class="btn btn-success btn-lg">Tilaa rekisteröitymättä</button><br><br>
 					<a class="btn btn-default" href="Etusivu#pizzamenu" role="button">Peruuta</a>
 					</div>
 				</form>
-				
-						
+					
 			</div>
 
 		</div>
