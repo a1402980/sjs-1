@@ -108,6 +108,46 @@ public class TilausDAO extends DataAccessObject{
 		return tilaukset;
 	}
 	
+	public ArrayList<Tilaus> omistajaFindAll() {
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		PreparedStatement stmt2 = null;
+		ResultSet rs = null;
+		ArrayList<Tilaus> tilaukset = new ArrayList<Tilaus>();
+		Tilaus tilaus=null;
+		//ArrayList<PizzaTilaus> pizzatilaukset = new ArrayList<PizzaTilaus>();
+		PizzaTilausDAO pizzatildao = new PizzaTilausDAO();
+		PizzaTilaus pizzatil;
+		int edellinenTilausId=0;
+		int nykyinenTilausId=0;
+		try {
+			conn = getConnection();
+			String sqlSelect ="SELECT tilaus_id, status, til_ajankohta, etunimi, sukunimi, osoite, posti_nro, posti_tmp, puh, pizza_id, p_nimi, p_hinta, p_saatavuus FROM tilaus t JOIN pizzatilaus pt ON t.tilaus_id = pt.tilaus_id INNER JOIN pizza p ON p.pizza_id = pt.pizza_id ORDER BY til_ajankohta;";
+			
+			stmt=conn.prepareStatement(sqlSelect);
+			
+			rs=stmt.executeQuery(sqlSelect);
+			
+			while(rs.next()) {
+				nykyinenTilausId = rs.getInt("tilaus_id");
+				if (nykyinenTilausId != edellinenTilausId) {
+					tilaus = readTilaus(rs);
+					tilaukset.add(tilaus);
+					edellinenTilausId = nykyinenTilausId;
+				}
+				pizzatil = pizzatildao.readPizzaTilaus(rs);
+				tilaus.addPizzaTilaus(pizzatil);
+			}
+
+		
+		} catch(SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			close2(rs,stmt,stmt2,conn);
+		}
+		
+		return tilaukset;
+	}
 	
 	
 	public ArrayList<Tilaus> kuskiFindAll() {
@@ -192,7 +232,7 @@ public class TilausDAO extends DataAccessObject{
 		return tilaukset;
 	}
 	
-	public ArrayList<Tilaus> omistajaFindAll() {
+	/**public ArrayList<Tilaus> omistajaFindAll() {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		PreparedStatement stmt2 = null;
@@ -231,7 +271,7 @@ public class TilausDAO extends DataAccessObject{
 		}
 		
 		return tilaukset;
-	}
+	}**/
 	
 	
 	/**public void modifyTilaus(Tilaus tilaus) throws SQLException { // pizzatilausdaossa muokataan mitä pizzoja ja kuinka monta
