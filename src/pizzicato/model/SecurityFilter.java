@@ -31,8 +31,12 @@ public class SecurityFilter implements Filter {
 	      
 	      HttpServletResponse resp = (HttpServletResponse) response;
 	      HttpServletRequest req = (HttpServletRequest) request;
+	      FilterChain ownChain = (FilterChain) chain;
 	      String servletPath = req.getServletPath();
-
+	      System.out.println("servlet path: "+servletPath);
+	      System.out.println("request " + req);
+	      System.out.println("response: " + resp);
+	      System.out.println("chain: "+ ownChain);
 	      // Allow access to login functionality.
 	      if (servletPath.equals("/Etusivu") || servletPath.equals("/Rekisteroityminen") || servletPath.equals("/KirjauduUlos") || servletPath.equals("/ostoskori"))
 	      {
@@ -40,7 +44,6 @@ public class SecurityFilter implements Filter {
 	      } else if (servletPath.endsWith(".css") || servletPath.endsWith(".png") || servletPath.endsWith(".jpg") || servletPath.endsWith(".js") || servletPath.endsWith(".eot") || servletPath.endsWith(".svg")
 	    		  || servletPath.endsWith(".ttf") || servletPath.endsWith(".woff") || servletPath.endsWith(".eot")) {
 	    	  chain.doFilter(req, resp);
-	    	  
 	      } else {
 	    	  HttpSession session = req.getSession();
 		      Kayttaja kayttaja  = (Kayttaja) session.getAttribute("kayttaja");

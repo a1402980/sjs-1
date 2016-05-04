@@ -212,7 +212,7 @@
       							<input type="number" min="1" max="10" step="1" name="pizzamaara"><br>
       							<input type="checkbox" name="oregano"> Oregano <br>
       							<input type="checkbox" name="valkosipuli"> Valkosipuli
-      							<input type="hidden" name="pizza_id" value="<%=pizza.getPizzaId()%>"/>
+      							<input type="hidden" name="pizza_id" value="<%=pizzat.get(i).getPizzaId()%>"/>
       							</div> 
       							
       							<button type="submit" class="btn btn-success" name="pizzanlisays"><span class="glyphicon glyphicon-shopping-cart"></span><span class="glyphicon glyphicon-plus"></span></button>

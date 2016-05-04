@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
@@ -10,10 +10,7 @@
 <%@ page import="pizzicato.model.Tilaus"%>
 <%@ page import="pizzicato.model.PizzaTilaus"%>
 <%@ page import="pizzicato.model.Kayttaja"%>
-<jsp:useBean id="pizzatilaukset" type="java.util.ArrayList<PizzaTilaus>"
-	scope="request" />
-<jsp:useBean id="pizza" class="pizzicato.model.Pizza"
-	scope="request" />
+
 <jsp:useBean id="tilaus" class="pizzicato.model.Tilaus"
 	scope="session" />
 <jsp:useBean id="kayttaja" class="pizzicato.model.Kayttaja"
@@ -111,13 +108,9 @@
 					
 				<li><a href="Rekisteroityminen">Rekisteröidy</a></li>
 					</li>
-		
-		
+				
 				<%} %>
 		
-		
-			
-			
 		</ul>
 	</div>
 	<!-- /.navbar-collapse -->
@@ -142,18 +135,23 @@
 						<th>Hinta</th>
 						<th>Lisätäytteet</th>
 					</tr>
-					<%for(int i = 0; i < pizzatilaukset.size(); i++) {%>
+					<%PizzaTilaus pizzatilaus;
+					Pizza pizza;%>
+					<%for (int i = 0; i < tilaus.getPizzaTilLkm(); i++) {%>
 					<tr>					
 						<td>
-						<%=pizzatilaukset.get(i).getPizza().getpNimi()%>						
+						<%pizzatilaus = tilaus.getPizzaTilaus(i); 
+						pizza = pizzatilaus.getPizza();%>
+						<%=pizza.getpNimi()%>						
 						</td>
 						<td>
-						<%for (int j=0; j<pizzatilaukset.get(i).getPizza().getTaytteet().size(); j++){ %> 
-									<%=pizzatilaukset.get(i).getPizza().getTayte(j).gettNimi() %>
+						<%for (int j=0; j<pizza.getTaytteet().size(); j++){ %> 
+						
+									<%=pizza.getTayte(j).gettNimi() %>
 								<% } %>
 						</td>
 						<td>
-						<%=pizzatilaukset.get(i).getPizza().getpHinta()%>
+						<%=pizza.getpHinta()%>
 						</td>
 						<td><input type="checkbox" name="oregano"> Oregano
 							<input type="checkbox" name="valkosipuli"> Valkosipuli

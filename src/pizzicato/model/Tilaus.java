@@ -88,7 +88,7 @@ public class Tilaus {
 		return this.pizzatilaukset.get(idx);		
 	}
 	
-	public int getPizzaTilLkm(int tilausId) {
+	public int getPizzaTilLkm() {
 		int PizzaTilLkm = this.pizzatilaukset.size();
 		return PizzaTilLkm;
 	}

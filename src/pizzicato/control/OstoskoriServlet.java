@@ -26,26 +26,16 @@ public class OstoskoriServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	//n‰ytt‰‰ ostoskorin sis‰llˆn
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Enumeration<String> parametrienNimet = request.getParameterNames();
-		System.out.println(parametrienNimet);
+		
 		String jsp = "/view/pizzicato_ostoskori.jsp";
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
 		dispatcher.forward(request, response);
 	}
 //lis‰‰ ostoskoriin
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Heippa! olen doPost ostoskori");
-		Enumeration<String> parametrienNimet = request.getParameterNames();
-		System.out.println(parametrienNimet);
-		String jsp = "/view/pizzicato_ostoskori.jsp";
-		
-		TilausDAO tilausdao = new TilausDAO();
-		PizzaTilausDAO pizzatilausdao = new PizzaTilausDAO();
 		PizzaDAO pizzadao = new PizzaDAO();
 		Tilaus tilaus;
-		PizzaTilaus pizzatilaus;
-		ArrayList<PizzaTilaus> pizzatil = new ArrayList<PizzaTilaus>();
-		
+		PizzaTilaus pizzatilaus;		
 		
 		//avataan uusi sessio
 		HttpSession session = request.getSession(true);
@@ -62,20 +52,14 @@ public class OstoskoriServlet extends HttpServlet {
 		String StrLkm = request.getParameter("pizzamaara");
 		int lkm = Integer.parseInt(StrLkm);
 		pizzatilaus.setLkm(lkm);
-		
+		//haetaan valittu pizza ja lis‰t‰‰n pizzatilaukseen
 		String StrPizzaId = request.getParameter("pizza_id");
 		int pizza_id = Integer.parseInt(StrPizzaId);
 		Pizza pizza =pizzadao.findCertainPizza(pizza_id);
-		
 		pizzatilaus.setPizza(pizza);
+		
 		//tilaus-olion pizzatilaukset-listaan lis‰t‰‰n pizzatilausolio
 		tilaus.addPizzaTilaus(pizzatilaus);
-		session.setAttribute("tilaus", tilaus);
-		
-		
-		
-		
-		
 		response.sendRedirect("ostoskori");
 	}
 	
