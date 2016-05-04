@@ -25,7 +25,7 @@ public class TilausDAO extends DataAccessObject{
 			String aOsoite=rs.getString("a_osoite");
 			int aPostiNro=rs.getInt("a_posti_nro");
 			String aPostiTmp=rs.getString("a_posti_tmp");
-			return new Tilaus(tilausId, status, tilAjankohta, status, status, status, status, tilausId, status);
+			return new Tilaus(tilausId, status, tilAjankohta, aEtunimi, aSukunimi, aPuh, aOsoite, aPostiNro, aPostiTmp);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
