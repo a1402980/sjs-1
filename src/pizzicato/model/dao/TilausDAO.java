@@ -17,10 +17,15 @@ public class TilausDAO extends DataAccessObject{
 	private Tilaus readTilaus(ResultSet rs) {
 		try {
 			int tilausId=rs.getInt("tilaus_id");
-			int asiakasId=rs.getInt("asiakas_id");
 			String status=rs.getString("status");
 			Date tilAjankohta=rs.getDate("til_ajankohta");
-			return new Tilaus(tilausId, asiakasId, status, tilAjankohta);
+			String aEtunimi=rs.getString("a_etunimi");
+			String aSukunimi=rs.getString("a_sukunimi");
+			String aPuh=rs.getString("a_puh");
+			String aOsoite=rs.getString("a_osoite");
+			int aPostiNro=rs.getInt("a_posti_nro");
+			String aPostiTmp=rs.getString("a_posti_tmp");
+			return new Tilaus(tilausId, status, tilAjankohta, status, status, status, status, tilausId, status);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -31,7 +36,7 @@ public class TilausDAO extends DataAccessObject{
 		PreparedStatement stmtInsert = null;		
 		try {
 			connection = getConnection();
-			String sqlInsert = "INSERT INTO tilaus(asiakas_id) VALUES ("+tilaus.getAsiakasId()+");";
+			String sqlInsert = "INSERT INTO tilaus(a_etunimi, a_sukunimi, a_puh, a_osoite, a_posti_nro, a_posti_tmp) VALUES ('"+tilaus.getaEtunimi()+"','"+tilaus.getaSukunimi()+"','"+tilaus.getaPuh()+"','"+tilaus.getaOsoite()+"',"+tilaus.getaPostiNro()+",'"+tilaus.getaPostiTmp()+"');";
 			stmtInsert = connection.prepareStatement(sqlInsert);		
 			stmtInsert.executeUpdate();
 					            

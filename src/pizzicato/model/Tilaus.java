@@ -37,6 +37,21 @@ public class Tilaus {
 		this.aPostiNro = aPostiNro;
 		this.aPostiTmp = aPostiTmp;
 	}
+	
+	public Tilaus(int tilausId, String status, Date tilAjankohta,
+			String aEtunimi, String aSukunimi, String aPuh, String aOsoite,
+			int aPostiNro, String aPostiTmp) {
+		super();
+		this.tilausId = tilausId;
+		this.status = status;
+		this.tilAjankohta = tilAjankohta;
+		this.aEtunimi = aEtunimi;
+		this.aSukunimi = aSukunimi;
+		this.aPuh = aPuh;
+		this.aOsoite = aOsoite;
+		this.aPostiNro = aPostiNro;
+		this.aPostiTmp = aPostiTmp;
+	}
 
 	public int getTilausId() {
 		return tilausId;
