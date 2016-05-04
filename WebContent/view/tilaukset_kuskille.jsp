@@ -10,6 +10,7 @@
 
 <jsp:useBean id="kayttaja" class="pizzicato.model.Kayttaja"
 	scope="session" />
+	
 
 <html lang="fi">
 <!--<![endif]-->
@@ -137,9 +138,16 @@
 					<table class="table">
 						<thead>
 							<tr>
-								<th>Nimi</th>
-								<th>Täytteet</th>
-								<th>Lisätäytteet</th>
+								<th>TilausId</th>
+								<th>Sukunimi</th>
+								<th>Puhelin</th>
+								<th>Osoite</th>
+								<th>Postinumero</th>
+								<th>Postitoimipaikka</th>
+								<th>Status</th>
+								<th>Tilauksen ajankohta</th>
+								<th>Pizzan nimi</th>
+								<th>Lukumäärä</th>
 								<th></th>
 							</tr>
 						</thead>
