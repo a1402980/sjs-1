@@ -7,7 +7,10 @@
 <!--[if (gte IE 9)|!(IE)]><!-->
 
 <%@ page import="pizzicato.model.Kayttaja"%>
-
+<%@ page import="pizzicato.model.Tilaus"%>
+<%@ page import="pizzicato.model.PizzaTilaus"%>
+<jsp:useBean id="tilaukset" type="java.util.ArrayList<Tilaus>"
+	scope="request" />
 <jsp:useBean id="kayttaja" class="pizzicato.model.Kayttaja"
 	scope="session" />
 
@@ -137,16 +140,29 @@
 					<table class="table">
 						<thead>
 							<tr>
-								<th>Nimi</th>
-								<th>Täytteet</th>
-								<th>Lisätäytteet</th>
+								<th>TilausId</th>
+								<th>Status</th>
+								<th>Tilausajankohta</th>
+								<th>Asiakkaan etunimi</th>
+								<th>Sukunimi</th>
+								<th>Osoite</th>
+								<th>Puhelin</th>
+								
 								<th></th>
 							</tr>
 						</thead>
 						<tbody>
+						<%for(int i = 0; i < tilaukset.size(); i++) {%>
 							<tr class="danger">
-								<td>Lorempizza</td>
-								<td>Loremtäyte</td>
+								<td><%=tilaukset.get(i).getTilausId()%></td>
+								<td><%=tilaukset.get(i).getStatus()%></td>
+								<td><%=tilaukset.get(i).getTilAjankohta()%></td>
+								<td><%=tilaukset.get(i).getStatus()%></td>
+								<td><%=tilaukset.get(i).getStatus()%></td>
+								<td><%=tilaukset.get(i).getStatus()%></td>
+								<td><%=tilaukset.get(i).getStatus()%></td>
+								<td><%=tilaukset.get(i).getStatus()%></td>
+								<td><%=tilaukset.get(i).getStatus()%></td>
 								<td><input type="checkbox" name="oregano"> Oregano <input type="checkbox" name="valkosipuli"> Valkosipuli</td>
 								<td><button type="button" class="btn btn-success">Valmis <i class="fa fa-check" aria-hidden="true"></i></button></td>
 							</tr>
@@ -162,6 +178,7 @@
 								<td><input type="checkbox" name="oregano"> Oregano <input type="checkbox" name="valkosipuli"> Valkosipuli</td>
 								<td><button type="button" class="btn btn-success">Valmis <i class="fa fa-check" aria-hidden="true"></i></button></td>
 							</tr>
+							<% } %>
 						</tbody>
 					</table>
 
