@@ -39,7 +39,7 @@ puh varchar(15) NOT NULL,
 osoite varchar(30) NOT NULL,
 posti_nro char(5) NOT NULL,
 posti_tmp varchar(15) NOT NULL,
-s_posti varchar(15) NOT NULL,
+s_posti varchar(15),
 PRIMARY KEY (asiakas_id),
 FOREIGN KEY (asiakas_id) REFERENCES kayttaja(kayttaja_id)
 )Engine="InnoDB";
@@ -75,14 +75,4 @@ FOREIGN KEY (pizza_id) REFERENCES pizza(pizza_id)
 )Engine="InnoDB";
 
 
-CREATE TABLE vieras_asiakas(
-vieras_id int NOT NULL AUTO_INCREMENT,
-etunimi varchar(30) NOT NULL,
-sukunimi varchar(30) NOT NULL,
-puh varchar(15) NOT NULL,
-osoite varchar(30) NOT NULL,
-posti_nro char(5) NOT NULL,
-posti_tmp varchar(15) NOT NULL,
-s_posti varchar(15) NOT NULL,
-PRIMARY KEY (vieras_id)
-)Engine="InnoDB";
+

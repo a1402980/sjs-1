@@ -133,12 +133,14 @@
 						<th>Nimi</th>
 						<th>Täytteet</th>
 						<th>Hinta</th>
+						<th>Lkm</th>
 						<th>Lisätäytteet</th>
+						
 					</tr>
 					<%PizzaTilaus pizzatilaus;
 					Pizza pizza;%>
 					<%for (int i = 0; i < tilaus.getPizzaTilLkm(); i++) {%>
-					<tr>					
+					<tr>		
 						<td>
 						<%pizzatilaus = tilaus.getPizzaTilaus(i); 
 						pizza = pizzatilaus.getPizza();%>
@@ -153,6 +155,7 @@
 						<td>
 						<%=pizza.getpHinta()%>
 						</td>
+						<td><%=pizzatilaus.getLkm() %></td>
 						<td><input type="checkbox" name="oregano"> Oregano
 							<input type="checkbox" name="valkosipuli"> Valkosipuli
 					</tr>
@@ -178,8 +181,13 @@
 				</form>
 				</div>
 			</div>
+			
+			
 			<hr>
-				<h2>Lopullinen summa XX,XX<i class="fa fa-eur" aria-hidden="true"></i></h2>
+			
+		
+			
+				<h2>Lopullinen summa XX,XX<i class="fa fa-eur" aria-hidden="true" ></i></h2>
 				
 					<div>
 					<button input type="submit" class="btn btn-success btn-lg">Tilaa</button>
