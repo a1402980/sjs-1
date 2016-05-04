@@ -127,7 +127,7 @@ public class TilausDAO extends DataAccessObject{
 		int nykyinenTilausId=0;
 		try {
 			conn = getConnection();
-			String sqlSelect ="SELECT tilaus_id, status, til_ajankohta, etunimi, sukunimi, osoite, posti_nro, posti_tmp, puh, pizza_id, p_nimi, p_hinta, p_saatavuus FROM tilaus t JOIN pizzatilaus pt ON t.tilaus_id = pt.tilaus_id INNER JOIN pizza p ON p.pizza_id = pt.pizza_id ORDER BY til_ajankohta;";
+			String sqlSelect ="SELECT t.tilaus_id, status, til_ajankohta, a_etunimi, a_sukunimi, a_puh, a_osoite, a_posti_nro, a_posti_tmp, pt.pizza_id, p_nimi, p_hinta, p_saatavuus FROM tilaus t JOIN pizzatilaus pt ON t.tilaus_id = pt.tilaus_id INNER JOIN pizza p ON p.pizza_id = pt.pizza_id ORDER BY til_ajankohta;";
 			
 			stmt=conn.prepareStatement(sqlSelect);
 			
