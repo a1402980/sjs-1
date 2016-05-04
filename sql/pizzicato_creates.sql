@@ -66,11 +66,9 @@ FOREIGN KEY (asiakas_id) REFERENCES asiakas(asiakas_id)
 
 
 CREATE TABLE pizzatilaus(
-tilaus_id int NOT NULL,
 pizza_id int NOT NULL,
 lkm int NOT NULL,
-PRIMARY KEY (tilaus_id, pizza_id),
-FOREIGN KEY (tilaus_id) REFERENCES tilaus(tilaus_id),
+PRIMARY KEY (pizza_id),
 FOREIGN KEY (pizza_id) REFERENCES pizza(pizza_id)
 )Engine="InnoDB";
 
