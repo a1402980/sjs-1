@@ -74,7 +74,8 @@
 <div class="jumbotron text-center" id="cover-caption">
 
 	<div>
-		<h1>Pizzeria Pizzicato</h1>
+		
+		<img src="assets/images/logo.png" alt="pizzicato" class="img-responsive"style="height:50%;">
 		<h1>Tervetuloa!</h1>
 
 		<span><i class="fa fa-home"></i>&nbsp; <a href="https://goo.gl/maps/so8N2prRDWS2">Kuusitie 6, Helsinki</a> </span> <br> 
