@@ -140,42 +140,45 @@
 
 				<div class="table-responsive">
 					<table class="table">
+						
 						<thead>
 							<tr>
 								<th>TilausId</th>
-								<th>Sukunimi</th>
-								<th>Puhelin</th>
-								<th>Osoite</th>
-								<th>Postinumero</th>
-								<th>Postitoimipaikka</th>
+								
 								<th>Status</th>
 								<th>Tilauksen ajankohta</th>
 								<th>Pizzan nimi</th>
+								<th>Pizzan täytteet</th>
 								<th>Lukumäärä</th>
 							</tr>
 						</thead>
 						<tbody>
+							
 							<%for(int i = 0; i < tilaukset.size(); i++) {%>
 							<tr>
 								<td><%=tilaukset.get(i).getTilausId()%></td>
-								<td><%=tilaukset.get(i).getaSukunimi()%></td>
-								<td><%=tilaukset.get(i).getaPuh()%></td>
-								<td><%=tilaukset.get(i).getaOsoite()%></td>
-								<td><%=tilaukset.get(i).getaPostiNro()%></td>
-								<td><%=tilaukset.get(i).getaPostiTmp()%></td>
 								
 								<td><%=tilaukset.get(i).getStatus()%></td>
 								<td><%=tilaukset.get(i).getTilAjankohta()%></td>			
 								
 								<%for (int j=0; j<tilaukset.get(i).getPizzatilaukset().size(); j++){ %> 							
-									<td><%=tilaukset.get(i).getPizzaTilaus(j).getPizza().getpNimi() %></td>									
+									<td><%=tilaukset.get(i).getPizzaTilaus(j).getPizza().getpNimi() %></td>	
+										
+										<td> <%for (int l = 0; l < tilaukset.get(i).getPizzaTilaus(j).getPizza().getTaytteet().size(); l++) {
+											tilaukset.get(i).getPizzaTilaus(j).getPizza().getTayte(l).gettNimi();
+											} %></td>
+																	
 									<td><%=tilaukset.get(i).getPizzaTilaus(j).getLkm() %></td>
 								<% } %>
-								<td><button type="button" class="btn btn-success">Toimitettu<i class="fa fa-check" aria-hidden="true"></i></button></td>
+									
+									<td><button input type="submit" class="btn btn-success" name="nappi" value="<%=tilaukset.get(i).getTilausId()%>">Paistettu<i class="fa fa-check" aria-hidden="true"></i></button></td>
+									
 							</tr>
 							<% } %>
 							
+							
 						</tbody>
+						
 					</table>
 
 

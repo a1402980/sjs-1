@@ -169,7 +169,7 @@ public class TilausDAO extends DataAccessObject{
 		int nykyinenTilausId=0;
 		try {
 			conn = getConnection();
-			String sqlSelect ="SELECT t.tilaus_id, a_etunimi, a_sukunimi, a_puh, a_osoite, a_posti_nro, a_posti_tmp, status, til_ajankohta, pt.pizza_id, p_nimi, lkm FROM tilaus t INNER JOIN pizzatilaus pt ON t.tilaus_id = pt.tilaus_id INNER JOIN pizza p ON p.pizza_id = pt.pizza_id ORDER BY til_ajankohta;";
+			String sqlSelect ="SELECT t.tilaus_id, a_etunimi, a_sukunimi, a_puh, a_osoite, a_posti_nro, a_posti_tmp, status, til_ajankohta, pt.pizza_id, p_nimi, lkm FROM tilaus t INNER JOIN pizzatilaus pt ON t.tilaus_id = pt.tilaus_id INNER JOIN pizza p ON p.pizza_id = pt.pizza_id WHERE status= 'Paistettu' ORDER BY til_ajankohta;";
 			
 			stmt=conn.prepareStatement(sqlSelect);
 			
@@ -210,7 +210,7 @@ public class TilausDAO extends DataAccessObject{
 		int nykyinenTilausId=0;
 		try {
 			conn = getConnection();
-			String sqlSelect ="SELECT tilaus_id, status, til_ajankohta, pizza_id, lkm FROM tilaus t JOIN pizzatilaus pt ON t.tilaus_id = pt.tilaus_id  ORDER BY til_ajankohta;";
+			String sqlSelect ="SELECT t.tilaus_id, status, til_ajankohta, a_etunimi, a_sukunimi, a_puh, a_osoite, a_posti_nro, a_posti_tmp, pt.pizza_id, p_nimi, lkm FROM tilaus t JOIN pizzatilaus pt ON t.tilaus_id = pt.tilaus_id INNER JOIN pizza p ON p.pizza_id = pt.pizza_id WHERE status= 'Odottaa' ORDER BY til_ajankohta;";
 			
 			stmt=conn.prepareStatement(sqlSelect);
 			
@@ -235,6 +235,40 @@ public class TilausDAO extends DataAccessObject{
 		}
 		
 		return tilaukset;
+	}
+	
+	public void modifyStatusKokki(int tilausId) throws SQLException {
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		try {
+			conn = getConnection();
+			String sqlUpdate =  "UPDATE tilaus SET status='Paistettu' WHERE tilaus_id="+tilausId+";";
+			stmt = conn.prepareStatement(sqlUpdate);
+					
+			stmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}finally {
+			close(stmt,conn);
+		}
+	}
+	
+	public void modifyStatusKuski(int tilausId) throws SQLException {
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		try {
+			conn = getConnection();
+			String sqlUpdate =  "UPDATE tilaus SET status='Toimitettu' WHERE tilaus_id="+tilausId+";";
+			stmt = conn.prepareStatement(sqlUpdate);
+					
+			stmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}finally {
+			close(stmt,conn);
+		}
 	}
 	
 	/**public ArrayList<Tilaus> omistajaFindAll() {
