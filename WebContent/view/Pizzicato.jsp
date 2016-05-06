@@ -116,10 +116,22 @@
 						<%out.println("Tervetuloa "+"<b>"+ kayttaja.getUsername() +"</b>"+ "!"); %><b class="caret"></b></a>
 						<ul class="dropdown-menu">	
            				<li>  <a href="KirjauduUlos" id="kirjaudu-ulos-nappi"><span class="glyphicon glyphicon-log-out"></span> Kirjaudu ulos</a></li>
+           				
+           				  <% if (kayttaja != null && kayttaja.getUserRole().equals("kokki") && kayttaja.getUserRole().equals("kuljettaja")){%>
+           				<li> <a href="roolinvalitseminen" id="kirjaudu-ulos-nappi"><i class="fa fa-user" aria-hidden="true"></i> Roolin valitseminen</a></li>
+           				
+           					<%} %>
+           					
+           				 <% if (kayttaja != null && kayttaja.getUserRole().equals("omistaja")){%>
+     
+           				<li> <a href="ListaaPizzat" id="kirjaudu-ulos-nappi"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Pizzojen muokkaus</a></li>
+           					<%} %>
+           				
 						</ul>
+					
 					<%} 
 			
-					
+			
 				else {%> <li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>
 						Kirjaudu <b class="caret"></b></a>
