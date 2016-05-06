@@ -110,8 +110,8 @@ SELECT p.pizza_id, p_nimi, p_hinta, p_saatavuus, t.tayte_id, t_nimi, t_hinta FRO
 
 INSERT INTO asiakas(etunimi, sukunimi, puh, osoite, posti_nro, posti_tmp, s_posti, kayttaja_id) VALUES ('Matti', 'Virtanen', '040-1234568', 'Kujakatu 2', 01232, 'Hattula', 'etu.suku@net.com', 5);
 
-INSERT INTO tilaus(asiakas_id) VALUES (3);
+INSERT INTO tilaus(a_etunimi, a_sukunimi, a_puh, a_osoite, a_posti_nro, a_posti_tmp) VALUES ('assi', 'asiakas', '123456789', 'Kujakatu 1', 12345, 'Kunta');
 
-INSERT INTO pizzatilaus(tilaus_id, pizza_id, lkm) VALUES (1,104,2);
+INSERT INTO pizzatilaus(tilaus_id, pizza_id, lkm) VALUES (1,157,2);
 INSERT INTO pizzatilaus(tilaus_id, pizza_id, lkm) VALUES (2,103,2);
 INSERT INTO pizzatilaus(tilaus_id, pizza_id, lkm) VALUES (2,107,5);

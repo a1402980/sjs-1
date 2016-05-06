@@ -170,7 +170,7 @@
 									<td><%=tilaukset.get(i).getPizzaTilaus(j).getPizza().getPizzaId() %></td>							
 									<td><%=tilaukset.get(i).getPizzaTilaus(j).getPizza().getpNimi() %></td>
 									<td><%=tilaukset.get(i).getPizzaTilaus(j).getPizza().getpHinta() %></td>
-									
+									<td><%=tilaukset.get(i).getPizzaTilaus(j).getLkm() %></td>
 								<% } %>
 							</tr>
 							<% } %>
