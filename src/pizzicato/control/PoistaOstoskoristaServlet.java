@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import pizzicato.model.PizzaTilaus;
 import pizzicato.model.Tilaus;
 import pizzicato.model.dao.TilausDAO;
 
@@ -19,12 +20,12 @@ public class PoistaOstoskoristaServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Tilaus tilaus;
+		PizzaTilaus pizzatilaus;
 		
 		
 		HttpSession session = request.getSession(true);
-		tilaus = (Tilaus) session.getAttribute("pizza");
-		session.removeAttribute("pizza");
+		pizzatilaus = (PizzaTilaus) session.getAttribute("tilaus_id");
+		session.removeAttribute("tilaus_id");
 		
 		response.sendRedirect("ostoskori");
 	}
