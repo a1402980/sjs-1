@@ -37,13 +37,16 @@ public class ListaaTilauksetKokki extends HttpServlet {
 		int tilausId = new Integer(strTilId);
 		try {
 			tilausdao.modifyStatusKokki(tilausId);
-			
+			ArrayList<Tilaus> tilaukset = tilausdao.kokkiFindAll();
+			request.setAttribute("tilaukset", tilaukset);	
+			String jsp = "/view/tilaukset_kokille.jsp";
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
+			dispatcher.forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		/**String jsp = "/view/tilaukset_kokille.jsp";
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
-		dispatcher.forward(request, response);**/
+		
+		
 	}
 
 }

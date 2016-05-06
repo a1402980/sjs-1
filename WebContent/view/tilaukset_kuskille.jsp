@@ -171,7 +171,7 @@
 									<td><%=tilaukset.get(i).getPizzaTilaus(j).getPizza().getpNimi() %></td>									
 									<td><%=tilaukset.get(i).getPizzaTilaus(j).getLkm() %></td>
 								<% } %>
-								<td><button type="button" class="btn btn-success">Toimitettu<i class="fa fa-check" aria-hidden="true"></i></button></td>
+								<td><button input type="submit" class="btn btn-success" name="nappi" value="<%=tilaukset.get(i).getTilausId()%>">Toimitettu<i class="fa fa-check" aria-hidden="true"></i></button></td>
 							</tr>
 							<% } %>
 							

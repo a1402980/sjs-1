@@ -1,6 +1,7 @@
 package pizzicato.control;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -31,7 +32,21 @@ public class ListaaTilauksetKuski extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		TilausDAO tilausdao = new TilausDAO();
+		String strTilId = request.getParameter("nappi");
+		int tilausId = new Integer(strTilId);
+		try {
+			tilausdao.modifyStatusKuski(tilausId);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+				
+		ArrayList<Tilaus> tilaukset = tilausdao.kuskiFindAll();
+		request.setAttribute("tilaukset", tilaukset);	
+		String jsp = "/view/tilaukset_kuskille.jsp";
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
+		dispatcher.forward(request, response);
 	}
 
 }

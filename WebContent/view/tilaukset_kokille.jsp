@@ -164,9 +164,9 @@
 								<%for (int j=0; j<tilaukset.get(i).getPizzatilaukset().size(); j++){ %> 							
 									<td><%=tilaukset.get(i).getPizzaTilaus(j).getPizza().getpNimi() %></td>	
 										
-										<td> <%for (int l = 0; l < tilaukset.get(i).getPizzaTilaus(j).getPizza().getTaytteet().size(); l++) {
-											tilaukset.get(i).getPizzaTilaus(j).getPizza().getTayte(l).gettNimi();
-											} %></td>
+										 <%for (int l = 0; l < tilaukset.get(i).getPizzaTilaus(j).getPizza().getTaytteet().size(); l++) {%>
+											 <td><%=tilaukset.get(i).getPizzaTilaus(j).getPizza().getTayte(l).gettNimi()%></td>
+											<%} %>
 																	
 									<td><%=tilaukset.get(i).getPizzaTilaus(j).getLkm() %></td>
 								<% } %>
