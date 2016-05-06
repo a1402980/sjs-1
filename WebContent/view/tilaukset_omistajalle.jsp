@@ -151,6 +151,7 @@
 								<th>PizzaId</th>
 								<th>Nimi</th>
 								<th>Hinta</th>
+								<th>Lukumäärä</th>
 								
 							</tr>
 						</thead>
