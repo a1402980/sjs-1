@@ -108,6 +108,9 @@
 			<li><a href="#contact">Yhteystiedot</a></li>
 			<li id="ostoskorinappi2"><a href="ostoskori" class="btn btn-primary" role="button" id="ostoskorinappi"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="badge">7</span></a></li>
 			<li>
+			
+			
+			
 			<% 		
 				if (kayttaja!= null &&  kayttaja.getUserRole()!= null){
 					
