@@ -137,10 +137,10 @@
 				<div class=container>
 					<div class="row">
 						<div class="col-sm-3">
-							<a href="kokinsivu" class="btn btn-success btn-xl" role="button"><i class="fa fa-cutlery" aria-hidden="true"></i> Kokki</a>
+							<a href="ListaaTilauksetKokki" class="btn btn-success btn-xl" role="button"><i class="fa fa-cutlery" aria-hidden="true"></i> Kokki</a>
 						</div>
 						<div class="col-sm-3">
-							<a href="ListaaPizzat" class="btn btn-primary btn-xl" role="button"><i class="fa fa-car" aria-hidden="true"></i> Kuski</a>
+							<a href="ListaaTilauksetKuski" class="btn btn-primary btn-xl" role="button"><i class="fa fa-car" aria-hidden="true"></i> Kuski</a>
 						</div>
 						<div class="col-sm-3">
 							<a href="ListaaTilauksetOmistaja" class="btn btn-warning btn-xl" role="button"><i class="fa fa-star" aria-hidden="true"></i> Omistaja</a>
