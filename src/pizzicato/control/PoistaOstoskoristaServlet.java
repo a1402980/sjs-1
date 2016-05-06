@@ -23,8 +23,8 @@ public class PoistaOstoskoristaServlet extends HttpServlet {
 		
 		
 		HttpSession session = request.getSession(true);
-		tilaus = (Tilaus) session.getAttribute("tilaus");
-		session.removeAttribute("tilaus");
+		tilaus = (Tilaus) session.getAttribute("pizza");
+		session.removeAttribute("pizza");
 		
 		response.sendRedirect("ostoskori");
 	}
