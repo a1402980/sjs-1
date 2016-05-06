@@ -158,6 +158,9 @@
 						<td><%=pizzatilaus.getLkm() %></td>
 						<td><input type="checkbox" name="oregano"> Oregano
 							<input type="checkbox" name="valkosipuli"> Valkosipuli
+						<td>
+							<button onclick="poistapizza(<%=tilaus.getTilausId()%>)"><span class="glyphicon glyphicon-trash"></span></button>
+						</td>
 					</tr>
 					<% } %>
 				</table>
@@ -242,6 +245,18 @@
     <script src="assets/plugins/bootstrap.js"></script>
     <!-- CUSTOM SCRIPTS -->
     <script src="assets/js/custom.js"></script>
+
+
+	<script>function poistapizza(TilausId){
+								var p = confirm("Poistetaanko pizza?"); // poistonappi
+								if(p==true){
+									window.location="PoistaOstoskorista?tilaus_id="+TilausId;
+								}else{
+									window.location="ostoskori";
+								}
+						} 
+	</script>
+
 
 </body>
 </html>

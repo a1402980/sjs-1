@@ -6,38 +6,51 @@ import java.util.Date;
 
 public class Tilaus {
 	private int tilausId;
-	private int asiakasId;
 	private String status;
 	private Date tilAjankohta = new Date();
 	private ArrayList<PizzaTilaus> pizzatilaukset = new ArrayList<PizzaTilaus>();
+	private String aEtunimi;
+	private String aSukunimi;
+	private String aPuh;
+	private String aOsoite;
+	private int aPostiNro;
+	private String aPostiTmp;
 	
 	public Tilaus() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Tilaus(int tilausId, int asiakasId, String status,
-			Date tilAjankohta, ArrayList<PizzaTilaus> pizzatilaukset) {
+	public Tilaus(int tilausId, String status, Date tilAjankohta,
+			ArrayList<PizzaTilaus> pizzatilaukset, String aEtunimi,
+			String aSukunimi, String aPuh, String aOsoite, int aPostiNro,
+			String aPostiTmp) {
 		super();
 		this.tilausId = tilausId;
-		this.asiakasId = asiakasId;
 		this.status = status;
 		this.tilAjankohta = tilAjankohta;
 		this.pizzatilaukset = pizzatilaukset;
+		this.aEtunimi = aEtunimi;
+		this.aSukunimi = aSukunimi;
+		this.aPuh = aPuh;
+		this.aOsoite = aOsoite;
+		this.aPostiNro = aPostiNro;
+		this.aPostiTmp = aPostiTmp;
 	}
 	
-	public Tilaus(int tilausId, int asiakasId, String status, Date tilAjankohta) {
+	public Tilaus(int tilausId, String status, Date tilAjankohta,
+			String aEtunimi, String aSukunimi, String aPuh, String aOsoite,
+			int aPostiNro, String aPostiTmp) {
 		super();
 		this.tilausId = tilausId;
-		this.asiakasId = asiakasId;
 		this.status = status;
 		this.tilAjankohta = tilAjankohta;
-	}
-	
-	public Tilaus(int tilausId, int asiakasId) {
-		super();
-		this.tilausId = tilausId;
-		this.asiakasId = asiakasId;
+		this.aEtunimi = aEtunimi;
+		this.aSukunimi = aSukunimi;
+		this.aPuh = aPuh;
+		this.aOsoite = aOsoite;
+		this.aPostiNro = aPostiNro;
+		this.aPostiTmp = aPostiTmp;
 	}
 
 	public int getTilausId() {
@@ -46,14 +59,6 @@ public class Tilaus {
 
 	public void setTilausId(int tilausId) {
 		this.tilausId = tilausId;
-	}
-
-	public int getAsiakasId() {
-		return asiakasId;
-	}
-
-	public void setAsiakasId(int asiakasId) {
-		this.asiakasId = asiakasId;
 	}
 
 	public String getStatus() {
@@ -93,12 +98,65 @@ public class Tilaus {
 		return PizzaTilLkm;
 	}
 
+	public String getaEtunimi() {
+		return aEtunimi;
+	}
+
+	public void setaEtunimi(String aEtunimi) {
+		this.aEtunimi = aEtunimi;
+	}
+
+	public String getaSukunimi() {
+		return aSukunimi;
+	}
+
+	public void setaSukunimi(String aSukunimi) {
+		this.aSukunimi = aSukunimi;
+	}
+
+	public String getaPuh() {
+		return aPuh;
+	}
+
+	public void setaPuh(String aPuh) {
+		this.aPuh = aPuh;
+	}
+
+	public String getaOsoite() {
+		return aOsoite;
+	}
+
+	public void setaOsoite(String aOsoite) {
+		this.aOsoite = aOsoite;
+	}
+
+	public int getaPostiNro() {
+		return aPostiNro;
+	}
+
+	public void setaPostiNro(int aPostiNro) {
+		this.aPostiNro = aPostiNro;
+	}
+
+	public String getaPostiTmp() {
+		return aPostiTmp;
+	}
+
+	public void setaPostiTmp(String aPostiTmp) {
+		this.aPostiTmp = aPostiTmp;
+	}
+
+	
+		
 	@Override
 	public String toString() {
-		return "Tilaus [tilausId=" + tilausId + ", asiakasId=" + asiakasId
-				+ ", status=" + status + ", tilAjankohta=" + tilAjankohta
-				+ ", pizzatilaukset=" + pizzatilaukset + "]";
+		return "Tilaus [tilausId=" + tilausId + ", status=" + status
+				+ ", tilAjankohta=" + tilAjankohta + ", pizzatilaukset="
+				+ pizzatilaukset + ", aEtunimi=" + aEtunimi + ", aSukunimi="
+				+ aSukunimi + ", aPuh=" + aPuh + ", aOsoite=" + aOsoite
+				+ ", aPostiNro=" + aPostiNro + ", aPostiTmp=" + aPostiTmp + "]";
 	}
+	
 	
 	
 }

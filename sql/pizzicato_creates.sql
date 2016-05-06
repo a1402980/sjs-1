@@ -39,7 +39,7 @@ puh varchar(15) NOT NULL,
 osoite varchar(30) NOT NULL,
 posti_nro char(5) NOT NULL,
 posti_tmp varchar(15) NOT NULL,
-s_posti varchar(15),
+s_posti varchar(15) NOT NULL,
 PRIMARY KEY (asiakas_id),
 FOREIGN KEY (asiakas_id) REFERENCES kayttaja(kayttaja_id)
 )Engine="InnoDB";
@@ -73,6 +73,7 @@ PRIMARY KEY (tilaus_id, pizza_id),
 FOREIGN KEY (tilaus_id) REFERENCES tilaus(tilaus_id),
 FOREIGN KEY (pizza_id) REFERENCES pizza(pizza_id)
 )Engine="InnoDB";
+
 
 
 
