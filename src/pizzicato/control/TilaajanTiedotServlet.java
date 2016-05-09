@@ -28,6 +28,15 @@ public class TilaajanTiedotServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String jsp = "/view/tilaajan_tiedot.jsp";
+		HttpSession session = request.getSession(true);
+		Kayttaja kayttaja = (Kayttaja) session.getAttribute("kayttaja");
+		if (kayttaja != null){
+			AsiakasDAO asiakasdao = new AsiakasDAO();
+			Asiakas asiakas = asiakasdao.findCertainAsiakas(kayttaja);
+			session.setAttribute("asiakas", asiakas);
+			
+			System.out.println("asiakkaan tiedot doGet: "+asiakas);
+		} 
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
 		dispatcher.forward(request, response);
 	}
@@ -35,23 +44,13 @@ public class TilaajanTiedotServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		HttpSession session = request.getSession(true);
 		Tilaus tilaus = (Tilaus) session.getAttribute("tilaus");
-		Kayttaja kayttaja = (Kayttaja) session.getAttribute("kayttaja");
 		
-		System.out.println("tilaus ennen asiakkaan tietoja: "+tilaus);
-		
-		if (kayttaja != null){
-			AsiakasDAO asiakasdao = new AsiakasDAO();
-			Asiakas asiakas = asiakasdao.findCertainAsiakas(kayttaja);
-			session.setAttribute("asiakas", asiakas);
-			
-			System.out.println("asiakkaan tiedot sessioon: "+asiakas);
-		} 
+		System.out.println("tilaus doPost: "+tilaus);
 		
 		Map<String, String> errors = validate(request);
 		
 		if (!errors.isEmpty()) {
-			System.out.println(errors);
-			
+			System.out.println(errors);			
 			response.sendRedirect("TilaajanTiedot");
 		} else {
 			
