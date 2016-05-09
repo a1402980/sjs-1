@@ -4,13 +4,32 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 
 import pizzicato.model.Asiakas;
+import pizzicato.model.Kayttaja;
 import pizzicato.model.Tayte;
+import pizzicato.model.Tilaus;
 
 public class AsiakasDAO extends DataAccessObject {
+	
+	private Asiakas readAsiakas(ResultSet rs) {
+		try {
+			int asiakasId=rs.getInt("asiakas_id");
+			String etuNimi=rs.getString("etunimi");
+			String sukuNimi=rs.getString("sukunimi");
+			String puh=rs.getString("puh");
+			String osoite=rs.getString("osoite");
+			int postiNro=rs.getInt("posti_nro");
+			String postiTmp=rs.getString("posti_tmp");
+			String sPosti=rs.getString("s_posti");
+			return new Asiakas(asiakasId, etuNimi, sukuNimi, puh, osoite, postiNro, postiTmp, sPosti);
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
 
-	public void createAsiakas(Asiakas asiakas) throws SQLException {
+	/*public void createAsiakas(Asiakas asiakas) throws SQLException {
 		Connection connection = null;
 		PreparedStatement stmtInsert = null;
 		
@@ -27,6 +46,7 @@ public class AsiakasDAO extends DataAccessObject {
 			stmtInsert.setInt(6, asiakas.getPostiNro());
 			stmtInsert.setString(7, asiakas.getPostiTmp());
 			stmtInsert.setString(8, asiakas.getsPosti());
+			stmtInsert.setInt(9,  );
 		
 			stmtInsert.executeUpdate();
 			
@@ -37,6 +57,33 @@ public class AsiakasDAO extends DataAccessObject {
 		}
 		
 	}
+	*/
+	  public Asiakas findCertainAsiakas(Kayttaja kayttaja){
+		    PreparedStatement statement = null;
+		    Connection connection = null;
+		    ResultSet rs = null;
+		    Asiakas asiakas = null;
+		    try {
+			    connection = getConnection();
+			    String sqlSelect = "SELECT * FROM asiakas WHERE kayttaja_id = ?";
+			    statement = connection.prepareStatement(sqlSelect);		   
+			    int id = kayttaja.getId();
+			    statement.setInt(1, id);		   
+			    rs = statement.executeQuery();
+			   
+			    while(rs.next()) {
+					asiakas = readAsiakas(rs);
+					
+				}
+				
+		    } catch (Exception e) {
+		    	throw new RuntimeException(e);
+		    } finally {
+		        close(statement, connection);
+			}
+		    
+		    return asiakas;
+		  }
 	
 	public void modifyAsiakas(Asiakas asiakas) throws SQLException {
 		Connection conn = null;
