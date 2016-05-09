@@ -10,7 +10,7 @@
 <%@ page import="pizzicato.model.Tilaus"%>
 <%@ page import="pizzicato.model.PizzaTilaus"%>
 <%@ page import="pizzicato.model.Kayttaja"%>
-
+<%@ page import="java.text.DecimalFormat"%>
 <jsp:useBean id="tilaus" class="pizzicato.model.Tilaus"
 	scope="session" />
 <jsp:useBean id="kayttaja" class="pizzicato.model.Kayttaja"
@@ -200,7 +200,13 @@
 				 PizzaTilaus pizzatilaus2;
 				 for (int i=0;i<tilaus.getPizzaTilLkm();i++){  
 					pizzatilaus2= tilaus.getPizzaTilaus(i);
-					 yhteishinta += pizzatilaus2.getPizza().getpHinta()*pizzatilaus2.getRivinro();	} %>
+					 yhteishinta += pizzatilaus2.getPizza().getpHinta()*pizzatilaus2.getLkm();	
+				}
+				 DecimalFormat des = new DecimalFormat("0.00");
+					des.format(yhteishinta);
+				 	%>
+					
+					
 					 
 					 <%=yhteishinta%>
 					
