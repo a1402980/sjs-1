@@ -146,7 +146,7 @@
 				
 				
 			<!-- Jos asiakas on kirjautuneena, näytetään valmiiksi täytetty lomake-->
-			<%if(asiakas != null) { %>
+			<%if(asiakas.getEtuNimi() != null) { %>
 			
 				<form method="post">
 				<span style="color:red;">*</span>Etunimi: <br><input type="text" value="<%=asiakas.getEtuNimi() %>" pattern="[a-zåäöA-ZÅÄÖ0-9- ]{2,30}" name="etunimi" oninvalid="setCustomValidity('Nimen on oltava vähintään 2, enintään 30 merkkiä, ei erikoismerkkejä tai numeroita')" oninput="setCustomValidity('')" required ><br><br>

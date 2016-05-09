@@ -27,16 +27,15 @@ public class TilausvahvistusServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String jsp = "/view/tilausvahvistus.jsp";
+		HttpSession session = request.getSession(true);
+		Tilaus tilaus = (Tilaus) session.getAttribute("tilaus");
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
 		dispatcher.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		TilausDAO tilausdao = new TilausDAO();
-		PizzaTilausDAO pizzatilausdao = new PizzaTilausDAO();
-		PizzaDAO pizzadao = new PizzaDAO();
 		Tilaus tilaus;
-		PizzaTilaus pizzatilaus;
 		
 		HttpSession session = request.getSession(true);
 		tilaus = (Tilaus) session.getAttribute("tilaus");

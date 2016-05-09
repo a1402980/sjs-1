@@ -42,18 +42,18 @@ public class TilaajanTiedotServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
+		String jsp = "/view/tilaajan_tiedot.jsp";
+		Map<String, String> errors = validate(request);
 		HttpSession session = request.getSession(true);
 		Tilaus tilaus = (Tilaus) session.getAttribute("tilaus");
 		
-		System.out.println("tilaus doPost: "+tilaus);
-		
-		Map<String, String> errors = validate(request);
-		
 		if (!errors.isEmpty()) {
-			System.out.println(errors);			
-			response.sendRedirect("TilaajanTiedot");
+			System.out.println(errors);	
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
+			dispatcher.forward(request, response);
+			return;
 		} else {
-			
+			System.out.println("doPost: "+tilaus);
 			response.sendRedirect("tilausvahvistus");
 		}	
 		
@@ -61,7 +61,8 @@ public class TilaajanTiedotServlet extends HttpServlet {
 	
 	public static Map<String, String> validate(HttpServletRequest request) {
 		Map<String, String> errors = new HashMap<String, String>();
-		Tilaus tilaus = new Tilaus();
+		HttpSession session = request.getSession(true);
+		Tilaus tilaus = (Tilaus) session.getAttribute("tilaus");
 
 		// Asiakkaan tietojen validointi	
 		
