@@ -138,8 +138,8 @@
 					
 
 					<input type="hidden" name="tayte_id" value="<%=tayte.getTayteId()%>"/>
-					Nimi:<br> <input type="text" name="nimi" value="<%=tayte.gettNimi()%>" pattern="[a-zA-Z0-9]+[a-zA-Z0-9 ]+" oninvalid="setCustomValidity('Nimessä ei voi olla erikoismerkkejä')" oninput="setCustomValidity('')" required ><br> <br>
-					Hinta:<br> <input type="decimal" name="hinta" placeholder="X,XX Hinta ei yli 20€" value="<%=tayte.gettHinta()%>"pattern="[0-9,.]{4,5}" oninvalid="setCustomValidity('Hinnassa ei voi olla erikoismerkkejä ja muodossa x,xx')" oninput="setCustomValidity('')" required><br> <br>
+					Nimi:<br> <input type="text" name="nimi" value="<%=tayte.gettNimi()%>" pattern="[a-zA-Z0-9]+[a-zA-Z0-9 ]+" oninvalid="setCustomValidity('Nimessä pitää olla kirjaimia tai numeroita ja pituus vähintään 2 merkkiä.')" oninput="setCustomValidity('')" required ><br> <br>
+					Hinta:<br> <input type="decimal" name="hinta" placeholder="X,XX Hinta ei yli 20€" value="<%=tayte.gettHinta()%>"pattern="[0-9,.]{4,5}" oninvalid="setCustomValidity('Hinnan pitää olla numeroina ja muodossa x,xx')" oninput="setCustomValidity('')" required><br> <br>
 						
 						
 				
@@ -147,7 +147,7 @@
 					<button input type="submit" class="btn btn-success btn-lg">Tallenna</button>
 					<a href="ListaaTaytteet" class="btn btn-default btn-lg" role="button">Peruuta</a>
 				</div>
-				</form>
+				</form> 	
 			</div>
 
 		</div>
