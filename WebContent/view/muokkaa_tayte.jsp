@@ -133,7 +133,7 @@
 				<H1>Muokkaa Täytettä</H1>
 
 
-				<form method="post" novalidate>
+				<form method="post">
 
 					
 

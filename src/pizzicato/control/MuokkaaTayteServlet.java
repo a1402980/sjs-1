@@ -2,6 +2,7 @@ package pizzicato.control;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -38,12 +39,14 @@ public class MuokkaaTayteServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Map<String, String> errors = LisaaTayteServlet.validate(request);
+		/*Map<String, String> errors = LisaaTayteServlet.validate(request);
+		Tayte tayte = (Tayte) request.getAttribute("tayte");*/
+		Map<String, String> errors = validate(request);
 		Tayte tayte = (Tayte) request.getAttribute("tayte");
 		
-		String strId = request.getParameter("tayte_id");
+		/*String strId = request.getParameter("tayte_id");
 		int tayteId = new Integer(strId);	
-		tayte.setTayteId(tayteId);
+		tayte.setTayteId(tayteId);*/
 		
 		if (!errors.isEmpty()) {
 			System.out.println(errors);
@@ -57,7 +60,39 @@ public class MuokkaaTayteServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			response.sendRedirect("ListaaTaytteet");
-		}			
+			}
+		}	
+		
+		public static Map<String, String> validate(HttpServletRequest request) {
+			HashMap<String, String> errors = new HashMap<String, String>();
+			Tayte tayte = new Tayte();
+			
+			String idString = request.getParameter("tayte_id");
+			int id = new Integer(idString);
+			tayte.setTayteId(id);
+			
+			//nimi
+			String syotettyNimi = request.getParameter("nimi");
+			if (syotettyNimi == null || syotettyNimi.trim().length() < 2 ) {
+				errors.put("nimi", "Nimen pit‰‰ olla v‰hint‰‰n 2 merkki‰ pitk‰.");
+			}
+			tayte.settNimi(syotettyNimi);
+			
+			//hinta
+			String syotettyHinta = request.getParameter("hinta");
+			syotettyHinta = syotettyHinta.replace(",", ".");
+			Double tHinta = new Double(syotettyHinta);
+			if (tHinta == null || tHinta < 0.0 || tHinta > 50) {
+				errors.put("tHinta", "Hinnan pit‰‰ olla v‰lilt‰ 0-50");
+			} else {
+				tayte.settHinta(tHinta);
+			}
+			
+			request.setAttribute("errors", errors);
+			request.setAttribute("tayte", tayte);
+			
+			return errors;
+		
 	}
 
 }
