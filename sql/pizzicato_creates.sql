@@ -74,6 +74,7 @@ FOREIGN KEY (tilaus_id) REFERENCES tilaus(tilaus_id),
 FOREIGN KEY (pizza_id) REFERENCES pizza(pizza_id)
 )Engine="InnoDB";
 
-
+CREATE VIEW v_tilausnakyma AS SELECT t.tilaus_id, status, til_ajankohta, pt.pizza_id, lkm, p_nimi, p_hinta*lkm
+FROM tilaus t JOIN pizzatilaus pt ON t.tilaus_id = pt.tilaus_id JOIN pizza p ON pt.pizza_id = p.pizza_id;
 
 
