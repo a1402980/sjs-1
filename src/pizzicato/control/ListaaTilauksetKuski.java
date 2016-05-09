@@ -42,11 +42,7 @@ public class ListaaTilauksetKuski extends HttpServlet {
 			e.printStackTrace();
 		}
 				
-		ArrayList<Tilaus> tilaukset = tilausdao.kuskiFindAll();
-		request.setAttribute("tilaukset", tilaukset);	
-		String jsp = "/view/tilaukset_kuskille.jsp";
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
-		dispatcher.forward(request, response);
+		response.sendRedirect("ListaaTilauksetKuski");
 	}
 
 }
