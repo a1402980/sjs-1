@@ -5,7 +5,8 @@ public class PizzaTilaus {
 	private Pizza pizza;
 	private int tilausId;
 	private int lkm;
-	
+	private int rivinro;
+
 	public PizzaTilaus(Pizza pizza, int tilausId, int lkm) {
 		super();
 		this.pizza = pizza;
@@ -15,6 +16,13 @@ public class PizzaTilaus {
 	public PizzaTilaus() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	
+	public int getRivinro() {
+		return rivinro;
+	}
+	public void setRivinro(int rivinro) {
+		this.rivinro = rivinro;
 	}
 	public Pizza getPizza() {
 		return pizza;

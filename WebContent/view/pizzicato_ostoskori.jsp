@@ -135,7 +135,8 @@
 						<th>Hinta</th>
 						<th>Lkm</th>
 						<th>Lisätäytteet</th>
-						
+						<th></th>
+						<th>Rivi</th>
 					</tr>
 					<%PizzaTilaus pizzatilaus;
 					Pizza pizza;%>
@@ -160,6 +161,10 @@
 							<input type="checkbox" name="valkosipuli"> Valkosipuli
 						<td>
 							<button onclick="poistapizza(<%=pizzatilaus.getPizza()%>)"><span class="glyphicon glyphicon-trash"></span></button>
+						</td>
+						<td>
+							<% pizzatilaus.getRivinro(); %>
+
 						</td>
 					</tr>
 					<% } %>

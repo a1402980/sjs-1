@@ -48,7 +48,7 @@ public class OstoskoriServlet extends HttpServlet {
 		}
 		//luodaan pizzatilaus-olio
 		pizzatilaus= new PizzaTilaus();
-		//lis‰t‰‰n pt-oliolle aseta lkm, pizzaId, tilausId
+		//lis‰t‰‰n pt-oliolle aseta lkm, pizzaId
 		String StrLkm = request.getParameter("pizzamaara");
 		int lkm = Integer.parseInt(StrLkm);
 		pizzatilaus.setLkm(lkm);
@@ -57,10 +57,26 @@ public class OstoskoriServlet extends HttpServlet {
 		int pizza_id = Integer.parseInt(StrPizzaId);
 		Pizza pizza =pizzadao.findCertainPizza(pizza_id);
 		pizzatilaus.setPizza(pizza);
+		//int edellinenRivinro=0;
+		//int nykyinenRivinro=0;
+		//int rivinumero = pizzatilaus.getRivinro();
+		
 		
 		//tilaus-olion pizzatilaukset-listaan lis‰t‰‰n pizzatilausolio
 		for (int i = 0; i < lkm; i++) {
+			
+		
+			//tilaus.getPizzaTilaus(rivinumero);
+			
 			tilaus.addPizzaTilaus(pizzatilaus);
+			
+			// rivinumero++;
+			/* if (nykyinenRivinro != edellinenRivinro) {
+				nykyinenRivinro ++ ;
+			}
+			pizzatilaus.setRivinro(nykyinenRivinro);
+			 */
+			//tilaus.setRivinro(rivinro);
 		}
 		
 		response.sendRedirect("ostoskori");

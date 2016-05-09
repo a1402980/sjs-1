@@ -15,7 +15,7 @@ public class Tilaus {
 	private String aOsoite;
 	private int aPostiNro;
 	private String aPostiTmp;
-	
+
 	public Tilaus() {
 		super();
 		// TODO Auto-generated constructor stub
