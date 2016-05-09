@@ -35,7 +35,7 @@ public class PoistaOstoskoristaServlet extends HttpServlet {
 		for (int i = 0; i < lkm; i++) {
 			
 		}
-			tilaus.addPizzaTilaus(pizzatilaus);
+			//tilaus.addPizzaTilaus(pizzatilaus);
 		
 		response.sendRedirect("ostoskori");
 	}
