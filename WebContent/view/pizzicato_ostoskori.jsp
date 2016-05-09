@@ -195,7 +195,19 @@
 			
 		
 			
-				<h2>Lopullinen summa XX,XX<i class="fa fa-eur" aria-hidden="true" ></i></h2>
+				<h2>Lopullinen summa
+				 <%double yhteishinta = 0;
+				 PizzaTilaus pizzatilaus2;
+				 DecimalFormat desimaalit= new DecimalFormat("0,00");
+				 for (int i=0;i<tilaus.getPizzaTilLkm();i++){  
+					pizzatilaus2= tilaus.getPizzaTilaus(i);
+					 yhteishinta += pizzatilaus2.getPizza().getpHinta()*pizzatilaus2.getLkm();	} %>
+					 
+					 <%=yhteishinta%>
+					
+					<i class="fa fa-eur" aria-hidden="true" ></i> </h2>
+					
+				
 				
 					<div>
 					<button input type="submit" onClick="window.location='TilaajanTiedot';" class="btn btn-success btn-lg">Tilaa</button>
