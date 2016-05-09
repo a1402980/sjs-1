@@ -194,7 +194,7 @@
 			<hr>
 			
 		
-			
+				<!--loppusumman näyttäminen -->		
 				<h2>Lopullinen summa
 				 <%double yhteishinta = 0;
 				 PizzaTilaus pizzatilaus2;
