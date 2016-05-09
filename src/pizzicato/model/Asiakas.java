@@ -9,6 +9,7 @@ public class Asiakas {
 	private int postiNro;	
 	private String postiTmp;
 	private String sPosti;
+	private int aKayttaja_id;
 		
 	public Asiakas() {
 		super();
