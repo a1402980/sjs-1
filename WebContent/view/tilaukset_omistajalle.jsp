@@ -8,7 +8,7 @@
 
 <%@ page import="pizzicato.model.Kayttaja"%>
 <%@ page import="pizzicato.model.Tilaus"%>
-<%@ page import="pizzicato.model.PizzaTilaus"%>
+
 <jsp:useBean id="tilaukset" type="java.util.ArrayList<Tilaus>"
 	scope="request" />
 <jsp:useBean id="kayttaja" class="pizzicato.model.Kayttaja"
@@ -140,47 +140,39 @@
 					<table class="table">
 						<thead>
 							<tr>
-								<th>TilausId</th>
-								<th>Status</th>
-								<th>Tilausajankohta</th>
-								
-								<th>Sukunimi</th>
-								<th>Puhelin</th>
-								<th>Osoite</th>								
-								
-								<th>PizzaId</th>
-								<th>Nimi</th>
-								<th>Hinta</th>
-								<th>Lukumäärä</th>
-								
+								<th>Tilaus ID / Pizza ID</th>
+								<th>Status / Lukumäärä</th>
+								<th>Tilausajankohta / Pizzan nimi</th>								
+								<th>Yhteishinta</th>
+															
 							</tr>
 						</thead>
 						<tbody>
+						
+						
+
+						
 						<%for(int i = 0; i < tilaukset.size(); i++) {%>
 							<tr>
 								<td><%=tilaukset.get(i).getTilausId()%></td>
 								<td><%=tilaukset.get(i).getStatus()%></td>
 								<td><%=tilaukset.get(i).getTilAjankohta()%></td>
+								<td></td>
 								
-								<td><%=tilaukset.get(i).getaSukunimi()%></td>
-								<td><%=tilaukset.get(i).getaPuh()%></td>
-								<td><%=tilaukset.get(i).getaOsoite()%></td>
-								
-							
-								<td><%for (int j=0; j<tilaukset.get(i).getPizzatilaukset().size(); j++){ %> 
-									<%=tilaukset.get(i).getPizzaTilaus(j).getPizza().getpNimi() %></td>
-									<% } %>
-									
-							
+																
+														
 							</tr>
+							<%for (int j=0; j<tilaukset.get(i).getPizzatilaukset().size(); j++){ %> 
+								<tr><td><%=tilaukset.get(i).getPizzaTilaus(j).getPizza().getPizzaId()%></td>
+								<td><%=tilaukset.get(i).getPizzaTilaus(j).getLkm()%></td>
+								<td><%=tilaukset.get(i).getPizzaTilaus(j).getPizza().getpNimi()%></td>
+								<td><%=tilaukset.get(i).getPizzaTilaus(j).getYhtHinta()%></td>
+								</tr>
+									<% } %>
+								<tr><td></td></tr>
 							<% } %>
 						</tbody>
 					</table>
-
-
-	
-
-
 				</div>
 
 			</div>
