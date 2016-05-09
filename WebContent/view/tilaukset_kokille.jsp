@@ -140,14 +140,12 @@
 
 				<div class="table-responsive">
 					<table class="table">
-						
 						<thead>
 							<tr>
 								<th>TilausId / Pizzan nimi</th>								
 								<th>Status / Pizzan täytteet</th>
 								<th>Tilauksen ajankohta / Lukumäärä</th>
 								<th>Kuittaa</th>
-								
 							</tr>
 						</thead>
 						<tbody>
@@ -157,38 +155,28 @@
 								<td><%=tilaukset.get(i).getTilausId()%></td>
 								<td><%=tilaukset.get(i).getStatus()%></td>
 								<td><%=tilaukset.get(i).getTilAjankohta()%></td>
-								<td><form method="post">
-									<input type="submit" class="btn btn-success"name="nappi" role="button" value="<%=tilaukset.get(i).getTilausId()%>">Paistettu<i class="fa fa-check" aria-hidden="true"></i>
-									</form></td>
-														
-																
-														
-							</tr>
-							<%for (int j=0; j<tilaukset.get(i).getPizzatilaukset().size(); j++){ %> 
-								<tr><td><%=tilaukset.get(i).getPizzaTilaus(j).getPizza().getpNimi()%></td>
 								<td>
-								<%for (int l=0; l<tilaukset.get(i).getPizzaTilaus(j).getPizza().getTaytteet().size(); l++){ %> <%=tilaukset.get(i).getPizzaTilaus(j).getPizza().getTayte(l).gettNimi() %>
-								<% } %>
-								</td>
-								<td><%=tilaukset.get(i).getPizzaTilaus(j).getLkm()%></td>							
-								<td></td>
+									<form method="post">
+										<input type="submit" class="btn btn-success" name="nappi" role="button" value="<%=tilaukset.get(i).getTilausId()%>">Paistettu<i class="fa fa-check" aria-hidden="true"></i>
+									</form>
+								</td>							
+							</tr>
+								<%for (int j=0; j<tilaukset.get(i).getPizzatilaukset().size(); j++){ %> 
+								<tr>
+									<td><%=tilaukset.get(i).getPizzaTilaus(j).getPizza().getpNimi()%></td>
+									<td>
+										<%for (int l=0; l<tilaukset.get(i).getPizzaTilaus(j).getPizza().getTaytteet().size(); l++){ %> 
+											<%=tilaukset.get(i).getPizzaTilaus(j).getPizza().getTayte(l).gettNimi() %>
+										<% } %>
+									</td>
+									<td><%=tilaukset.get(i).getPizzaTilaus(j).getLkm()%></td>							
+									<td></td>
 								</tr>
-							<% } %>						
-								
-								
+							<% } %>	
 								<tr><td></td><td></td><td></td><td></td></tr>
-							<% } %>
-						
-						
-							
-						</tbody>
-						
+							<% } %>							
+						</tbody>						
 					</table>
-
-
-
-
-
 				</div>
 
 			</div>
