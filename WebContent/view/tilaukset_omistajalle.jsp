@@ -132,7 +132,7 @@
 
 	<section id="pizzat">
 	<div class="container">
-		<div class="row text-center for-full-back color-light jumbotron">
+		<div class="row text-center for-full-back color-light jumbotron" id="tilaustaulu">
 			<H1>Tilaukset</H1>
 			<div class="container" id="kokintilaukset">
 
