@@ -102,12 +102,12 @@ public class TilausDAO extends DataAccessObject{
 	public void addTilaus(Tilaus tilaus) throws SQLException {
 		Connection connection = null;
 		PreparedStatement stmtInsert = null;
-		PreparedStatement stmtInsert2 = null;
 		PreparedStatement stmtSelect = null;
 		ResultSet rs = null;
 		int lastId;
 		try {
 			connection = getConnection();
+		    connection.setAutoCommit(false);
 			String sqlInsert = "INSERT INTO tilaus(a_etunimi, a_sukunimi, a_puh, a_osoite, a_posti_nro, a_posti_tmp) VALUES ('"+tilaus.getaEtunimi()+"','"+tilaus.getaSukunimi()+"','"+tilaus.getaPuh()+"','"+tilaus.getaOsoite()+"',"+tilaus.getaPostiNro()+",'"+tilaus.getaPostiTmp()+"');";
 			String sqlSelect = "SELECT LAST_INSERT_ID();";
 			
@@ -120,9 +120,17 @@ public class TilausDAO extends DataAccessObject{
 				lastId = rs.getInt("last_insert_id()");
 				tilaus.setTilausId(lastId);
 			}
-			/**for (int i=0; i < tilaus.getPizzaTilLkm(); i++){
-				String sqlInsert2 = "INSERT INTO pizzatilaus(tilaus_id, pizza_id, oregano, valkosipuli) VALUES ("+pizzatil.getTilausId()+","+pizzatil.getPizza().getPizzaId()+",'"+pizzatil.getOregano()+"','"+pizzatil.getOregano()+"');";
-			}**/
+			
+			for (int i=0; i < tilaus.getPizzaTilLkm(); i++){ 
+				String sqlInsert2 = "INSERT INTO pizzatilaus(tilaus_id, pizza_id, oregano, valkosipuli) VALUES (?, ?, ?, ?);";
+				stmtInsert = connection.prepareStatement(sqlInsert2);
+				stmtInsert.setInt(1, tilaus.getTilausId());
+				stmtInsert.setInt(2, tilaus.getPizzaTilaus(i).getPizza().getPizzaId());
+				stmtInsert.setString(3, tilaus.getPizzaTilaus(i).getOregano());
+				stmtInsert.setString(3, tilaus.getPizzaTilaus(i).getValkosipuli());
+				stmtInsert.executeUpdate();
+			    connection.commit();
+			}
 					            
 		}catch (SQLException e) {
 			throw new RuntimeException(e);
