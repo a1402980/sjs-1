@@ -7,9 +7,14 @@
 <!--[if (gte IE 9)|!(IE)]><!-->
 
 <%@ page import="pizzicato.model.Kayttaja"%>
+<%@ page import="pizzicato.model.Tilaus"%>
+<%@ page import="pizzicato.model.PizzaTilaus"%>
+<jsp:useBean id="tilaukset" type="java.util.ArrayList<Tilaus>"
+	scope="request" />
 
 <jsp:useBean id="kayttaja" class="pizzicato.model.Kayttaja"
 	scope="session" />
+	
 
 <html lang="fi">
 <!--<![endif]-->
@@ -129,32 +134,60 @@
 
 	<section id="pizzat">
 	<div class="container">
-		<div class="row text-center for-full-back color-light" id="rooliruutu">
-			<H1>Valitse Näkymä</H1>
-			<div class="span12 col-sm-offset-1">
-				
+		<div class="row text-center for-full-back color-light jumbotron" id="tilaustaulu">
+			<H1>Tilaukset</H1>
+			<div class="container" id="kokintilaukset">
 
-				<div class=container>
-					<div class="row">
-						<div class="col-sm-3">
-							<a href="ListaaTilauksetKokki" class="btn btn-success btn-xl" role="button"><i class="fa fa-cutlery" aria-hidden="true"></i> Kokki</a>
-						</div>
-						<div class="col-sm-3">
-							<a href="ListaaTilauksetKuski" class="btn btn-primary btn-xl" role="button"><i class="fa fa-car" aria-hidden="true"></i> Kuski</a>
-						</div>
-						<div class="col-sm-3">
-							<a href="ListaaTilauksetOmistaja" class="btn btn-warning btn-xl" role="button"><i class="fa fa-star" aria-hidden="true"></i> Omistaja</a>
-						</div>
-					</div>
+				<div class="table-responsive">
+					<table class="table">
+						
+						<thead>
+							<tr>
+								<th>TilausId</th>
+								
+								<th>Status</th>
+								<th>Tilauksen ajankohta</th>
+								<th>Pizzan nimi</th>
+								<th>Pizzan täytteet</th>
+								<th>Lukumäärä</th>
+							</tr>
+						</thead>
+						<tbody>
+							
+							<%for(int i = 0; i < tilaukset.size(); i++) {%>
+							<tr>
+								<td><%=tilaukset.get(i).getTilausId()%></td>
+								
+								<td><%=tilaukset.get(i).getStatus()%></td>
+								<td><%=tilaukset.get(i).getTilAjankohta()%></td>			
+								
+								<%for (int j=0; j<tilaukset.get(i).getPizzatilaukset().size(); j++){ %> 							
+									<td><%=tilaukset.get(i).getPizzaTilaus(j).getPizza().getpNimi() %></td>	
+										
+										<td> <%for (int l = 0; l < tilaukset.get(i).getPizzaTilaus(j).getPizza().getTaytteet().size(); l++) {%> <%=tilaukset.get(i).getPizzaTilaus(j).getPizza().getTayte(l).gettNimi()%>
+											<%} %> </td>
+																	
+									<td><%=tilaukset.get(i).getPizzaTilaus(j).getLkm() %></td>
+								<% } %>
+									
+									<td><button input type="submit" class="btn btn-success" name="nappi" value="<%=tilaukset.get(i).getTilausId()%>">Paistettu<i class="fa fa-check" aria-hidden="true"></i></button></td>
+									
+							</tr>
+							<% } %>
+							
+							
+						</tbody>
+						
+					</table>
+
+
+
+
+
 				</div>
-				
 
-				
 			</div>
-
-		</div>
-	</div>
-	</section>
+		</div></section>
 	<!--End Free Section -->
 
 	<!-- Contact Section -->

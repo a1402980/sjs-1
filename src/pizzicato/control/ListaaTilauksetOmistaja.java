@@ -39,7 +39,6 @@ public class ListaaTilauksetOmistaja extends HttpServlet {
 		dispatcher.forward(request, response);
 		
 	}
-
-
+	
 	
 }

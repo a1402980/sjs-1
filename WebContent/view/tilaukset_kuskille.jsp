@@ -7,6 +7,10 @@
 <!--[if (gte IE 9)|!(IE)]><!-->
 
 <%@ page import="pizzicato.model.Kayttaja"%>
+<%@ page import="pizzicato.model.Tilaus"%>
+<%@ page import="pizzicato.model.PizzaTilaus"%>
+<jsp:useBean id="tilaukset" type="java.util.ArrayList<Tilaus>"
+	scope="request" />
 
 <jsp:useBean id="kayttaja" class="pizzicato.model.Kayttaja"
 	scope="session" />
@@ -130,7 +134,7 @@
 
 	<section id="pizzat">
 	<div class="container">
-		<div class="row text-center for-full-back color-light jumbotron">
+		<div class="row text-center for-full-back color-light jumbotron" id="tilaustaulu">
 			<H1>Tilaukset</H1>
 			<div class="container" id="kokintilaukset">
 
@@ -148,28 +152,29 @@
 								<th>Tilauksen ajankohta</th>
 								<th>Pizzan nimi</th>
 								<th>Lukumäärä</th>
-								<th></th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr class="danger">
-								<td>Lorempizza</td>
-								<td>Loremtäyte</td>
-								<td><input type="checkbox" name="oregano"> Oregano <input type="checkbox" name="valkosipuli"> Valkosipuli</td>
-								<td><button type="button" class="btn btn-success">Valmis <i class="fa fa-check" aria-hidden="true"></i></button></td>
+							<%for(int i = 0; i < tilaukset.size(); i++) {%>
+							<tr>
+								<td><%=tilaukset.get(i).getTilausId()%></td>
+								<td><%=tilaukset.get(i).getaSukunimi()%></td>
+								<td><%=tilaukset.get(i).getaPuh()%></td>
+								<td><%=tilaukset.get(i).getaOsoite()%></td>
+								<td><%=tilaukset.get(i).getaPostiNro()%></td>
+								<td><%=tilaukset.get(i).getaPostiTmp()%></td>
+								
+								<td><%=tilaukset.get(i).getStatus()%></td>
+								<td><%=tilaukset.get(i).getTilAjankohta()%></td>			
+								
+								<%for (int j=0; j<tilaukset.get(i).getPizzatilaukset().size(); j++){ %> 							
+									<td><%=tilaukset.get(i).getPizzaTilaus(j).getPizza().getpNimi() %></td>									
+									<td><%=tilaukset.get(i).getPizzaTilaus(j).getLkm() %></td>
+								<% } %>
+								<td><button input type="submit" class="btn btn-success" name="nappi" value="<%=tilaukset.get(i).getTilausId()%>">Toimitettu<i class="fa fa-check" aria-hidden="true"></i></button></td>
 							</tr>
-							<tr class="warning">
-								<td>Lorempizza</td>
-								<td>Loremtäyte</td>
-								<td><input type="checkbox" name="oregano"> Oregano <input type="checkbox" name="valkosipuli"> Valkosipuli</td>
-								<td><button type="button" class="btn btn-success">Valmis <i class="fa fa-check" aria-hidden="true"></i></button></td>
-							</tr>
-							<tr class="success">
-								<td>Lorempizza</td>
-								<td>Loremtäyte</td>
-								<td><input type="checkbox" name="oregano"> Oregano <input type="checkbox" name="valkosipuli"> Valkosipuli</td>
-								<td><button type="button" class="btn btn-success">Valmis <i class="fa fa-check" aria-hidden="true"></i></button></td>
-							</tr>
+							<% } %>
+							
 						</tbody>
 					</table>
 

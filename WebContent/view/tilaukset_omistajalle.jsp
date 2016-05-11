@@ -166,20 +166,19 @@
 								<td><%=tilaukset.get(i).getaPuh()%></td>
 								<td><%=tilaukset.get(i).getaOsoite()%></td>
 								
-								
-								<%for (int j=0; j<tilaukset.get(i).getPizzatilaukset().size(); j++){ %> 
-									<td><%=tilaukset.get(i).getPizzaTilaus(j).getPizza().getPizzaId() %></td>							
-									<td><%=tilaukset.get(i).getPizzaTilaus(j).getPizza().getpNimi() %></td>
-									<td><%=tilaukset.get(i).getPizzaTilaus(j).getPizza().getpHinta() %></td>
-									<td><%=tilaukset.get(i).getPizzaTilaus(j).getLkm() %></td>
-								<% } %>
+							
+								<td><%for (int j=0; j<tilaukset.get(i).getPizzatilaukset().size(); j++){ %> 
+									<%=tilaukset.get(i).getPizzaTilaus(j).getPizza().getpNimi() %></td>
+									<% } %>
+									
+							
 							</tr>
 							<% } %>
 						</tbody>
 					</table>
 
 
-
+	
 
 
 				</div>
