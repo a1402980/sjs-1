@@ -89,6 +89,10 @@ public class Tilaus {
 		this.pizzatilaukset.add(pizzatil);
 	}
 	
+	public void removePizzaTilaus(int index) {
+		this.pizzatilaukset.remove(index);
+	}
+	
 	public PizzaTilaus getPizzaTilaus(int idx) {
 		return this.pizzatilaukset.get(idx);		
 	}

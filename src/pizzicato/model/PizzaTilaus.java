@@ -6,8 +6,15 @@ public class PizzaTilaus {
 	private int tilausId;
 	private int lkm;
 	private int rivinro;
+	private int koko = 0;
 	
 
+	public int getKoko() {
+		return koko;
+	}
+	public void setKoko(int koko) {
+		this.koko = koko;
+	}
 	public PizzaTilaus(Pizza pizza, int tilausId, int lkm) {
 		super();
 		this.pizza = pizza;
