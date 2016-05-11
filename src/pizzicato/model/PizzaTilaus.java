@@ -6,6 +6,7 @@ public class PizzaTilaus {
 	private int tilausId;
 	private int lkm;
 	private int rivinro;
+	
 
 	public PizzaTilaus(Pizza pizza, int tilausId, int lkm) {
 		super();
@@ -41,6 +42,14 @@ public class PizzaTilaus {
 	}
 	public void setLkm(int lkm) {
 		this.lkm = lkm;
+	}
+	
+	public double getYhtHinta(){
+		double yhtHinta=0;
+		if(pizza!=null){
+			yhtHinta=lkm*pizza.getpHinta();
+		}
+		return yhtHinta ;
 	}
 	
 	@Override

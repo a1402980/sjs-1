@@ -28,33 +28,32 @@ public class TilaajanTiedotServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String jsp = "/view/tilaajan_tiedot.jsp";
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
-		dispatcher.forward(request, response);
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		HttpSession session = request.getSession(true);
-		Tilaus tilaus = (Tilaus) session.getAttribute("tilaus");
 		Kayttaja kayttaja = (Kayttaja) session.getAttribute("kayttaja");
-		
-		System.out.println("tilaus ennen asiakkaan tietoja: "+tilaus);
-		
 		if (kayttaja != null){
 			AsiakasDAO asiakasdao = new AsiakasDAO();
 			Asiakas asiakas = asiakasdao.findCertainAsiakas(kayttaja);
 			session.setAttribute("asiakas", asiakas);
 			
-			System.out.println("asiakkaan tiedot sessioon: "+asiakas);
+			System.out.println("asiakkaan tiedot doGet: "+asiakas);
 		} 
-		
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
+		dispatcher.forward(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
+		String jsp = "/view/tilaajan_tiedot.jsp";
 		Map<String, String> errors = validate(request);
+		HttpSession session = request.getSession(true);
+		Tilaus tilaus = (Tilaus) session.getAttribute("tilaus");
 		
 		if (!errors.isEmpty()) {
-			System.out.println(errors);
-			
-			response.sendRedirect("TilaajanTiedot");
+			System.out.println(errors);	
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
+			dispatcher.forward(request, response);
+			return;
 		} else {
-			
+			System.out.println("doPost: "+tilaus);
 			response.sendRedirect("tilausvahvistus");
 		}	
 		
@@ -62,7 +61,8 @@ public class TilaajanTiedotServlet extends HttpServlet {
 	
 	public static Map<String, String> validate(HttpServletRequest request) {
 		Map<String, String> errors = new HashMap<String, String>();
-		Tilaus tilaus = new Tilaus();
+		HttpSession session = request.getSession(true);
+		Tilaus tilaus = (Tilaus) session.getAttribute("tilaus");
 
 		// Asiakkaan tietojen validointi	
 		

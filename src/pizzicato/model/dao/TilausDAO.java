@@ -231,7 +231,54 @@ public class TilausDAO extends DataAccessObject{
 		}
 	}
 	
+	/**private TilausNakyma readTilausNakymaOmistaja(ResultSet rs) {
+		try {
+			int tilausId=rs.getInt("tilaus_id");
+			String status=rs.getString("status");
+			Date tilAjankohta=rs.getDate("til_ajankohta");
+			int pizzaId=rs.getInt("pizza_id");
+			int lkm=rs.getInt("lkm");
+			String pNimi=rs.getString("p_nimi");
+			double yhtHinta=rs.getDouble("yht_hinta");
+			return new TilausNakyma(tilausId, status, tilAjankohta, pizzaId, lkm, pNimi, yhtHinta);
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
 	
+	public ArrayList<TilausNakyma> omistajaFindAllTilaukset() {
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		ArrayList<TilausNakyma> tilaukset = new ArrayList<TilausNakyma>();
+		TilausNakyma tilaus;
+		int edellinenTilausId=0;
+		int nykyinenTilausId=0;
+		try {
+			conn = getConnection();
+			String sqlSelect ="SELECT * FROM v_tilausnakyma_omistaja;";
+			
+			stmt=conn.prepareStatement(sqlSelect);
+			
+			rs=stmt.executeQuery(sqlSelect);			
+			
+			while(rs.next()) {
+				nykyinenTilausId = rs.getInt("tilaus_id");
+				if (nykyinenTilausId != edellinenTilausId) {
+					tilaus = readTilausNakymaOmistaja(rs);
+					tilaukset.add(tilaus);
+					edellinenTilausId = nykyinenTilausId;
+				}
+			}
+		
+		} catch(SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			close (rs,stmt,conn);
+		}
+		
+		return tilaukset;
+	}**/
 	
 	
 	/**public ArrayList<Tilaus> findAll() {

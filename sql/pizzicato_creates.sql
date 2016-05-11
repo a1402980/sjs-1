@@ -32,7 +32,7 @@ PRIMARY KEY (kayttaja_id)
 
 
 CREATE TABLE asiakas(
-asiakas_id int NOT NULL,
+asiakas_id int NOT NULL AUTO_INCREMENT,
 etunimi varchar(30) NOT NULL,
 sukunimi varchar(30) NOT NULL,
 puh varchar(15) NOT NULL,
