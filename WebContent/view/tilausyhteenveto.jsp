@@ -136,7 +136,7 @@
 				<H1>Tilauksen yhteenveto</H1>
 						
 						<div class="table-responsive">
-                    <table class="table table-hover" align="center" id="pizzataulukko">
+                    <table class="table table-hover" align="center">
                     <h2>Tilattavat pizzat</h2>
 		<tr>
 						<th>Nimi</th>
@@ -169,7 +169,7 @@
 					<% } %>
 		</table>
 		
-		<div class="table-responsive" id="pizzataulukon_kehys">
+		<div class="table-responsive" >
 				<table class="table table-hover" align="center" id="pizzataulukko_asiakkaalle">
 					<h2>Tilaajan tiedot</h2>
 					<tr>
@@ -177,14 +177,13 @@
 						<th>Toimitusosoite</th>
 						<th>Puhelinnumero</th>
 						<th></th>
-					</tr>
+					</tr><br><br>
 					<tr>
-						<th><%=tilaus.getaEtunimi() %> <%=tilaus.getaSukunimi() %></th>
-						<th><%=tilaus.getaOsoite() %><br><%=tilaus.getaPostiNro()%> <%=tilaus.getaPostiTmp() %></th>
-						<th><%=tilaus.getaPuh() %></th>
+						<td><%=tilaus.getaEtunimi() %> <%=tilaus.getaSukunimi() %></td>
+						<td><%=tilaus.getaOsoite() %><br><%=tilaus.getaPostiNro()%> <%=tilaus.getaPostiTmp() %></td>
+						<td><%=tilaus.getaPuh() %></td>
 						<td></td>
 				</table>
-		</div>
 		
 		<!--loppusumman näyttäminen -->		
 				<h2>Loppusumma
@@ -201,16 +200,17 @@
 					
 					<i class="fa fa-eur" aria-hidden="true" ></i> </h2>
 					
-				
+				</div>
 				<div>
 					<button input type="submit" onClick="window.location='tilausvahvistus';" class="btn btn-success btn-lg">Lähetä tilaus</button>
+					<a class="btn btn-default" href="TilaajanTiedot" role="button">Takaisin</a>
 					<a class="btn btn-default" href="ostoskori" role="button">Peruuta</a>
 				</div>
 					
 				
 				<br><p>Ongelmia? Lähetä sähköpostia osoitteeseen apua@silverjavaslayers.fi</p>
 		
-		
+				
 				</div>
 
 			</div>

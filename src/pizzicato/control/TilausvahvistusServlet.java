@@ -1,6 +1,7 @@
 package pizzicato.control;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,32 +20,26 @@ public class TilausvahvistusServlet extends HttpServlet {
        
     public TilausvahvistusServlet() {
         super();
-        // TODO Auto-generated constructor stub
+
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String jsp = "/view/tilausvahvistus.jsp";
 		HttpSession session = request.getSession(true);
 		Tilaus tilaus = (Tilaus) session.getAttribute("tilaus");
+		TilausDAO tilausdao = new TilausDAO();
+		try {
+			tilausdao.addTilaus(tilaus);
+		} catch (SQLException e) {
+			request.setAttribute("message", "Tilauksen lähettäminen epäonnistui!");
+			e.printStackTrace();
+		}
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
 		dispatcher.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		TilausDAO tilausdao = new TilausDAO();
-		Tilaus tilaus;
-		
-		HttpSession session = request.getSession(true);
-		tilaus = (Tilaus) session.getAttribute("tilaus");
-		try {
-			tilausdao.addTilaus(tilaus);
-		} catch (Exception e) {
-			System.out.println("Sovelluksessa tapahtui virhe "+ e.getMessage());
-			e.printStackTrace();
-		}
-		
-		
-		
+	
 	}
 
 }

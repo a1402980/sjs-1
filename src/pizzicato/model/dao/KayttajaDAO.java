@@ -121,7 +121,7 @@ public class KayttajaDAO extends DataAccessObject {
 	      }
    }
    
-   public void create(Kayttaja kayttaja) {
+  /* public void create(Kayttaja kayttaja) {
 	   PreparedStatement statement = null;
 	   Connection connection = null;
 	   try {
@@ -138,7 +138,7 @@ public class KayttajaDAO extends DataAccessObject {
         close(statement, connection);
 	}
    }
-   
+   */
    public void createAsiakas(Kayttaja kayttaja, Asiakas asiakas) {
 	    PreparedStatement statement = null;
 	    Connection conn = null;

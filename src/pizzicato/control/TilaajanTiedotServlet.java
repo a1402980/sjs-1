@@ -43,7 +43,6 @@ public class TilaajanTiedotServlet extends HttpServlet {
 		
 		if (!errors.isEmpty()) {
 			System.out.println(errors);	
-			
 			String jsp = "/view/tilaajan_tiedot.jsp";
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
 			dispatcher.forward(request, response);
@@ -59,11 +58,11 @@ public class TilaajanTiedotServlet extends HttpServlet {
 		request.setAttribute("errors", errors);
 		HttpSession session = request.getSession(true);
 		Tilaus tilaus = (Tilaus) session.getAttribute("tilaus");
-
+		
 		// Asiakkaan tietojen validointi	
 		
 		String enimi = request.getParameter("etunimi");
-		if (enimi == null || enimi.trim().length() < 2 || enimi == " ") {
+		if (enimi == null || enimi.trim().length() < 2) {
 			errors.put("enimi", "Etunimi on pakollinen kenttä.");
 		}else{
 			 tilaus.setaEtunimi(enimi);

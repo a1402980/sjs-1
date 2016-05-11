@@ -163,7 +163,7 @@
 					<a class="btn btn-default" href="ostoskori" role="button">Takaisin</a><br><br>
 				</form>
 				
-			<%} else { %>
+			<%} else {%>
 						
 			<!--  Jos asiakas ei ole kirjautunut, näytetään tyhjä lomake -->
 			
