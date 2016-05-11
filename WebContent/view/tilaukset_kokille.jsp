@@ -144,7 +144,7 @@
 							<tr>
 								<th>TilausId / Pizzan nimi</th>								
 								<th>Status / Pizzan täytteet</th>
-								<th>Tilauksen ajankohta / Lukumäärä</th>
+								<th>Tilauksen ajankohta</th>
 								<th>Kuittaa</th>
 							</tr>
 						</thead>

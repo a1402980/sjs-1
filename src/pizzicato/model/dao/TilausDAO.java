@@ -230,8 +230,8 @@ public class TilausDAO extends DataAccessObject{
 		ArrayList<Tilaus> tilaukset = new ArrayList<Tilaus>();
 		Tilaus tilaus=null;
 		//ArrayList<PizzaTilaus> pizzatilaukset = new ArrayList<PizzaTilaus>();
-		//PizzaTilausDAO pizzatildao = new PizzaTilausDAO();
-		//PizzaTilaus pizzatil;
+		PizzaTilausDAO pizzatildao = new PizzaTilausDAO();
+		PizzaTilaus pizzatil;
 		int edellinenTilausId=0;
 		int nykyinenTilausId=0;
 		try {
@@ -249,7 +249,8 @@ public class TilausDAO extends DataAccessObject{
 					tilaukset.add(tilaus);
 					edellinenTilausId = nykyinenTilausId;
 				}
-				
+				pizzatil = pizzatildao.readPizzaTilaus(rs);
+				tilaus.addPizzaTilaus(pizzatil);
 			}
 
 		
