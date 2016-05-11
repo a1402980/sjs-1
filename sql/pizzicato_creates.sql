@@ -70,8 +70,8 @@ CREATE TABLE pizzatilaus(
 pizzatil_id int NOT NULL AUTO_INCREMENT,
 tilaus_id int NOT NULL,
 pizza_id int NOT NULL,
-oregano enum('true', 'false') NOT NULL,
-valkosipuli enum('true', 'false') NOT NULL,
+oregano enum('true', 'false') NOT NULL default'false',
+valkosipuli enum('true', 'false') NOT NULL default 'false',
 PRIMARY KEY (pizzatil_id),
 FOREIGN KEY (tilaus_id) REFERENCES tilaus(tilaus_id),
 FOREIGN KEY (pizza_id) REFERENCES pizza(pizza_id)

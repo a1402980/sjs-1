@@ -37,11 +37,14 @@ public class TilausDAO extends DataAccessObject{
 			String status=rs.getString("status");
 			Date tilAjankohta=rs.getDate("til_ajankohta");
 			System.out.println(tilAjankohta);
+			int pizzatilId=rs.getInt("pizzatil_id");
 			int pizzaId=rs.getInt("pizza_id");
+			String oregano=rs.getString("oregano");
+			String valkosipuli=rs.getString("valkosipuli");
 			String pNimi=rs.getString("p_nimi");
 			int lkm=rs.getInt("lkm");
 			Pizza pizza = new Pizza(pizzaId, pNimi); 
-			PizzaTilaus pizzatil = new PizzaTilaus(pizza, lkm);
+			PizzaTilaus pizzatil = new PizzaTilaus(pizzatilId, pizza, oregano, valkosipuli);
 			ArrayList<PizzaTilaus> pizzatilaukset = new ArrayList<PizzaTilaus>();
 			pizzatilaukset.add(pizzatil);
 			return new Tilaus(tilausId, status, tilAjankohta, pizzatilaukset);
@@ -58,7 +61,7 @@ public class TilausDAO extends DataAccessObject{
 			System.out.println(tilAjankohta);
 			int pizzaId=rs.getInt("pizza_id");
 			String pNimi=rs.getString("p_nimi");
-			int lkm=rs.getInt("lkm");
+			int pizzatilId=rs.getInt("pizzatil_id");
 			String aEtunimi=rs.getString("a_etunimi");
 			String aSukunimi=rs.getString("a_sukunimi");
 			String aPuh=rs.getString("a_puh");
@@ -66,7 +69,7 @@ public class TilausDAO extends DataAccessObject{
 			int aPostiNro=rs.getInt("a_posti_nro");
 			String aPostiTmp=rs.getString("a_posti_tmp");
 			Pizza pizza = new Pizza(pizzaId, pNimi); 
-			PizzaTilaus pizzatil = new PizzaTilaus(pizza, lkm);
+			PizzaTilaus pizzatil = new PizzaTilaus(pizzatilId, pizza);
 			ArrayList<PizzaTilaus> pizzatilaukset = new ArrayList<PizzaTilaus>();
 			pizzatilaukset.add(pizzatil);
 			return new Tilaus(tilausId, status, tilAjankohta, pizzatilaukset, aEtunimi, aSukunimi, aPuh, aOsoite, aPostiNro, aPostiTmp);
@@ -83,11 +86,11 @@ public class TilausDAO extends DataAccessObject{
 			System.out.println(tilAjankohta);
 			int pizzaId=rs.getInt("pizza_id");
 			String pNimi=rs.getString("p_nimi");
-			int lkm=rs.getInt("lkm");
+			int pizzatilId=rs.getInt("pizzatil_id");
 			double pHinta=rs.getDouble("p_hinta");
 			String pSaatavuus=rs.getString("p_saatavuus");
 			Pizza pizza = new Pizza(pizzaId, pNimi, pHinta, pSaatavuus); 
-			PizzaTilaus pizzatil = new PizzaTilaus(pizza, lkm);
+			PizzaTilaus pizzatil = new PizzaTilaus(pizzatilId, pizza);
 			ArrayList<PizzaTilaus> pizzatilaukset = new ArrayList<PizzaTilaus>();
 			pizzatilaukset.add(pizzatil);
 			return new Tilaus(tilausId, status, tilAjankohta, pizzatilaukset);
@@ -98,12 +101,28 @@ public class TilausDAO extends DataAccessObject{
 	
 	public void addTilaus(Tilaus tilaus) throws SQLException {
 		Connection connection = null;
-		PreparedStatement stmtInsert = null;		
+		PreparedStatement stmtInsert = null;
+		PreparedStatement stmtInsert2 = null;
+		PreparedStatement stmtSelect = null;
+		ResultSet rs = null;
+		int lastId;
 		try {
 			connection = getConnection();
 			String sqlInsert = "INSERT INTO tilaus(a_etunimi, a_sukunimi, a_puh, a_osoite, a_posti_nro, a_posti_tmp) VALUES ('"+tilaus.getaEtunimi()+"','"+tilaus.getaSukunimi()+"','"+tilaus.getaPuh()+"','"+tilaus.getaOsoite()+"',"+tilaus.getaPostiNro()+",'"+tilaus.getaPostiTmp()+"');";
-			stmtInsert = connection.prepareStatement(sqlInsert);		
+			String sqlSelect = "SELECT LAST_INSERT_ID();";
+			
+			stmtInsert = connection.prepareStatement(sqlInsert);
+			stmtSelect = connection.prepareStatement(sqlSelect);		
 			stmtInsert.executeUpdate();
+			rs = stmtSelect.executeQuery();
+			
+			while(rs.next()){
+				lastId = rs.getInt("last_insert_id()");
+				tilaus.setTilausId(lastId);
+			}
+			/**for (int i=0; i < tilaus.getPizzaTilLkm(); i++){
+				String sqlInsert2 = "INSERT INTO pizzatilaus(tilaus_id, pizza_id, oregano, valkosipuli) VALUES ("+pizzatil.getTilausId()+","+pizzatil.getPizza().getPizzaId()+",'"+pizzatil.getOregano()+"','"+pizzatil.getOregano()+"');";
+			}**/
 					            
 		}catch (SQLException e) {
 			throw new RuntimeException(e);

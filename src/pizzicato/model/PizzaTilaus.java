@@ -2,73 +2,90 @@ package pizzicato.model;
 
 public class PizzaTilaus {
 	
-	private Pizza pizza;
+	private int pizzatil_id;
 	private int tilausId;
-	private int lkm;
-	private int rivinro;
-	private int koko = 0;
+	private Pizza pizza;
+	private String oregano;
+	private String valkosipuli;
 	
-
-	public int getKoko() {
-		return koko;
-	}
-	public void setKoko(int koko) {
-		this.koko = koko;
-	}
-	public PizzaTilaus(Pizza pizza, int tilausId, int lkm) {
-		super();
-		this.pizza = pizza;
-		this.tilausId = tilausId;
-		this.lkm = lkm;
-	}
-		
-	public PizzaTilaus(Pizza pizza, int lkm) {
-		super();
-		this.pizza = pizza;
-		this.lkm = lkm;
-	}
 	public PizzaTilaus() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+	public PizzaTilaus(int pizzatil_id, int tilausId, Pizza pizza,
+			String oregano, String valkosipuli) {
+		super();
+		this.pizzatil_id = pizzatil_id;
+		this.tilausId = tilausId;
+		this.pizza = pizza;
+		this.oregano = oregano;
+		this.valkosipuli = valkosipuli;
+	}
 	
-	public int getRivinro() {
-		return rivinro;
+	public PizzaTilaus(int pizzatil_id, Pizza pizza, String oregano,
+			String valkosipuli) {
+		super();
+		this.pizzatil_id = pizzatil_id;
+		this.pizza = pizza;
+		this.oregano = oregano;
+		this.valkosipuli = valkosipuli;
 	}
-	public void setRivinro(int rivinro) {
-		this.rivinro = rivinro;
-	}
-	public Pizza getPizza() {
-		return pizza;
-	}
-	public void setPizza(Pizza pizza) {
+	
+	
+
+	public PizzaTilaus(int pizzatil_id, Pizza pizza) {
+		super();
+		this.pizzatil_id = pizzatil_id;
 		this.pizza = pizza;
 	}
+
+	public int getPizzatil_id() {
+		return pizzatil_id;
+	}
+
+	public void setPizzatil_id(int pizzatil_id) {
+		this.pizzatil_id = pizzatil_id;
+	}
+
 	public int getTilausId() {
 		return tilausId;
 	}
+
 	public void setTilausId(int tilausId) {
 		this.tilausId = tilausId;
 	}
-	public int getLkm() {
-		return lkm;
-	}
-	public void setLkm(int lkm) {
-		this.lkm = lkm;
-	}
-	
-	public double getYhtHinta(){
-		double yhtHinta=0;
-		if(pizza!=null){
-			yhtHinta=lkm*pizza.getpHinta();
-		}
-		return yhtHinta ;
-	}
-	
-	@Override
-	public String toString() {
-		return "PizzaTilaus [pizza=" + pizza + ", tilausId=" + tilausId
-				+ ", lkm=" + lkm + "]";
+
+	public Pizza getPizza() {
+		return pizza;
 	}
 
+	public void setPizza(Pizza pizza) {
+		this.pizza = pizza;
+	}
+
+	public String getOregano() {
+		return oregano;
+	}
+
+	public void setOregano(String oregano) {
+		this.oregano = oregano;
+	}
+
+	public String getValkosipuli() {
+		return valkosipuli;
+	}
+
+	public void setValkosipuli(String valkosipuli) {
+		this.valkosipuli = valkosipuli;
+	}
+
+	@Override
+	public String toString() {
+		return "PizzaTilaus [pizzatil_id=" + pizzatil_id + ", tilausId="
+				+ tilausId + ", pizza=" + pizza + ", oregano=" + oregano
+				+ ", valkosipuli=" + valkosipuli + "]";
+	}
+	
+		
 }
