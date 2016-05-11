@@ -6,6 +6,9 @@
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
 
+<%@ page import="pizzicato.model.Tilaus"%>
+<%@ page import="pizzicato.model.PizzaTilaus"%>
+<jsp:useBean id="tilaus" class="pizzicato.model.Tilaus" scope="session" />
 <%@ page import="pizzicato.model.Pizza"%>
 <%@ page import="pizzicato.model.Tayte"%>
 <%@ page import="pizzicato.model.Kayttaja"%>
@@ -106,7 +109,7 @@
 			<li><a href="Etusivu">Etusivu</a></li>
 			<li><a href="#pizzamenu">Pizzat</a></li>
 			<li><a href="#contact">Yhteystiedot</a></li>
-			<li id="ostoskorinappi2"><a href="ostoskori" class="btn btn-primary" role="button" id="ostoskorinappi"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="badge">7</span></a></li>
+			<li id="ostoskorinappi2"><a href="ostoskori" class="btn btn-primary" role="button" id="ostoskorinappi"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="badge"><%=tilaus.getPizzaTilLkm()%></span></a></li>
 			<li>
 			
 			
