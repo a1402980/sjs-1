@@ -14,11 +14,8 @@ import javax.servlet.http.HttpSession;
 
 import pizzicato.model.Asiakas;
 import pizzicato.model.Kayttaja;
-import pizzicato.model.PizzaTilaus;
 import pizzicato.model.Tilaus;
 import pizzicato.model.dao.AsiakasDAO;
-import pizzicato.model.dao.KayttajaDAO;
-import pizzicato.model.dao.PizzaDAO;
 
 
 @WebServlet("/TilaajanTiedot")
