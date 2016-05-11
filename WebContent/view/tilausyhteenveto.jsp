@@ -10,12 +10,14 @@
 <%@ page import="pizzicato.model.Tilaus"%>
 <%@ page import="pizzicato.model.PizzaTilaus"%>
 <%@ page import="pizzicato.model.Kayttaja"%>
+<%@ page import="pizzicato.model.Asiakas"%>
+<%@ page import="java.text.DecimalFormat"%>
 
-<jsp:useBean id="pizza" class="pizzicato.model.Pizza"
-	scope="request" />
-<jsp:useBean id="tilaus" class="pizzicato.model.Pizza"
-	scope="request" />
+<jsp:useBean id="tilaus" class="pizzicato.model.Tilaus"
+	scope="session" />
 <jsp:useBean id="kayttaja" class="pizzicato.model.Kayttaja"
+	scope="session" />
+	<jsp:useBean id="asiakas" class="pizzicato.model.Asiakas"
 	scope="session" />
 
 <html lang="fi">
@@ -28,7 +30,7 @@
     <!--[if IE]>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <![endif]-->
-    <title>Pizzeria Pizzicato -tilaus tulossa!</title>
+    <title>Pizzeria Pizzicato - Tilausyhteenveto</title>
     <!--REQUIRED STYLE SHEETS-->
     <!-- JQUERY CODE SOURCE -->
     <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
@@ -131,11 +133,85 @@
 	<div class="container">
 		<div class="row text-center for-full-back color-light ">
 			<div class="col-md-8 col-md-offset-2">
-				<H1>Aterimet esiin! Pizzasi on tulossa!</H1>
+				<H1>Tilauksen yhteenveto</H1>
+						
+						<div class="table-responsive">
+                    <table class="table table-hover" align="center" id="pizzataulukko">
+                    <h2>Tilattavat pizzat</h2>
+		<tr>
+						<th>Nimi</th>
+						<th>Täytteet</th>
+						<th>Hinta</th>
+						<th></th>
+					
+					</tr>
+					<%PizzaTilaus pizzatilaus;
+					Pizza pizza;%>
+					<%for (int i = 0; i < tilaus.getPizzaTilLkm(); i++) {%>
+					<tr>		
+						<td>
+						<%pizzatilaus = tilaus.getPizzaTilaus(i); 
+						pizza = pizzatilaus.getPizza();%>
+						<%=pizza.getpNimi()%>						
+						</td>
+						<td>
+						<%for (int j=0; j<pizza.getTaytteet().size(); j++){ %> 
+						
+									<%=pizza.getTayte(j).gettNimi() %>
+								<% } %>
+						</td>
+						<td>
+						<%=pizza.getpHinta()%>
+						</td>
+						<td></td>
 
-
-			
+					</tr>
+					<% } %>
+		</table>
 		
+		<div class="table-responsive" id="pizzataulukon_kehys">
+				<table class="table table-hover" align="center" id="pizzataulukko_asiakkaalle">
+					<h2>Tilaajan tiedot</h2>
+					<tr>
+						<th>Tilaaja</th>
+						<th>Toimitusosoite</th>
+						<th>Puhelinnumero</th>
+						<th></th>
+					</tr>
+					<tr>
+						<th><%=tilaus.getaEtunimi() %> <%=tilaus.getaSukunimi() %></th>
+						<th><%=tilaus.getaOsoite() %><br><%=tilaus.getaPostiNro()%> <%=tilaus.getaPostiTmp() %></th>
+						<th><%=tilaus.getaPuh() %></th>
+						<td></td>
+				</table>
+		</div>
+		
+		<!--loppusumman näyttäminen -->		
+				<h2>Loppusumma
+				 <%double yhteishinta = 0;
+				 PizzaTilaus pizzatilaus2;
+				 for (int i=0;i<tilaus.getPizzaTilLkm();i++){  
+					pizzatilaus2= tilaus.getPizzaTilaus(i);
+					 yhteishinta += pizzatilaus2.getPizza().getpHinta()*1;	
+				}
+				 DecimalFormat des = new DecimalFormat("0.00");
+					String yhthinta = des.format(yhteishinta);%>				
+					 
+					 <%=yhthinta%>
+					
+					<i class="fa fa-eur" aria-hidden="true" ></i> </h2>
+					
+				
+				<div>
+					<button input type="submit" onClick="window.location='tilausvahvistus';" class="btn btn-success btn-lg">Lähetä tilaus</button>
+					<a class="btn btn-default" href="ostoskori" role="button">Peruuta</a>
+				</div>
+					
+				
+				<br><p>Ongelmia? Lähetä sähköpostia osoitteeseen apua@silverjavaslayers.fi</p>
+		
+		
+				</div>
 
 			</div>
 

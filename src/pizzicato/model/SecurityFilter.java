@@ -35,7 +35,7 @@ public class SecurityFilter implements Filter {
 
 	      // Allow access to login functionality.
 	      if (servletPath.equals("/Etusivu") || servletPath.equals("/Rekisteroityminen") || servletPath.equals("/KirjauduUlos") || servletPath.equals("/ostoskori") || servletPath.equals("/PoistaOstoskorista") || servletPath.equals("/TilaajanTiedot")
-	    		  || servletPath.equals("/tilausvahvistus") || servletPath.equals("/ListaaTilauksetKokki") || servletPath.equals("/ListaaTilauksetKuski") || servletPath.equals("/ListaaTilauksetOmistaja") || servletPath.equals("/roolinvalitseminen"))
+	    		  || servletPath.equals("/tilausvahvistus")  || servletPath.equals("/TilausYhteenveto") || servletPath.equals("/ListaaTilauksetKokki") || servletPath.equals("/ListaaTilauksetKuski") || servletPath.equals("/ListaaTilauksetOmistaja") || servletPath.equals("/roolinvalitseminen"))
 	      {
 	         chain.doFilter(req, resp);
 	      } else if (servletPath.endsWith(".css") || servletPath.endsWith(".png") || servletPath.endsWith(".jpg") || servletPath.endsWith(".js") || servletPath.endsWith(".eot") || servletPath.endsWith(".svg")

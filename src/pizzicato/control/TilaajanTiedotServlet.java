@@ -37,48 +37,48 @@ public class TilaajanTiedotServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
-		String jsp = "/view/tilaajan_tiedot.jsp";
-		Map<String, String> errors = validate(request);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {				
 		
-		HttpSession session = request.getSession(true);
-		Tilaus tilaus = (Tilaus) session.getAttribute("tilaus");
+		Map<String, String> errors = validate(request);
 		
 		if (!errors.isEmpty()) {
 			System.out.println(errors);	
-			request.setAttribute("message", errors);
+			
+			String jsp = "/view/tilaajan_tiedot.jsp";
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
 			dispatcher.forward(request, response);
 			return;
 		} else {
-			session.setAttribute("tilaus", tilaus);
-			response.sendRedirect("tilausvahvistus");
+			response.sendRedirect("TilausYhteenveto");
 		}	
 		
 	}
 	
 	public static Map<String, String> validate(HttpServletRequest request) {
 		Map<String, String> errors = new HashMap<String, String>();
+		request.setAttribute("errors", errors);
 		HttpSession session = request.getSession(true);
 		Tilaus tilaus = (Tilaus) session.getAttribute("tilaus");
 
 		// Asiakkaan tietojen validointi	
 		
 		String enimi = request.getParameter("etunimi");
-		if (enimi == null || enimi.trim().length() < 2) {
+		if (enimi == null || enimi.trim().length() < 2 || enimi == " ") {
 			errors.put("enimi", "Etunimi on pakollinen kenttä.");
 		}else{
-			 tilaus.setaEtunimi(enimi);}
+			 tilaus.setaEtunimi(enimi);
+			 }
 		if (enimi.trim().length() > 50 ){
 			errors.put("enimi", "Nimen on oltava lyhyempi kuin 50 merkkiä.");
 		}else{
-			tilaus.setaEtunimi(enimi);}
+			tilaus.setaEtunimi(enimi);
+			}
 		if (enimi.matches("^[a-z åäöA-ZÅÄÖ-]*$")){
 			tilaus.setaEtunimi(enimi);
 		}else{
 			errors.put("enimi", "Nimessä ei saa olla numeroita tai erikoismerkkejä.");
 		}
-				
+
 		String snimi = request.getParameter("sukunimi");
 		if (snimi == null || enimi.trim().length() < 2) {
 			errors.put("snimi", " Sukunimi on pakollinen kenttä.");

@@ -107,6 +107,7 @@
 
 					</ul>
 					
+					
 				<li><a href="Rekisteroityminen">Rekisteröidy</a></li>
 					
 		
@@ -132,29 +133,34 @@
 		<div class="row text-center for-full-back color-light ">
 			<div class="col-md-8 col-md-offset-2">
 				<H1>Asiakastiedot</H1>
-				
+				<div class="alert alert-success">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> 
+			
 				<%
 				
-				if(null!=request.getAttribute("errors"))
+				if(request.getAttribute("errors") != null)
 				{
-					for(int i = 0; i < errors.size(); i++) {
-						out.println(request.getAttribute("<span class=\"errors\">" + errors.get(i) + "</span>"));
-					}
+					//for(int i = 0; i < errors.size(); i++) {
+						out.println(request.getAttribute("<span class=\"errors\"><strong>" + errors.values() + "</strong></span><br>"));
+					//}
 				}%>
-				
-				<span style="color:red;">* Pakollinen kenttä</span>	<br><br>
+				</div>
+				<br><span style="color:red;">* Pakollinen kenttä</span>	<br><br>
 				
 				
 			<!-- Jos asiakas on kirjautuneena, näytetään valmiiksi täytetty lomake-->
 			<%if(kayttaja.getUsername() != null) { %>
 			
 				<form method="post" autocomplete="off">
-				<span style="color:red;">*</span>Etunimi: <br><input type="text" value="<%=asiakas.getEtuNimi() %>" pattern="[a-zåäöA-ZÅÄÖ0-9- ]{2,50}" name="etunimi" oninvalid="setCustomValidity('Nimen on oltava vähintään 2, enintään 30 merkkiä, ei erikoismerkkejä tai numeroita')" oninput="setCustomValidity('')" required ><br><br>
-					<span style="color:red;">*</span>Sukunimi: <br><input type="text" value="<%=asiakas.getSukuNimi() %>" name="sukunimi" pattern="[a-zåäöA-ZÅÄÖ0-9- ]+[a-zåäöA-ZÅÄÖ0-9- ]{2,50}" oninvalid="setCustomValidity('Nimen on oltava vähintään 2, enintään 30 merkkiä, ei erikoismerkkejä tai numeroita')" oninput="setCustomValidity('')" required ><br><br>
-					<span style="color:red;">*</span>Puhelin: <br><input type="text" name="puh" value="<%=asiakas.getPuh() %>" pattern="[0-9]{7,16}" title="Numeron on oltava vähintään 7, enintään 16 merkkiä, ei erikoismerkkejä tai kirjaimia" oninput="setCustomValidity('')" required ><br><br>
-					<span style="color:red;">*</span>Katuosoite: <br><input type="text" name="osoite" value="<%=asiakas.getOsoite() %>" pattern="[a-zåäöA-ZÅÄÖ0-9- ]{2,30}" oninvalid="setCustomValidity('Osoitteen on oltava vähintään 2, enintään 30 merkkiä, ei erikoismerkkejä tai numeroita')" oninput="setCustomValidity('')" required ><br><br>
-					<span style="color:red;">*</span>Postinumero: <br><input type="text" name="postinro" value="<%=asiakas.getPostiNro() %>" pattern="[0-9]{5}" oninvalid="setCustomValidity('Postinumerossa on oltava viisi numeroa!')" oninput="setCustomValidity('')" required ><br><br>
+				<span style="color:red;">*</span>Etunimi: <br><input type="text" 			name="etunimi"	 value="<%=asiakas.getEtuNimi() %>" pattern="[a-zåäöA-ZÅÄÖ0-9- ]{2,50}"  oninvalid="setCustomValidity('Nimen on oltava vähintään 2, enintään 30 merkkiä, ei erikoismerkkejä tai numeroita')" oninput="setCustomValidity('')" required ><br><br>
+					<span style="color:red;">*</span>Sukunimi: <br><input type="text" 		name="sukunimi" value="<%=asiakas.getSukuNimi() %>"  pattern="[a-zåäöA-ZÅÄÖ0-9- ]+[a-zåäöA-ZÅÄÖ0-9- ]{2,50}" oninvalid="setCustomValidity('Nimen on oltava vähintään 2, enintään 30 merkkiä, ei erikoismerkkejä tai numeroita')" oninput="setCustomValidity('')" required ><br><br>
+					<span style="color:red;">*</span>Puhelin: <br><input type="text"		 name="puh" 	value="<%=asiakas.getPuh() %>" 		pattern="[0-9]{7,16}" title="Numeron on oltava vähintään 7, enintään 16 merkkiä, ei erikoismerkkejä tai kirjaimia" oninput="setCustomValidity('')" required ><br><br>
+					<span style="color:red;">*</span>Katuosoite: <br><input type="text" 	name="osoite" 	value="<%=asiakas.getOsoite() %>"	 pattern="[a-zåäöA-ZÅÄÖ0-9- ]{2,30}" oninvalid="setCustomValidity('Osoitteen on oltava vähintään 2, enintään 30 merkkiä, ei erikoismerkkejä tai numeroita')" oninput="setCustomValidity('')" required ><br><br>
+					<span style="color:red;">*</span>Postinumero: <br><input type="text" 	name="postinro" value="<%=asiakas.getPostiNro() %>" pattern="[0-9]{5}" oninvalid="setCustomValidity('Postinumerossa on oltava viisi numeroa!')" oninput="setCustomValidity('')" required ><br><br>
 					<span style="color:red;">*</span>Postitoimipaikka: <br><input type="text" name="postitmp" value="<%=asiakas.getPostiTmp() %>" pattern="[a-zåäöA-ZÅÄÖ- ]{2,15}" oninvalid="setCustomValidity('Postitoimipaikan on oltava vähintään 2, enintään 15 merkkiä, ei erikoismerkkejä tai numeroita')" oninput="setCustomValidity('')" required ><br><br>					
+				
+					<button type="submit" onClick="window.location='TilausYhteenveto';" name="kirjautumisnappi" class="btn btn-success btn-lg">Jatka</button>
+					<a class="btn btn-default" href="ostoskori" role="button">Takaisin</a><br><br>
 				</form>
 				
 			<%} else { %>
@@ -162,19 +168,20 @@
 			<!--  Jos asiakas ei ole kirjautunut, näytetään tyhjä lomake -->
 			
 				<form method="post" autocomplete="off">
-					<span style="color:red;">*</span>Etunimi: <br><input type="text" placeholder="Etunimi" pattern="[a-zåäöA-ZÅÄÖ0-9- ]{2,30}" name="etunimi" oninvalid="setCustomValidity('Nimen on oltava vähintään 2, enintään 30 merkkiä, ei erikoismerkkejä tai numeroita')" oninput="setCustomValidity('')" required ><br><br>
-					<span style="color:red;">*</span>Sukunimi: <br><input type="text" placeholder="Sukunimi" name="sukunimi" pattern="[a-zåäöA-ZÅÄÖ0-9- ]+[a-zåäöA-ZÅÄÖ0-9- ]{2,30}" oninvalid="setCustomValidity('Nimen on oltava vähintään 2, enintään 30 merkkiä, ei erikoismerkkejä tai numeroita')" oninput="setCustomValidity('')" required ><br><br>
+					<span style="color:red;">*</span>Etunimi: <br><input type="text" name="etunimi" placeholder="Etunimi" pattern="[a-zåäöA-ZÅÄÖ0-9- ]{2,30}" oninvalid="setCustomValidity('Nimen on oltava vähintään 2, enintään 30 merkkiä, ei erikoismerkkejä tai numeroita')" oninput="setCustomValidity('')" required ><br><br>
+					<span style="color:red;">*</span>Sukunimi: <br><input type="text"  name="sukunimi" placeholder="Sukunimi" pattern="[a-zåäöA-ZÅÄÖ0-9- ]+[a-zåäöA-ZÅÄÖ0-9- ]{2,30}" oninvalid="setCustomValidity('Nimen on oltava vähintään 2, enintään 30 merkkiä, ei erikoismerkkejä tai numeroita')" oninput="setCustomValidity('')" required ><br><br>
 					<span style="color:red;">*</span>Puhelin: <br><input type="text" name="puh" placeholder="Puhelinnumero" pattern="[0-9]{7,16}" title="Numeron on oltava vähintään 7, enintään 16 merkkiä, ei erikoismerkkejä tai kirjaimia" oninput="setCustomValidity('')" required ><br><br>
 					<span style="color:red;">*</span>Katuosoite: <br><input type="text" name="osoite" placeholder="Katuosoite" pattern="[a-zåäöA-ZÅÄÖ0-9- ]{2,30}" oninvalid="setCustomValidity('Osoitteen on oltava vähintään 2, enintään 30 merkkiä, ei erikoismerkkejä tai numeroita')" oninput="setCustomValidity('')" required ><br><br>
 					<span style="color:red;">*</span>Postinumero: <br><input type="text" name="postinro" placeholder="Postinumero" pattern="[0-9]{5}" oninvalid="setCustomValidity('Postinumerossa on oltava viisi numeroa!')" oninput="setCustomValidity('')" required ><br><br>
 					<span style="color:red;">*</span>Postitoimipaikka: <br><input type="text" name="postitmp" placeholder="Postitoimipaikka" pattern="[a-zåäöA-ZÅÄÖ- ]{2,15}" oninvalid="setCustomValidity('Postitoimipaikan on oltava vähintään 2, enintään 15 merkkiä, ei erikoismerkkejä tai numeroita')" oninput="setCustomValidity('')" required ><br><br>
 					<span style="color:red;">*</span>Sähköposti: <br><input type="text" name="sposti" placeholder="Sähköposti" pattern="[a-zA-Z0-9@.]{6,50}" oninvalid="setCustomValidity('Sähköpostin on oltava vähintään 6, enintään 50 merkkiä, ei muita erikoismerkkejä kuin @')" oninput="setCustomValidity('')" required ><br><br>
 					
+					<button type="submit" onClick="window.location='TilausYhteenveto';" name="kirjautumisnappi" class="btn btn-success btn-lg">Jatka</button>
+					<a class="btn btn-default" href="ostoskori" role="button">Takaisin</a><br><br>
 				</form>
 			<%}%>
 			
-			<button type="submit" onClick="window.location='tilausvahvistus';" name="kirjautumisnappi" class="btn btn-success btn-lg">Tee tilaus</button>
-			<a class="btn btn-default" href="ostoskori" role="button">Takaisin</a><br><br>
+			
 					
 			</div>
 			
