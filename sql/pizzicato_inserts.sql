@@ -114,3 +114,8 @@ INSERT INTO tilaus(a_etunimi, a_sukunimi, a_puh, a_osoite, a_posti_nro, a_posti_
 
 INSERT INTO pizzatilaus(tilaus_id, pizza_id) VALUES (1,157);
 
+/*lisää tilauksiin juomat*/
+alter table tilaus add sprite enum('true', 'false') default 'false';
+alter table tilaus add cola enum('true', 'false') default 'false';
+alter table tilaus add fanta enum('true', 'false') default 'false';
+

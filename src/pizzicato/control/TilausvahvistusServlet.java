@@ -28,10 +28,13 @@ public class TilausvahvistusServlet extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		Tilaus tilaus = (Tilaus) session.getAttribute("tilaus");
 		TilausDAO tilausdao = new TilausDAO();
+		boolean fail = false;
 		try {
 			tilausdao.addTilaus(tilaus);
+			request.setAttribute("fail", fail);
 		} catch (SQLException e) {
-			request.setAttribute("message", "Tilauksen lähettäminen epäonnistui!");
+			fail = true;
+			request.setAttribute("fail", fail);
 			e.printStackTrace();
 		}
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);

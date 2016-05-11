@@ -131,15 +131,23 @@
 	<div class="container">
 		<div class="row text-center for-full-back color-light ">
 			<div class="col-md-8 col-md-offset-2">
+			<%String fail = (String) request.getAttribute("fail");
+			if(fail.equals("false")) {%>
 				<H1>Aterimet esiin! Pizzasi on tulossa!</H1>
-
-
-			
-		
-
+				
+			<%} else {%>
+				<h2>Jokin meni vikaan! Tilaustasi ei lähetetty.</h2>
+				<div>
+					<a class="btn btn-default" href="TilausYhteenveto" role="button">Yritä uudelleen</a>
+					<a class="btn btn-default" href="ostoskori" role="button">Peruuta</a>
+				</div>
+			<%} %>
 			</div>
-
 		</div>
+		
+				<div>
+					<a class="btn btn-default" href="Etusivu#pizzamenu" role="button">Etusivulle</a>
+				</div>
 	</div>
 	</section>
 	<!--End Free Section -->

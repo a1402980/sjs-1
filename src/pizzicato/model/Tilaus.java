@@ -15,6 +15,9 @@ public class Tilaus {
 	private String aOsoite;
 	private int aPostiNro;
 	private String aPostiTmp;
+	private String cola;
+	private String fanta;
+	private String sprite;
 
 	public Tilaus() {
 		super();
@@ -24,7 +27,7 @@ public class Tilaus {
 	public Tilaus(int tilausId, String status, Date tilAjankohta,
 			ArrayList<PizzaTilaus> pizzatilaukset, String aEtunimi,
 			String aSukunimi, String aPuh, String aOsoite, int aPostiNro,
-			String aPostiTmp) {
+			String aPostiTmp, String cola, String fanta, String sprite) {
 		super();
 		this.tilausId = tilausId;
 		this.status = status;
@@ -36,6 +39,9 @@ public class Tilaus {
 		this.aOsoite = aOsoite;
 		this.aPostiNro = aPostiNro;
 		this.aPostiTmp = aPostiTmp;
+		this.cola = cola;
+		this.fanta = fanta;
+		this.sprite = sprite;
 	}
 	
 	public Tilaus(int tilausId, String status, Date tilAjankohta,
@@ -53,6 +59,30 @@ public class Tilaus {
 		this.aPostiTmp = aPostiTmp;
 	}
 	
+	public String getCola() {
+		return cola;
+	}
+
+	public void setCola(String cola) {
+		this.cola = cola;
+	}
+
+	public String getFanta() {
+		return fanta;
+	}
+
+	public void setFanta(String fanta) {
+		this.fanta = fanta;
+	}
+
+	public String getSprite() {
+		return sprite;
+	}
+
+	public void setSprite(String sprite) {
+		this.sprite = sprite;
+	}
+
 	public Tilaus(int tilausId, String status, Date tilAjankohta,
 			ArrayList<PizzaTilaus> pizzatilaukset) {
 		super();
