@@ -31,9 +31,8 @@ public class TilaajanTiedotServlet extends HttpServlet {
 			AsiakasDAO asiakasdao = new AsiakasDAO();
 			Asiakas asiakas = asiakasdao.findCertainAsiakas(kayttaja);
 			session.setAttribute("asiakas", asiakas);
-			
-			System.out.println("asiakkaan tiedot doGet: "+asiakas);
 		} 
+		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
 		dispatcher.forward(request, response);
 	}
@@ -41,16 +40,18 @@ public class TilaajanTiedotServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		String jsp = "/view/tilaajan_tiedot.jsp";
 		Map<String, String> errors = validate(request);
+		
 		HttpSession session = request.getSession(true);
 		Tilaus tilaus = (Tilaus) session.getAttribute("tilaus");
 		
 		if (!errors.isEmpty()) {
 			System.out.println(errors);	
+			request.setAttribute("message", errors);
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
 			dispatcher.forward(request, response);
 			return;
 		} else {
-			System.out.println("doPost: "+tilaus);
+			session.setAttribute("tilaus", tilaus);
 			response.sendRedirect("tilausvahvistus");
 		}	
 		
@@ -64,12 +65,12 @@ public class TilaajanTiedotServlet extends HttpServlet {
 		// Asiakkaan tietojen validointi	
 		
 		String enimi = request.getParameter("etunimi");
-		if (enimi.trim() == null) {
+		if (enimi == null || enimi.trim().length() < 2) {
 			errors.put("enimi", "Etunimi on pakollinen kenttä.");
 		}else{
 			 tilaus.setaEtunimi(enimi);}
-		if (enimi.trim().length() > 30 ){
-			errors.put("enimi", "Nimen on oltava lyhyempi kuin 30 merkkiä.");
+		if (enimi.trim().length() > 50 ){
+			errors.put("enimi", "Nimen on oltava lyhyempi kuin 50 merkkiä.");
 		}else{
 			tilaus.setaEtunimi(enimi);}
 		if (enimi.matches("^[a-z åäöA-ZÅÄÖ-]*$")){
@@ -79,12 +80,12 @@ public class TilaajanTiedotServlet extends HttpServlet {
 		}
 				
 		String snimi = request.getParameter("sukunimi");
-		if (snimi.trim() == null) {
+		if (snimi == null || enimi.trim().length() < 2) {
 			errors.put("snimi", " Sukunimi on pakollinen kenttä.");
 		}else{
 			 tilaus.setaSukunimi(snimi);}
-		if (snimi.trim().length() > 30 ){
-			errors.put("snimi", " Nimen on oltava lyhyempi kuin 30 merkkiä.");
+		if (snimi.trim().length() > 50 ){
+			errors.put("snimi", " Nimen on oltava lyhyempi kuin 50 merkkiä.");
 		}else{
 			tilaus.setaSukunimi(snimi);}
 		if (snimi.matches("^[a-z åäöA-ZÅÄÖ-]*$")){
@@ -94,7 +95,7 @@ public class TilaajanTiedotServlet extends HttpServlet {
 		}
 				
 		String puh = request.getParameter("puh");
-		if (puh.trim() == null || puh.trim().length() < 7 ) {
+		if (puh == null || puh.trim().length() < 7 ) {
 			errors.put("puh", "Puhelinnumeron on oltava vähintään 7 merkkiä.");
 		}else{
 			tilaus.setaPuh(puh);}
