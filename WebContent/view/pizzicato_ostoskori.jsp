@@ -262,7 +262,7 @@
 
 
 				<%=des.format(yhteishinta)%>
-
+				<%session.setAttribute("yhteishinta", yhteishinta); %>
 				
 			
 			</span>

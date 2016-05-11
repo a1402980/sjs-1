@@ -137,13 +137,15 @@
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> 
 			
 				<%
-				
-				if(request.getAttribute("errors") != null)
+				/*Map<String, String> errorit = (Map<String, String>) request.getAttribute("errors");
+			
+				if(errors != null)
 				{
-					//for(int i = 0; i < errors.size(); i++) {
-						out.println(request.getAttribute("<span class=\"errors\"><strong>" + errors.values() + "</strong></span><br>"));
-					//}
-				}%>
+					for(int i = 0; i < errors.size(); i++) {
+						
+						out.println("<span class=\"errors\"><strong>" + errors.values() + "</strong></span><br>");
+					}
+				}*/%>
 				</div>
 				<br><span style="color:red;">* Pakollinen kenttä</span>	<br><br>
 				
@@ -158,7 +160,8 @@
 					<span style="color:red;">*</span>Katuosoite: <br><input type="text" 	name="osoite" 	value="<%=asiakas.getOsoite() %>"	 pattern="[a-zåäöA-ZÅÄÖ0-9- ]{2,30}" oninvalid="setCustomValidity('Osoitteen on oltava vähintään 2, enintään 30 merkkiä, ei erikoismerkkejä tai numeroita')" oninput="setCustomValidity('')" required ><br><br>
 					<span style="color:red;">*</span>Postinumero: <br><input type="text" 	name="postinro" value="<%=asiakas.getPostiNro() %>" pattern="[0-9]{5}" oninvalid="setCustomValidity('Postinumerossa on oltava viisi numeroa!')" oninput="setCustomValidity('')" required ><br><br>
 					<span style="color:red;">*</span>Postitoimipaikka: <br><input type="text" name="postitmp" value="<%=asiakas.getPostiTmp() %>" pattern="[a-zåäöA-ZÅÄÖ- ]{2,15}" oninvalid="setCustomValidity('Postitoimipaikan on oltava vähintään 2, enintään 15 merkkiä, ei erikoismerkkejä tai numeroita')" oninput="setCustomValidity('')" required ><br><br>					
-				
+					<span style="color:red;">*</span>Sähköposti: <br><input type="text" 	name="sposti" 	value="<%=asiakas.getsPosti() %>" pattern="[a-zA-Z0-9@.]{6,50}" oninvalid="setCustomValidity('Sähköpostin on oltava vähintään 6, enintään 50 merkkiä, ei muita erikoismerkkejä kuin @')" oninput="setCustomValidity('')" ><br><br>
+					
 					<button type="submit" onClick="window.location='TilausYhteenveto';" name="kirjautumisnappi" class="btn btn-success btn-lg">Jatka</button>
 					<a class="btn btn-default" href="ostoskori" role="button">Takaisin</a><br><br>
 				</form>
@@ -174,7 +177,7 @@
 					<span style="color:red;">*</span>Katuosoite: <br><input type="text" name="osoite" placeholder="Katuosoite" pattern="[a-zåäöA-ZÅÄÖ0-9- ]{2,30}" oninvalid="setCustomValidity('Osoitteen on oltava vähintään 2, enintään 30 merkkiä, ei erikoismerkkejä tai numeroita')" oninput="setCustomValidity('')" required ><br><br>
 					<span style="color:red;">*</span>Postinumero: <br><input type="text" name="postinro" placeholder="Postinumero" pattern="[0-9]{5}" oninvalid="setCustomValidity('Postinumerossa on oltava viisi numeroa!')" oninput="setCustomValidity('')" required ><br><br>
 					<span style="color:red;">*</span>Postitoimipaikka: <br><input type="text" name="postitmp" placeholder="Postitoimipaikka" pattern="[a-zåäöA-ZÅÄÖ- ]{2,15}" oninvalid="setCustomValidity('Postitoimipaikan on oltava vähintään 2, enintään 15 merkkiä, ei erikoismerkkejä tai numeroita')" oninput="setCustomValidity('')" required ><br><br>
-					<span style="color:red;">*</span>Sähköposti: <br><input type="text" name="sposti" placeholder="Sähköposti" pattern="[a-zA-Z0-9@.]{6,50}" oninvalid="setCustomValidity('Sähköpostin on oltava vähintään 6, enintään 50 merkkiä, ei muita erikoismerkkejä kuin @')" oninput="setCustomValidity('')" required ><br><br>
+					<span style="color:red;">*</span>Sähköposti: <br><input type="text" name="sposti" placeholder="Sähköposti" pattern="[a-zA-Z0-9@.]{6,50}" oninvalid="setCustomValidity('Sähköpostin on oltava vähintään 6, enintään 50 merkkiä, ei muita erikoismerkkejä kuin @')" oninput="setCustomValidity('')" ><br><br>
 					
 					<button type="submit" onClick="window.location='TilausYhteenveto';" name="kirjautumisnappi" class="btn btn-success btn-lg">Jatka</button>
 					<a class="btn btn-default" href="ostoskori" role="button">Takaisin</a><br><br>

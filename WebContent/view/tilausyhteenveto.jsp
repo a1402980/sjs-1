@@ -199,7 +199,7 @@
 					 <%=yhthinta%>
 					
 					<i class="fa fa-eur" aria-hidden="true" ></i> </h2>
-					
+					<%=session.getAttribute("yhteishinta") %>
 				</div>
 				<div>
 					<button input type="submit" onClick="window.location='tilausvahvistus';" class="btn btn-success btn-lg">Lähetä tilaus</button>
