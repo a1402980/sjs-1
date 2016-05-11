@@ -61,6 +61,13 @@ public class Tilaus {
 		this.tilAjankohta = tilAjankohta;
 		this.pizzatilaukset = pizzatilaukset;
 	}
+	
+	public Tilaus(int tilausId, String status, Date tilAjankohta) {
+		super();
+		this.tilausId = tilausId;
+		this.status = status;
+		this.tilAjankohta = tilAjankohta;
+	}
 
 	public int getTilausId() {
 		return tilausId;

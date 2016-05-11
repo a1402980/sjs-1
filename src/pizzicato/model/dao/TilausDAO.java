@@ -37,17 +37,7 @@ public class TilausDAO extends DataAccessObject{
 			String status=rs.getString("status");
 			Date tilAjankohta=rs.getDate("til_ajankohta");
 			System.out.println(tilAjankohta);
-			int pizzatilId=rs.getInt("pizzatil_id");
-			int pizzaId=rs.getInt("pizza_id");
-			String oregano=rs.getString("oregano");
-			String valkosipuli=rs.getString("valkosipuli");
-			String pNimi=rs.getString("p_nimi");
-			int lkm=rs.getInt("lkm");
-			Pizza pizza = new Pizza(pizzaId, pNimi); 
-			PizzaTilaus pizzatil = new PizzaTilaus(pizzatilId, pizza, oregano, valkosipuli);
-			ArrayList<PizzaTilaus> pizzatilaukset = new ArrayList<PizzaTilaus>();
-			pizzatilaukset.add(pizzatil);
-			return new Tilaus(tilausId, status, tilAjankohta, pizzatilaukset);
+			return new Tilaus(tilausId, status, tilAjankohta);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -59,19 +49,12 @@ public class TilausDAO extends DataAccessObject{
 			String status=rs.getString("status");
 			Date tilAjankohta=rs.getDate("til_ajankohta");
 			System.out.println(tilAjankohta);
-			//int pizzaId=rs.getInt("pizza_id");
-			//String pNimi=rs.getString("p_nimi");
-			//int pizzatilId=rs.getInt("pizzatil_id");
 			String aEtunimi=rs.getString("a_etunimi");
 			String aSukunimi=rs.getString("a_sukunimi");
 			String aPuh=rs.getString("a_puh");
 			String aOsoite=rs.getString("a_osoite");
 			int aPostiNro=rs.getInt("a_posti_nro");
 			String aPostiTmp=rs.getString("a_posti_tmp");
-			//Pizza pizza = new Pizza(pizzaId, pNimi); 
-			//PizzaTilaus pizzatil = new PizzaTilaus(pizzatilId, pizza);
-			//ArrayList<PizzaTilaus> pizzatilaukset = new ArrayList<PizzaTilaus>();
-			//pizzatilaukset.add(pizzatil); pizzatilaukset,
 			return new Tilaus(tilausId, status, tilAjankohta, aEtunimi, aSukunimi, aPuh, aOsoite, aPostiNro, aPostiTmp);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -83,17 +66,8 @@ public class TilausDAO extends DataAccessObject{
 			int tilausId=rs.getInt("tilaus_id");
 			String status=rs.getString("status");
 			Date tilAjankohta=rs.getDate("til_ajankohta");
-			System.out.println(tilAjankohta);
-			int pizzaId=rs.getInt("pizza_id");
-			String pNimi=rs.getString("p_nimi");
-			int pizzatilId=rs.getInt("pizzatil_id");
-			double pHinta=rs.getDouble("p_hinta");
-			String pSaatavuus=rs.getString("p_saatavuus");
-			Pizza pizza = new Pizza(pizzaId, pNimi, pHinta, pSaatavuus); 
-			PizzaTilaus pizzatil = new PizzaTilaus(pizzatilId, pizza);
-			ArrayList<PizzaTilaus> pizzatilaukset = new ArrayList<PizzaTilaus>();
-			pizzatilaukset.add(pizzatil);
-			return new Tilaus(tilausId, status, tilAjankohta, pizzatilaukset);
+			System.out.println(tilAjankohta);		
+			return new Tilaus(tilausId, status, tilAjankohta);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -179,7 +153,7 @@ public class TilausDAO extends DataAccessObject{
 		int nykyinenTilausId=0;
 		try {
 			conn = getConnection();
-			String sqlSelect ="SELECT t.tilaus_id, status, til_ajankohta, a_etunimi, a_sukunimi, a_puh, a_osoite, a_posti_nro, a_posti_tmp, pt.pizza_id, p_nimi, p_hinta, p_saatavuus, lkm FROM tilaus t JOIN pizzatilaus pt ON t.tilaus_id = pt.tilaus_id INNER JOIN pizza p ON p.pizza_id = pt.pizza_id ORDER BY til_ajankohta;";
+			String sqlSelect ="SELECT t.tilaus_id, status, til_ajankohta, pizzatil_id, pt.pizza_id, p_nimi, oregano, valkosipuli, p_saatavuus, p_hinta FROM tilaus t JOIN pizzatilaus pt ON t.tilaus_id = pt.tilaus_id INNER JOIN pizza p ON p.pizza_id = pt.pizza_id ORDER BY til_ajankohta;";
 			
 			stmt=conn.prepareStatement(sqlSelect);
 			
@@ -262,7 +236,7 @@ public class TilausDAO extends DataAccessObject{
 		int nykyinenTilausId=0;
 		try {
 			conn = getConnection();
-			String sqlSelect ="SELECT t.tilaus_id, status, til_ajankohta, pt.pizza_id, p_nimi, lkm FROM tilaus t JOIN pizzatilaus pt ON t.tilaus_id = pt.tilaus_id INNER JOIN pizza p ON p.pizza_id = pt.pizza_id WHERE status= 'Odottaa' ORDER BY til_ajankohta;";
+			String sqlSelect ="SELECT t.tilaus_id, status, til_ajankohta, pizzatil_id, pt.pizza_id, p_nimi, oregano, valkosipuli, p_saatavuus, p_hinta FROM tilaus t JOIN pizzatilaus pt ON t.tilaus_id = pt.tilaus_id INNER JOIN pizza p ON p.pizza_id = pt.pizza_id WHERE status= 'Odottaa' ORDER BY til_ajankohta;";
 			
 			stmt=conn.prepareStatement(sqlSelect);
 			
