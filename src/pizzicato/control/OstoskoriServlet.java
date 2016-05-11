@@ -24,14 +24,14 @@ import pizzicato.model.dao.PizzaTilausDAO;
 @WebServlet("/ostoskori")
 public class OstoskoriServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	//näyttää ostoskorin sisällön
+	//nï¿½yttï¿½ï¿½ ostoskorin sisï¿½llï¿½n
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String jsp = "/view/pizzicato_ostoskori.jsp";
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
 		dispatcher.forward(request, response);
 	}
-//lisää ostoskoriin
+//lisï¿½ï¿½ ostoskoriin
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PizzaDAO pizzadao = new PizzaDAO();
 		Tilaus tilaus;
@@ -48,11 +48,11 @@ public class OstoskoriServlet extends HttpServlet {
 		}
 		//luodaan pizzatilaus-olio
 		pizzatilaus= new PizzaTilaus();
-		//lisätään pt-oliolle aseta lkm, pizzaId
+		//lisï¿½tï¿½ï¿½n pt-oliolle aseta lkm, pizzaId
 		String StrLkm = request.getParameter("pizzamaara");
 		int lkm = Integer.parseInt(StrLkm);
-		pizzatilaus.setLkm(lkm);
-		//haetaan valittu pizza ja lisätään pizzatilaukseen
+		//pizzatilaus.setLkm(lkm);
+		//haetaan valittu pizza ja lisï¿½tï¿½ï¿½n pizzatilaukseen
 		String StrPizzaId = request.getParameter("pizza_id");
 		int pizza_id = Integer.parseInt(StrPizzaId);
 		Pizza pizza =pizzadao.findCertainPizza(pizza_id);
@@ -62,7 +62,7 @@ public class OstoskoriServlet extends HttpServlet {
 		//int rivinumero = pizzatilaus.getRivinro();
 		
 		
-		//tilaus-olion pizzatilaukset-listaan lisätään pizzatilausolio
+		//tilaus-olion pizzatilaukset-listaan lisï¿½tï¿½ï¿½n pizzatilausolio
 		for (int i = 0; i < lkm; i++) {
 			
 			
@@ -71,7 +71,7 @@ public class OstoskoriServlet extends HttpServlet {
 			
 			tilaus.addPizzaTilaus(pizzatilaus);
 			
-			pizzatilaus.setKoko(+1);
+			
 			
 			// rivinumero++;
 			/* if (nykyinenRivinro != edellinenRivinro) {

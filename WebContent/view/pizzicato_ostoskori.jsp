@@ -194,7 +194,7 @@
 								%>
 							</td>
 							<td><%=pizza.getpHinta()%></td>
-							<td style="display:none;"><%=pizzatilaus.getLkm()%></td>
+							<td style="display:none;"><%=tilaus.getPizzaTilLkm()%></td>
 							<td><input type="checkbox" name="oregano"> Oregano <input
 								type="checkbox" name="valkosipuli"> Valkosipuli
 							<td>
