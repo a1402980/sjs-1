@@ -68,11 +68,7 @@
 				<li><a href="Etusivu#pizzamenu">Pizzat</a></li>
 				<li><a href="#contact">Yhteystiedot</a></li>
 				<li id="ostoskorinappi2"><a href="ostoskori"
-					class="btn btn-primary" role="button" id="ostoskorinappi"><span
-						class="glyphicon glyphicon-shopping-cart"></span> <span
-						class="badge">
-							
-					</span></a></li>
+					class="btn btn-primary" role="button" id="ostoskorinappi"><span class="glyphicon glyphicon-shopping-cart"></span><span class="badge"><%=tilaus.getPizzaTilLkm()%></span></a></li>
 				<li>
 					<%
 						if (kayttaja!= null &&  kayttaja.getUserRole()!= null){
@@ -150,10 +146,10 @@
 							<th>Nimi</th>
 							<th>Täytteet</th>
 							<th>Hinta</th>
-							<th>Lkm</th>
+							<th style="display:none;">Lkm</th>
 							<th>Lisätäytteet</th>
 							<th></th>
-							<th>Rivi</th>
+							<th style="display:none;">Rivi</th>
 						</tr>
 						<%
 							PizzaTilaus pizzatilaus;
@@ -178,7 +174,7 @@
 								%>
 							</td>
 							<td><%=pizza.getpHinta()%></td>
-							<td><%=pizzatilaus.getLkm()%></td>
+							<td style="display:none;"><%=pizzatilaus.getLkm()%></td>
 							<td><input type="checkbox" name="oregano"> Oregano <input
 								type="checkbox" name="valkosipuli"> Valkosipuli
 							<td>
@@ -186,7 +182,7 @@
 									<span class="glyphicon glyphicon-trash"></span>
 								</button>
 							</td>
-							<td><%=i%></td>
+							<td style="display:none;"><%=i%> </td>
 						</tr>
 						<%
 							}

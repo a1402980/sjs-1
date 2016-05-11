@@ -388,8 +388,21 @@ div#huomio span#ilmoitus {
 }
 
 #ostoskorinvalinnat input{
-	width: 1px;
-}	
+	width: 20px;
+	
+}
+
+#ostoskorinvalinnat input{
+	width: 20px;
+
+	
+}
+
+#ostoskorinvalinnat {
+	font-size: 180%;
+
+	
+}
 
 
 #pizzataulukon_kehys{
@@ -425,4 +438,15 @@ div#huomio span#ilmoitus {
 
 .table-responsive {
     overflow-x: auto;
+}
+
+
+#ostoskori_asiakkaalle button {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    color: red;
 }
