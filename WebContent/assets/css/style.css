@@ -392,6 +392,11 @@ div#huomio span#ilmoitus {
 }	
 
 
+#pizzataulukon_kehys{
+	
+	padding-bottom: 133px;
+}
+
 
 #ostoskorinappi{
 	padding-top: 9px;
@@ -400,7 +405,7 @@ div#huomio span#ilmoitus {
 
 }
 
-#ostoskorinappi2 a:hover{
+#ostoskorinappi2 a:hover, a:focus, a:active {
 	background-color: #3276b1;
 	border-color: #285e8e;
 }
@@ -412,3 +417,12 @@ div#huomio span#ilmoitus {
 	margin:auto;
 }
 
+#tilaustaulu{
+	padding: 1px;
+
+}
+
+
+.table-responsive {
+    overflow-x: auto;
+}

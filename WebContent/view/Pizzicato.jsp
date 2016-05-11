@@ -200,7 +200,7 @@
 			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> 
 			<strong>Pizza lisätty ostoskoriin! (tämä on tässä vain merkkinä siitä mihin viesti tulee kun se on tehty servlettiin)</strong>
 			</div>
-			<div class="table-responsive">
+			<div class="table-responsive" id="pizzataulukon_kehys">
 				<table class="table table-hover" align="center" id="pizzataulukko_asiakkaalle">
 					<tr>
 						<th>Nimi</th>
