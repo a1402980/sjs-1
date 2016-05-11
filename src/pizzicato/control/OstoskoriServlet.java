@@ -65,10 +65,13 @@ public class OstoskoriServlet extends HttpServlet {
 		//tilaus-olion pizzatilaukset-listaan lis‰t‰‰n pizzatilausolio
 		for (int i = 0; i < lkm; i++) {
 			
+			
 		
 			//tilaus.getPizzaTilaus(rivinumero);
 			
 			tilaus.addPizzaTilaus(pizzatilaus);
+			
+			pizzatilaus.setKoko(+1);
 			
 			// rivinumero++;
 			/* if (nykyinenRivinro != edellinenRivinro) {

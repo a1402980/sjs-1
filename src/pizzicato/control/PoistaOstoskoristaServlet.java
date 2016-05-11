@@ -17,25 +17,18 @@ import pizzicato.model.dao.TilausDAO;
 public class PoistaOstoskoristaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-
+	//hakee rivinumeron ja poistaa sillä rivillä olevan pizzan ostoskorista
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession(true);
-		PizzaTilaus pizzatilaus;
-		pizzatilaus = (PizzaTilaus) session.getAttribute("tilaus_id");
-		
 		Tilaus tilaus;
+		tilaus = (Tilaus) session.getAttribute("tilaus");
 		
-		String StrLkm = request.getParameter("pizzamaara");
-		int lkm = Integer.parseInt(StrLkm);
+		String StrRiviNro = request.getParameter("rivinro");
+		int rivinro = Integer.parseInt(StrRiviNro);
 		
-		
-		
-		//session.removeAttribute("tilaus_id");
-		for (int i = 0; i < lkm; i++) {
-			
-		}
-			//tilaus.addPizzaTilaus(pizzatilaus);
+		tilaus.removePizzaTilaus(rivinro);
+	
 		
 		response.sendRedirect("ostoskori");
 	}
