@@ -16,10 +16,12 @@ public class PizzaTilausDAO extends DataAccessObject {
 		try {
 			int tilausId=rs.getInt("tilaus_id");
 			int pizzaId=rs.getInt("pizza_id");
+			String pNimi=rs.getString("p_nimi");
+			String pSaatavuus=rs.getString("p_saatavuus");
+			double pHinta=rs.getDouble("p_hinta");
 			int lkm=rs.getInt("lkm");
-			PizzaDAO pizzadao = new PizzaDAO();
 			Pizza pizza;
-			pizza = pizzadao.findCertainPizza(pizzaId);
+			pizza = new Pizza(pizzaId, pNimi, pHinta, pSaatavuus);
 			return new PizzaTilaus(pizza, tilausId, lkm);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);

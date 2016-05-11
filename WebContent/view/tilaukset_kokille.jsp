@@ -137,7 +137,7 @@
 		<div class="row text-center for-full-back color-light jumbotron" id="tilaustaulu">
 			<H1>Tilaukset</H1>
 			<div class="container" id="kokintilaukset">
-
+ 
 				<div class="table-responsive">
 					<table class="table">
 						<thead>
@@ -159,8 +159,7 @@
 									<form method="post">
 										<input type="submit" class="btn btn-success" name="nappi" role="button" value="<%=tilaukset.get(i).getTilausId()%>">Paistettu<i class="fa fa-check" aria-hidden="true"></i>
 									</form>
-								</td>							
-							</tr>
+								</td>	
 								<%for (int j=0; j<tilaukset.get(i).getPizzatilaukset().size(); j++){ %> 
 								<tr>
 									<td><%=tilaukset.get(i).getPizzaTilaus(j).getPizza().getpNimi()%></td>
@@ -174,8 +173,9 @@
 								</tr>
 							<% } %>	
 								<tr><td></td><td></td><td></td><td></td></tr>
-							<% } %>							
-						</tbody>						
+							</tr>
+							<% } %>	
+							</tbody>						
 					</table>
 				</div>
 

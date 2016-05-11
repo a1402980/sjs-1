@@ -16,7 +16,7 @@ public class PizzaDAO extends DataAccessObject {
 
 		/** 
 		 * Avaa yhteyden tietokantaan. Hakee pizza-olion tiedot.
-		 *  Lisää pizza-olion tiedot tietokantaan. Sulkee yhteyden. 
+		 *  Lisï¿½ï¿½ pizza-olion tiedot tietokantaan. Sulkee yhteyden. 
 		 *  @param pizza pizza-olio**/
 		public void addPizza(Pizza pizza) throws SQLException {
 			Connection connection = null;
@@ -92,7 +92,7 @@ public class PizzaDAO extends DataAccessObject {
 		}
 		/** 
 		 * Avaa tietokantayhteyden. Alustaa pizzat-listan, johon voi sijoittaa pizza-olion.
-		 * Hakee tietokannasta pizzan tiedot ja luo niistä uuden pizza-olion, joka lisätään
+		 * Hakee tietokannasta pizzan tiedot ja luo niistï¿½ uuden pizza-olion, joka lisï¿½tï¿½ï¿½n
 		 * pizzat-listaan. Sulkee tietokantayhteyden. 
 		 * Palauttaa lopuksi koko pizzat-listan.
 		 * Hakee kaikki listalla olevat pizzat tietokannasta 
@@ -188,7 +188,7 @@ public class PizzaDAO extends DataAccessObject {
 		 * Avaa tietokantayhteyden. 
 		 * Hakee yhden pizzan tiedot tietokannasta kyseisen pizzan id:n perusteella 
 		 * Sulkee tietokantayhteyden. Palauttaa lopuksi pizzan tiedot.
-		 * @param pizzaId id tulee muokkaapizzaservletistä, tietokannan automaattisesti luoma id
+		 * @param pizzaId id tulee muokkaapizzaservletistï¿½, tietokannan automaattisesti luoma id
 		 * @return Pizza -olio
 		 * **/
 		public Pizza findCertainPizza(int pizzaId) {
@@ -267,7 +267,7 @@ public class PizzaDAO extends DataAccessObject {
 				double pHinta=rs.getDouble("p_hinta");
 				String pSaatavuus=rs.getString("p_saatavuus");						
 					if (pSaatavuus.equalsIgnoreCase("true")){
-						pSaatavuus = "kyllä";
+						pSaatavuus = "kyllÃ¤";
 					}else if(pSaatavuus.equalsIgnoreCase("false")){
 						pSaatavuus = "ei";
 					}
@@ -280,7 +280,7 @@ public class PizzaDAO extends DataAccessObject {
 		 * Avaa tietokantayhteyden.
 		 * Poistaa tietokannasta yhden pizzan halutun pizzan id:n perusteella 
 		 * Sulkee tietokantayhteyden.
-		 * @param pizzaId id tulee poistapizzaservletistä, tietokannan automaattisesti luoma id
+		 * @param pizzaId id tulee poistapizzaservletistï¿½, tietokannan automaattisesti luoma id
 		 * **/
 		public Pizza deletePizza(int pizzaId){
 			Connection conn = null;

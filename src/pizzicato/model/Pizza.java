@@ -44,6 +44,12 @@ public class Pizza {
 		this.pSaatavuus = pSaatavuus;
 		this.taytteet = taytteet;
 	}
+	
+	public Pizza(int pizzaId, String pNimi) {
+		super();
+		this.pizzaId = pizzaId;
+		this.pNimi = pNimi;
+	}
 
 	public String getpSaatavuus() {
 		return pSaatavuus;

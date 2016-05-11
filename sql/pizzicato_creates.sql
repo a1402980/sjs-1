@@ -67,15 +67,13 @@ FOREIGN KEY (asiakas_id) REFERENCES asiakas(asiakas_id)
 
 
 CREATE TABLE pizzatilaus(
+pizzatil_id int NOT NULL AUTO_INCREMENT,
 tilaus_id int NOT NULL,
 pizza_id int NOT NULL,
-lkm int NOT NULL,
-PRIMARY KEY (tilaus_id, pizza_id),
+oregano enum('true', 'false') NOT NULL,
+valkosipuli enum('true', 'false') NOT NULL,
+PRIMARY KEY (pizzatil_id),
 FOREIGN KEY (tilaus_id) REFERENCES tilaus(tilaus_id),
 FOREIGN KEY (pizza_id) REFERENCES pizza(pizza_id)
 )Engine="InnoDB";
-
-CREATE VIEW v_tilausnakyma AS SELECT t.tilaus_id, status, til_ajankohta, pt.pizza_id, lkm, p_nimi, p_hinta*lkm
-FROM tilaus t JOIN pizzatilaus pt ON t.tilaus_id = pt.tilaus_id JOIN pizza p ON pt.pizza_id = p.pizza_id;
-
 

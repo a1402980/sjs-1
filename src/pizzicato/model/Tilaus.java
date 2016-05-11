@@ -52,6 +52,15 @@ public class Tilaus {
 		this.aPostiNro = aPostiNro;
 		this.aPostiTmp = aPostiTmp;
 	}
+	
+	public Tilaus(int tilausId, String status, Date tilAjankohta,
+			ArrayList<PizzaTilaus> pizzatilaukset) {
+		super();
+		this.tilausId = tilausId;
+		this.status = status;
+		this.tilAjankohta = tilAjankohta;
+		this.pizzatilaukset = pizzatilaukset;
+	}
 
 	public int getTilausId() {
 		return tilausId;

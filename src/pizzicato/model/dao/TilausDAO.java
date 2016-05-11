@@ -31,6 +31,71 @@ public class TilausDAO extends DataAccessObject{
 		}
 	}
 	
+	private Tilaus readTilauksetKokki(ResultSet rs) {
+		try {
+			int tilausId=rs.getInt("tilaus_id");
+			String status=rs.getString("status");
+			Date tilAjankohta=rs.getDate("til_ajankohta");
+			System.out.println(tilAjankohta);
+			int pizzaId=rs.getInt("pizza_id");
+			String pNimi=rs.getString("p_nimi");
+			int lkm=rs.getInt("lkm");
+			Pizza pizza = new Pizza(pizzaId, pNimi); 
+			PizzaTilaus pizzatil = new PizzaTilaus(pizza, lkm);
+			ArrayList<PizzaTilaus> pizzatilaukset = new ArrayList<PizzaTilaus>();
+			pizzatilaukset.add(pizzatil);
+			return new Tilaus(tilausId, status, tilAjankohta, pizzatilaukset);
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	private Tilaus readTilauksetKuski(ResultSet rs) {
+		try {
+			int tilausId=rs.getInt("tilaus_id");
+			String status=rs.getString("status");
+			Date tilAjankohta=rs.getDate("til_ajankohta");
+			System.out.println(tilAjankohta);
+			int pizzaId=rs.getInt("pizza_id");
+			String pNimi=rs.getString("p_nimi");
+			int lkm=rs.getInt("lkm");
+			String aEtunimi=rs.getString("a_etunimi");
+			String aSukunimi=rs.getString("a_sukunimi");
+			String aPuh=rs.getString("a_puh");
+			String aOsoite=rs.getString("a_osoite");
+			int aPostiNro=rs.getInt("a_posti_nro");
+			String aPostiTmp=rs.getString("a_posti_tmp");
+			Pizza pizza = new Pizza(pizzaId, pNimi); 
+			PizzaTilaus pizzatil = new PizzaTilaus(pizza, lkm);
+			ArrayList<PizzaTilaus> pizzatilaukset = new ArrayList<PizzaTilaus>();
+			pizzatilaukset.add(pizzatil);
+			return new Tilaus(tilausId, status, tilAjankohta, pizzatilaukset, aEtunimi, aSukunimi, aPuh, aOsoite, aPostiNro, aPostiTmp);
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	private Tilaus readTilauksetOmistaja(ResultSet rs) {
+		try {
+			int tilausId=rs.getInt("tilaus_id");
+			String status=rs.getString("status");
+			Date tilAjankohta=rs.getDate("til_ajankohta");
+			System.out.println(tilAjankohta);
+			int pizzaId=rs.getInt("pizza_id");
+			String pNimi=rs.getString("p_nimi");
+			int lkm=rs.getInt("lkm");
+			double pHinta=rs.getDouble("p_hinta");
+			String pSaatavuus=rs.getString("p_saatavuus");
+			Pizza pizza = new Pizza(pizzaId, pNimi, pHinta, pSaatavuus); 
+			PizzaTilaus pizzatil = new PizzaTilaus(pizza, lkm);
+			ArrayList<PizzaTilaus> pizzatilaukset = new ArrayList<PizzaTilaus>();
+			pizzatilaukset.add(pizzatil);
+			return new Tilaus(tilausId, status, tilAjankohta, pizzatilaukset);
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
 	public void addTilaus(Tilaus tilaus) throws SQLException {
 		Connection connection = null;
 		PreparedStatement stmtInsert = null;		
@@ -96,7 +161,7 @@ public class TilausDAO extends DataAccessObject{
 			while(rs.next()) {
 				nykyinenTilausId = rs.getInt("tilaus_id");
 				if (nykyinenTilausId != edellinenTilausId) {
-					tilaus = readTilaus(rs);
+					tilaus = readTilauksetOmistaja(rs);
 					tilaukset.add(tilaus);
 					edellinenTilausId = nykyinenTilausId;
 				}
@@ -138,7 +203,7 @@ public class TilausDAO extends DataAccessObject{
 			while(rs.next()) {
 				nykyinenTilausId = rs.getInt("tilaus_id");
 				if (nykyinenTilausId != edellinenTilausId) {
-					tilaus = readTilaus(rs);
+					tilaus = readTilauksetKuski(rs);
 					tilaukset.add(tilaus);
 					edellinenTilausId = nykyinenTilausId;
 				}
@@ -164,13 +229,13 @@ public class TilausDAO extends DataAccessObject{
 		ArrayList<Tilaus> tilaukset = new ArrayList<Tilaus>();
 		Tilaus tilaus=null;
 		//ArrayList<PizzaTilaus> pizzatilaukset = new ArrayList<PizzaTilaus>();
-		PizzaTilausDAO pizzatildao = new PizzaTilausDAO();
-		PizzaTilaus pizzatil;
+		//PizzaTilausDAO pizzatildao = new PizzaTilausDAO();
+		//PizzaTilaus pizzatil;
 		int edellinenTilausId=0;
 		int nykyinenTilausId=0;
 		try {
 			conn = getConnection();
-			String sqlSelect ="SELECT t.tilaus_id, status, til_ajankohta, a_etunimi, a_sukunimi, a_puh, a_osoite, a_posti_nro, a_posti_tmp, pt.pizza_id, p_nimi, lkm FROM tilaus t JOIN pizzatilaus pt ON t.tilaus_id = pt.tilaus_id INNER JOIN pizza p ON p.pizza_id = pt.pizza_id WHERE status= 'Odottaa' ORDER BY til_ajankohta;";
+			String sqlSelect ="SELECT t.tilaus_id, status, til_ajankohta, pt.pizza_id, p_nimi, lkm FROM tilaus t JOIN pizzatilaus pt ON t.tilaus_id = pt.tilaus_id INNER JOIN pizza p ON p.pizza_id = pt.pizza_id WHERE status= 'Odottaa' ORDER BY til_ajankohta;";
 			
 			stmt=conn.prepareStatement(sqlSelect);
 			
@@ -179,12 +244,11 @@ public class TilausDAO extends DataAccessObject{
 			while(rs.next()) {
 				nykyinenTilausId = rs.getInt("tilaus_id");
 				if (nykyinenTilausId != edellinenTilausId) {
-					tilaus = readTilaus(rs);
+					tilaus = readTilauksetKokki(rs);
 					tilaukset.add(tilaus);
 					edellinenTilausId = nykyinenTilausId;
 				}
-				pizzatil = pizzatildao.readPizzaTilaus(rs);
-				tilaus.addPizzaTilaus(pizzatil);
+				
 			}
 
 		

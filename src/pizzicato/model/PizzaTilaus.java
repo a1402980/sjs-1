@@ -21,6 +21,12 @@ public class PizzaTilaus {
 		this.tilausId = tilausId;
 		this.lkm = lkm;
 	}
+		
+	public PizzaTilaus(Pizza pizza, int lkm) {
+		super();
+		this.pizza = pizza;
+		this.lkm = lkm;
+	}
 	public PizzaTilaus() {
 		super();
 		// TODO Auto-generated constructor stub
