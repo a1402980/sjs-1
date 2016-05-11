@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import pizzicato.model.Pizza;
 import pizzicato.model.Tilaus;
+
 import pizzicato.model.dao.PizzaDAO;
 import pizzicato.model.dao.PizzaTilausDAO;
 import pizzicato.model.dao.TilausDAO;
@@ -25,14 +26,12 @@ public class ListaaTilauksetOmistaja extends HttpServlet {
  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		TilausDAO tilausdao = new TilausDAO();
-		//PizzaDAO pizzadao = new PizzaDAO();
-		//PizzaTilausDAO pizzatildao = new PizzaTilausDAO();
-		
-		
+				
 		ArrayList<Tilaus> tilaukset = tilausdao.omistajaFindAll();
-		
-		
+				
 		request.setAttribute("tilaukset", tilaukset);		
+		
+		System.out.println(tilaukset);
 			
 		String jsp = "/view/tilaukset_omistajalle.jsp";
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);

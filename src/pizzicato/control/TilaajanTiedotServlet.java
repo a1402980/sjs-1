@@ -16,6 +16,7 @@ import pizzicato.model.Asiakas;
 import pizzicato.model.Kayttaja;
 import pizzicato.model.PizzaTilaus;
 import pizzicato.model.Tilaus;
+import pizzicato.model.dao.AsiakasDAO;
 import pizzicato.model.dao.KayttajaDAO;
 import pizzicato.model.dao.PizzaDAO;
 
@@ -23,131 +24,106 @@ import pizzicato.model.dao.PizzaDAO;
 @WebServlet("/TilaajanTiedot")
 public class TilaajanTiedotServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	//Ei valmis!
+
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String jsp = "/view/tilaajan_tiedot.jsp";
+		HttpSession session = request.getSession(true);
+		Kayttaja kayttaja = (Kayttaja) session.getAttribute("kayttaja");
+		if (kayttaja != null){
+			AsiakasDAO asiakasdao = new AsiakasDAO();
+			Asiakas asiakas = asiakasdao.findCertainAsiakas(kayttaja);
+			session.setAttribute("asiakas", asiakas);
+			
+			System.out.println("asiakkaan tiedot doGet: "+asiakas);
+		} 
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
-		request.getAttribute("errors");
 		dispatcher.forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PizzaDAO pizzadao = new PizzaDAO();
-		Tilaus tilaus;
-		PizzaTilaus pizzatilaus;
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
+		String jsp = "/view/tilaajan_tiedot.jsp";
 		Map<String, String> errors = validate(request);
-		
-		
 		HttpSession session = request.getSession(true);
-		tilaus = (Tilaus) session.getAttribute("tilaus");
+		Tilaus tilaus = (Tilaus) session.getAttribute("tilaus");
 		
 		if (!errors.isEmpty()) {
-			System.out.println(errors);
-			
-			response.sendRedirect("TilaajanTiedot");
+			System.out.println(errors);	
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
+			dispatcher.forward(request, response);
+			return;
 		} else {
-			
+			System.out.println("doPost: "+tilaus);
 			response.sendRedirect("tilausvahvistus");
 		}	
 		
 	}
 	
-	//Validointi kaipaa muokkausta, kopioin sen suoraan rekisteröitymisestä
-	//Esim käyttäjän validointia ei tarvita	
 	public static Map<String, String> validate(HttpServletRequest request) {
 		Map<String, String> errors = new HashMap<String, String>();
-		Kayttaja kayttaja = new Kayttaja();
-		Asiakas asiakas = new Asiakas();
-	
-	
-		String username = request.getParameter("kayttajatunnus");
-		if (username == null || username.trim().length() < 2 ) {
-			errors.put("nimi", " Nimen on oltava vï¿½hintï¿½ï¿½n 2 merkkiï¿½ pitkï¿½.");
-		}else{
-			kayttaja.setUsername(username);}
-		if (username.trim().length() > 30 ){
-			errors.put("nimi", " Nimen on oltava lyhyempi kuin 30 merkkiï¿½.");
-		}else{
-			kayttaja.setUsername(username);}
-		if (username.matches("^[a-zA-Z0-9]*$")){
-			kayttaja.setUsername(username);	
-		}else{
-			errors.put("nimi", " Nimessï¿½ ei saa olla erikoismerkkejï¿½.");
-		}
-		
-		String password = request.getParameter("salasana");
-		
-		if (password == null || password.trim().length() < 8 ) {
-			errors.put("salasana", " Salasanan on oltava vï¿½hintï¿½ï¿½n 8 merkkiï¿½ pitkï¿½.");
-		}else{
-			kayttaja.setPassword(password);
-		}
-		String userrole = "asiakas";
-		kayttaja.setUserRole(userrole);
-		request.setAttribute("kayttaja", kayttaja);
-		
+		HttpSession session = request.getSession(true);
+		Tilaus tilaus = (Tilaus) session.getAttribute("tilaus");
+
 		// Asiakkaan tietojen validointi	
 		
 		String enimi = request.getParameter("etunimi");
-		if (enimi == null || enimi.trim().length() < 2 ) {
-			errors.put("enimi", " Nimen on oltava vÃ¤hintÃ¤Ã¤n 2 merkkiÃ¤ pitkÃ¤.");
+		if (enimi.trim() == null) {
+			errors.put("enimi", "Etunimi on pakollinen kenttä.");
 		}else{
-			 asiakas.setEtuNimi(enimi);}
+			 tilaus.setaEtunimi(enimi);}
 		if (enimi.trim().length() > 30 ){
-			errors.put("enimi", " Nimen on oltava lyhyempi kuin 30 merkkiÃ¤.");
+			errors.put("enimi", "Nimen on oltava lyhyempi kuin 30 merkkiä.");
 		}else{
-			asiakas.setEtuNimi(enimi);}
-		if (enimi.matches("^[a-zÃ¥Ã¤Ã¶A-ZÃ…Ã„Ã–-]*$")){
-			asiakas.setEtuNimi(enimi);
+			tilaus.setaEtunimi(enimi);}
+		if (enimi.matches("^[a-z åäöA-ZÅÄÖ-]*$")){
+			tilaus.setaEtunimi(enimi);
 		}else{
-			errors.put("enimi", " NimessÃ¤ ei saa olla numeroita tai erikoismerkkejÃ¤.");
+			errors.put("enimi", "Nimessä ei saa olla numeroita tai erikoismerkkejä.");
 		}
 				
 		String snimi = request.getParameter("sukunimi");
-		if (snimi == null || snimi.trim().length() < 2 ) {
-			errors.put("snimi", " Nimen on oltava vÃ¤hintÃ¤Ã¤n 2 merkkiÃ¤ pitkÃ¤.");
+		if (snimi.trim() == null) {
+			errors.put("snimi", " Sukunimi on pakollinen kenttä.");
 		}else{
-			 asiakas.setSukuNimi(snimi);}
+			 tilaus.setaSukunimi(snimi);}
 		if (snimi.trim().length() > 30 ){
-			errors.put("snimi", " Nimen on oltava lyhyempi kuin 30 merkkiÃ¤.");
+			errors.put("snimi", " Nimen on oltava lyhyempi kuin 30 merkkiä.");
 		}else{
-			asiakas.setSukuNimi(snimi);}
-		if (snimi.matches("^[a-zÃ¥Ã¤Ã¶A-ZÃ…Ã„Ã–-]*$")){
-			asiakas.setSukuNimi(snimi);
+			tilaus.setaSukunimi(snimi);}
+		if (snimi.matches("^[a-z åäöA-ZÅÄÖ-]*$")){
+			tilaus.setaSukunimi(snimi);
 		}else{
-			errors.put("snimi", " NimessÃ¤ ei saa olla numeroita tai erikoismerkkejÃ¤.");
+			errors.put("snimi", " Nimessä ei saa olla numeroita tai erikoismerkkejä.");
 		}
 				
 		String puh = request.getParameter("puh");
-		if (puh == null || puh.trim().length() < 7 ) {
-			errors.put("puh", "Puhelinnumeron on oltava vÃ¤hintÃ¤Ã¤n 7 merkkiÃ¤");
+		if (puh.trim() == null || puh.trim().length() < 7 ) {
+			errors.put("puh", "Puhelinnumeron on oltava vähintään 7 merkkiä.");
 		}else{
-			asiakas.setPuh(puh);}
+			tilaus.setaPuh(puh);}
 		if (puh.trim().length() > 16 ){
-			errors.put("puh", " Puhelinnumeron oltava on oltava lyhyempi kuin 16 merkkiÃ¤.");
+			errors.put("puh", " Puhelinnumeron oltava on oltava lyhyempi kuin 16 merkkiä.");
 		}else{
-			asiakas.setPuh(puh);}
+			tilaus.setaPuh(puh);}
 		if (puh.matches("^[0-9]*$")){
-			asiakas.setPuh(puh);
+			tilaus.setaPuh(puh);
 		}else{
-			errors.put("puh", " Puhelinnumerossa ei saa olla kirjaimia tai erikoismerkkejÃ¤.");
+			errors.put("puh", " Puhelinnumerossa ei saa olla kirjaimia tai erikoismerkkejä.");
 		}
 				
 		String osoite = request.getParameter("osoite");
-		if (osoite == null || osoite.trim().length() < 2 ) {
-			errors.put("osoite", " Osoitteen on oltava vÃ¤hintÃ¤Ã¤n 2 merkkiÃ¤ pitkÃ¤.");
+		if (osoite.trim() == null || osoite.trim().length() < 2 ) {
+			errors.put("osoite", " Osoitteen on oltava vähintän 2 merkkiä pitkä.");
 		}else{
-			 asiakas.setOsoite(osoite);}
+			 tilaus.setaOsoite(osoite);}
 		if (osoite.trim().length() > 30 ){
-			errors.put("osoite", " Osoitteen on oltava lyhyempi kuin 30 merkkiÃ¤.");
+			errors.put("osoite", " Osoitteen on oltava lyhyempi kuin 30 merkkiä.");
 		}else{
-			asiakas.setOsoite(osoite);}
-		if (osoite.matches("^[a-z Ã¥Ã¤Ã¶A-ZÃ…Ã„Ã–0-9-]*$")){
-			asiakas.setOsoite(osoite);
+			tilaus.setaOsoite(osoite);}
+		if (osoite.matches("^[a-z åäöA-ZÅÄÖ–0-9-]*$")){
+			tilaus.setaOsoite(osoite);
 		}else{
-			errors.put("osoite", "Osoitteessa ei saa olla erikoismerkkejÃ¤.");
+			errors.put("osoite", "Osoitteessa ei saa olla erikoismerkkejä.");
 		}
 				
 		String strPNro = request.getParameter("postinro");
@@ -155,46 +131,29 @@ public class TilaajanTiedotServlet extends HttpServlet {
 		if (strPNro == null || strPNro.trim().length() != 5 ) {
 			errors.put("postinro", "Postinumeron on oltava 5 numeroa");
 		}else{
-			asiakas.setPostiNro(pNro);}
+			tilaus.setaPostiNro(pNro);}
 		if (strPNro.matches("^[0-9]*$")){
-			asiakas.setPostiNro(pNro);
+			tilaus.setaPostiNro(pNro);
 		}else{
 			errors.put("postinro", " Postinumerossa ei saa olla kirjaimia tai erikoismerkkejä.");
 		}
 				
 				
 		String pTmp = request.getParameter("postitmp");
-		if (pTmp == null || pTmp.trim().length() < 2 ) {
+		if (pTmp.trim() == null || pTmp.trim().length() < 2 ) {
 			errors.put("postitmp", " Postitoimipaikan on oltava vähintään 2 merkkiä pitkä.");
 		}else{
-			 asiakas.setPostiTmp(pTmp);}
+			 tilaus.setaPostiTmp(pTmp);}
 		if (pTmp.trim().length() > 15 ){
 			errors.put("postitmp", " Postitoimipaikan on oltava lyhyempi kuin 15 merkkiä.");
 		}else{
-			asiakas.setPostiTmp(pTmp);}
+			tilaus.setaPostiTmp(pTmp);}
 		if (pTmp.matches("^[a-z åäöA-ZÅÄÖ-]*$")){
-			asiakas.setPostiTmp(pTmp);
+			tilaus.setaPostiTmp(pTmp);
 		}else{
 			errors.put("postitmp", "Postitoimipaikassa ei saa olla erikoismerkkejä.");
 		}
-				
-		String sPosti = request.getParameter("sposti");
-		if (sPosti == null || sPosti.trim().length() < 6 ) {
-			errors.put("sposti", " Sähköpostin on oltava vähintään 6 merkkiä pitkä.");
-		}else{
-			 asiakas.setsPosti(sPosti);}
-		if (sPosti.trim().length() > 50 ){
-			errors.put("sposti", " Sähköpostin on oltava lyhyempi kuin 50 merkkiä.");
-		}else{
-			asiakas.setsPosti(sPosti);}
-		if (sPosti.matches("^[a-zA-Z0-9@.]*$")){
-			asiakas.setsPosti(sPosti);
-		}else{
-			errors.put("sposti", "SÃ¤hkÃ¶postissa ei saa olla erikoismerkkejÃ¤.");
-		}
-				
-				request.setAttribute("asiakas", asiakas);
-		
+						
 		return errors;
 	}
 

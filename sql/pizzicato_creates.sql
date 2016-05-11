@@ -32,16 +32,17 @@ PRIMARY KEY (kayttaja_id)
 
 
 CREATE TABLE asiakas(
-asiakas_id int NOT NULL,
+asiakas_id int NOT NULL AUTO_INCREMENT,
 etunimi varchar(30) NOT NULL,
 sukunimi varchar(30) NOT NULL,
 puh varchar(15) NOT NULL,
 osoite varchar(30) NOT NULL,
 posti_nro char(5) NOT NULL,
 posti_tmp varchar(15) NOT NULL,
-s_posti varchar(15) NOT NULL,
+s_posti varchar(15),
+kayttaja_id int NOT NULL,
 PRIMARY KEY (asiakas_id),
-FOREIGN KEY (asiakas_id) REFERENCES kayttaja(kayttaja_id)
+FOREIGN KEY (kayttaja_id) REFERENCES kayttaja(kayttaja_id)
 )Engine="InnoDB";
 
 

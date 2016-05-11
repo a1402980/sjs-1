@@ -10,6 +10,7 @@ import java.util.List;
 
 import pizzicato.model.Asiakas;
 import pizzicato.model.Kayttaja;
+import pizzicato.model.Tayte;
 import pizzicato.model.dao.DataAccessObject;
 
 public class KayttajaDAO extends DataAccessObject {
@@ -148,25 +149,43 @@ public class KayttajaDAO extends DataAccessObject {
 	    ResultSet rs = null;
 	    int lastId = 0;
 	    try {
-	      conn = getConnection();
-	      String sql = "insert into kayttaja (username, password, userrole) values (?, ?, ?)";
-	      String sqlSelect = "SELECT LAST_INSERT_ID();";
-	      statement = conn.prepareStatement(sql);
-	      stmtSelect = conn.prepareStatement(sqlSelect);
-	      statement.setString(1, kayttaja.getUsername());
-	      statement.setString(2, kayttaja.getPassword());
-	      statement.setString(3, kayttaja.getUserRole());
-	      statement.executeUpdate();
-	      rs = stmtSelect.executeQuery();
+	    	conn = getConnection();
+		    conn.setAutoCommit(false);
+		    String sqlInsert = "insert into kayttaja (username, password, userrole) values (?, ?, ?)";
+		    String sqlSelect = "SELECT LAST_INSERT_ID();";
+		    statement = conn.prepareStatement(sqlInsert);
+		    stmtSelect = conn.prepareStatement(sqlSelect);
+		    statement.setString(1, kayttaja.getUsername());
+		    statement.setString(2, kayttaja.getPassword());
+		    statement.setString(3, kayttaja.getUserRole());
+		    statement.executeUpdate();
+		    rs = stmtSelect.executeQuery();
 	   	  
-	      while(rs.next()) {
-	    	lastId = rs.getInt("last_insert_id()");
-			kayttaja.setId(lastId);
-	      }
-	      AsiakasDAO asiakasdao = new AsiakasDAO();
-	      Asiakas uusiAsiakas = new Asiakas(kayttaja.getId(), asiakas.getEtuNimi(), asiakas.getSukuNimi(), asiakas.getPuh(), asiakas.getOsoite(), asiakas.getPostiNro(), asiakas.getPostiTmp(), asiakas.getsPosti());
-	      asiakasdao.createAsiakas(uusiAsiakas);
+		    while(rs.next()) {
+			    lastId = rs.getInt("last_insert_id()");
+				kayttaja.setId(lastId);
+		    } 
+	      
+	      	String sqlInsert2 = "INSERT INTO asiakas(etunimi, sukunimi, puh, osoite, posti_nro, posti_tmp, s_posti, kayttaja_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";		
+			statement = conn.prepareStatement(sqlInsert2);
+								
+			statement.setString(1, asiakas.getEtuNimi());
+			statement.setString(2, asiakas.getSukuNimi());
+			statement.setString(3, asiakas.getPuh());
+			statement.setString(4, asiakas.getOsoite());
+			statement.setInt(5, asiakas.getPostiNro());
+			statement.setString(6, asiakas.getPostiTmp());
+			statement.setString(7, asiakas.getsPosti());
+			statement.setInt(8, kayttaja.getId());
+			statement.executeUpdate();
+		    conn.commit();
+			
 	    	} catch (Exception e) {
+	    		try {
+					conn.rollback();
+				} catch (SQLException e1) {
+					System.out.println("Jokin meni pieleen.");
+				}
 	    		throw new RuntimeException(e);
 	    	} finally {
 	    		close(statement, conn);
@@ -196,22 +215,22 @@ public class KayttajaDAO extends DataAccessObject {
 	    Connection connection = null;
 	    ResultSet rs = null;
 	    try {
-	    connection = getConnection();
-	    String sql = "delete from user where id=?";
-	    String sqlDelete2="DELETE FROM asiakas WHERE asiakas_id= "+kayttaja.getId()+";";
-	    statement = connection.prepareStatement(sql);
-	    stmt2=connection.prepareStatement(sqlDelete2);
-	    int id = kayttaja.getId();
-	    statement.setInt(1, id);
-	    rs=stmt2.executeQuery();
-	    statement.executeUpdate();
+		    connection = getConnection();
+		    String sql = "delete from user where id=?";
+		    String sqlDelete2="DELETE FROM asiakas WHERE asiakas_id= "+kayttaja.getId()+";";
+		    statement = connection.prepareStatement(sql);
+		    stmt2=connection.prepareStatement(sqlDelete2);
+		    int id = kayttaja.getId();
+		    statement.setInt(1, id);
+		    rs=stmt2.executeQuery();
+		    statement.executeUpdate();
 	    } catch (Exception e) {
 	    	throw new RuntimeException(e);
 	    } finally {
 	        close(statement, connection);
 		}
 	  }
-   
+     
 }
 
 
