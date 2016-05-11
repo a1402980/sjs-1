@@ -168,8 +168,8 @@
 											<%=tilaukset.get(i).getPizzaTilaus(j).getPizza().getTayte(l).gettNimi() %>
 										<% } %>
 									</td>
-									<td><%=tilaukset.get(i).getPizzaTilaus(j).getLkm()%></td>							
-									<td></td>
+									<td><%=tilaukset.get(i).getPizzaTilaus(j).getOregano()%></td>							
+									<td><%=tilaukset.get(i).getPizzaTilaus(j).getValkosipuli()%></td>
 								</tr>
 							<% } %>	
 								<tr><td></td><td></td><td></td><td></td></tr>

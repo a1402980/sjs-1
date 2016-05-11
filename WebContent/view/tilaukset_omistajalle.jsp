@@ -148,8 +148,8 @@
 						<thead>
 							<tr>
 								<th>Tilaus ID / Pizza ID</th>
-								<th>Status / Lukumäärä</th>
-								<th>Tilausajankohta / Pizzan nimi</th>								
+								<th>Status / Pizzan nimi</th>
+								<th>Tilausajankohta</th>								
 								<th>Yhteishinta</th>						
 							</tr>
 						</thead>
@@ -164,9 +164,9 @@
 							<%for (int j=0; j<tilaukset.get(i).getPizzatilaukset().size(); j++){ %> 
 								<tr>
 									<td><%=tilaukset.get(i).getPizzaTilaus(j).getPizza().getPizzaId()%></td>
-									<td><%=tilaukset.get(i).getPizzaTilaus(j).getLkm()%></td>
+									
 									<td><%=tilaukset.get(i).getPizzaTilaus(j).getPizza().getpNimi()%></td>
-									<td><%=tilaukset.get(i).getPizzaTilaus(j).getYhtHinta()%></td>
+									
 								</tr>
 									<% } %>
 							<tr><td></td><td></td><td></td><td></td></tr>
