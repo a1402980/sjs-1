@@ -46,6 +46,26 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
+    
+     <script>
+  $(document).ready(function() {
+    
+	$('.juoma').click(function() {
+		var total = 0;
+		
+		$('.juoma:checked').each(function(){
+		
+			total += parseFloat($(this).val());
+		
+		});
+		$('#juomasumma').html(total);
+		
+	});
+	
+  });
+ </script>
+
+    
 </head>
 <body>
 	<!-- Navigation -->
@@ -190,7 +210,7 @@
 					</table>
 
 
-				</div>
+				
 
 				<div id="ostoskorinvalinnat">
 					<h3>Maksutapa</h3>
@@ -202,13 +222,14 @@
 						<h3>Juomat (1,5L)</h3>
 						<div class="row" id=juomat>
 
-							<input type="checkbox" name="kokis"><img
+							<input type="checkbox" class="juoma" name="cola" value="4"><img
 								src="assets/images/cola.png" alt="Coca Cola"
-								style="height: 35px;"><br> <input type="checkbox"
-								name="fanta"><img src="assets/images/sprite.png"
+								style="height: 35px;"><br> <input type="checkbox" class="juoma"
+								name="sprite" value="4"><img src="assets/images/sprite.png"
 								alt="Sprite" style="height: 100%;"><br> <input
-								type="checkbox" name="sprite"><img
+								type="checkbox" class="juoma" name="fanta" value="4"><img
 								src="assets/images/fanta.png" alt="Fanta" style="height: 100%;"><br>
+						</div>
 					</form>
 				</div>
 			</div>
@@ -218,8 +239,15 @@
 
 
 			<!--loppusumman näyttäminen -->
-			<h2>
-				Lopullinen summa
+			<div>
+			<br>
+			<span style="font-size: 200%; font-weight: bold;">Juomien hinta: </span>
+			<span style="font-size: 200%; font-weight: bold;" id="juomasumma" class="juomiensumma"></span>
+			<i class="fa fa-eur" aria-hidden="true" style="font-size:150% "></i><br>
+			
+			<span style="font-size: 200%; font-weight: bold;">Pizzojen yhteishinta: </span>
+			<span style="font-size: 200%; font-weight: bold;" id="total" class="pizzasumma">
+				
 				<%
 				double yhteishinta = 0;
 					 PizzaTilaus pizzatilaus2;
@@ -235,8 +263,52 @@
 
 				<%=des.format(yhteishinta)%>
 
-				<i class="fa fa-eur" aria-hidden="true"></i>
-			</h2>
+				
+			
+			</span>
+			<i class="fa fa-eur" aria-hidden="true" style="font-size:150% "></i><br>
+			
+			<span style="font-size: 300%; font-weight: bold;">Lopullinen summa: </span>
+			<span style="font-size: 300%; font-weight: bold;" id="summat"></span>
+			<i class="fa fa-eur" aria-hidden="true" style="font-size:200% "></i><br>
+		
+			 <script>
+ 
+ $(document).ready(function() {
+ 
+	 $(":checkbox").on("click", function(){
+		 var pizzat = parseFloat($('.pizzasumma').text().replace(',', '.'));
+		 var juomat = parseFloat($('.juomiensumma').text());
+
+		 
+		 //var juomat1 = juomat.toFixed(4);
+		 //var pizzat1 = pizzat.toFixed(4);
+		
+		 total = juomat + pizzat;
+		 $('#summat').text(total.toFixed(2));
+		} );
+	 
+ });
+ 
+ 
+ </script>
+ 
+ 			 <script>
+ 
+ $(document).ready(function() {
+ 
+	 
+		 var pizzat = parseFloat($('.pizzasumma').text().replace(',', '.'));
+
+		 $('#summat').text(pizzat.toFixed(2));
+		
+	 
+ });
+ 
+ 
+ </script>
+		 		
+			</div>
 
 
 
@@ -251,9 +323,9 @@
 				apua@silverjavaslayers.fi</p>
 
 		</div>
+	</div>
+	</div>
 
-	</div>
-	</div>
 	</section>
 	<!--End Free Section -->
 

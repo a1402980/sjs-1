@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
@@ -228,9 +228,7 @@
       						<li><form role="form" method="post" action="ostoskori">
    								<div id=pizzalkm>
    								<label>Pizzojen lkm.</label><br>
-      							<input type="number" min="1" max="10" step="1" name="pizzamaara"><br>
-      							<input type="checkbox" name="oregano"> Oregano <br>
-      							<input type="checkbox" name="valkosipuli"> Valkosipuli
+      							<input type="number" min="1" max="10" step="1" name="pizzamaara" value="1" pattern="[1-9]" oninvalid="setCustomValidity('Valitse vähintään 1 pizza')" oninput="setCustomValidity('')" required  ><br>
       							<input type="hidden" name="pizza_id" value="<%=pizzat.get(i).getPizzaId()%>"/>
       							</div> 
       							
