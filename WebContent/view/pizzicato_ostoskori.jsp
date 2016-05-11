@@ -163,7 +163,7 @@
 							<button onclick="poistapizza(<%=pizzatilaus.getPizza()%>)"><span class="glyphicon glyphicon-trash"></span></button>
 						</td>
 						<td>
-							<% pizzatilaus.getRivinro(); %>
+							<%=i %>
 
 						</td>
 					</tr>
@@ -200,7 +200,7 @@
 				 PizzaTilaus pizzatilaus2;
 				 for (int i=0;i<tilaus.getPizzaTilLkm();i++){  
 					pizzatilaus2= tilaus.getPizzaTilaus(i);
-					 yhteishinta += pizzatilaus2.getPizza().getpHinta()*pizzatilaus2.getLkm();	
+					 yhteishinta += pizzatilaus2.getPizza().getpHinta()*1;	
 				}
 				 DecimalFormat des = new DecimalFormat("0.00");
 					des.format(yhteishinta);
