@@ -10,10 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import pizzicato.model.PizzaTilaus;
 import pizzicato.model.Tilaus;
-import pizzicato.model.dao.PizzaDAO;
-import pizzicato.model.dao.PizzaTilausDAO;
 import pizzicato.model.dao.TilausDAO;
 
 @WebServlet("/tilausvahvistus")

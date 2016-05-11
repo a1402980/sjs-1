@@ -54,7 +54,7 @@ public class LisaaTayteServlet extends HttpServlet {
 	
 		String tNimi = request.getParameter("nimi");
 		if (tNimi == null ||tNimi.trim().length() < 2) {
-			errors.put("nimi", " Nimen on oltava v‰hint‰‰n 2 merkki‰ pitk‰.");
+			errors.put("nimi", " Nimen on oltava v√§hint√§√§n 2 merkki√§ pitk√§.");
 		}else{
 			tayte.settNimi(tNimi);
 		}
@@ -63,11 +63,11 @@ public class LisaaTayteServlet extends HttpServlet {
 		try {
 			 tHinta = Double.parseDouble(strTHinta.replace(",", "."));
 		} catch (Exception e){
-			errors.put("hinta", " Hinnan on oltava v‰lilt‰ 0-20Ä.");
+			errors.put("hinta", " Hinnan on oltava v√§lilt√§ 0-20‚Ç¨.");
 		}
 		System.out.println(tHinta);
 		if (tHinta == null || tHinta < 0 || tHinta > 20.0) {
-			errors.put("pHinta", " Hinnan on oltava v‰lilt‰ 0-20Ä.");
+			errors.put("pHinta", " Hinnan on oltava v√§lilt√§ 0-20‚Ç¨.");
 		}else{
 			tayte.settHinta(tHinta);
 		}

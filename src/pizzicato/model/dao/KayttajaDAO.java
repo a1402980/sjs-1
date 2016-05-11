@@ -5,12 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 
 import pizzicato.model.Asiakas;
 import pizzicato.model.Kayttaja;
-import pizzicato.model.Tayte;
 import pizzicato.model.dao.DataAccessObject;
 
 public class KayttajaDAO extends DataAccessObject {
