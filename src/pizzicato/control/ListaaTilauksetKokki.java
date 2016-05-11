@@ -26,6 +26,8 @@ public class ListaaTilauksetKokki extends HttpServlet {
 		
 		request.setAttribute("tilaukset", tilaukset);	
 		
+		System.out.println(tilaukset);
+		
 		String jsp = "/view/tilaukset_kokille.jsp";
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
 		dispatcher.forward(request, response);

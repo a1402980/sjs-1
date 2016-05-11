@@ -9,6 +9,7 @@
 <%@ page import="pizzicato.model.Kayttaja"%>
 <%@ page import="pizzicato.model.Tilaus"%>
 <%@ page import="pizzicato.model.PizzaTilaus"%>
+<%@ page import="pizzicato.model.Pizza"%>
 <jsp:useBean id="tilaukset" type="java.util.ArrayList<Tilaus>"
 	scope="request" />
 

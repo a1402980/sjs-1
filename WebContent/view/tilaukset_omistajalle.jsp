@@ -8,8 +8,15 @@
 
 <%@ page import="pizzicato.model.Kayttaja"%>
 <%@ page import="pizzicato.model.Tilaus"%>
-
+<%@ page import="pizzicato.model.PizzaTilaus"%>
+<%@ page import="pizzicato.model.Pizza"%>
 <jsp:useBean id="tilaukset" type="java.util.ArrayList<Tilaus>"
+	scope="request" />
+<jsp:useBean id="tilaus" class="pizzicato.model.Tilaus"
+	scope="request" />
+<jsp:useBean id="pizzatilaus" class="pizzicato.model.PizzaTilaus"
+	scope="request" />
+<jsp:useBean id="pizza" class="pizzicato.model.Pizza"
 	scope="request" />
 <jsp:useBean id="kayttaja" class="pizzicato.model.Kayttaja"
 	scope="session" />
@@ -146,7 +153,7 @@
 								<th>Yhteishinta</th>						
 							</tr>
 						</thead>
-						<tbody>
+						<tbody>						
 						<%for(int i = 0; i < tilaukset.size(); i++) {%>
 							<tr>
 								<td><%=tilaukset.get(i).getTilausId()%></td>
