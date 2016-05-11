@@ -34,7 +34,7 @@ public class PizzaTilausDAO extends DataAccessObject {
 		PreparedStatement stmtInsert = null;		
 		try {
 			conn = getConnection();
-			String sqlInsert = "INSERT INTO pizzatilaus(tilaus_id, pizza_id, oregano, valkosipuli) VALUES ("+pizzatil.getTilausId()+","+pizzatil.getPizza().getPizzaId()+",'"+pizzatil.getOregano()+"','"+pizzatil.getOregano()+"');";
+			String sqlInsert = "INSERT INTO pizzatilaus(tilaus_id, pizza_id, oregano, valkosipuli) VALUES ("+pizzatil.getTilausId()+","+pizzatil.getPizza().getPizzaId()+",'"+pizzatil.getOregano()+"','"+pizzatil.getValkosipuli()+"');";
 			stmtInsert = conn.prepareStatement(sqlInsert);		
 			stmtInsert.executeUpdate();
 					            

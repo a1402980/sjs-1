@@ -174,7 +174,7 @@
 								<%for (int j=0; j<tilaukset.get(i).getPizzatilaukset().size(); j++){ %> 
 									<tr>
 										<td><%=tilaukset.get(i).getPizzaTilaus(j).getPizza().getpNimi()%></td>
-										<td><%=tilaukset.get(i).getPizzaTilaus(j).getLkm()%></td>							
+																	
 										<td></td>
 										<td></td>
 										<td></td>

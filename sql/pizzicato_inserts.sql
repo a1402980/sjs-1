@@ -112,6 +112,5 @@ INSERT INTO asiakas(etunimi, sukunimi, puh, osoite, posti_nro, posti_tmp, s_post
 
 INSERT INTO tilaus(a_etunimi, a_sukunimi, a_puh, a_osoite, a_posti_nro, a_posti_tmp) VALUES ('assi', 'asiakas', '123456789', 'Kujakatu 1', 12345, 'Kunta');
 
-INSERT INTO pizzatilaus(tilaus_id, pizza_id, lkm) VALUES (1,157,2);
-INSERT INTO pizzatilaus(tilaus_id, pizza_id, lkm) VALUES (2,103,2);
-INSERT INTO pizzatilaus(tilaus_id, pizza_id, lkm) VALUES (2,107,5);
+INSERT INTO pizzatilaus(tilaus_id, pizza_id) VALUES (1,157);
+
