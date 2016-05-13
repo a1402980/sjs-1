@@ -24,6 +24,16 @@ public class TayteDAO extends DataAccessObject{
 		}
 	}
 	
+	public Tayte readTayteKokki(ResultSet rs){
+		try {
+			int tayteId=rs.getInt("tayte_id");
+			String tNimi=rs.getString("t_nimi");
+			return new Tayte(tayteId, tNimi);
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
 	public ArrayList<Tayte> findAll() {
 		Connection conn = null;
 		PreparedStatement stmt = null;

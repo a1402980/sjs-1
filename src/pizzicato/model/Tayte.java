@@ -23,6 +23,12 @@ public class Tayte {
 		this.tHinta = tHinta;
 	}
 
+	public Tayte(int tayteId, String tNimi) {
+		super();
+		this.tayteId = tayteId;
+		this.tNimi = tNimi;
+	}
+
 	public int getTayteId() {
 		return tayteId;
 	}

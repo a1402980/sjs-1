@@ -109,6 +109,25 @@ public class Tilaus {
 		this.tilAjankohta = tilAjankohta;
 	}
 
+	public Tilaus(int tilausId, String status, Date tilAjankohta,
+			String aSukunimi, String aPuh, String aOsoite, int aPostiNro,
+			String aPostiTmp, String cola, String fanta, String sprite,
+			double yhtHinta) {
+		super();
+		this.tilausId = tilausId;
+		this.status = status;
+		this.tilAjankohta = tilAjankohta;
+		this.aSukunimi = aSukunimi;
+		this.aPuh = aPuh;
+		this.aOsoite = aOsoite;
+		this.aPostiNro = aPostiNro;
+		this.aPostiTmp = aPostiTmp;
+		this.cola = cola;
+		this.fanta = fanta;
+		this.sprite = sprite;
+		this.yhtHinta = yhtHinta;
+	}
+
 	public String getCola() {
 		return cola;
 	}

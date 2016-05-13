@@ -7,6 +7,7 @@ public class PizzaTilaus {
 	private Pizza pizza;
 	private String oregano;
 	private String valkosipuli;
+	private int pizzaId;
 	
 	public PizzaTilaus() {
 		super();
@@ -43,6 +44,23 @@ public class PizzaTilaus {
 		super();
 		this.pizzatil_id = pizzatil_id;
 		this.pizza = pizza;
+	}
+
+	public PizzaTilaus(int pizzatil_id, int tilausId, int pizzaId) {
+		super();
+		this.pizzatil_id = pizzatil_id;
+		this.tilausId = tilausId;
+		this.pizzaId = pizzaId;
+	}
+
+	public PizzaTilaus(int pizzatil_id, int tilausId, String oregano,
+			String valkosipuli, int pizzaId) {
+		super();
+		this.pizzatil_id = pizzatil_id;
+		this.tilausId = tilausId;
+		this.oregano = oregano;
+		this.valkosipuli = valkosipuli;
+		this.pizzaId = pizzaId;
 	}
 
 	public int getPizzatil_id() {
@@ -83,6 +101,14 @@ public class PizzaTilaus {
 
 	public void setValkosipuli(String valkosipuli) {
 		this.valkosipuli = valkosipuli;
+	}
+
+	public int getPizzaId() {
+		return pizzaId;
+	}
+
+	public void setPizzaId(int pizzaId) {
+		this.pizzaId = pizzaId;
 	}
 
 	@Override

@@ -232,14 +232,16 @@ public class PizzaDAO extends DataAccessObject {
 			
 			try {
 				conn = getConnection();
-				String sqlSelect ="SELECT p_nimi, t_nimi FROM pizza p INNER JOIN pizzatayte pt ON p.pizza_id = pt.pizza_id INNER JOIN tayte t ON t.tayte_id = pt.tayte_id WHERE pt.pizza_id="+pizzaId+";";
+				String sqlSelect ="SELECT p.pizza_id, pt.tayte_id, p_nimi, t_nimi FROM pizza p JOIN pizzatayte pt ON p.pizza_id = pt.pizza_id INNER JOIN tayte t ON t.tayte_id = pt.tayte_id WHERE pt.pizza_id="+pizzaId+";";
 				stmt=conn.prepareStatement(sqlSelect);
 				rs=stmt.executeQuery(sqlSelect);
 				
 				while(rs.next()) {
-					pizza = readPizza(rs);
+					pizza = readPizzaKokki(rs);
+					Tayte tayte = taytedao.readTayteKokki(rs);
+					pizza.addTayte(tayte);
 					while(rs.next()) {
-						Tayte tayte = taytedao.readTayte(rs);
+						tayte = taytedao.readTayteKokki(rs);
 						pizza.addTayte(tayte);
 					}
 				}
@@ -253,7 +255,15 @@ public class PizzaDAO extends DataAccessObject {
 			return pizza;
 		}
 		
-		
+		private Pizza readPizzaKokki(ResultSet rs) {
+			try {
+				int pizzaId=rs.getInt("pizza_id");
+				String pNimi=rs.getString("p_nimi");
+				return new Pizza(pizzaId, pNimi);
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			}
+		}
 		
 		/** 
 		 * Avaa tietokantayhteyden.
@@ -305,4 +315,6 @@ public class PizzaDAO extends DataAccessObject {
 			return null;
 			
 		}
+		
+		
 }
