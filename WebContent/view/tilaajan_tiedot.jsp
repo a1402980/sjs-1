@@ -133,20 +133,20 @@
 		<div class="row text-center for-full-back color-light ">
 			<div class="col-md-8 col-md-offset-2">
 				<H1>Asiakastiedot</H1>
+				
+				
+				
+			<% 
+             if (errors.containsKey("url")) {
+                out.println("<span class=\"error\">" + errors.get("url") + "</span>");%>
+            
 				<div class="alert alert-success">
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> 
-			
-				<%
-				/*Map<String, String> errorit = (Map<String, String>) request.getAttribute("errors");
-			
-				if(errors != null)
-				{
-					for(int i = 0; i < errors.size(); i++) {
-						
-						out.println("<span class=\"errors\"><strong>" + errors.values() + "</strong></span><br>");
-					}
-				}*/%>
+					
 				</div>
+				
+			<%}%>
+			
 				<br><span style="color:red;">* Pakollinen kenttä</span>	<br><br>
 				
 				
