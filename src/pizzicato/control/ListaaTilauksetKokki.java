@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import pizzicato.model.Pizza;
 import pizzicato.model.Tilaus;
+import pizzicato.model.dao.PizzaDAO;
 import pizzicato.model.dao.TilausDAO;
 
 
@@ -21,13 +23,18 @@ public class ListaaTilauksetKokki extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		TilausDAO tilausdao = new TilausDAO();
+		PizzaDAO pizzadao = new PizzaDAO();
+		Pizza pizza;
 		
-		ArrayList<Tilaus> tilaukset = tilausdao.kokkiFindAll();
-		
+		ArrayList<Tilaus> tilaukset = tilausdao.kokkiFindAll();		
 		String oregano;
 		String valkosipuli;
-		for(int i=0; i<tilaukset.size();i++){
-			for(int j=0; j<tilaukset.get(i).getPizzatilaukset().size(); j++){
+		
+		for(int i=0; i<tilaukset.size();i++){			
+			for(int j=0; j<tilaukset.get(i).getPizzatilaukset().size(); j++){				
+				pizza = pizzadao.findCertainPizzaKokki(tilaukset.get(i).getPizzaTilaus(j).getPizzaId());
+				tilaukset.get(i).getPizzaTilaus(j).setPizza(pizza);
+				
 				oregano = tilaukset.get(i).getPizzaTilaus(j).getOregano();
 				valkosipuli = tilaukset.get(i).getPizzaTilaus(j).getValkosipuli();
 				if(oregano == null||oregano.equals(false)|| oregano.equals(" ")){
@@ -44,9 +51,10 @@ public class ListaaTilauksetKokki extends HttpServlet {
 					valkosipuli = "kyllä";
 					tilaukset.get(i).getPizzaTilaus(j).setValkosipuli(valkosipuli);
 				}
-			}
-			
+			}			
 		}
+		
+		
 		
 		request.setAttribute("tilaukset", tilaukset);	
 		

@@ -136,6 +136,7 @@
 	<div class="container">
 		<div class="row text-center for-full-back color-light jumbotron" id="tilaustaulu">
 			<H1>Tilaukset</H1>
+			<h2>(Kokin näkymä)</h2>
 			<div class="container" id="kokintilaukset">
  
 				<div class="table-responsive">
@@ -175,10 +176,12 @@
 									</td>
 									<td><%=tilaukset.get(i).getPizzaTilaus(j).getOregano()%></td>							
 									<td><%=tilaukset.get(i).getPizzaTilaus(j).getValkosipuli()%></td>
+									
 								</tr>
 							<% } %>	
-								<tr><td></td><td></td><td></td><td></td></tr>
+								<tr><td class="tableseparator"></td><td class="tableseparator"></td><td class="tableseparator"></td><td class="tableseparator"></td></tr>
 							</tr>
+							
 							<% } %>	
 							</tbody>						
 					</table>

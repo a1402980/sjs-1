@@ -18,7 +18,7 @@ public class TilausDAO extends DataAccessObject{
 		try {
 			int tilausId=rs.getInt("tilaus_id");
 			String status=rs.getString("status");
-			Date tilAjankohta=rs.getDate("til_ajankohta");
+			Date tilAjankohta=rs.getTimestamp("til_ajankohta");
 			System.out.println(tilAjankohta);
 			return new Tilaus(tilausId, status, tilAjankohta);
 		} catch (SQLException e) {
@@ -30,10 +30,8 @@ public class TilausDAO extends DataAccessObject{
 		try {
 			int tilausId=rs.getInt("tilaus_id");
 			String status=rs.getString("status");
-			Date tilAjankohta=rs.getDate("til_ajankohta");
-			System.out.println(tilAjankohta);
+			Date tilAjankohta=rs.getTimestamp("til_ajankohta");
 			double yhtHinta=rs.getDouble("yht_hinta");
-			String aEtunimi=rs.getString("a_etunimi");
 			String aSukunimi=rs.getString("a_sukunimi");
 			String aPuh=rs.getString("a_puh");
 			String aOsoite=rs.getString("a_osoite");
@@ -42,7 +40,7 @@ public class TilausDAO extends DataAccessObject{
 			String cola=rs.getString("cola");
 			String fanta=rs.getString("fanta");
 			String sprite=rs.getString("sprite");
-			return new Tilaus(tilausId, status, tilAjankohta, aEtunimi, aSukunimi, aPuh, aOsoite, aPostiNro, aPostiTmp, cola, fanta, sprite, yhtHinta);
+			return new Tilaus(tilausId, status, tilAjankohta, aSukunimi, aPuh, aOsoite, aPostiNro, aPostiTmp, cola, fanta, sprite, yhtHinta);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -52,8 +50,7 @@ public class TilausDAO extends DataAccessObject{
 		try {
 			int tilausId=rs.getInt("tilaus_id");
 			String status=rs.getString("status");
-			Date tilAjankohta=rs.getDate("til_ajankohta");
-			System.out.println(tilAjankohta);
+			Date tilAjankohta=rs.getTimestamp("til_ajankohta");
 			double yhtHinta=rs.getDouble("yht_hinta");
 			String cola=rs.getString("cola");
 			String fanta=rs.getString("fanta");
@@ -186,7 +183,7 @@ public class TilausDAO extends DataAccessObject{
 		int nykyinenTilausId=0;
 		try {
 			conn = getConnection();
-			String sqlSelect ="SELECT t.tilaus_id, a_etunimi, a_sukunimi, a_puh, a_osoite, a_posti_nro, a_posti_tmp, status, til_ajankohta, pizzatil_id, pt.pizza_id, p_nimi, oregano, valkosipuli, p_saatavuus, p_hinta, cola, fanta, sprite, yht_hinta FROM tilaus t INNER JOIN pizzatilaus pt ON t.tilaus_id = pt.tilaus_id INNER JOIN pizza p ON p.pizza_id = pt.pizza_id WHERE status= 'Paistettu' ORDER BY til_ajankohta;";
+			String sqlSelect ="SELECT t.tilaus_id, a_sukunimi, a_puh, a_osoite, a_posti_nro, a_posti_tmp, status, til_ajankohta, pizzatil_id, pt.pizza_id, p_nimi, cola, fanta, sprite, yht_hinta FROM tilaus t INNER JOIN pizzatilaus pt ON t.tilaus_id = pt.tilaus_id INNER JOIN pizza p ON p.pizza_id = pt.pizza_id WHERE status= 'Paistettu' ORDER BY til_ajankohta;";
 			
 			stmt=conn.prepareStatement(sqlSelect);
 			
@@ -227,7 +224,7 @@ public class TilausDAO extends DataAccessObject{
 		int nykyinenTilausId=0;
 		try {
 			conn = getConnection();
-			String sqlSelect ="SELECT t.tilaus_id, status, til_ajankohta, pizzatil_id, pt.pizza_id, p_nimi, oregano, valkosipuli, p_saatavuus, p_hinta FROM tilaus t JOIN pizzatilaus pt ON t.tilaus_id = pt.tilaus_id INNER JOIN pizza p ON p.pizza_id = pt.pizza_id WHERE status= 'Odottaa' ORDER BY til_ajankohta;";
+			String sqlSelect ="SELECT t.tilaus_id, status, til_ajankohta, pizzatil_id, pt.pizza_id, p_nimi, oregano, valkosipuli FROM tilaus t JOIN pizzatilaus pt ON t.tilaus_id = pt.tilaus_id INNER JOIN pizza p ON p.pizza_id = pt.pizza_id WHERE status= 'Odottaa' ORDER BY til_ajankohta;";
 			
 			stmt=conn.prepareStatement(sqlSelect);
 			

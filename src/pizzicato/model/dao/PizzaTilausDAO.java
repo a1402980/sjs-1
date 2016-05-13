@@ -32,9 +32,9 @@ public class PizzaTilausDAO extends DataAccessObject {
 			int pizzaId=rs.getInt("pizza_id");
 			String oregano=rs.getString("oregano");
 			String valkosipuli=rs.getString("valkosipuli");
-			String pNimi=rs.getString("p_nimi");			
-			Pizza pizza = new Pizza(pizzaId, pNimi);
-			return new PizzaTilaus(pizzatilId, tilausId, pizza, oregano, valkosipuli);
+			//String pNimi=rs.getString("p_nimi");			
+			//Pizza pizza = new Pizza(pizzaId, pNimi);
+			return new PizzaTilaus(pizzatilId, tilausId, oregano, valkosipuli, pizzaId);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}

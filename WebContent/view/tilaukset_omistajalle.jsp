@@ -155,7 +155,7 @@
 							</tr>
 							<tr>
 								<td><%=tilaukset.get(i).getTilausId()%></td>
-								<td><%=tilaukset.get(i).getStatus()%></td>
+								<td><ins><%=tilaukset.get(i).getStatus()%><ins></td>
 								<td><%=tilaukset.get(i).getTilAjankohta()%></td>
 								<td><%=tilaukset.get(i).getYhtHinta()%></td>						
 							</tr>
@@ -170,10 +170,12 @@
 									<td><%=tilaukset.get(i).getPizzaTilaus(j).getPizza().getPizzaId()%></td>
 									
 									<td><%=tilaukset.get(i).getPizzaTilaus(j).getPizza().getpNimi()%></td>
+									<td></td>
+									<td></td>
 									
 								</tr>
 									<% } %>
-							<tr><td></td><td></td><td></td><td></td></tr>
+							<tr><td class="tableseparator"></td><td class="tableseparator"></td><td class="tableseparator"></td><td class="tableseparator"></td></tr>
 							<% } %>
 						</tbody>
 					</table>
