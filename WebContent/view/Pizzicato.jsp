@@ -130,7 +130,8 @@
            					
            				 <% if (kayttaja != null && kayttaja.getUserRole().equals("omistaja")){%>
      
-           				<li> <a href="ListaaPizzat" id="kirjaudu-ulos-nappi"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Pizzojen muokkaus</a></li>
+           				<li> <a href="ListaaPizzat" id="kirjaudu-ulos-nappi"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Muokkaa pizzoja</a></li>
+           				<li> <a href="roolinvalitseminen" id="kirjaudu-ulos-nappi"><i class="fa fa-user" aria-hidden="true"></i> Roolinäkymät</a></li>
            					<%} %>
            				
 						</ul>
