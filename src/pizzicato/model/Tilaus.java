@@ -230,9 +230,26 @@ public class Tilaus {
 	public void setaPostiTmp(String aPostiTmp) {
 		this.aPostiTmp = aPostiTmp;
 	}
-		
+		//Laskee lennosta tilauksen pizzojen ja juomien yhteishinnan
 	public double getYhtHinta() {
-		return yhtHinta;
+		double yhteissumma = 0;
+		 PizzaTilaus pizzatilaus;
+		 for (int i=0;i<pizzatilaukset.size(); i++){  
+			pizzatilaus = pizzatilaukset.get(i);
+			 yhteissumma += pizzatilaus.getPizza().getpHinta()*1;	
+		}
+		 if (this.cola != null && this.cola.equals("true")){
+			 yhteissumma += 4;
+		 }
+		 if (this.fanta != null && this.fanta.equals("true")){
+			 yhteissumma += 4;
+		 }
+		 if (this.sprite != null && this.sprite.equals("true")){
+			 yhteissumma += 4;
+			 System.out.println("sprite yhteishintaan 4 euroa");
+		 }
+		 
+		return yhteissumma;
 	}
 
 	public void setYhtHinta(double yhtHinta) {
@@ -245,8 +262,12 @@ public class Tilaus {
 				+ ", tilAjankohta=" + tilAjankohta + ", pizzatilaukset="
 				+ pizzatilaukset + ", aEtunimi=" + aEtunimi + ", aSukunimi="
 				+ aSukunimi + ", aPuh=" + aPuh + ", aOsoite=" + aOsoite
-				+ ", aPostiNro=" + aPostiNro + ", aPostiTmp=" + aPostiTmp + "]";
+				+ ", aPostiNro=" + aPostiNro + ", aPostiTmp=" + aPostiTmp
+				+ ", cola=" + cola + ", fanta=" + fanta + ", sprite=" + sprite
+				+ ", yhtHinta=" + yhtHinta + "]";
 	}
+
+	
 	
 	
 	

@@ -154,6 +154,7 @@
 	<!-- Free Section -->
 
 	<section id="pizzat">
+	<form method="get" action="TilaajanTiedot">
 	<div class="container">
 		<div class="row text-center for-full-back color-light ">
 			<div class="col-md-8 col-md-offset-2">
@@ -214,7 +215,7 @@
 
 				<div id="ostoskorinvalinnat">
 					<h3>Maksutapa</h3>
-					<form>
+					
 						<input type="radio" name="maksutapa"> Pankkikortilla <i
 							class="fa fa-credit-card" aria-hidden="true"></i><br> <input
 							type="radio" name="maksutapa"> Käteisellä <i
@@ -230,7 +231,7 @@
 								type="checkbox" class="juoma" name="fanta" value="4"><img
 								src="assets/images/fanta.png" alt="Fanta" style="height: 100%;"><br>
 						</div>
-					</form>
+				
 				</div>
 			</div>
 
@@ -314,7 +315,6 @@
 
 			<div>
 				<button input type="submit"
-					onClick="window.location='TilaajanTiedot';"
 					class="btn btn-success btn-lg">Tilaa </button>
 				<a class="btn btn-default" href="Etusivu" role="button">Peruuta</a>
 			</div>
@@ -325,7 +325,7 @@
 		</div>
 	</div>
 	</div>
-
+	</form>
 	</section>
 	<!--End Free Section -->
 

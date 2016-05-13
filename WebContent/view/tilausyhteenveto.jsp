@@ -185,7 +185,8 @@
 		
 		<!--loppusumman näyttäminen -->		
 				<h2>Loppusumma
-				<%=tilaus.getYhtHinta()%> <i class="fa fa-eur" aria-hidden="true" ></i> </h2>
+				<%DecimalFormat des = new DecimalFormat("0.00"); %>
+				<%=des.format(tilaus.getYhtHinta())%> <i class="fa fa-eur" aria-hidden="true" ></i> </h2>
 				</div>
 				<div>
 					<button input type="submit" onClick="window.location='tilausvahvistus';" class="btn btn-success btn-lg">Lähetä tilaus</button>

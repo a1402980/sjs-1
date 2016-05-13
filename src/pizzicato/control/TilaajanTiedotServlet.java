@@ -24,8 +24,38 @@ public class TilaajanTiedotServlet extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String jsp = "/view/tilaajan_tiedot.jsp";
 		HttpSession session = request.getSession(true);
+		Tilaus tilaus = (Tilaus) session.getAttribute("tilaus");
+		
+		//jos tilausta ei ole, luodaan uusi tilaus
+		if(tilaus ==null) {
+			tilaus=new Tilaus();
+			session.setAttribute("tilaus", tilaus);
+		}
+
+		
+		//talletetaan valitut juomat sessioon
+		String cola = request.getParameter("cola");
+		if (cola != null && cola.trim().length() != 0) {
+			tilaus.setCola("true");
+		} else {
+			tilaus.setCola("false");
+		}
+		String fanta = request.getParameter("fanta");
+		if (fanta != null && fanta.trim().length() != 0) {
+			tilaus.setFanta("true");
+		} else {
+			tilaus.setFanta("false");
+		}
+		String sprite = request.getParameter("sprite");
+		if (sprite != null && sprite.trim().length() != 0) {
+			tilaus.setSprite("true");
+		} else {
+			tilaus.setSprite("false");
+		}
+		
+		//näytetään tilaaja-lomake
+		String jsp = "/view/tilaajan_tiedot.jsp";
 		Kayttaja kayttaja = (Kayttaja) session.getAttribute("kayttaja");
 		if (kayttaja != null){
 			AsiakasDAO asiakasdao = new AsiakasDAO();
