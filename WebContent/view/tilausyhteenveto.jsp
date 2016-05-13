@@ -189,9 +189,9 @@
 				<%=des.format(tilaus.getYhtHinta())%> <i class="fa fa-eur" aria-hidden="true" ></i> </h2>
 				</div>
 				<div>
+					<a class="btn btn-default" href="TilaajanTiedot" role="button"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i> Takaisin</a>
 					<button input type="submit" onClick="window.location='tilausvahvistus';" class="btn btn-success btn-lg">Lähetä tilaus</button>
-					<a class="btn btn-default" href="TilaajanTiedot" role="button">Takaisin</a>
-					<a class="btn btn-default" href="ostoskori" role="button">Peruuta</a>
+					<a class="btn btn-default" href="ostoskori" role="button"><i class="fa fa-times-circle-o" aria-hidden="true"></i> Peruuta</a>
 				</div>
 					
 				

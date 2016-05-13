@@ -422,7 +422,7 @@ div#huomio span#ilmoitus {
 
 }
 
-#ostoskorinappi2 a:hover, a:focus, a:active {
+#ostoskorinappi2 a:hover, a:focus, a:active, a:target{
 	background-color: #3276b1;
 	border-color: #285e8e;
 }

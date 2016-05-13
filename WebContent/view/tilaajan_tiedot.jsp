@@ -179,8 +179,9 @@
 					<span style="color:red;">*</span>Postitoimipaikka: <br><input type="text" name="postitmp" placeholder="Postitoimipaikka" pattern="[a-zåäöA-ZÅÄÖ- ]{2,15}" oninvalid="setCustomValidity('Postitoimipaikan on oltava vähintään 2, enintään 15 merkkiä, ei erikoismerkkejä tai numeroita')" oninput="setCustomValidity('')" required ><br><br>
 					<span style="color:red;">*</span>Sähköposti: <br><input type="text" name="sposti" placeholder="Sähköposti" pattern="[a-zA-Z0-9@.]{6,50}" oninvalid="setCustomValidity('Sähköpostin on oltava vähintään 6, enintään 50 merkkiä, ei muita erikoismerkkejä kuin @')" oninput="setCustomValidity('')" ><br><br>
 					
-					<button type="submit" onClick="window.location='TilausYhteenveto';" name="kirjautumisnappi" class="btn btn-success btn-lg">Jatka</button>
-					<a class="btn btn-default" href="ostoskori" role="button">Takaisin</a><br><br>
+					<a class="btn btn-default" href="ostoskori" role="button"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i> Takaisin</a>
+					<button type="submit" onClick="window.location='TilausYhteenveto';" name="kirjautumisnappi" class="btn btn-success btn-lg">Jatka</button><br><br>
+					
 				</form>
 			<%}%>
 			

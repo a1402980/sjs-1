@@ -314,9 +314,10 @@
 
 
 			<div>
+				<a class="btn btn-default" href="Etusivu" role="button">Peruuta</a>
 				<button input type="submit"
 					class="btn btn-success btn-lg">Tilaa </button>
-				<a class="btn btn-default" href="Etusivu" role="button">Peruuta</a>
+				
 			</div>
 
 			<p>Ongelmia? Lähetä sähköpostia osoitteeseen
