@@ -232,7 +232,7 @@
       							<input type="hidden" name="pizza_id" value="<%=pizzat.get(i).getPizzaId()%>"/>
       							</div> 
       							
-      							<button type="submit" class="btn btn-success" name="pizzanlisays"><span class="glyphicon glyphicon-shopping-cart"></span><span class="glyphicon glyphicon-plus"></span></button>
+      							<button type="submit" class="btn btn-success" name="pizzanlisays" href=> <span class="glyphicon glyphicon-shopping-cart"></span><span class="glyphicon glyphicon-plus"></span></button>
       							</form>
       							</li>
     							</ul>

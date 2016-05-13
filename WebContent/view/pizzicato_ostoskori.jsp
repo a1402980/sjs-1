@@ -242,7 +242,7 @@
 			<div>
 			<br>
 			<span style="font-size: 200%; font-weight: bold;">Juomien hinta: </span>
-			<span style="font-size: 200%; font-weight: bold;" id="juomasumma" class="juomiensumma"></span>
+			<span style="font-size: 200%; font-weight: bold;" id="juomasumma" class="juomiensumma">0</span>
 			<i class="fa fa-eur" aria-hidden="true" style="font-size:150% "></i><br>
 			
 			<span style="font-size: 200%; font-weight: bold;">Pizzojen yhteishinta: </span>
@@ -269,7 +269,7 @@
 			<i class="fa fa-eur" aria-hidden="true" style="font-size:150% "></i><br>
 			
 			<span style="font-size: 300%; font-weight: bold;">Lopullinen summa: </span>
-			<span style="font-size: 300%; font-weight: bold;" id="summat"></span>
+			<span style="font-size: 300%; font-weight: bold;" id="summat">0</span>
 			<i class="fa fa-eur" aria-hidden="true" style="font-size:200% "></i><br>
 		
 			 <script>
@@ -307,6 +307,7 @@
  
  
  </script>
+
 		 		
 			</div>
 
@@ -315,7 +316,7 @@
 			<div>
 				<button input type="submit"
 					onClick="window.location='TilaajanTiedot';"
-					class="btn btn-success btn-lg">Tilaa</button>
+					class="btn btn-success btn-lg">Tilaa </button>
 				<a class="btn btn-default" href="Etusivu" role="button">Peruuta</a>
 			</div>
 
