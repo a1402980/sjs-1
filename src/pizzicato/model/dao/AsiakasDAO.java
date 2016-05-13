@@ -20,7 +20,7 @@ public class AsiakasDAO extends DataAccessObject {
 			String sukuNimi=rs.getString("sukunimi");
 			String puh=rs.getString("puh");
 			String osoite=rs.getString("osoite");
-			String postiNro=rs.getString("posti_nro");
+			int postiNro=rs.getInt("posti_nro");
 			String postiTmp=rs.getString("posti_tmp");
 			String sPosti=rs.getString("s_posti");
 			return new Asiakas(asiakasId, etuNimi, sukuNimi, puh, osoite, postiNro, postiTmp, sPosti);

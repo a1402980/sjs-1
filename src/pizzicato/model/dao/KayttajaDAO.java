@@ -170,7 +170,7 @@ public class KayttajaDAO extends DataAccessObject {
 			statement.setString(2, asiakas.getSukuNimi());
 			statement.setString(3, asiakas.getPuh());
 			statement.setString(4, asiakas.getOsoite());
-			statement.setString(5, asiakas.getPostiNro());
+			statement.setInt(5, asiakas.getPostiNro());
 			statement.setString(6, asiakas.getPostiTmp());
 			statement.setString(7, asiakas.getsPosti());
 			statement.setInt(8, kayttaja.getId());

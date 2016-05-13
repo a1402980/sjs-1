@@ -13,7 +13,7 @@ public class Tilaus {
 	private String aSukunimi;
 	private String aPuh;
 	private String aOsoite;
-	private String aPostiNro;
+	private int aPostiNro;
 	private String aPostiTmp;
 	private String cola;
 	private String fanta;
@@ -27,7 +27,7 @@ public class Tilaus {
 
 	public Tilaus(int tilausId, String status, Date tilAjankohta,
 			ArrayList<PizzaTilaus> pizzatilaukset, String aEtunimi,
-			String aSukunimi, String aPuh, String aOsoite, String aPostiNro,
+			String aSukunimi, String aPuh, String aOsoite, int aPostiNro,
 			String aPostiTmp, String cola, String fanta, String sprite, double yhtHinta) {
 		super();
 		this.tilausId = tilausId;
@@ -48,7 +48,7 @@ public class Tilaus {
 	
 	public Tilaus(int tilausId, String status, Date tilAjankohta,
 			String aEtunimi, String aSukunimi, String aPuh, String aOsoite,
-			String aPostiNro, String aPostiTmp, double yhtHinta) {
+			int aPostiNro, String aPostiTmp, double yhtHinta) {
 		super();
 		this.tilausId = tilausId;
 		this.status = status;
@@ -63,7 +63,7 @@ public class Tilaus {
 		
 	public Tilaus(int tilausId, String status, Date tilAjankohta,
 			String aEtunimi, String aSukunimi, String aPuh, String aOsoite,
-			String aPostiNro, String aPostiTmp, String cola, String fanta,
+			int aPostiNro, String aPostiTmp, String cola, String fanta,
 			String sprite, double yhtHinta) {
 		super();
 		this.tilausId = tilausId;
@@ -110,7 +110,7 @@ public class Tilaus {
 	}
 
 	public Tilaus(int tilausId, String status, Date tilAjankohta,
-			String aSukunimi, String aPuh, String aOsoite, String aPostiNro,
+			String aSukunimi, String aPuh, String aOsoite, int aPostiNro,
 			String aPostiTmp, String cola, String fanta, String sprite,
 			double yhtHinta) {
 		super();
@@ -234,11 +234,11 @@ public class Tilaus {
 		this.aOsoite = aOsoite;
 	}
 
-	public String getaPostiNro() {
+	public int getaPostiNro() {
 		return aPostiNro;
 	}
 
-	public void setaPostiNro(String aPostiNro) {
+	public void setaPostiNro(int aPostiNro) {
 		this.aPostiNro = aPostiNro;
 	}
 

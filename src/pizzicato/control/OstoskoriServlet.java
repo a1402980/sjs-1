@@ -66,7 +66,7 @@ public class OstoskoriServlet extends HttpServlet {
 			tilaus.addPizzaTilaus(pizzatilaus);
 		}
 		if (tilaus != null){
-			session.setAttribute("viesti", "Valintasi on lisätty ostoskoriin!");
+			session.setAttribute("viesti", "Pizzasi on lisätty ostoskoriin!");
 		}
 		response.sendRedirect("Etusivu#pizzamenu");
 	}

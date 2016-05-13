@@ -166,7 +166,7 @@
 	<!-- Free Section -->
 
 	<section id="pizzat">
-	<form method="get" action="TilaajanTiedot">
+	
 	<div class="container">
 		<div class="row text-center for-full-back color-light ">
 			<div class="col-md-8 col-md-offset-2">
@@ -222,7 +222,7 @@
 						%>
 					</table>
 
-
+<form method="get" action="TilaajanTiedot">
 				
 
 				<div id="ostoskorinvalinnat">
@@ -334,11 +334,11 @@
 
 			<p>Ongelmia? Lähetä sähköpostia osoitteeseen
 				apua@silverjavaslayers.fi</p>
-
+</form>
 		</div>
 	</div>
 	</div>
-	</form>
+	
 	</section>
 	<!--End Free Section -->
 
