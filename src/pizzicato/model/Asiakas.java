@@ -6,7 +6,7 @@ public class Asiakas {
 	private String sukuNimi;
 	private String puh;	
 	private String osoite;	 
-	private int postiNro;	
+	private String postiNro;	
 	private String postiTmp;
 	private String sPosti;
 		
@@ -16,7 +16,7 @@ public class Asiakas {
 	}
 
 	public Asiakas(int asiakasId, String etuNimi, String sukuNimi, String puh,
-			String osoite, int postiNro, String postiTmp, String sPosti) {
+			String osoite, String postiNro, String postiTmp, String sPosti) {
 		super();
 		this.asiakasId = asiakasId;
 		this.etuNimi = etuNimi;
@@ -71,11 +71,11 @@ public class Asiakas {
 		this.osoite = osoite;
 	}
 
-	public int getPostiNro() {
+	public String getPostiNro() {
 		return postiNro;
 	}
 
-	public void setPostiNro(int postiNro) {
+	public void setPostiNro(String postiNro) {
 		this.postiNro = postiNro;
 	}
 

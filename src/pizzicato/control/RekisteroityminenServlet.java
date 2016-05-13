@@ -150,41 +150,40 @@ public class RekisteroityminenServlet extends HttpServlet {
 			errors.put("osoite", "Osoitteessa ei saa olla erikoismerkkejÃ¤.");
 		}
 				
-		String strPNro = request.getParameter("postinro");
-		int pNro = new Integer(strPNro);
-		if (strPNro == null || strPNro.trim().length() != 5 ) {
+		String pNro = request.getParameter("postinro");
+		if (pNro == null || pNro.trim().length() != 5 ) {
 			errors.put("postinro", "Postinumeron on oltava 5 numeroa");
 		}else{
 			asiakas.setPostiNro(pNro);}
-		if (strPNro.matches("^[0-9]*$")){
+		if (pNro.matches("^[0-9]*$")){
 			asiakas.setPostiNro(pNro);
 		}else{
-			errors.put("postinro", " Postinumerossa ei saa olla kirjaimia tai erikoismerkkejä.");
+			errors.put("postinro", " Postinumerossa ei saa olla kirjaimia tai erikoismerkkejï¿½.");
 		}
 				
 				
 		String pTmp = request.getParameter("postitmp");
 		if (pTmp == null || pTmp.trim().length() < 2 ) {
-			errors.put("postitmp", " Postitoimipaikan on oltava vähintään 2 merkkiä pitkä.");
+			errors.put("postitmp", " Postitoimipaikan on oltava vï¿½hintï¿½ï¿½n 2 merkkiï¿½ pitkï¿½.");
 		}else{
 			 asiakas.setPostiTmp(pTmp);}
 		if (pTmp.trim().length() > 15 ){
-			errors.put("postitmp", " Postitoimipaikan on oltava lyhyempi kuin 15 merkkiä.");
+			errors.put("postitmp", " Postitoimipaikan on oltava lyhyempi kuin 15 merkkiï¿½.");
 		}else{
 			asiakas.setPostiTmp(pTmp);}
-		if (pTmp.matches("^[a-z åäöA-ZÅÄÖ-]*$")){
+		if (pTmp.matches("^[a-z ï¿½ï¿½ï¿½A-Zï¿½ï¿½ï¿½-]*$")){
 			asiakas.setPostiTmp(pTmp);
 		}else{
-			errors.put("postitmp", "Postitoimipaikassa ei saa olla erikoismerkkejä.");
+			errors.put("postitmp", "Postitoimipaikassa ei saa olla erikoismerkkejï¿½.");
 		}
 				
 		String sPosti = request.getParameter("sposti");
 		if (sPosti == null || sPosti.trim().length() < 6 ) {
-			errors.put("sposti", " Sähköpostin on oltava vähintään 6 merkkiä pitkä.");
+			errors.put("sposti", " Sï¿½hkï¿½postin on oltava vï¿½hintï¿½ï¿½n 6 merkkiï¿½ pitkï¿½.");
 		}else{
 			 asiakas.setsPosti(sPosti);}
 		if (sPosti.trim().length() > 50 ){
-			errors.put("sposti", " Sähköpostin on oltava lyhyempi kuin 50 merkkiä.");
+			errors.put("sposti", " Sï¿½hkï¿½postin on oltava lyhyempi kuin 50 merkkiï¿½.");
 		}else{
 			asiakas.setsPosti(sPosti);}
 		if (sPosti.matches("^[a-zA-Z0-9@.]*$")){
