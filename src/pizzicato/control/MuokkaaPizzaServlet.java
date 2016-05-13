@@ -24,7 +24,7 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 
 	/**
 	 * MuokkaaPizzaServletin doGet metodi hakee muokattavan pizzan tiedot
-	 * tietokannasta PizzaDAOn metodilla ja luo käyttäjän näkymän selaimelle
+	 * tietokannasta PizzaDAOn metodilla ja luo kï¿½yttï¿½jï¿½n nï¿½kymï¿½n selaimelle
 	 **/
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -34,7 +34,6 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 		int pizzaId = Integer.parseInt(idString);
 		PizzaDAO pizzadao = new PizzaDAO();
 		Pizza pizza = pizzadao.findCertainPizza(pizzaId);
-		System.out.println("pizzan täytteet" + pizza);
 		request.setAttribute("pizza", pizza);
 		
 		TayteDAO taytedao = new TayteDAO();
@@ -47,8 +46,8 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 	}
 
 	/**
-	 * MuokkaaPizzaServletin doPost metodi hakee käyttäjän syöttämät tiedot
-	 * selaimelta ja lähettää muokatt tiedot PizzaDAOon.
+	 * MuokkaaPizzaServletin doPost metodi hakee kï¿½yttï¿½jï¿½n syï¿½ttï¿½mï¿½t tiedot
+	 * selaimelta ja lï¿½hettï¿½ï¿½ muokatt tiedot PizzaDAOon.
 	 **/
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -111,25 +110,25 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 			pizza.setpSaatavuus(pSaatavuus);
 		}
 		
-		//täytteiden käsittely
+		//tï¿½ytteiden kï¿½sittely
 				int tayteId;
 				int maxlkm = 6;
 					
 				String valituttaytteet[] = request.getParameterValues("tayte");
 				if (valituttaytteet.length < maxlkm){		
 					for (int i = 0; i < valituttaytteet.length; i++){
-						//muutetaan tayteId:t stringeistä inteiksi
+						//muutetaan tayteId:t stringeistï¿½ inteiksi
 						tayteId = new Integer(valituttaytteet[i]);
-						//luodaan täyte olio ja lisätään täyteid:t niihin, täytedaosta haetaan muut täytteen tiedot
+						//luodaan tï¿½yte olio ja lisï¿½tï¿½ï¿½n tï¿½yteid:t niihin, tï¿½ytedaosta haetaan muut tï¿½ytteen tiedot
 						Tayte tayte = new Tayte();
 						TayteDAO taytedao = new TayteDAO();
 						tayte = taytedao.findCertainTayte(tayteId);
 							System.out.println(tayte);
-						//lisätään täyte-oliot pizza-olion täytelistaan
+						//lisï¿½tï¿½ï¿½n tï¿½yte-oliot pizza-olion tï¿½ytelistaan
 						pizza.addTayte(tayte);	
 					} 
 				} else {
-					errors.put("Täytteet", " Täytteitä voi lisätä korkeintaan 6.");
+					errors.put("Tï¿½ytteet", " Tï¿½ytteitï¿½ voi lisï¿½tï¿½ korkeintaan 6.");
 				}
 		
 		request.setAttribute("errors", errors);
