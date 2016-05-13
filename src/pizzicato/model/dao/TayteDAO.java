@@ -42,7 +42,7 @@ public class TayteDAO extends DataAccessObject{
 		Tayte tayte=null;
 		try {
 			conn = getConnection();
-			String sqlSelect ="SELECT tayte_id, t_nimi, t_hinta FROM tayte;";
+			String sqlSelect ="SELECT tayte_id, t_nimi, t_hinta FROM tayte ORDER BY t_hinta;";
 			stmt=conn.prepareStatement(sqlSelect);
 			rs=stmt.executeQuery(sqlSelect);
 			while(rs.next()) {
