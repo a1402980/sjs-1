@@ -112,7 +112,7 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 		
 		//t�ytteiden k�sittely
 				int tayteId;
-				int maxlkm = 6;
+				int maxlkm = 7;
 					
 				String valituttaytteet[] = request.getParameterValues("tayte");
 				if (valituttaytteet.length < maxlkm){		

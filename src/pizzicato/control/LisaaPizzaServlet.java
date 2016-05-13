@@ -23,7 +23,7 @@ import pizzicato.model.dao.TayteDAO;
 public class LisaaPizzaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	/**LisaaPizzaServletin doGet metodi luo käyttäjän näkymän selaimeen.**/   
+	/**LisaaPizzaServletin doGet metodi luo kï¿½yttï¿½jï¿½n nï¿½kymï¿½n selaimeen.**/   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String jsp ="/view/lisaa_pizza.jsp";
 		TayteDAO taytedao = new TayteDAO();
@@ -33,7 +33,7 @@ public class LisaaPizzaServlet extends HttpServlet {
 		dispather.forward(request, response);
 	}
 	
-	/**LisaaPizzaServletin doPost metodi hakee käyttäjän syöttämät tiedot selaimelta ja lähettää tiedot tietokantayhteysoliolle. (Käyttäjän syöttämien tietojen mukaan PizzaDAOn metodi luo uuden Pizzaolion tietokantaan) **/
+	/**LisaaPizzaServletin doPost metodi hakee kï¿½yttï¿½jï¿½n syï¿½ttï¿½mï¿½t tiedot selaimelta ja lï¿½hettï¿½ï¿½ tiedot tietokantayhteysoliolle. (Kï¿½yttï¿½jï¿½n syï¿½ttï¿½mien tietojen mukaan PizzaDAOn metodi luo uuden Pizzaolion tietokantaan) **/
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Map<String, String> errors = validate(request);
@@ -63,7 +63,7 @@ public class LisaaPizzaServlet extends HttpServlet {
 	
 		String pNimi = request.getParameter("nimi");
 		if (pNimi == null || pNimi.trim().length() < 2) {
-			errors.put("nimi", " Nimen on oltava vähintään 2 merkkiä pitkä.");
+			errors.put("nimi", " Nimen on oltava vï¿½hintï¿½ï¿½n 2 merkkiï¿½ pitkï¿½.");
 		}else{
 			pizza.setpNimi(pNimi);
 		}
@@ -72,11 +72,11 @@ public class LisaaPizzaServlet extends HttpServlet {
 		try {
 			 pHinta = Double.parseDouble(strPHinta.replace(",", "."));
 		} catch (Exception e){
-			errors.put("hinta", " Hinnan on oltava väliltä 5-100€.");
+			errors.put("hinta", " Hinnan on oltava vï¿½liltï¿½ 5-100ï¿½.");
 		}
 		System.out.println(pHinta);
 		if (pHinta == null || pHinta < 5.0 || pHinta > 100.0) {
-			errors.put("pHinta", " Hinnan on oltava väliltä 5-100€.");
+			errors.put("pHinta", " Hinnan on oltava vï¿½liltï¿½ 5-100ï¿½.");
 		}else{
 			pizza.setpHinta(pHinta);
 		}
@@ -88,25 +88,25 @@ public class LisaaPizzaServlet extends HttpServlet {
 			pizza.setpSaatavuus(pSaatavuus);
 		}
 		
-		//täytteiden käsittely
+		//tï¿½ytteiden kï¿½sittely
 		int tayteId;
-		int maxlkm = 6;
+		int maxlkm = 7;
 			
 		String valituttaytteet[] = request.getParameterValues("tayte");
 		if (valituttaytteet.length < maxlkm){		
 			for (int i = 0; i < valituttaytteet.length; i++){
-				//muutetaan tayteId:t stringeistä inteiksi
+				//muutetaan tayteId:t stringeistï¿½ inteiksi
 				tayteId = new Integer(valituttaytteet[i]);
-				//luodaan täyte olio ja lisätään täyteid:t niihin, täytedaosta haetaan muut täytteen tiedot
+				//luodaan tï¿½yte olio ja lisï¿½tï¿½ï¿½n tï¿½yteid:t niihin, tï¿½ytedaosta haetaan muut tï¿½ytteen tiedot
 				Tayte tayte = new Tayte();
 				TayteDAO taytedao = new TayteDAO();
 				tayte = taytedao.findCertainTayte(tayteId);
 					System.out.println(tayte);
-				//lisätään täyte-oliot pizza-olion täytelistaan
+				//lisï¿½tï¿½ï¿½n tï¿½yte-oliot pizza-olion tï¿½ytelistaan
 				pizza.addTayte(tayte);	
 			} 
 		} else {
-			errors.put("Täytteet", " Täytteitä voi lisätä korkeintaan 6.");
+			errors.put("Tï¿½ytteet", " Tï¿½ytteitï¿½ voi lisï¿½tï¿½ korkeintaan 6.");
 		}
 		request.setAttribute("pizza", pizza);
 		return errors;
