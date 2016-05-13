@@ -238,7 +238,7 @@
 			<hr>
 
 
-			<!--loppusumman näyttäminen -->
+			<!--loppusumman näyttäm. -->
 			<div>
 			<br>
 			<span style="font-size: 200%; font-weight: bold;">Juomien hinta: </span>

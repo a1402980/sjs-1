@@ -37,6 +37,7 @@ public class OstoskoriServlet extends HttpServlet {
 		Tilaus tilaus;
 		PizzaTilaus pizzatilaus;		
 		
+		
 		//avataan uusi sessio
 		HttpSession session = request.getSession(true);
 		tilaus = (Tilaus) session.getAttribute("tilaus");
