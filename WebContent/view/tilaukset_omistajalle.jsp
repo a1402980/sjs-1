@@ -145,21 +145,25 @@
 
 				<div class="table-responsive">
 					<table class="table">
-						<thead>
+						<tbody>						
+						<%for(int i = 0; i < tilaukset.size(); i++) {%>
 							<tr>
 								<th>Tilaus ID / Pizza ID</th>
 								<th>Status / Pizzan nimi</th>
 								<th>Tilausajankohta</th>								
 								<th>Yhteishinta</th>						
 							</tr>
-						</thead>
-						<tbody>						
-						<%for(int i = 0; i < tilaukset.size(); i++) {%>
 							<tr>
 								<td><%=tilaukset.get(i).getTilausId()%></td>
 								<td><%=tilaukset.get(i).getStatus()%></td>
 								<td><%=tilaukset.get(i).getTilAjankohta()%></td>
-								<td></td>						
+								<td><%=tilaukset.get(i).getYhtHinta()%></td>						
+							</tr>
+							<tr>
+								<th>PizzaId</th>
+								<th>Pizzan nimi</th>
+								<th></th>
+								<th></th>
 							</tr>
 							<%for (int j=0; j<tilaukset.get(i).getPizzatilaukset().size(); j++){ %> 
 								<tr>

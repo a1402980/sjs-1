@@ -141,21 +141,23 @@
 
 				<div class="table-responsive">
 					<table class="table">
-						<thead>
+						<tbody>
+							<%for(int i = 0; i < tilaukset.size(); i++) {%>
 							<tr>
-								<th>TilausId / Pizzan nimi</th>
-								<th>Sukunimi / Lukumäärä</th>
+								<th>TilausId</th>
+								<th>Sukunimi</th>
 								<th>Puhelin</th>
 								<th>Osoite</th>
 								<th>Postinumero</th>
 								<th>Postitoimipaikka</th>
 								<th>Status</th>
 								<th>Tilauksen ajankohta</th>
+								<th>Cola</th>
+								<th>Fanta</th>
+								<th>Sprite</th>
+								<th>Yhteishinta</th>
 								<th>Kuittaa</th>
 							</tr>
-						</thead>
-						<tbody>
-							<%for(int i = 0; i < tilaukset.size(); i++) {%>
 							<tr>
 								<td><%=tilaukset.get(i).getTilausId()%></td>
 								<td><%=tilaukset.get(i).getaSukunimi()%></td>
@@ -164,17 +166,38 @@
 								<td><%=tilaukset.get(i).getaPostiNro()%></td>
 								<td><%=tilaukset.get(i).getaPostiTmp()%></td>								
 								<td><%=tilaukset.get(i).getStatus()%></td>
-								<td><%=tilaukset.get(i).getTilAjankohta()%></td>			
+								<td><%=tilaukset.get(i).getTilAjankohta()%></td>
+								<td><%=tilaukset.get(i).getCola()%></td>
+								<td><%=tilaukset.get(i).getFanta()%></td>
+								<td><%=tilaukset.get(i).getSprite()%></td>
+								<td><%=tilaukset.get(i).getYhtHinta()%></td>			
 								<td>
 									<form method="post">
-										<input type="submit" class="btn btn-success" name="nappi" role="button" value="<%=tilaukset.get(i).getTilausId()%>">Toimitettu<i class="fa fa-check" aria-hidden="true"></i>
+										<button type="submit" class="btn btn-success"name="nappi" value="<%=tilaukset.get(i).getTilausId()%>"> Toimitettu <i class="fa fa-check" aria-hidden="true"></i> </button>
 									</form>
 								</td>														
+							</tr>
+							<tr>
+									<th>Pizzat<th>
+									<th></th>
+									<th></th>
+									<th></th>
+									<th></th>
+									<th></th>
+									<th></th>
+									<th></th>
+									<th></th>
+									<th></th>
+									<th></th>
+									<th></th>
 							</tr>
 								<%for (int j=0; j<tilaukset.get(i).getPizzatilaukset().size(); j++){ %> 
 									<tr>
 										<td><%=tilaukset.get(i).getPizzaTilaus(j).getPizza().getpNimi()%></td>
-																	
+										<td></td>							
+										<td></td>
+										<td></td>
+										<td></td>
 										<td></td>
 										<td></td>
 										<td></td>

@@ -18,6 +18,7 @@ public class Tilaus {
 	private String cola;
 	private String fanta;
 	private String sprite;
+	private double yhtHinta;
 
 	public Tilaus() {
 		super();
@@ -27,7 +28,7 @@ public class Tilaus {
 	public Tilaus(int tilausId, String status, Date tilAjankohta,
 			ArrayList<PizzaTilaus> pizzatilaukset, String aEtunimi,
 			String aSukunimi, String aPuh, String aOsoite, int aPostiNro,
-			String aPostiTmp, String cola, String fanta, String sprite) {
+			String aPostiTmp, String cola, String fanta, String sprite, double yhtHinta) {
 		super();
 		this.tilausId = tilausId;
 		this.status = status;
@@ -42,11 +43,12 @@ public class Tilaus {
 		this.cola = cola;
 		this.fanta = fanta;
 		this.sprite = sprite;
+		this.yhtHinta = yhtHinta;
 	}
 	
 	public Tilaus(int tilausId, String status, Date tilAjankohta,
 			String aEtunimi, String aSukunimi, String aPuh, String aOsoite,
-			int aPostiNro, String aPostiTmp) {
+			int aPostiNro, String aPostiTmp, double yhtHinta) {
 		super();
 		this.tilausId = tilausId;
 		this.status = status;
@@ -62,7 +64,7 @@ public class Tilaus {
 	public Tilaus(int tilausId, String status, Date tilAjankohta,
 			String aEtunimi, String aSukunimi, String aPuh, String aOsoite,
 			int aPostiNro, String aPostiTmp, String cola, String fanta,
-			String sprite) {
+			String sprite, double yhtHinta) {
 		super();
 		this.tilausId = tilausId;
 		this.status = status;
@@ -76,10 +78,11 @@ public class Tilaus {
 		this.cola = cola;
 		this.fanta = fanta;
 		this.sprite = sprite;
+		this.yhtHinta = yhtHinta;
 	}
 	
 	public Tilaus(int tilausId, String status, Date tilAjankohta, String cola,
-			String fanta, String sprite) {
+			String fanta, String sprite, double yhtHinta) {
 		super();
 		this.tilausId = tilausId;
 		this.status = status;
@@ -87,6 +90,23 @@ public class Tilaus {
 		this.cola = cola;
 		this.fanta = fanta;
 		this.sprite = sprite;
+		this.yhtHinta = yhtHinta;
+	}
+	
+	public Tilaus(int tilausId, String status, Date tilAjankohta,
+			ArrayList<PizzaTilaus> pizzatilaukset) {
+		super();
+		this.tilausId = tilausId;
+		this.status = status;
+		this.tilAjankohta = tilAjankohta;
+		this.pizzatilaukset = pizzatilaukset;
+	}
+	
+	public Tilaus(int tilausId, String status, Date tilAjankohta) {
+		super();
+		this.tilausId = tilausId;
+		this.status = status;
+		this.tilAjankohta = tilAjankohta;
 	}
 
 	public String getCola() {
@@ -113,21 +133,6 @@ public class Tilaus {
 		this.sprite = sprite;
 	}
 
-	public Tilaus(int tilausId, String status, Date tilAjankohta,
-			ArrayList<PizzaTilaus> pizzatilaukset) {
-		super();
-		this.tilausId = tilausId;
-		this.status = status;
-		this.tilAjankohta = tilAjankohta;
-		this.pizzatilaukset = pizzatilaukset;
-	}
-	
-	public Tilaus(int tilausId, String status, Date tilAjankohta) {
-		super();
-		this.tilausId = tilausId;
-		this.status = status;
-		this.tilAjankohta = tilAjankohta;
-	}
 
 	public int getTilausId() {
 		return tilausId;
@@ -225,9 +230,15 @@ public class Tilaus {
 	public void setaPostiTmp(String aPostiTmp) {
 		this.aPostiTmp = aPostiTmp;
 	}
-
-	
 		
+	public double getYhtHinta() {
+		return yhtHinta;
+	}
+
+	public void setYhtHinta(double yhtHinta) {
+		this.yhtHinta = yhtHinta;
+	}
+
 	@Override
 	public String toString() {
 		return "Tilaus [tilausId=" + tilausId + ", status=" + status

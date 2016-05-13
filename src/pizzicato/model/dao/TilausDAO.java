@@ -14,7 +14,7 @@ import pizzicato.model.Tilaus;
 
 public class TilausDAO extends DataAccessObject{
 	
-	private Tilaus readTilaus(ResultSet rs) {
+	/**private Tilaus readTilaus(ResultSet rs) {
 		try {
 			int tilausId=rs.getInt("tilaus_id");
 			String status=rs.getString("status");
@@ -29,7 +29,7 @@ public class TilausDAO extends DataAccessObject{
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
-	}
+	}**/
 	
 	private Tilaus readTilauksetKokki(ResultSet rs) {
 		try {
@@ -49,6 +49,7 @@ public class TilausDAO extends DataAccessObject{
 			String status=rs.getString("status");
 			Date tilAjankohta=rs.getDate("til_ajankohta");
 			System.out.println(tilAjankohta);
+			double yhtHinta=rs.getDouble("yht_hinta");
 			String aEtunimi=rs.getString("a_etunimi");
 			String aSukunimi=rs.getString("a_sukunimi");
 			String aPuh=rs.getString("a_puh");
@@ -58,7 +59,7 @@ public class TilausDAO extends DataAccessObject{
 			String cola=rs.getString("cola");
 			String fanta=rs.getString("fanta");
 			String sprite=rs.getString("sprite");
-			return new Tilaus(tilausId, status, tilAjankohta, aEtunimi, aSukunimi, aPuh, aOsoite, aPostiNro, aPostiTmp, cola, fanta, sprite);
+			return new Tilaus(tilausId, status, tilAjankohta, aEtunimi, aSukunimi, aPuh, aOsoite, aPostiNro, aPostiTmp, cola, fanta, sprite, yhtHinta);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -70,10 +71,11 @@ public class TilausDAO extends DataAccessObject{
 			String status=rs.getString("status");
 			Date tilAjankohta=rs.getDate("til_ajankohta");
 			System.out.println(tilAjankohta);
+			double yhtHinta=rs.getDouble("yht_hinta");
 			String cola=rs.getString("cola");
 			String fanta=rs.getString("fanta");
 			String sprite=rs.getString("sprite");
-			return new Tilaus(tilausId, status, tilAjankohta, cola, fanta, sprite);
+			return new Tilaus(tilausId, status, tilAjankohta, cola, fanta, sprite, yhtHinta);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
