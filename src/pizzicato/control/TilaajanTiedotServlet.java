@@ -155,13 +155,13 @@ public class TilaajanTiedotServlet extends HttpServlet {
 			errors.put("osoite", "Osoitteessa ei saa olla erikoismerkkejä.");
 		}
 				
-		String strPNro = request.getParameter("postinro");
-		int pNro = new Integer(strPNro);
-		if (strPNro == null || strPNro.trim().length() != 5 ) {
+		String pNro = request.getParameter("postinro");
+
+		if (pNro == null || pNro.trim().length() != 5 ) {
 			errors.put("postinro", "Postinumeron on oltava 5 numeroa");
 		}else{
 			tilaus.setaPostiNro(pNro);}
-		if (strPNro.matches("^[0-9]*$")){
+		if (pNro.matches("^[0-9]*$")){
 			tilaus.setaPostiNro(pNro);
 		}else{
 			errors.put("postinro", " Postinumerossa ei saa olla kirjaimia tai erikoismerkkejä.");

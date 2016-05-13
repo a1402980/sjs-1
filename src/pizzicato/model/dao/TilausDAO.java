@@ -35,7 +35,7 @@ public class TilausDAO extends DataAccessObject{
 			String aSukunimi=rs.getString("a_sukunimi");
 			String aPuh=rs.getString("a_puh");
 			String aOsoite=rs.getString("a_osoite");
-			int aPostiNro=rs.getInt("a_posti_nro");
+			String aPostiNro=rs.getString("a_posti_nro");
 			String aPostiTmp=rs.getString("a_posti_tmp");
 			String cola=rs.getString("cola");
 			String fanta=rs.getString("fanta");
