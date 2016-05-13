@@ -27,11 +27,15 @@ public class TilaajanTiedotServlet extends HttpServlet {
 		String jsp = "/view/tilaajan_tiedot.jsp";
 		HttpSession session = request.getSession(true);
 		Kayttaja kayttaja = (Kayttaja) session.getAttribute("kayttaja");
+		Tilaus tilaus = (Tilaus) session.getAttribute("tilaus");
 		if (kayttaja != null){
 			AsiakasDAO asiakasdao = new AsiakasDAO();
 			Asiakas asiakas = asiakasdao.findCertainAsiakas(kayttaja);
 			session.setAttribute("asiakas", asiakas);
 		} 
+		String summa = request.getParameter("summa");
+		double yhtsumma = Double.parseDouble(summa.replace(",", "."));
+		tilaus.setYhtHinta(yhtsumma);
 		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
 		dispatcher.forward(request, response);

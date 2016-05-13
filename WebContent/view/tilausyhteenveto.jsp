@@ -160,12 +160,10 @@
 									<%=pizza.getTayte(j).gettNimi() %>
 								<% } %>
 						</td>
-						<td>
-						<%=pizza.getpHinta()%>
-						</td>
+						<td><%=pizza.getpHinta()%></td>
 						<td></td>
-
 					</tr>
+					
 					<% } %>
 		</table>
 		
@@ -187,19 +185,7 @@
 		
 		<!--loppusumman näyttäminen -->		
 				<h2>Loppusumma
-				 <%double yhteishinta = 0;
-				 PizzaTilaus pizzatilaus2;
-				 for (int i=0;i<tilaus.getPizzaTilLkm();i++){  
-					pizzatilaus2= tilaus.getPizzaTilaus(i);
-					 yhteishinta += pizzatilaus2.getPizza().getpHinta()*1;	
-				}
-				 DecimalFormat des = new DecimalFormat("0.00");
-					String yhthinta = des.format(yhteishinta);%>				
-					 
-					 <%=yhthinta%>
-					
-					<i class="fa fa-eur" aria-hidden="true" ></i> </h2>
-					<%=session.getAttribute("yhteishinta") %>
+				<%=tilaus.getYhtHinta()%> <i class="fa fa-eur" aria-hidden="true" ></i> </h2>
 				</div>
 				<div>
 					<button input type="submit" onClick="window.location='tilausvahvistus';" class="btn btn-success btn-lg">Lähetä tilaus</button>

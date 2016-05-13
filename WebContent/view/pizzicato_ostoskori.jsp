@@ -269,9 +269,9 @@
 			<i class="fa fa-eur" aria-hidden="true" style="font-size:150% "></i><br>
 			
 			<span style="font-size: 300%; font-weight: bold;">Lopullinen summa: </span>
-			<span style="font-size: 300%; font-weight: bold;" id="summat"></span>
+			<span style="font-size: 300%; font-weight: bold;" id="summat" name="summa"></span>
 			<i class="fa fa-eur" aria-hidden="true" style="font-size:200% "></i><br>
-		
+			
 			 <script>
  
  $(document).ready(function() {
@@ -289,7 +289,6 @@
 		} );
 	 
  });
- 
  
  </script>
  

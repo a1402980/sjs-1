@@ -59,6 +59,7 @@ status varchar(15) NOT NULL default 'Odottaa',
 til_ajankohta timestamp NOT NULL default CURRENT_TIMESTAMP(), 
 oregano enum('true', 'false') NOT NULL,
 valkosipuli enum('true', 'false') NOT NULL,
+yht_hinta decimal(4,2) NOT NULL,
 PRIMARY KEY (tilaus_id),
 FOREIGN KEY (asiakas_id) REFERENCES asiakas(asiakas_id)
 )Engine="InnoDB";

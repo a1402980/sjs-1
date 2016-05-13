@@ -47,6 +47,7 @@ public class OstoskoriServlet extends HttpServlet {
 			tilaus=new Tilaus();
 			session.setAttribute("tilaus", tilaus);
 		}
+
 		//luodaan pizzatilaus-olio
 		pizzatilaus= new PizzaTilaus();
 		//lis�t��n pt-oliolle aseta lkm, pizzaId
