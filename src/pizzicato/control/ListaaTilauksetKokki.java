@@ -24,6 +24,30 @@ public class ListaaTilauksetKokki extends HttpServlet {
 		
 		ArrayList<Tilaus> tilaukset = tilausdao.kokkiFindAll();
 		
+		String oregano;
+		String valkosipuli;
+		for(int i=0; i<tilaukset.size();i++){
+			for(int j=0; j<tilaukset.get(i).getPizzatilaukset().size(); j++){
+				oregano = tilaukset.get(i).getPizzaTilaus(j).getOregano();
+				valkosipuli = tilaukset.get(i).getPizzaTilaus(j).getValkosipuli();
+				if(oregano == null||oregano.equals(false)|| oregano.equals(" ")){
+					oregano = "ei";
+					tilaukset.get(i).getPizzaTilaus(j).setOregano(oregano);
+				}else{
+					oregano = "kyllä";
+					tilaukset.get(i).getPizzaTilaus(j).setOregano(oregano);
+				}
+				if(valkosipuli == null ||valkosipuli.equals(false) || valkosipuli.equals(" ")){
+					valkosipuli = "ei";
+					tilaukset.get(i).getPizzaTilaus(j).setValkosipuli(valkosipuli);
+				}else{
+					valkosipuli = "kyllä";
+					tilaukset.get(i).getPizzaTilaus(j).setValkosipuli(valkosipuli);
+				}
+			}
+			
+		}
+		
 		request.setAttribute("tilaukset", tilaukset);	
 		
 		System.out.println(tilaukset);
