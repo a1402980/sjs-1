@@ -18,7 +18,7 @@ public class TilausDAO extends DataAccessObject{
 		try {
 			int tilausId=rs.getInt("tilaus_id");
 			String status=rs.getString("status");
-			Date tilAjankohta=rs.getDate("til_ajankohta");
+			Date tilAjankohta=rs.getTimestamp("til_ajankohta");
 			System.out.println(tilAjankohta);
 			return new Tilaus(tilausId, status, tilAjankohta);
 		} catch (SQLException e) {
@@ -30,7 +30,7 @@ public class TilausDAO extends DataAccessObject{
 		try {
 			int tilausId=rs.getInt("tilaus_id");
 			String status=rs.getString("status");
-			Date tilAjankohta=rs.getDate("til_ajankohta");
+			Date tilAjankohta=rs.getTimestamp("til_ajankohta");
 			System.out.println(tilAjankohta);
 			double yhtHinta=rs.getDouble("yht_hinta");
 			String aEtunimi=rs.getString("a_etunimi");
@@ -52,7 +52,7 @@ public class TilausDAO extends DataAccessObject{
 		try {
 			int tilausId=rs.getInt("tilaus_id");
 			String status=rs.getString("status");
-			Date tilAjankohta=rs.getDate("til_ajankohta");
+			Date tilAjankohta=rs.getTimestamp("til_ajankohta");
 			System.out.println(tilAjankohta);
 			double yhtHinta=rs.getDouble("yht_hinta");
 			String cola=rs.getString("cola");
