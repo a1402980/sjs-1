@@ -59,30 +59,13 @@ public class OstoskoriServlet extends HttpServlet {
 		int pizza_id = Integer.parseInt(StrPizzaId);
 		Pizza pizza =pizzadao.findCertainPizza(pizza_id);
 		pizzatilaus.setPizza(pizza);
-		//int edellinenRivinro=0;
-		//int nykyinenRivinro=0;
-		//int rivinumero = pizzatilaus.getRivinro();
-		
-		
+				
 		//tilaus-olion pizzatilaukset-listaan lis�t��n pizzatilausolio
-		for (int i = 0; i < lkm; i++) {
-			
-			
-		
-			//tilaus.getPizzaTilaus(rivinumero);
-			
+		for (int i = 0; i < lkm; i++) {		
 			tilaus.addPizzaTilaus(pizzatilaus);
-			
-			
-			
-			// rivinumero++;
-			/* if (nykyinenRivinro != edellinenRivinro) {
-				nykyinenRivinro ++ ;
-			}
-			pizzatilaus.setRivinro(nykyinenRivinro);
-			 */
-			//tilaus.setRivinro(rivinro);
 		}
+		
+		request.setAttribute("viesti", "Pizza lisätty ostoskoriin!");
 		
 		response.sendRedirect("Etusivu#pizzamenu");
 	}

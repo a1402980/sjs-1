@@ -202,7 +202,12 @@
 			<h1>Pizzalista</h1>
 			<div class="alert alert-success">
 			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> 
-			<strong>Pizza lisätty ostoskoriin! (tämä on tässä vain merkkinä siitä mihin viesti tulee kun se on tehty servlettiin)</strong>
+				<%
+					String viesti = (String) request.getAttribute("viesti");
+					if (viesti != null) {
+						out.println("<strong>" + viesti + "</strong>");
+					}
+				%>
 			</div>
 			<div class="table-responsive" id="pizzataulukon_kehys">
 				<table class="table table-hover" align="center" id="pizzataulukko_asiakkaalle">
