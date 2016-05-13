@@ -204,10 +204,11 @@
 										<td></td>
 										<td></td>
 										<td></td>
-										<td></td>									
+										<td></td>
+										<td></td>										
 									</tr>
 								<% } %>																		
-								<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><td class="tableseparator"></td><td class="tableseparator"></td><td class="tableseparator"></td><td class="tableseparator"></td><td class="tableseparator"></td><td class="tableseparator"></td><td class="tableseparator"></td><td class="tableseparator"></td><td class="tableseparator"></td><td class="tableseparator"></td><td class="tableseparator"></td><td class="tableseparator"></td><td class="tableseparator"></td></tr>
 							<% } %>						
 						</tbody>
 					</table>

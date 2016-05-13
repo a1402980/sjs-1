@@ -280,6 +280,10 @@ table {
 	font-size: 130%;
 }
 
+.tableseparator {
+border-bottom: 10px solid #8f8f8f;
+}
+
 /*=======================================
     Kokki sivun tyylit
 ==================================================*/

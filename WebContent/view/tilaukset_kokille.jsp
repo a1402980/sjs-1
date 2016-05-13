@@ -175,10 +175,12 @@
 									</td>
 									<td><%=tilaukset.get(i).getPizzaTilaus(j).getOregano()%></td>							
 									<td><%=tilaukset.get(i).getPizzaTilaus(j).getValkosipuli()%></td>
+									
 								</tr>
 							<% } %>	
-								<tr><td></td><td></td><td></td><td></td></tr>
+								<tr><td class="tableseparator"></td><td class="tableseparator"></td><td class="tableseparator"></td><td class="tableseparator"></td></tr>
 							</tr>
+							
 							<% } %>	
 							</tbody>						
 					</table>
