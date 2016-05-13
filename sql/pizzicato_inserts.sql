@@ -119,3 +119,5 @@ alter table tilaus add sprite enum('true', 'false') default 'false';
 alter table tilaus add cola enum('true', 'false') default 'false';
 alter table tilaus add fanta enum('true', 'false') default 'false';
 
+alter table tilaus modify cola enum('true', 'false') NOT NULL default'false';
+

@@ -47,21 +47,20 @@ FOREIGN KEY (kayttaja_id) REFERENCES kayttaja(kayttaja_id)
 
 
 CREATE TABLE tilaus(
-tilaus_id int NOT NULL AUTO_INCREMENT,
-asiakas_id int NOT NULL,
-etunimi varchar(30) NOT NULL,
-sukunimi varchar(30) NOT NULL,
-puh varchar(15) NOT NULL,
-osoite varchar(30) NOT NULL,
-posti_nro char(5) NOT NULL,
-posti_tmp varchar(15) NOT NULL,
+tilaus_id int (11) NOT NULL AUTO_INCREMENT,
 status varchar(15) NOT NULL default 'Odottaa',
-til_ajankohta timestamp NOT NULL default CURRENT_TIMESTAMP(), 
-oregano enum('true', 'false') NOT NULL,
-valkosipuli enum('true', 'false') NOT NULL,
+til_ajankohta timestamp NOT NULL default CURRENT_TIMESTAMP(),
+a_etunimi varchar(30) NOT NULL,
+a_sukunimi varchar(30) NOT NULL,
+a_puh varchar(15) NOT NULL,
+a_osoite varchar(30) NOT NULL,
+a_posti_nro char(5) NOT NULL,
+a_posti_tmp varchar(15) NOT NULL, 
+cola enum('true', 'false') NOT NULL default'false',
+fanta enum('true', 'false') NOT NULL default'false',
+sprite enum('true', 'false') NOT NULL default'false', 
 yht_hinta decimal(4,2) NOT NULL,
-PRIMARY KEY (tilaus_id),
-FOREIGN KEY (asiakas_id) REFERENCES asiakas(asiakas_id)
+PRIMARY KEY (tilaus_id)
 )Engine="InnoDB";
 
 
