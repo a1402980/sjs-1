@@ -133,15 +133,15 @@
 	<!-- Free Section -->
 
 	<section id="pizzat">
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row text-center for-full-back color-light jumbotron" id="tilaustaulu">
 			<H1>Tilaukset</H1>
 			<h2>(Kokin näkymä)</h2>
-			<div class="container" id="kokintilaukset">
+			<div class="container-fluid id="kokintilaukset">
  
 				<div class="table-responsive">
 					<table class="table">
-						<tbody>
+						
 						
 							<%for(int i = 0; i < tilaukset.size(); i++) {%>
 							<tr>
@@ -180,13 +180,13 @@
 								</tr>
 							<% } %>	
 								<tr><td class="tableseparator"></td><td class="tableseparator"></td><td class="tableseparator"></td><td class="tableseparator"></td></tr>
-							</tr>
+								
 							
 							<% } %>	
-							</tbody>						
+												
 					</table>
 				</div>
-
+				</div>
 			</div>
 		</div></section>
 	<!--End Free Section -->

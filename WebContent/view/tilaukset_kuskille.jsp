@@ -137,6 +137,7 @@
 	<div class="container-fluid">
 		<div class="row text-center for-full-back color-light jumbotron" id="tilaustaulu">
 			<H1>Tilaukset</H1>
+			<h2>(Kuskin näkymä)</h2>
 			<div class="container-fluid" id="kokintilaukset">
 
 				<div class="table-responsive">
