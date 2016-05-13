@@ -208,8 +208,8 @@
 							</td>
 							<td><%=pizza.getpHinta()%></td>
 							<td style="display:none;"><%=tilaus.getPizzaTilLkm()%></td>
-							<td><input type="checkbox" name="oregano"> Oregano <input
-								type="checkbox" name="valkosipuli"> Valkosipuli
+							<td><input type="checkbox" name="oregano"> Oregano <br>
+								<input type="checkbox" name="valkosipuli"> Valkosipuli
 							<td>
 								<button onclick="poistapizza(<%=i%>)"> <!-- i= väliaikainen rivinumero ostoskorissa -->
 									<span class="glyphicon glyphicon-trash"></span>
