@@ -59,7 +59,7 @@ public class PizzaTilausDAO extends DataAccessObject {
 	
 	
 	
-	public void addPizzaTilaus(PizzaTilaus pizzatil) throws SQLException {
+	/**public void addPizzaTilaus(PizzaTilaus pizzatil) throws SQLException {
 		Connection conn = null;
 		PreparedStatement stmtInsert = null;		
 		try {
@@ -73,9 +73,9 @@ public class PizzaTilausDAO extends DataAccessObject {
 		} finally {
 			close(stmtInsert, conn); 
 		}		
-	}
+	}**/
 	
-	public PizzaTilaus deletePizzafromTilaus(PizzaTilaus pizzatil){
+	/**public PizzaTilaus deletePizzafromTilaus(PizzaTilaus pizzatil){
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -91,7 +91,7 @@ public class PizzaTilausDAO extends DataAccessObject {
 		}
 		return null;
 		
-	}
+	}**/
 	
 	
 	

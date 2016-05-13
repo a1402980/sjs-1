@@ -148,8 +148,8 @@
 						<tbody>						
 						<%for(int i = 0; i < tilaukset.size(); i++) {%>
 							<tr>
-								<th>Tilaus ID / Pizza ID</th>
-								<th>Status / Pizzan nimi</th>
+								<th>Tilaus ID</th>
+								<th>Status</th>
 								<th>Tilausajankohta</th>								
 								<th>Yhteishinta</th>						
 							</tr>

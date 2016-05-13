@@ -134,10 +134,10 @@
 	<!-- Free Section -->
 
 	<section id="pizzat">
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row text-center for-full-back color-light jumbotron" id="tilaustaulu">
 			<H1>Tilaukset</H1>
-			<div class="container" id="kokintilaukset">
+			<div class="container-fluid" id="kokintilaukset">
 
 				<div class="table-responsive">
 					<table class="table">
@@ -148,8 +148,8 @@
 								<th>Sukunimi</th>
 								<th>Puhelin</th>
 								<th>Osoite</th>
-								<th>Postinumero</th>
-								<th>Postitoimipaikka</th>
+								<th>Postinro</th>
+								<th>Postitmp</th>
 								<th>Status</th>
 								<th>Tilauksen ajankohta</th>
 								<th>Cola</th>
@@ -219,7 +219,9 @@
 				</div>
 
 			</div>
-		</div></section>
+		</div>
+		</div>
+		</section>
 	<!--End Free Section -->
 
 	<!-- Contact Section -->
