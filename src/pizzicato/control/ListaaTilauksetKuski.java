@@ -23,6 +23,36 @@ public class ListaaTilauksetKuski extends HttpServlet {
 				
 		ArrayList<Tilaus> tilaukset = tilausdao.kuskiFindAll();
 		
+		String cola;
+		String fanta;
+		String sprite;
+		for(int i=0; i<tilaukset.size();i++){
+			cola = tilaukset.get(i).getCola();
+			fanta = tilaukset.get(i).getFanta();
+			sprite =tilaukset.get(i).getSprite();
+			if(cola == null||cola.equals(false)|| cola.equals(" ")){
+				cola = "ei";
+				tilaukset.get(i).setCola(cola);
+			}else{
+				cola = "kyllä";
+				tilaukset.get(i).setCola(cola);
+			}
+			if(fanta == null ||fanta.equals(false) || fanta.equals(" ")){
+				fanta = "ei";
+				tilaukset.get(i).setFanta(fanta);
+			}else{
+				fanta = "kyllä";
+				tilaukset.get(i).setFanta(fanta);
+			}
+			if(sprite == null || sprite.equals(false) || sprite.equals(" ")){
+				sprite = "ei";
+				tilaukset.get(i).setSprite(sprite);
+			}else{
+				sprite = "kyllä";
+				tilaukset.get(i).setSprite(sprite);
+			}
+		}
+		
 		request.setAttribute("tilaukset", tilaukset);	
 		
 		System.out.println(tilaukset);
