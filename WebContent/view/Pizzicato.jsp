@@ -200,15 +200,16 @@
 	<div class="row text-center for-full-back color-light" id="pizzamenu">
 		<div class="col-md-8 col-md-offset-2">
 			<h1>Pizzalista</h1>
-			<div class="alert alert-success">
-			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> 
 				<%
-					String viesti = (String) request.getAttribute("viesti");
-					if (viesti != null) {
-						out.println("<strong>" + viesti + "</strong>");
-					}
-				%>
-			</div>
+					String viesti = (String) session.getAttribute("viesti");
+					if (viesti != null) {%>
+						<div class="alert alert-success">
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> 
+						<%out.println("<strong>" + viesti + "</strong>");%>
+						</div>
+					<%}
+					session.setAttribute("viesti", null);%>
+			
 			<div class="table-responsive" id="pizzataulukon_kehys">
 				<table class="table table-hover" align="center" id="pizzataulukko_asiakkaalle">
 					<tr>
@@ -238,7 +239,7 @@
       							<input type="hidden" name="pizza_id" value="<%=pizzat.get(i).getPizzaId()%>"/>
       							</div> 
       							
-      							<button type="submit" class="btn btn-success" name="pizzanlisays" href=> <span class="glyphicon glyphicon-shopping-cart"></span><span class="glyphicon glyphicon-plus"></span></button>
+      							<button type="submit" class="btn btn-success" name="pizzanlisays" > <span class="glyphicon glyphicon-shopping-cart"></span><span class="glyphicon glyphicon-plus"></span></button>
       							</form>
       							</li>
     							</ul>

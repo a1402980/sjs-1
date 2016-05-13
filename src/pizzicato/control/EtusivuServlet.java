@@ -33,8 +33,7 @@ public class EtusivuServlet extends HttpServlet {
 		PizzaDAO pizzadao = new PizzaDAO();
 		ArrayList<Pizza> pizzat = pizzadao.findAllAsiakas();	
 		
-		request.setAttribute("pizzat", pizzat);		
-		
+		request.setAttribute("pizzat", pizzat);	
 		String jsp = "/view/Pizzicato.jsp";
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
 		dispatcher.forward(request, response);
@@ -42,13 +41,8 @@ public class EtusivuServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-
 		String jsp = "/view/Pizzicato.jsp";
-		
-		
-		
+				
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 	    Kayttaja kayttaja = new KayttajaDAO().findByUsername(username);
@@ -57,7 +51,7 @@ public class EtusivuServlet extends HttpServlet {
 	    	   PizzaDAO pizzadao = new PizzaDAO();
 	   			ArrayList<Pizza> pizzat = pizzadao.findAllAsiakas();	
 	   			request.setAttribute("pizzat", pizzat);		
-	    	   request.setAttribute("message", "Kirjautuminen ep‰onnistui!");
+	    	   request.setAttribute("message", "Kirjautuminen ep√§onnistui!");
 	         RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
 	  		  dispather.forward(request, response);
 	       } else {

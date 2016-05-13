@@ -26,7 +26,8 @@ public class OstoskoriServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	//n�ytt�� ostoskorin sis�ll�n
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		HttpSession session = request.getSession(true);
+		session.removeAttribute("viesti");
 		String jsp = "/view/pizzicato_ostoskori.jsp";
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
 		dispatcher.forward(request, response);
@@ -64,9 +65,9 @@ public class OstoskoriServlet extends HttpServlet {
 		for (int i = 0; i < lkm; i++) {		
 			tilaus.addPizzaTilaus(pizzatilaus);
 		}
-		
-		request.setAttribute("viesti", "Pizza lisätty ostoskoriin!");
-		
+		if (tilaus != null){
+			session.setAttribute("viesti", "Valintasi on lisätty ostoskoriin!");
+		}
 		response.sendRedirect("Etusivu#pizzamenu");
 	}
 	
