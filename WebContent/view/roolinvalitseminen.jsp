@@ -6,6 +6,9 @@
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
 
+<%@ page import="pizzicato.model.Tilaus"%>
+<%@ page import="pizzicato.model.PizzaTilaus"%>
+<jsp:useBean id="tilaus" class="pizzicato.model.Tilaus" scope="session" />
 <%@ page import="pizzicato.model.Kayttaja"%>
 
 <jsp:useBean id="kayttaja" class="pizzicato.model.Kayttaja"
@@ -57,16 +60,19 @@
 			<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
 			<span class="icon-bar"></span> <span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="ListaaPizzat">Pizzeria Pizzicato</a>
+		<a class="navbar-brand" href="Etusivu">Pizzeria Pizzicato</a>
 	</div>
 	<!-- Collect the nav links for toggling -->
 	<div class="collapse navbar-collapse navbar-ex1-collapse">
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href="Etusivu">Etusivu</a></li>
 			<li><a href="Etusivu#pizzamenu">Pizzat</a></li>
-			<li><a href="#contact">Yhteystiedot</a></li>
-			<li id="ostoskorinappi2"><a href="ostoskori" class="btn btn-primary" role="button" id="ostoskorinappi"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="badge">7</span></a></li>
+			<li><a href="Etusivu#contact">Yhteystiedot</a></li>
+			<li id="ostoskorinappi2"><a href="ostoskori" class="btn btn-primary" role="button" id="ostoskorinappi"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="badge"><%=tilaus.getPizzaTilLkm()%></span></a></li>
 			<li>
+			
+			
+			
 			<% 		
 				if (kayttaja!= null &&  kayttaja.getUserRole()!= null){
 					
@@ -75,10 +81,23 @@
 						<%out.println("Tervetuloa "+"<b>"+ kayttaja.getUsername() +"</b>"+ "!"); %><b class="caret"></b></a>
 						<ul class="dropdown-menu">	
            				<li>  <a href="KirjauduUlos" id="kirjaudu-ulos-nappi"><span class="glyphicon glyphicon-log-out"></span> Kirjaudu ulos</a></li>
+           				
+           				  <% if (kayttaja != null && kayttaja.getUserRole().equals("kokki") && kayttaja.getUserRole().equals("kuljettaja")){%>
+           				<li> <a href="roolinvalitseminen" id="kirjaudu-ulos-nappi"><i class="fa fa-user" aria-hidden="true"></i> Roolin valitseminen</a></li>
+           				
+           					<%} %>
+           					
+           				 <% if (kayttaja != null && kayttaja.getUserRole().equals("omistaja")){%>
+     
+           				<li> <a href="ListaaPizzat" id="kirjaudu-ulos-nappi"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Muokkaa pizzoja</a></li>
+           				<li> <a href="roolinvalitseminen" id="kirjaudu-ulos-nappi"><i class="fa fa-user" aria-hidden="true"></i> Roolinäkymät</a></li>
+           					<%} %>
+           				
 						</ul>
+					
 					<%} 
 			
-					
+			
 				else {%> <li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>
 						Kirjaudu <b class="caret"></b></a>
@@ -157,7 +176,7 @@
 	</section>
 	<!--End Free Section -->
 
-	<!-- Contact Section -->
+<!-- Contact Section -->
 <section class="for-full-back color-white " id="contact">
 <div class="container">
 

@@ -419,13 +419,33 @@ div#huomio span#ilmoitus {
 	padding-top: 9px;
     padding-bottom: 9px;
     margin-top: 5px;
+    color: #428BCA;
 
 }
 
-#ostoskorinappi2 a:hover, a:focus, a:active, a:target{
+#ostoskorinappi2 a:hover{
 	background-color: #3276b1;
 	border-color: #285e8e;
 }
+
+#ostoskorinappi2 a:focus{
+	background-color: #3276b1;
+	border-color: #285e8e;
+}
+
+
+#ostoskorinappi2 a:active{
+	background-color: #3276b1;
+	border-color: #285e8e;
+}
+
+
+#ostoskorinappi2 a:target{
+	background-color: #3276b1;
+	border-color: #285e8e;
+}
+
+
 
 #kirjaudu-ulos-nappi{
 	color:black !important;
