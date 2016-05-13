@@ -141,6 +141,7 @@
 	<div class="container">
 		<div class="row text-center for-full-back color-light jumbotron" id="tilaustaulu">
 			<H1>Tilaukset</H1>
+			<h2>(Omistajan näkymä)</h2>
 			<div class="container" id="kokintilaukset">
 
 				<div class="table-responsive">
