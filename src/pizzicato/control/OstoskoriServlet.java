@@ -83,7 +83,7 @@ public class OstoskoriServlet extends HttpServlet {
 			//tilaus.setRivinro(rivinro);
 		}
 		
-		response.sendRedirect("ostoskori");
+		response.sendRedirect("Etusivu#pizzamenu");
 	}
 	
 }
