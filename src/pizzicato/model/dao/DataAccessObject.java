@@ -14,7 +14,7 @@ public class DataAccessObject {
 	protected static Connection getConnection() {
 		Connection connection = null;
 		
-//tarkasta vielä nämä
+//tarkasta vielï¿½ nï¿½mï¿½
 		String dbUsername = Accounts.DBUSERNAME;
 		String dbPassword = Accounts.DBPASSWORD;
 		String url = "jdbc:mysql://localhost:3306/projekti";
@@ -53,6 +53,32 @@ public class DataAccessObject {
 		}
 	}
 	
+	protected static void close3(Statement stmt, Statement stmt2, Statement stmt3, Connection connection) {
+		close3 (null, stmt, stmt2, connection);
+	}
+	
+	protected static void close3(ResultSet rs, Statement stmt, Statement stmt2, Statement stmt3, Connection conn) {
+		
+		try {
+			if (rs !=null) {
+				rs.close();
+			}
+			if (stmt !=null) {
+				stmt.close();
+			}
+			if (stmt2 !=null) {
+				stmt2.close();
+			}
+			if (stmt3 !=null) {
+				stmt3.close();
+			}
+			if (conn !=null) {
+				conn.close();
+			}
+		} catch(Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
 	
 	protected static void close(Statement stmt, Connection connection) {
 		close (null, stmt, connection);

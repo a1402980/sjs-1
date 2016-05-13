@@ -57,6 +57,21 @@ public class PizzaTilausDAO extends DataAccessObject {
 		}
 	}
 	
+	public void deletePizzatil(int pizzaId) throws SQLException {
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		try {
+			conn = getConnection();				
+			String sqlUpdate = "UPDATE pizzatilaus SET pizza_id='null' WHERE pizza_id="+pizzaId+";";
+			stmt = conn.prepareStatement(sqlUpdate);
+			stmt.executeUpdate();		
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}finally {
+			close(rs,stmt,conn);
+		}
+	}
 	
 	
 	/**public void addPizzaTilaus(PizzaTilaus pizzatil) throws SQLException {
