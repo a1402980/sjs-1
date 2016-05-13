@@ -278,71 +278,10 @@
 <div class="container">
 	<div class="row text-center for-full-back color-light" id="uutuuksia">
 		<div class="col-sm-13">
-			<h1>Uutuuksia</h1>
+			<h1>Maista uutuksia!</h1>
 
-				<div class="col-sm-6 col-md-3">
-					<div class="thumbnail">
-						<img src="assets/images/americana.png" alt="pizza21">
-						<div class="caption">
-							<h3>Americana</h3>
-							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-								Aenean commodo ligula eget dolor. Aenean massa. Cum sociis</p>
-
-							<a href="#" class="btn btn-success" role="button"><span
-								class="glyphicon glyphicon-shopping-cart"></span></a>
-
-						</div>
-					</div>
-					</div>
-					
-					<div class="col-sm-6 col-md-3">
-						<div class="thumbnail">
-							<img src="assets/images/quattro_stagioni.png" alt="pizza22">
-							<div class="caption">
-								<h3>Quattro Stagioni</h3>
-								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-									Aenean commodo ligula eget dolor. Aenean massa. Cum sociis</p>
-
-								<a href="#" class="btn btn-success" role="button"><span
-									class="glyphicon glyphicon-shopping-cart"></span></a>
-
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-sm-6 col-md-3">
-					<div class="thumbnail">
-						<img src="assets/images/americana.png" alt="pizza23">
-						<div class="caption">
-							<h3>Mexicana</h3>
-							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-								Aenean commodo ligula eget dolor. Aenean massa. Cum sociis</p>
-
-							<a href="#" class="btn btn-success" role="button"><span
-								class="glyphicon glyphicon-shopping-cart"></span></a>
-
-						</div>
-					</div>
-					</div>
-					
-					<div class="col-sm-6 col-md-3">
-					<div class="thumbnail">
-						<img src="assets/images/americana.png" alt="pizza21">
-						<div class="caption">
-							<h3>Americana</h3>
-							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-								Aenean commodo ligula eget dolor. Aenean massa. Cum sociis</p>
-
-							<a href="#" class="btn btn-success" role="button"><span
-								class="glyphicon glyphicon-shopping-cart"></span></a>
-
-						</div>
-					</div>
-					</div>
-
+			<img src="assets/images/mainos1.png" alt="Maista Uutuuksia!" style="width:95%; padding-bottom: 2.5%;">
 				
-
-
 	</div>
 	</div>
 </div>
