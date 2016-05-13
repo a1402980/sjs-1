@@ -31,7 +31,6 @@ public class TilausDAO extends DataAccessObject{
 			int tilausId=rs.getInt("tilaus_id");
 			String status=rs.getString("status");
 			Date tilAjankohta=rs.getTimestamp("til_ajankohta");
-			System.out.println(tilAjankohta);
 			double yhtHinta=rs.getDouble("yht_hinta");
 			String aEtunimi=rs.getString("a_etunimi");
 			String aSukunimi=rs.getString("a_sukunimi");
@@ -53,7 +52,6 @@ public class TilausDAO extends DataAccessObject{
 			int tilausId=rs.getInt("tilaus_id");
 			String status=rs.getString("status");
 			Date tilAjankohta=rs.getTimestamp("til_ajankohta");
-			System.out.println(tilAjankohta);
 			double yhtHinta=rs.getDouble("yht_hinta");
 			String cola=rs.getString("cola");
 			String fanta=rs.getString("fanta");
