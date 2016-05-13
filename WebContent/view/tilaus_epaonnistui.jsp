@@ -28,7 +28,7 @@
     <!--[if IE]>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <![endif]-->
-    <title>Pizzeria Pizzicato -tilaus tulossa!</title>
+    <title>Pizzeria Pizzicato - Virhe</title>
     <!--REQUIRED STYLE SHEETS-->
     <!-- JQUERY CODE SOURCE -->
     <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
@@ -133,13 +133,13 @@
 			<div class="col-md-8 col-md-offset-2">
 			
 		
-				<H1>Aterimet esiin! Pizzasi on tulossa!</H1>
-				<h3>Tilauksen lähettäminen onnistui.</h3>
-		
+				<H1></H1>
+				<h2>Tilauksen lähettäminen epäonnistui!</h2>
+				
 				<div>
-					<a class="btn btn-success btn-xl" href="Etusivu#pizzamenu" role="button">Takaisin etusivulle</a>
+					<a class="btn btn-success btn-xl" href="TilausYhteenveto" role="button">Yritä uudelleen</a>
+					<a class="btn btn-default" href="ostoskori" role="button">Peruuta</a>
 				</div>
-		
 			
 			</div>
 		</div>

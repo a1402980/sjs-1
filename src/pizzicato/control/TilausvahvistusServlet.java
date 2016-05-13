@@ -2,6 +2,8 @@ package pizzicato.control;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,25 +26,27 @@ public class TilausvahvistusServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String jsp = "/view/tilausvahvistus.jsp";
+		String jsp = "/view/tilaus_epaonnistui.jsp";
 		HttpSession session = request.getSession(true);
 		Tilaus tilaus = (Tilaus) session.getAttribute("tilaus");
 		TilausDAO tilausdao = new TilausDAO();
-		boolean fail = false;
+		String viesti = null;
+		request.setAttribute("viesti", viesti);
 		try {
 			tilausdao.addTilaus(tilaus);
-			request.setAttribute("fail", fail);
+			jsp = "/view/tilausvahvistus.jsp";
 		} catch (SQLException e) {
-			fail = true;
-			request.setAttribute("fail", fail);
+			jsp = "/view/tilaus_epaonnistui.jsp";
 			e.printStackTrace();
 		}
+		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
 		dispatcher.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		HttpSession session = request.getSession(true);
+		session.removeAttribute("tilaus");
 	}
 
 }
