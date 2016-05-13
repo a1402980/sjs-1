@@ -12,7 +12,35 @@ import pizzicato.model.Tilaus;
 
 public class PizzaTilausDAO extends DataAccessObject {
 	
-	public PizzaTilaus readPizzaTilaus(ResultSet rs) {
+	public PizzaTilaus readPizzaTilausKuski(ResultSet rs) {
+		try {
+			int pizzatilId=rs.getInt("pizzatil_id");
+			int tilausId=rs.getInt("tilaus_id");
+			int pizzaId=rs.getInt("pizza_id");
+			String pNimi=rs.getString("p_nimi");
+			Pizza pizza = new Pizza(pizzaId, pNimi);
+			return new PizzaTilaus(pizzatilId, tilausId, pizza);
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public PizzaTilaus readPizzaTilausKokki(ResultSet rs) {
+		try {
+			int pizzatilId=rs.getInt("pizzatil_id");
+			int tilausId=rs.getInt("tilaus_id");
+			int pizzaId=rs.getInt("pizza_id");
+			String oregano=rs.getString("oregano");
+			String valkosipuli=rs.getString("valkosipuli");
+			String pNimi=rs.getString("p_nimi");			
+			Pizza pizza = new Pizza(pizzaId, pNimi);
+			return new PizzaTilaus(pizzatilId, tilausId, pizza, oregano, valkosipuli);
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public PizzaTilaus readPizzaTilausOmistaja(ResultSet rs) {
 		try {
 			int pizzatilId=rs.getInt("pizzatil_id");
 			int tilausId=rs.getInt("tilaus_id");
@@ -28,6 +56,8 @@ public class PizzaTilausDAO extends DataAccessObject {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	
 	
 	public void addPizzaTilaus(PizzaTilaus pizzatil) throws SQLException {
 		Connection conn = null;

@@ -32,7 +32,12 @@ public class PizzaTilaus {
 		this.valkosipuli = valkosipuli;
 	}
 	
-	
+	public PizzaTilaus(int pizzatil_id, int tilausId, Pizza pizza) {
+		super();
+		this.pizzatil_id = pizzatil_id;
+		this.tilausId = tilausId;
+		this.pizza = pizza;
+	}
 
 	public PizzaTilaus(int pizzatil_id, Pizza pizza) {
 		super();
