@@ -4,14 +4,13 @@
 <%@ page import="pizzicato.model.Pizza"%>
 <%@ page import="pizzicato.model.Tayte"%>
 <%@ page import="pizzicato.model.Kayttaja"%>
-<jsp:useBean id="pizzat" type="java.util.ArrayList<Pizza>"
+<jsp:useBean id="pizza" class="pizzicato.model.Pizza"
+	scope="request" />
+<jsp:useBean id="kaikkitaytteet" type="java.util.ArrayList<Tayte>"
 	scope="request" />
 <jsp:useBean id="kayttaja" class="pizzicato.model.Kayttaja"
 	scope="session" />
-	<jsp:useBean id="pizza" class="pizzicato.model.Pizza"
-	scope="request" />
-	<jsp:useBean id="kaikkitaytteet" type="java.util.ArrayList<Tayte>"
-	scope="request" />
+	
 	
 <html lang="fi"> 
 <!--<![endif]-->
