@@ -19,7 +19,11 @@ public class ListaaAsiakasPizzat extends HttpServlet {
 	private static final long serialVersionUID = 1L;
   
 
-	
+	/**
+	 * Hakee pizzadaon avulla pizzat pizzataulusta
+	 * Asettaa pizzalistan attribuutiksi
+	 * Välittää selaimella pizzalistan ja ohjaa jsphen
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PizzaDAO pizzadao = new PizzaDAO();
 		ArrayList<Pizza> pizzat = pizzadao.findAll();	
@@ -32,8 +36,6 @@ public class ListaaAsiakasPizzat extends HttpServlet {
 	}
 
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
+	
 
 }
