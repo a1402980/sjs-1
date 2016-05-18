@@ -10,6 +10,7 @@
 <%@ page import="pizzicato.model.Tilaus"%>
 <%@ page import="pizzicato.model.PizzaTilaus"%>
 <%@ page import="pizzicato.model.Pizza"%>
+<%@ page import="java.text.DecimalFormat"%>
 <jsp:useBean id="tilaukset" type="java.util.ArrayList<Tilaus>"
 	scope="request" />
 <jsp:useBean id="tilaus" class="pizzicato.model.Tilaus"
@@ -173,7 +174,8 @@
 								<td><%=tilaukset.get(i).getTilausId()%></td>
 								<td><ins><%=tilaukset.get(i).getStatus()%><ins></td>
 								<td><%=tilaukset.get(i).getTilAjankohta()%></td>
-								<td><%=tilaukset.get(i).getYhtHinta()%></td>						
+								<%DecimalFormat des = new DecimalFormat("0.00"); %>
+								<td><%=des.format(tilaukset.get(i).getYhtHinta())%></td>						
 							</tr>
 							<tr>
 								<th>PizzaId</th>

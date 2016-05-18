@@ -47,7 +47,7 @@ public class TilausvahvistusServlet extends HttpServlet {
 	}
 	
 	/**
-	 * Hakee session ja tyhjentää tilaukseen
+	 * Hakee session ja tyhjentää tilauksen
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
