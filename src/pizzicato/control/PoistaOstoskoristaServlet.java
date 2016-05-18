@@ -17,7 +17,11 @@ import pizzicato.model.dao.TilausDAO;
 public class PoistaOstoskoristaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	//hakee rivinumeron ja poistaa sillä rivillä olevan pizzan ostoskorista
+	/**
+	 * Hakee session ja hakee tilausattribuutin sessiosta
+	 * Hakee rivinumeron ja poistaa sen perusteelle pizzan ostoskorista
+	 * Ohjaa selaimen osotoskoriservletiin
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession(true);

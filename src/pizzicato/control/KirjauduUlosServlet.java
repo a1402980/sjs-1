@@ -14,12 +14,11 @@ public class KirjauduUlosServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
    
-    public KirjauduUlosServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	
+	/**
+	 * Hakee session ja validoi sen
+	 * Ohjaa Etusivuservletiin
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 HttpSession session = request.getSession(false);
 		 if (session != null){
@@ -29,8 +28,5 @@ public class KirjauduUlosServlet extends HttpServlet {
 	}
 
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
-
+	
 }
