@@ -20,7 +20,7 @@ public class RoolinvalitsemisServlet extends HttpServlet {
 	
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		//hakee roolinvalitsemissivun
 		
 		String jsp = "/view/roolinvalitseminen.jsp";
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
