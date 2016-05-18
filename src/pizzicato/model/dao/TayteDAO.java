@@ -13,6 +13,11 @@ import pizzicato.model.Tayte;
 
 public class TayteDAO extends DataAccessObject{
 	
+	/** 
+	 * Avaa tietokantayhteyden.
+	 * Lukee tietokannasta täytetaulun täytteet muita metodeita varten. 
+	 * Sulkee tietokantayhteyden.
+	 * **/
 	public Tayte readTayte(ResultSet rs) {
 		try {
 			int tayteId=rs.getInt("tayte_id");
@@ -24,6 +29,11 @@ public class TayteDAO extends DataAccessObject{
 		}
 	}
 	
+	/** 
+	 * Avaa tietokantayhteyden.
+	 * Lukee tietokannasta täytetaulun täytteet pizzadaon findcertainpizzakokki metodia varten. 
+	 * Sulkee tietokantayhteyden.
+	 * **/
 	public Tayte readTayteKokki(ResultSet rs){
 		try {
 			int tayteId=rs.getInt("tayte_id");
@@ -34,6 +44,15 @@ public class TayteDAO extends DataAccessObject{
 		}
 	}
 	
+	/** 
+	 * Avaa tietokantayhteyden. Alustaa täytteet-listan, johon voi sijoittaa täyte-olion.
+	 * Hakee tietokannasta täytteen tiedot ja luo niistä uuden täyte-olion, joka lisätään
+	 * täytteet-listaan. Sulkee tietokantayhteyden. 
+	 * Palauttaa lopuksi koko täytteet-listan.
+	 * Hakee kaikki listalla olevat täytteet tietokannasta 
+	 * @param Täyte Täyte-olio
+	 * @return Taytteet-lista
+	 * **/
 	public ArrayList<Tayte> findAll() {
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -58,6 +77,13 @@ public class TayteDAO extends DataAccessObject{
 		return taytteet;
 	}
 	
+	/** 
+	 * Avaa tietokantayhteyden. 
+	 * Hakee yhden täytteen tiedot tietokannasta kyseisen täytteen id:n perusteella 
+	 * Sulkee tietokantayhteyden. Palauttaa lopuksi täytteen tiedot.
+	 * @param tayteId id tulee muokkaatayteservletistä, tietokannan automaattisesti luoma id
+	 * @return Tayte -olio
+	 * **/
 	public Tayte findCertainTayte(int tayteId) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -80,29 +106,10 @@ public class TayteDAO extends DataAccessObject{
 		return tayte;
 	}
 	
-
-	public Tayte findByName(String tNimi) {
-		Connection conn = null;
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-		Tayte tayte=null;
-		try {
-			conn = getConnection();
-			String sqlSelect ="SELECT tayte_id, t_nimi, t_hinta FROM tayte WHERE t_nimi="+tNimi+";";		
-			stmt=conn.prepareStatement(sqlSelect);
-			rs=stmt.executeQuery(sqlSelect);
-			if(rs.next()) {
-				tayte = readTayte(rs);
-			}
-		} catch(SQLException e) {
-			throw new RuntimeException(e);
-		} finally {
-			close(rs,stmt,conn);
-		}
-		
-		return tayte;
-	}
-	
+	/** 
+	 * Avaa yhteyden tietokantaan. Hakee täyte-olion tiedot.
+	 * Muokkaa haluttua täytettä tietokannassa täyte Id:n perusteella. Sulkee yhteyden. 
+	 * @param tayte täyte-olio**/
 	public void modifyTayte(Tayte tayte) throws SQLException {
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -120,6 +127,10 @@ public class TayteDAO extends DataAccessObject{
 		}
 	}
 	
+	/** 
+	 * Avaa yhteyden tietokantaan. Hakee pizza-olion tiedot.
+	 *  Lisää täyte-olion tiedot tietokantaan. Sulkee yhteyden. 
+	 *  @param tayte täyte-olio**/
 	public void addTayte(Tayte tayte) throws SQLException {
 		Connection connection = null;
 		PreparedStatement stmtInsert = null;
@@ -138,6 +149,12 @@ public class TayteDAO extends DataAccessObject{
 		}
 	}
 	
+	/** 
+	 * Avaa tietokantayhteyden.
+	 * Poistaa tietokannasta yhden täytteen halutun täytteen id:n perusteella 
+	 * Sulkee tietokantayhteyden.
+	 * @param tayteId id tulee poistatayteservletistä, tietokannan automaattisesti luoma id
+	 * **/
 	public Tayte deleteTayte(int tayteId){
 		Connection conn = null;
 		PreparedStatement stmt = null;

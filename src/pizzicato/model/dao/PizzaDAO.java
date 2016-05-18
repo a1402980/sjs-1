@@ -196,7 +196,7 @@ public class PizzaDAO extends DataAccessObject {
 		 * Avaa tietokantayhteyden. 
 		 * Hakee yhden pizzan tiedot tietokannasta kyseisen pizzan id:n perusteella 
 		 * Sulkee tietokantayhteyden. Palauttaa lopuksi pizzan tiedot.
-		 * @param pizzaId id tulee muokkaapizzaservletist�, tietokannan automaattisesti luoma id
+		 * @param pizzaId id tulee muokkaapizzaservletistä, tietokannan automaattisesti luoma id
 		 * @return Pizza -olio
 		 * **/
 		public Pizza findCertainPizza(int pizzaId) {
@@ -272,7 +272,7 @@ public class PizzaDAO extends DataAccessObject {
 		
 		/** 
 		 * Avaa tietokantayhteyden.
-		 * Lukee tietokannasta pizzalistan pizzat findcertainpizzakokki metodia varten. 
+		 * Lukee tietokannasta pizzataulun pizzat findcertainpizzakokki metodia varten. 
 		 * Sulkee tietokantayhteyden.
 		 * **/
 		private Pizza readPizzaKokki(ResultSet rs) {
@@ -287,7 +287,7 @@ public class PizzaDAO extends DataAccessObject {
 		
 		/** 
 		 * Avaa tietokantayhteyden.
-		 * Lukee tietokannasta pizzalistan pizzat muita metodeita varten. 
+		 * Lukee tietokannasta pizzataulun pizzat muita metodeita varten. 
 		 * Sulkee tietokantayhteyden.
 		 * **/
 		private Pizza readPizza(ResultSet rs) {
