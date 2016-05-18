@@ -26,6 +26,7 @@ public class TilausvahvistusServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//servlet tarkastaa, että tilaus menee perille ja ilmoittaa tilauksen onnistuneen tai epäonnistuneen
 		String jsp = "/view/tilaus_epaonnistui.jsp";
 		HttpSession session = request.getSession(true);
 		Tilaus tilaus = (Tilaus) session.getAttribute("tilaus");
@@ -45,6 +46,7 @@ public class TilausvahvistusServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//hakee session ja tyhjentää tilauksen
 		HttpSession session = request.getSession(true);
 		session.removeAttribute("tilaus");
 	}

@@ -19,6 +19,7 @@ public class TilausYhteenvetoServlet extends HttpServlet {
        
  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//hakee tilaustiedot ja tulostaa ne yhteenvetosivulle
 		String jsp = "/view/tilausyhteenveto.jsp";
 		HttpSession session = request.getSession(true);
 		Tilaus tilaus = (Tilaus) session.getAttribute("tilaus");
