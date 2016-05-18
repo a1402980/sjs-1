@@ -18,7 +18,11 @@ import pizzicato.model.dao.TayteDAO;
 public class ListaaTaytteetServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    
+	/**
+	 * Hakee täytedaon avulla täytteet täytetaulusta
+	 * Asettaa täytelistan attribuutiksi
+	 * Välittää selaimelle täytelistan ja ohjaa jsphen
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		TayteDAO taytedao = new TayteDAO();
 		ArrayList<Tayte> taytteet = taytedao.findAll();	

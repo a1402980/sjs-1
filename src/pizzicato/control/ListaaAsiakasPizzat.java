@@ -22,7 +22,7 @@ public class ListaaAsiakasPizzat extends HttpServlet {
 	/**
 	 * Hakee pizzadaon avulla pizzat pizzataulusta
 	 * Asettaa pizzalistan attribuutiksi
-	 * Välittää selaimella pizzalistan ja ohjaa jsphen
+	 * Välittää selaimelle pizzalistan ja ohjaa jsphen
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PizzaDAO pizzadao = new PizzaDAO();
