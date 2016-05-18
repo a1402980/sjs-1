@@ -14,6 +14,11 @@ import pizzicato.model.Tilaus;
 
 public class TilausDAO extends DataAccessObject{
 	
+	/** 
+	 * Avaa tietokantayhteyden.
+	 * Lukee tietokannasta tilauksen tiedot kokkifindall metodia varten. 
+	 * Sulkee tietokantayhteyden.
+	 * **/
 	private Tilaus readTilauksetKokki(ResultSet rs) {
 		try {
 			int tilausId=rs.getInt("tilaus_id");
@@ -26,6 +31,11 @@ public class TilausDAO extends DataAccessObject{
 		}
 	}
 	
+	/** 
+	 * Avaa tietokantayhteyden.
+	 * Lukee tietokannasta tilauksen tiedot kuskifindall metodia varten. 
+	 * Sulkee tietokantayhteyden.
+	 * **/
 	private Tilaus readTilauksetKuski(ResultSet rs) {
 		try {
 			int tilausId=rs.getInt("tilaus_id");
@@ -46,6 +56,11 @@ public class TilausDAO extends DataAccessObject{
 		}
 	}
 	
+	/** 
+	 * Avaa tietokantayhteyden.
+	 * Lukee tietokannasta tilauksen tiedot omistajafindall metodia varten. 
+	 * Sulkee tietokantayhteyden.
+	 * **/
 	private Tilaus readTilauksetOmistaja(ResultSet rs) {
 		try {
 			int tilausId=rs.getInt("tilaus_id");
