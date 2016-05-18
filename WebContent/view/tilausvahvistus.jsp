@@ -153,7 +153,10 @@
 				<h3>Tilauksen lähettäminen onnistui.</h3>
 		
 				<div>
-					<a class="btn btn-success btn-xl" href="Etusivu#pizzamenu" role="button">Takaisin etusivulle</a>
+					<form method="post" action="tilausvahvistus">
+						<button type="submit" class="btn btn-success btn-lg">Takaisin etusivulle</button>
+					</form>
+					<br><br>
 				</div>
 		
 			

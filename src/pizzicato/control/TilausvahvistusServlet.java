@@ -47,12 +47,12 @@ public class TilausvahvistusServlet extends HttpServlet {
 	}
 	
 	/**
-	 * Hakee session ja tyhjentää tilaukseen
+	 * Hakee session, tyhjentää tilaukseen ja ohjaa takaisin etusivulle.
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
 		session.removeAttribute("tilaus");
-		response.sendRedirect("Etusivu#pizzamenu"); 
+		response.sendRedirect("Etusivu#pizzamenu");
 	}
 
 }
