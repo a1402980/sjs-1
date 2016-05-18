@@ -20,11 +20,12 @@ import pizzicato.model.dao.TilausDAO;
 public class TilausvahvistusServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public TilausvahvistusServlet() {
-        super();
-
-    }
-
+   
+	/**
+	 * Hakee session ja hakee siitä tilausattribuutin
+	 * Asettaa sessioon viestin ja lisää tilausdaolla tilauksen tietokantaan
+	 * Jos tilaus onnistui ohjaa tilausvahvistus jsphen, jos ei onnistunut, ohjaa tilausepäonnistui jsphen
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//servlet tarkastaa, että tilaus menee perille ja ilmoittaa tilauksen onnistuneen tai epäonnistuneen
 		String jsp = "/view/tilaus_epaonnistui.jsp";
@@ -44,9 +45,11 @@ public class TilausvahvistusServlet extends HttpServlet {
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
 		dispatcher.forward(request, response);
 	}
-
+	
+	/**
+	 * Hakee session ja tyhjentää tilaukseen
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//hakee session ja tyhjentää tilauksen
 		HttpSession session = request.getSession(true);
 		session.removeAttribute("tilaus");
 	}
