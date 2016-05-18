@@ -13,6 +13,11 @@ import pizzicato.model.Tilaus;
 
 public class AsiakasDAO extends DataAccessObject {
 	
+	/** 
+	 * Avaa tietokantayhteyden.
+	 * Lukee tietokannasta asiakastaulun asiakkaat muita metodeita varten. 
+	 * Sulkee tietokantayhteyden.
+	 * **/
 	private Asiakas readAsiakas(ResultSet rs) {
 		try {
 			int asiakasId=rs.getInt("asiakas_id");
@@ -29,7 +34,13 @@ public class AsiakasDAO extends DataAccessObject {
 		}
 	}
 
-
+	/** 
+	 * Avaa tietokantayhteyden. 
+	 * Hakee yhden asiakkaan tiedot tietokannasta kyseisen asiakkaan käyttäjä id:n perusteella 
+	 * Sulkee tietokantayhteyden. Palauttaa lopuksi asiakkaan tiedot.
+	 * @param Kayttaja tulee tilaajantiedotservletistä
+	 * @return Asiakas -olio
+	 * **/
 	  public Asiakas findCertainAsiakas(Kayttaja kayttaja){
 		    PreparedStatement statement = null;
 		    Connection connection = null;
@@ -57,6 +68,10 @@ public class AsiakasDAO extends DataAccessObject {
 		    return asiakas;
 		  }
 	
+	  /** 
+		 * Avaa yhteyden tietokantaan. Hakee asiakas-olion tiedot.
+		 * Muokkaa haluttua täytettä tietokannassa asiakas Id:n perusteella. Sulkee yhteyden. 
+		 * @param asiakas asiakas-olio**/
 	public void modifyAsiakas(Asiakas asiakas) throws SQLException {
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -76,6 +91,12 @@ public class AsiakasDAO extends DataAccessObject {
 		}
 	}
 	
+	/** 
+	 * Avaa tietokantayhteyden.
+	 * Poistaa tietokannasta yhden asiakkaan halutun asiakkaan id:n perusteella 
+	 * Sulkee tietokantayhteyden.
+	 * @param asiakasId id tulee servletistä, tietokannan automaattisesti luoma id
+	 * **/
 	public Asiakas deleteAsiakas(int asiakasId){
 		Connection conn = null;
 		PreparedStatement stmt = null;

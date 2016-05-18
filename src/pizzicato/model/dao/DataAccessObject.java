@@ -14,7 +14,6 @@ public class DataAccessObject {
 	protected static Connection getConnection() {
 		Connection connection = null;
 		
-//tarkasta viel� n�m�
 		String dbUsername = Accounts.DBUSERNAME;
 		String dbPassword = Accounts.DBPASSWORD;
 		String url = "jdbc:mysql://localhost:3306/projekti";

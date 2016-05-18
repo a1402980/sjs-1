@@ -17,6 +17,11 @@ public class KayttajaDAO extends DataAccessObject {
       return instance;
    }
    
+   /** 
+	 * Avaa tietokantayhteyden.
+	 * Lukee tietokannasta käyttäjätaulun käyttäjän tiedot muita metodeita varten. 
+	 * Sulkee tietokantayhteyden.
+	 * **/
    private Kayttaja read(ResultSet rs) throws SQLException
    {
 	   int id = new Integer(rs.getInt("kayttaja_id"));
@@ -31,6 +36,13 @@ public class KayttajaDAO extends DataAccessObject {
 	   return kayttaja;
    }
    
+   /** 
+	 * Avaa tietokantayhteyden. 
+	 * Hakee yhden käyttäjän tiedot tietokannasta kyseisen käyttäjän id:n perusteella 
+	 * Sulkee tietokantayhteyden. Palauttaa lopuksi käyttäjän tiedot.
+	 * @param käyttäjäId id tulee muokkaatayteservletistä, tietokannan automaattisesti luoma id
+	 * @return Käyttäjä -olio
+	 * **/
    public Kayttaja find(int id) {
 	   ResultSet rs = null;
 	   PreparedStatement statement = null;
@@ -54,6 +66,13 @@ public class KayttajaDAO extends DataAccessObject {
 	}
    }
    
+   /** 
+  	 * Avaa tietokantayhteyden. 
+  	 * Hakee yhden kättäjän tiedot tietokannasta kyseisen käyttäjän käyttäjänimen perusteella 
+  	 * Sulkee tietokantayhteyden. Palauttaa lopuksi käyttäjän tiedot.
+  	 * @param käyttäjäId id tulee muokkaatayteservletistä, tietokannan automaattisesti luoma id
+  	 * @return Käyttäjä -olio
+  	 * **/
    public Kayttaja findByUsername (String username) {
 	   ResultSet rs = null;
 	   PreparedStatement statement = null;
@@ -76,69 +95,13 @@ public class KayttajaDAO extends DataAccessObject {
 	   finally {
 	         close(rs, statement, connection);
 	   }
-   }
-
-//N�it� metodeita ei t�ll� hetkell� tarvita
-
-		public ArrayList<Kayttaja> findAll() {
-			ArrayList<Kayttaja> kayttajat = new ArrayList<Kayttaja>();
-			ResultSet rs = null;
-			PreparedStatement statement = null;
-			Connection connection = null;
-			try {
-	    	  connection = getConnection();
-	          String sql = "select * from kayttaja order by id";
-	          statement = connection.prepareStatement(sql);
-	          rs = statement.executeQuery();
-	          while (rs.next()) {
-	        	  Kayttaja kayttaja = read(rs);
-	              kayttajat.add(kayttaja);
-	          }
-	          return kayttajat;
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	      finally {
-	    	  close(rs, statement, connection);
-	      }
-   }
+   }		
    
-   
-   public void update(Kayttaja kayttaja) {
-	   PreparedStatement statement = null;
-	   Connection connection = null;
-	   try {
-		   connection = getConnection();
-	         String sql = "update kayttaja set " + "password=? where id=?";
-	         statement = connection.prepareStatement(sql);
-	         statement.setString(1, kayttaja.getPassword());
-	         statement.setLong(2, kayttaja.getId());
-	         statement.executeUpdate();
-	   } catch (SQLException e) {
-	         throw new RuntimeException(e);
-	      } finally {
-	         close(statement, connection);
-	      }
-   }
-   
-  /* public void create(Kayttaja kayttaja) {
-	   PreparedStatement statement = null;
-	   Connection connection = null;
-	   try {
-		   connection = getConnection();
-		   String sql = "insert into kayttaja (username, password, userrole) values (?, ?, ?)";
-		   statement = connection.prepareStatement(sql);
-	       statement.setString(1, kayttaja.getUsername());
-	       statement.setString(2, kayttaja.getPassword());
-	       statement.setString(3, kayttaja.getUserRole());
-	       statement.executeUpdate();
-	} catch (Exception e) {
-		throw new RuntimeException(e);
-	} finally {
-        close(statement, connection);
-	}
-   }
-   */
+   /** 
+	 * Avaa yhteyden tietokantaan. Hakee käyttäjä- ja asiakas-olioiden tiedot.
+	 *  Lisää käyttäjä- ja asiakas-olioiden tiedot tietokantaan (asiakkaan id on sama kuin käyttäjän id). Sulkee yhteyden. 
+	 *  @param Asiakas asiakas-olio
+	 *  @param Kayttaja käyttäjä-olio**/
    public void createAsiakas(Kayttaja kayttaja, Asiakas asiakas) {
 	    PreparedStatement statement = null;
 	    Connection conn = null;
@@ -189,6 +152,12 @@ public class KayttajaDAO extends DataAccessObject {
 	    	}
 	   	}
    
+   
+   
+   /** Näitä metodeja voi käyttää jos kehitetään käyttöliittymää edelleen
+	 * Avaa yhteyden tietokantaan. Hakee käyttäjä-olion tiedot.
+	 *  Lisää käyttäjä-olion tiedot tietokantaan. Sulkee yhteyden. 
+	 *  @param Kayttaja käyttäjä-olio
    public void delete(Kayttaja kayttaja){
 	   PreparedStatement statement = null;
 	   Connection connection = null;
@@ -206,6 +175,12 @@ public class KayttajaDAO extends DataAccessObject {
 	}
    }
    
+   
+	 * Avaa tietokantayhteyden.
+	 * Poistaa tietokannasta yhden asiakkaan käyttäjä id:n perusteella (id on sama kuin asiakkaalle) 
+	 * Sulkee tietokantayhteyden.
+	 * @param tayteId id tulee poistatayteservletistä, tietokannan automaattisesti luoma id
+	 * 
    public void deleteAsiakas(Kayttaja kayttaja){
 	    PreparedStatement statement = null;
 	    PreparedStatement stmt2 = null;
@@ -227,6 +202,47 @@ public class KayttajaDAO extends DataAccessObject {
 	        close(statement, connection);
 		}
 	  }
+   
+   public ArrayList<Kayttaja> findAll() {
+	ArrayList<Kayttaja> kayttajat = new ArrayList<Kayttaja>();
+	ResultSet rs = null;
+	PreparedStatement statement = null;
+	Connection connection = null;
+	try {
+	  connection = getConnection();
+     String sql = "select * from kayttaja order by id";
+     statement = connection.prepareStatement(sql);
+     rs = statement.executeQuery();
+     while (rs.next()) {
+   	  Kayttaja kayttaja = read(rs);
+         kayttajat.add(kayttaja);
+     }
+     return kayttajat;
+} catch (Exception e) {
+	throw new RuntimeException(e);
+}
+ finally {
+	  close(rs, statement, connection);
+ }
+}
+
+
+public void update(Kayttaja kayttaja) {
+PreparedStatement statement = null;
+Connection connection = null;
+try {
+  connection = getConnection();
+    String sql = "update kayttaja set " + "password=? where id=?";
+    statement = connection.prepareStatement(sql);
+    statement.setString(1, kayttaja.getPassword());
+    statement.setLong(2, kayttaja.getId());
+    statement.executeUpdate();
+} catch (SQLException e) {
+    throw new RuntimeException(e);
+ } finally {
+    close(statement, connection);
+ }
+}**/
      
 }
 
