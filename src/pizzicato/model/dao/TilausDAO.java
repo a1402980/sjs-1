@@ -304,7 +304,7 @@ public class TilausDAO extends DataAccessObject{
 	/** 
 	 * Avaa yhteyden tietokantaan. Hakee tilaus-olion tiedot.
 	 * Muokkaa halutun tilauksen statuksen Paistetuksi tietokannassa tilaus Id:n perusteella. Sulkee yhteyden. 
-	 * @param tilaus_id tilauksen automaattisesti luotu id**/
+	 * @param tilaus_id tilauksen automaattisesti luotu id, tulee listaatilauksetkokkiservletistä**/
 	public void modifyStatusKokki(int tilausId) throws SQLException {
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -325,7 +325,7 @@ public class TilausDAO extends DataAccessObject{
 	/** 
 	 * Avaa yhteyden tietokantaan. Hakee tilaus-olion tiedot.
 	 * Muokkaa halutun tilauksen statuksen Toimitetuksi tietokannassa tilaus Id:n perusteella. Sulkee yhteyden. 
-	 * @param tilaus_id tilauksen automaattisesti luotu id**/
+	 * @param tilaus_id tilauksen automaattisesti luotu id, tulee listaatilauksetkuskiservletistä**/
 	public void modifyStatusKuski(int tilausId) throws SQLException {
 		Connection conn = null;
 		PreparedStatement stmt = null;

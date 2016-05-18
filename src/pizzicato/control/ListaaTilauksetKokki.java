@@ -20,7 +20,14 @@ import pizzicato.model.dao.TilausDAO;
 @WebServlet("/ListaaTilauksetKokki")
 public class ListaaTilauksetKokki extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    
+	/**
+	 * Hakee tilausdaon avulla tilaukset tietokannasta
+	 * Hakee pizzadaon avulla pizzojen tiedot tietokannasta 
+	 * Liittää pizzat tilaukseen
+	 * Tarkistaa oreganon ja valkosipulin tiedot ja muuntaa kyllä/ei muotoon
+	 * Asettaa tilaukset attribuutiksi ja välittää tilaukset listan selaimelle. Ohjaa jsphen
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		TilausDAO tilausdao = new TilausDAO();
 		PizzaDAO pizzadao = new PizzaDAO();
@@ -52,19 +59,19 @@ public class ListaaTilauksetKokki extends HttpServlet {
 					tilaukset.get(i).getPizzaTilaus(j).setValkosipuli(valkosipuli);
 				}
 			}			
-		}
-		
-		
-		
+		}		
 		request.setAttribute("tilaukset", tilaukset);	
-		
-		System.out.println(tilaukset);
-		
+	
 		String jsp = "/view/tilaukset_kokille.jsp";
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
 		dispatcher.forward(request, response);
 	}
-
+	
+	/**
+	 * Jos paistettu nappia painetaan selain ohjautuu dopostiin.
+	 * Muuttaa tilausdaon avulla tilauksen statuksen tietokantaan
+	 * Ohjaa selaimen takaisin kokin näkymään
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		TilausDAO tilausdao = new TilausDAO();
 		String strTilId = request.getParameter("nappi");
