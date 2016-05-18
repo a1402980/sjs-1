@@ -265,7 +265,6 @@ public class Tilaus {
 		 }
 		 if (this.sprite != null && this.sprite.equals("true")){
 			 yhteissumma += 4;
-			 System.out.println("sprite yhteishintaan 4 euroa");
 		 }
 		 
 		return yhteissumma;

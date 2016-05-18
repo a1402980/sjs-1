@@ -20,7 +20,10 @@ import pizzicato.model.dao.TayteDAO;
 public class MuokkaaTayteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-   
+	/**
+	 * MuokkaaTayteServletin doGet metodi hakee muokattavan t√§ytteenn tiedot
+	 * tietokannasta TayteDAOn metodilla, asettaa t√§ytteetlistan attribuutiksi ja ohjaa jsphen
+	 **/
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String jsp ="/view/muokkaa_tayte.jsp";
 		
@@ -37,16 +40,16 @@ public class MuokkaaTayteServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
-	
+	/**
+	 * MuokkaaTayteServletin doPost metodi hakee k√§ytt√§j√§n sy√∂tt√§m√§t tiedot
+	 * selaimelta, valdoi ne ja l√§hett√§√§ muokatut tiedot T√§yteDAOon.
+	 * Ohjaa selaimen listaat√§ytteet servletiin
+	 **/
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*Map<String, String> errors = LisaaTayteServlet.validate(request);
-		Tayte tayte = (Tayte) request.getAttribute("tayte");*/
+		
 		Map<String, String> errors = validate(request);
 		Tayte tayte = (Tayte) request.getAttribute("tayte");
 		
-		/*String strId = request.getParameter("tayte_id");
-		int tayteId = new Integer(strId);	
-		tayte.setTayteId(tayteId);*/
 		
 		if (!errors.isEmpty()) {
 			System.out.println(errors);
@@ -74,7 +77,7 @@ public class MuokkaaTayteServlet extends HttpServlet {
 			//nimi
 			String syotettyNimi = request.getParameter("nimi");
 			if (syotettyNimi == null || syotettyNimi.trim().length() < 2 ) {
-				errors.put("nimi", "Nimen pit‰‰ olla v‰hint‰‰n 2 merkki‰ pitk‰.");
+				errors.put("nimi", "Nimen pitÔøΩÔøΩ olla vÔøΩhintÔøΩÔøΩn 2 merkkiÔøΩ pitkÔøΩ.");
 			}
 			tayte.settNimi(syotettyNimi);
 			
@@ -83,7 +86,7 @@ public class MuokkaaTayteServlet extends HttpServlet {
 			syotettyHinta = syotettyHinta.replace(",", ".");
 			Double tHinta = new Double(syotettyHinta);
 			if (tHinta == null || tHinta < 0.0 || tHinta > 50) {
-				errors.put("tHinta", "Hinnan pit‰‰ olla v‰lilt‰ 0-50");
+				errors.put("tHinta", "Hinnan pitÔøΩÔøΩ olla vÔøΩliltÔøΩ 0-50");
 			} else {
 				tayte.settHinta(tHinta);
 			}

@@ -25,16 +25,22 @@ public class RekisteroityminenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
-
+	/**
+	 * Ohjaa selaimen jsphen
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String jsp ="/view/rekisteroityminen.jsp";
 		RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
 		dispather.forward(request, response);
 	}
 
-
+	/**
+	 * Hakee selaimelta käyttäjä ja asiakas attribuutit ja validoi ne
+	 * Jos on virheitä ohjaa Rekisteröityminen serveltiin
+	 * Muuten luo uuden käyttäjän ja asiakkaan käyttäjädaolla ja ohjaa etusivuservletiin
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//String jsp ="/view/rekisteroityminen.jsp";
+		
 		
 		Map<String, String> errors = validate(request);
 		Kayttaja kayttaja = (Kayttaja) request.getAttribute("kayttaja");
@@ -43,8 +49,6 @@ public class RekisteroityminenServlet extends HttpServlet {
 		if (!errors.isEmpty()) {
 			System.out.println(errors);
 			
-			//RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
-			//dispather.forward(request, response);
 			
 			response.sendRedirect("Rekisteroityminen");
 		} else {

@@ -17,7 +17,7 @@ import pizzicato.model.Kayttaja;
 import pizzicato.model.Tilaus;
 import pizzicato.model.dao.AsiakasDAO;
 
-
+/**Tallennetaan ostoskori-sivulla valitut juomat sessioon ja näytetään tilaajatietolomake**/
 @WebServlet("/TilaajanTiedot")
 public class TilaajanTiedotServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -68,6 +68,8 @@ public class TilaajanTiedotServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
+	/**Pyydetään errors-lista asiakkaan syöttämistä tiedoista. Jos lista on tyhjä, päästetään
+	 * käyttäjä tilausyhteenvetoon. Muutoin lähetetään virheilmoitukset jsp:lle ja pidetään käyttäjä sivulla. **/
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {				
 		
 		Map<String, String> errors = validate(request);
@@ -78,6 +80,7 @@ public class TilaajanTiedotServlet extends HttpServlet {
 			request.setAttribute("errors", errors);
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
 			dispatcher.forward(request, response);
+			
 			return;
 		} else {
 			response.sendRedirect("TilausYhteenveto");
@@ -85,6 +88,8 @@ public class TilaajanTiedotServlet extends HttpServlet {
 		
 	}
 	
+	/**Haetaan tilaajan syöttämät tiedot ja validoidaan ne. 
+	 * Lisätään tiedot sessioon ja mahdolliset virheet errors-listaan.**/
 	public static Map<String, String> validate(HttpServletRequest request) {
 		Map<String, String> errors = new HashMap<String, String>();
 		request.setAttribute("errors", errors);
@@ -94,7 +99,7 @@ public class TilaajanTiedotServlet extends HttpServlet {
 		// Asiakkaan tietojen validointi	
 		
 		String enimi = request.getParameter("etunimi");
-		if (enimi == null || enimi.trim().length() < 2) {
+		if (enimi == null || enimi.trim().length() < 2 || enimi == "") {
 			errors.put("enimi", "Etunimi on pakollinen kenttä.");
 		}else{
 			 tilaus.setaEtunimi(enimi);
@@ -111,7 +116,7 @@ public class TilaajanTiedotServlet extends HttpServlet {
 		}
 
 		String snimi = request.getParameter("sukunimi");
-		if (snimi == null || enimi.trim().length() < 2) {
+		if (snimi == null || snimi.trim().length() < 2 || snimi == "") {
 			errors.put("snimi", " Sukunimi on pakollinen kenttä.");
 		}else{
 			 tilaus.setaSukunimi(snimi);}
@@ -126,7 +131,7 @@ public class TilaajanTiedotServlet extends HttpServlet {
 		}
 				
 		String puh = request.getParameter("puh");
-		if (puh == null || puh.trim().length() < 7 ) {
+		if (puh == null || puh.trim().length() < 7 || puh == "") {
 			errors.put("puh", "Puhelinnumeron on oltava vähintään 7 merkkiä.");
 		}else{
 			tilaus.setaPuh(puh);}
@@ -141,7 +146,7 @@ public class TilaajanTiedotServlet extends HttpServlet {
 		}
 				
 		String osoite = request.getParameter("osoite");
-		if (osoite.trim() == null || osoite.trim().length() < 2 ) {
+		if (osoite.trim() == null || osoite.trim().length() < 2 || osoite == "") {
 			errors.put("osoite", " Osoitteen on oltava vähintän 2 merkkiä pitkä.");
 		}else{
 			 tilaus.setaOsoite(osoite);}
@@ -156,20 +161,16 @@ public class TilaajanTiedotServlet extends HttpServlet {
 		}
 				
 		String strPNro = request.getParameter("postinro");
-		int pNro = new Integer(strPNro);
-		if (strPNro == null || strPNro.trim().length() != 5 ) {
-			errors.put("postinro", "Postinumeron on oltava 5 numeroa");
+
+		if (strPNro == null || strPNro.trim().length() != 5 || strPNro == "" ||  strPNro == "" && !strPNro.matches("^[0-9]*$")) {
+			errors.put("postinro", "Postinumeron on oltava 5 numeroa.");
 		}else{
-			tilaus.setaPostiNro(pNro);}
-		if (strPNro.matches("^[0-9]*$")){
+			int pNro = new Integer(strPNro);
 			tilaus.setaPostiNro(pNro);
-		}else{
-			errors.put("postinro", " Postinumerossa ei saa olla kirjaimia tai erikoismerkkejä.");
 		}
-				
-				
+								
 		String pTmp = request.getParameter("postitmp");
-		if (pTmp.trim() == null || pTmp.trim().length() < 2 ) {
+		if (pTmp.trim() == null || pTmp.trim().length() < 2 || pTmp == "") {
 			errors.put("postitmp", " Postitoimipaikan on oltava vähintään 2 merkkiä pitkä.");
 		}else{
 			 tilaus.setaPostiTmp(pTmp);}

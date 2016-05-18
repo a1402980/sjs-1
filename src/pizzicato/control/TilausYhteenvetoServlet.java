@@ -17,9 +17,8 @@ import pizzicato.model.Tilaus;
 public class TilausYhteenvetoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
- 
+ /**Hakee kaikki tilauksen tiedot sessiosta ja välittää ne jsp:lle**/
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//hakee tilaustiedot ja tulostaa ne yhteenvetosivulle
 		String jsp = "/view/tilausyhteenveto.jsp";
 		HttpSession session = request.getSession(true);
 		Tilaus tilaus = (Tilaus) session.getAttribute("tilaus");

@@ -151,10 +151,11 @@
 		<div class="row text-center for-full-back color-light ">
 			<div class="col-md-8 col-md-offset-2">
 				<H1>Tilauksen yhteenveto</H1>
-						
+				
+<!-- Näytä valitut pizzat -->						
 						<div class="table-responsive">
                     <table class="table table-hover" align="center">
-                    <h2>Tilattavat pizzat</h2>
+                    <h2>Pizzat</h2>
 		<tr>
 						<th>Nimi</th>
 						<th>Täytteet</th>
@@ -179,11 +180,47 @@
 						</td>
 						<td><%=pizza.getpHinta()%></td>
 						<td></td>
-					</tr>
-					
+					</tr>					
 					<% } %>
-		</table>
-		
+					</table><br>
+					
+					<!-- Näytä valitut juomat -->
+					<%if (tilaus.getCola().equals("true") || tilaus.getFanta().equals("true") || tilaus.getSprite().equals("true")) {%>
+					<h2>Juomat</h2>
+					<table class="table table-hover" align="center">
+						<tr>
+							<th>Nimi</th>
+							<th></th>
+							<th>Hinta</th>
+						</tr>
+						<%} %>
+							<%String valittu = tilaus.getCola();
+								if (valittu.equals("true")) {%>
+									<tr>
+										<td>Coca Cola</td>
+										<td></td>
+										<td>4.00</td>
+									</tr>
+							<%}
+							valittu = tilaus.getFanta();
+								if (valittu.equals("true")) {%>
+									<tr>
+										<td>Fanta</td>
+										<td></td>
+										<td>4.00</td>
+									</tr>
+							<%}
+							valittu = tilaus.getSprite();
+								if (valittu.equals("true")) {%>
+									<tr>
+										<td>Sprite</td>
+										<td></td>
+										<td>4.00</td>
+									</tr>
+							<%}%>
+					</table><br>
+
+<!-- Näytä tilaajan omat tiedot -->		
 		<div class="table-responsive" >
 				<table class="table table-hover" align="center" id="pizzataulukko_asiakkaalle">
 					<h2>Tilaajan tiedot</h2>

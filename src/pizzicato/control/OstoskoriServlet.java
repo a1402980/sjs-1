@@ -24,7 +24,12 @@ import pizzicato.model.dao.PizzaTilausDAO;
 @WebServlet("/ostoskori")
 public class OstoskoriServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	//n�ytt�� ostoskorin sis�ll�n
+	
+	
+	/**
+	 * Hakee session, poistaa viesti-attribuutin sessiosta
+	 * Ohjaa jsphen
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
 		session.removeAttribute("viesti");
@@ -32,7 +37,15 @@ public class OstoskoriServlet extends HttpServlet {
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
 		dispatcher.forward(request, response);
 	}
-//lis�� ostoskoriin
+
+
+	/**
+	 * Hakee session, hakee tilaus attribuutin sessiosta
+	 * Jos tilausta ei ole, luodaan uusi
+	 * Luodaan pizzatilausolio, haetaan pizzadaolla pizzantietoja ja lisätään pizzatilaukseen
+	 * tilaus-olioon lisätään pizzatilauksetlista
+	 * Ohjataan takaisin etusivuservlettiin
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PizzaDAO pizzadao = new PizzaDAO();
 		Tilaus tilaus;
@@ -54,7 +67,7 @@ public class OstoskoriServlet extends HttpServlet {
 		//lis�t��n pt-oliolle aseta lkm, pizzaId
 		String StrLkm = request.getParameter("pizzamaara");
 		int lkm = Integer.parseInt(StrLkm);
-		//pizzatilaus.setLkm(lkm);
+	
 		//haetaan valittu pizza ja lis�t��n pizzatilaukseen
 		String StrPizzaId = request.getParameter("pizza_id");
 		int pizza_id = Integer.parseInt(StrPizzaId);
