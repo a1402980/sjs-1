@@ -15,10 +15,13 @@ import pizzicato.model.dao.TayteDAO;
 public class PoistaTayteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    
+    /**
+     * Hakee selaimelta täyte idn
+     * Poistaa täytteen tietokannasta täytedaon avulla
+     * Ohjaa selaimen listaataytteet servletiin
+     */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String strId = request.getParameter("tayte_id");
-		System.out.println("lomakkeelta poistettavaksi tullut t�yteID on"+strId);
 		int tayteId = new Integer(strId);
 		TayteDAO taytedao = new TayteDAO();
 		taytedao.deleteTayte(tayteId);
