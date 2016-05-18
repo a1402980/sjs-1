@@ -5,11 +5,12 @@
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
-<jsp:useBean id="tilaus" class="pizzicato.model.Tilaus" scope="session" />
+<jsp:useBean id="tilaus" class="pizzicato.model.Tilaus" scope="request" />
 <%@ page import="pizzicato.model.Kayttaja"%>
 <%@ page import="pizzicato.model.Tilaus"%>
 <%@ page import="pizzicato.model.PizzaTilaus"%>
 <%@ page import="pizzicato.model.Pizza"%>
+<%@ page import="java.text.DecimalFormat"%>
 <jsp:useBean id="tilaukset" type="java.util.ArrayList<Tilaus>"
 	scope="request" />
 
@@ -187,7 +188,8 @@
 								<td><%=tilaukset.get(i).getCola()%></td>
 								<td><%=tilaukset.get(i).getFanta()%></td>
 								<td><%=tilaukset.get(i).getSprite()%></td>
-								<td><%=tilaukset.get(i).getYhtHinta()%></td>			
+								<%DecimalFormat des = new DecimalFormat("0.00"); %>
+								<td><%=des.format(tilaukset.get(i).getYhtHinta())%></td>			
 								<td>
 									<form method="post">
 										<button type="submit" class="btn btn-success"name="nappi" value="<%=tilaukset.get(i).getTilausId()%>"> Toimitettu <i class="fa fa-check" aria-hidden="true"></i> </button>

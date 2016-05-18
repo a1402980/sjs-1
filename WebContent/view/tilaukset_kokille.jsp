@@ -6,7 +6,7 @@
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
 
-<jsp:useBean id="tilaus" class="pizzicato.model.Tilaus" scope="session" />
+<jsp:useBean id="tilaus" class="pizzicato.model.Tilaus" scope="request" />
 <%@ page import="pizzicato.model.Kayttaja"%>
 <%@ page import="pizzicato.model.Tilaus"%>
 <%@ page import="pizzicato.model.PizzaTilaus"%>
