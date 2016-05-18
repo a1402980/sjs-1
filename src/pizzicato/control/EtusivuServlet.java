@@ -25,11 +25,12 @@ public class EtusivuServlet extends HttpServlet {
 
     public EtusivuServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    /**Luodaan uusi PizzaDAO, käytetään PizzaDAOn findAllAsiakas -metodia ja laitetaan tiedot Arraylistiin. 
+	requestiin annetaan pizzat - attribuutille arvo ja annetaan tiedot Pizzicato.jsp:lle.
+   **/
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PizzaDAO pizzadao = new PizzaDAO();
 		ArrayList<Pizza> pizzat = pizzadao.findAllAsiakas();	
 		
@@ -39,7 +40,10 @@ public class EtusivuServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
-
+    /**Pizzicato.jsp:ltä saadaan requestilla tiedot käyttäjänimestä ja salasanasta.
+     Tarkastetaan, löytyvätkö käyttäjätunnus ja salasana KayttajaDAOsta. Jos kirjautuminen onnistuu,
+     luodaan sessio, jos ei niin näytetään etusivu. Tarkastetaan, onko käyttäjä omistaja, jolloin
+     omistaja siirtyy omalle sivulleen.  **/
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String jsp = "/view/Pizzicato.jsp";
 				
