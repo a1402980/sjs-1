@@ -29,35 +29,7 @@ public class AsiakasDAO extends DataAccessObject {
 		}
 	}
 
-	/*public void createAsiakas(Asiakas asiakas) throws SQLException {
-		Connection connection = null;
-		PreparedStatement stmtInsert = null;
-		
-		try {
-			connection = getConnection();
-			String sqlInsert = "INSERT INTO asiakas(asiakas_id, etunimi, sukunimi, puh, osoite, posti_nro, posti_tmp, s_posti) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";		
-			stmtInsert = connection.prepareStatement(sqlInsert);
-						
-			stmtInsert.setInt(1, asiakas.getAsiakasId());
-			stmtInsert.setString(2, asiakas.getEtuNimi());
-			stmtInsert.setString(3, asiakas.getSukuNimi());
-			stmtInsert.setString(4, asiakas.getPuh());
-			stmtInsert.setString(5, asiakas.getOsoite());
-			stmtInsert.setInt(6, asiakas.getPostiNro());
-			stmtInsert.setString(7, asiakas.getPostiTmp());
-			stmtInsert.setString(8, asiakas.getsPosti());
-			stmtInsert.setInt(9,  );
-		
-			stmtInsert.executeUpdate();
-			
-		}catch (SQLException e) {
-			throw new RuntimeException(e);
-		} finally {
-			close(stmtInsert, connection); 
-		}
-		
-	}
-	*/
+
 	  public Asiakas findCertainAsiakas(Kayttaja kayttaja){
 		    PreparedStatement statement = null;
 		    Connection connection = null;

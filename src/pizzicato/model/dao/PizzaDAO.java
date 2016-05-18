@@ -16,7 +16,7 @@ public class PizzaDAO extends DataAccessObject {
 
 		/** 
 		 * Avaa yhteyden tietokantaan. Hakee pizza-olion tiedot.
-		 *  Lis�� pizza-olion tiedot tietokantaan. Sulkee yhteyden. 
+		 *  Lisää pizza-olion ja pizzaan liittyvien täytteiden tiedot tietokantaan. Sulkee yhteyden. 
 		 *  @param pizza pizza-olio**/
 		public void addPizza(Pizza pizza) throws SQLException {
 			Connection connection = null;
@@ -141,7 +141,15 @@ public class PizzaDAO extends DataAccessObject {
 		}
 		
 		
-		
+		/** 
+		 * Avaa tietokantayhteyden. Alustaa pizzat-listan, johon voi sijoittaa pizza-olion.
+		 * Hakee tietokannasta pizzan tiedot ja luo niistä uuden pizza-olion, joka lisätään
+		 * pizzat-listaan. Sulkee tietokantayhteyden. 
+		 * Palauttaa lopuksi koko pizzat-listan asiakasta varten.
+		 * Hakee kaikki listalla olevat pizzat tietokannasta 
+		 * @param Pizza Pizza-olio
+		 * @return Pizzat-lista
+		 * **/
 		public ArrayList<Pizza> findAllAsiakas() {
 			Connection conn = null;
 			PreparedStatement stmt = null;
@@ -223,6 +231,13 @@ public class PizzaDAO extends DataAccessObject {
 			return pizza;
 		}
 		
+		/** 
+		 * Avaa tietokantayhteyden. 
+		 * Hakee yhden pizzan tiedot tietokannasta kyseisen pizzan id:n perusteella 
+		 * Sulkee tietokantayhteyden. Palauttaa lopuksi pizzan tiedot kokin tilausnäkymää varten.
+		 * @param pizzaId id tulee listaatilauksetkokkiservletistä, tietokannan automaattisesti luoma id
+		 * @return Pizza -olio
+		 * **/
 		public Pizza findCertainPizzaKokki(int pizzaId) {
 			Connection conn = null;
 			PreparedStatement stmt = null;
@@ -255,6 +270,11 @@ public class PizzaDAO extends DataAccessObject {
 			return pizza;
 		}
 		
+		/** 
+		 * Avaa tietokantayhteyden.
+		 * Lukee tietokannasta pizzalistan pizzat findcertainpizzakokki metodia varten. 
+		 * Sulkee tietokantayhteyden.
+		 * **/
 		private Pizza readPizzaKokki(ResultSet rs) {
 			try {
 				int pizzaId=rs.getInt("pizza_id");
@@ -286,11 +306,12 @@ public class PizzaDAO extends DataAccessObject {
 				throw new RuntimeException(e);
 			}
 		}
+		
 		/** 
 		 * Avaa tietokantayhteyden.
 		 * Poistaa tietokannasta yhden pizzan halutun pizzan id:n perusteella 
 		 * Sulkee tietokantayhteyden.
-		 * @param pizzaId id tulee poistapizzaservletist�, tietokannan automaattisesti luoma id
+		 * @param pizzaId id tulee poistapizzaservletistä, tietokannan automaattisesti luoma id
 		 * **/
 		public Pizza deletePizza(int pizzaId){
 			Connection conn = null;

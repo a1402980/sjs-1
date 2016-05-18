@@ -76,6 +76,10 @@ public class TilausDAO extends DataAccessObject{
 		}
 	}
 	
+	/** 
+	 * Avaa yhteyden tietokantaan. Hakee tilaus-olion tiedot.
+	 *  Lisää tilaus-olion ja tilaukseen liittyvän pizzatilaus-olion tiedot tietokantaan. Sulkee yhteyden. 
+	 *  @param tilaus tilaus-olio**/
 	public void addTilaus(Tilaus tilaus) throws SQLException {
 		Connection connection = null;
 		PreparedStatement stmtInsert = null;
@@ -117,6 +121,12 @@ public class TilausDAO extends DataAccessObject{
 		
 	}
 	
+	/** 
+	 * Avaa tietokantayhteyden.
+	 * Poistaa tietokannasta yhden tilauksen halutun tilauksen id:n perusteella 
+	 * Sulkee tietokantayhteyden.
+	 * @param tilausId id tulee servletistä, tietokannan automaattisesti luoma id
+	 * **/
 	public Tilaus deleteTilaus(int tilausId){
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -141,7 +151,15 @@ public class TilausDAO extends DataAccessObject{
 		
 	}
 	
-		
+	/** 
+	 * Avaa tietokantayhteyden. Alustaa tilaukset-listan, johon voi sijoittaa pizza-olion.
+	 * Hakee tietokannasta tilauksen tiedot ja luo niistä uuden tilaus-olion, joka lisätään
+	 * tilaukset-listaan. Sulkee tietokantayhteyden. 
+	 * Palauttaa lopuksi koko tilaukset-listan.
+	 * Hakee kaikki listalla olevat tilaukset tietokannasta omistajan näkymää varten. 
+	 * @param Tilaus tilaus-olio
+	 * @return Tilaukset-lista
+	 * **/	
 	public ArrayList<Tilaus> omistajaFindAll() {
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -183,7 +201,15 @@ public class TilausDAO extends DataAccessObject{
 		return tilaukset;
 	}
 	
-	
+	/** 
+	 * Avaa tietokantayhteyden. Alustaa tilaukset-listan, johon voi sijoittaa pizza-olion.
+	 * Hakee tietokannasta tilauksen tiedot ja luo niistä uuden tilaus-olion, joka lisätään
+	 * tilaukset-listaan. Sulkee tietokantayhteyden. 
+	 * Palauttaa lopuksi koko tilaukset-listan.
+	 * Hakee kaikki listalla olevat tilaukset tietokannasta kuskin näkymää varten. 
+	 * @param Tilaus tilaus-olio
+	 * @return Tilaukset-lista
+	 * **/	
 	public ArrayList<Tilaus> kuskiFindAll() {
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -225,6 +251,15 @@ public class TilausDAO extends DataAccessObject{
 		return tilaukset;
 	}
 	
+	/** 
+	 * Avaa tietokantayhteyden. Alustaa tilaukset-listan, johon voi sijoittaa pizza-olion.
+	 * Hakee tietokannasta tilauksen tiedot ja luo niistä uuden tilaus-olion, joka lisätään
+	 * tilaukset-listaan. Sulkee tietokantayhteyden. 
+	 * Palauttaa lopuksi koko tilaukset-listan.
+	 * Hakee kaikki listalla olevat tilaukset tietokannasta kokin näkymää varten. 
+	 * @param Tilaus tilaus-olio
+	 * @return Tilaukset-lista
+	 * **/	
 	public ArrayList<Tilaus> kokkiFindAll() {
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -266,6 +301,10 @@ public class TilausDAO extends DataAccessObject{
 		return tilaukset;
 	}
 	
+	/** 
+	 * Avaa yhteyden tietokantaan. Hakee tilaus-olion tiedot.
+	 * Muokkaa halutun tilauksen statuksen Paistetuksi tietokannassa tilaus Id:n perusteella. Sulkee yhteyden. 
+	 * @param tilaus_id tilauksen automaattisesti luotu id**/
 	public void modifyStatusKokki(int tilausId) throws SQLException {
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -283,6 +322,10 @@ public class TilausDAO extends DataAccessObject{
 		}
 	}
 	
+	/** 
+	 * Avaa yhteyden tietokantaan. Hakee tilaus-olion tiedot.
+	 * Muokkaa halutun tilauksen statuksen Toimitetuksi tietokannassa tilaus Id:n perusteella. Sulkee yhteyden. 
+	 * @param tilaus_id tilauksen automaattisesti luotu id**/
 	public void modifyStatusKuski(int tilausId) throws SQLException {
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -299,7 +342,6 @@ public class TilausDAO extends DataAccessObject{
 			close(stmt,conn);
 		}
 	}
-	
 
 
 }
