@@ -20,14 +20,20 @@ import pizzicato.model.dao.TayteDAO;
 public class LisaaTayteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-  
+  /**
+   * Ohjaa selaimen jsphen
+   */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String jsp ="/view/lisaa_tayte.jsp";
 		RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
 		dispather.forward(request, response);
 	}
 
-	
+	/**
+	 * Hakee selaimelta täyteen tiedot, validoi
+	 * Ottaa yhteyden täytedaoon, lisää täytteen tietokantaan.
+	 * Ohjaa selaimen listaa  täytteet servletiin
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Map<String, String> errors = validate(request);
 		Tayte tayte = (Tayte) request.getAttribute("tayte");
